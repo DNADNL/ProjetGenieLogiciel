@@ -319,8 +319,8 @@ public class JDBConnection {
 			Statement state = conn.createStatement();
 			//Exécution de la requête d'insertion de l'utilisateur
 			
-			System.out.println("Requete d'ajout de goal");
-			state.executeQuery("INSERT INTO public.\"goal\"(goal_title, goal_description) VALUES (\'"  + goal_title + "\', \'" + goal_description + "\'");   
+			System.out.println(goal_title);
+			state.executeQuery("INSERT INTO public.\"goal\"(goal_title, goal_description) VALUES (\'"  + goal_title + "\', \'" + goal_description + "\')");   
 			
 			state.close();
 	         

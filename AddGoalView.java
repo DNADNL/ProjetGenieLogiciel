@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 public class AddGoalView extends JFrame implements ActionListener
 {	
 	FacadeUser FU = FacadeUser.getFU();
-	FacadeGoal FG = FacadeGoal.getFG();
+	
 	static User user;
 	
 	//Création du panel de navigation
@@ -129,8 +129,8 @@ public class AddGoalView extends JFrame implements ActionListener
 	{
 		//Object resultAddUser = null;
 		
-		FG.addGoal(goal_title, goal_description, nick);
-		System.out.println("Ajout d'un Goal");
+		FU.addGoal(goal_title, goal_description, nick);
+		
 	}
 
 

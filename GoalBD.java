@@ -7,7 +7,7 @@ public class GoalBD extends Goal {
 		// TODO Auto-generated method stub
 		
 		jdbc.createGoal(goal_title,goal_description, nick );
-		System.out.println("Ajout d'un Goal");
+		
 	}
 	
 	

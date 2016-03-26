@@ -4,6 +4,7 @@ public class FacadeUser {
 	
 	GestionnaireUser GU = GestionnaireUser.getGU();
 	ProductsHandler PH = ProductsHandler.getPH();
+	GestionnaireGoal GG = GestionnaireGoal.getGG();
 	
 	//Constructeur Singleton
 	private FacadeUser()
@@ -66,6 +67,11 @@ public class FacadeUser {
 	
 	public void deleteUser(String nick) throws UserNotInTheDatabaseException, UserDeletedException{
 		GU.deleteUser(nick);
+	}
+	
+	public void addGoal(String goal_title, String goal_description, String nick) {
+		// TODO Auto-generated method stub
+		GG.addGoal(goal_title, goal_description, nick);
 	}
 
 

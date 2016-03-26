@@ -7,12 +7,7 @@ public class Connect {
 		 
 		 //Lancement fenêtre
 		 	//LoginView mafenetre = new LoginView(); 
-<<<<<<< HEAD
-		 
-		 
-=======
-	 
->>>>>>> origin/master
+
 		 SwingUtilities.invokeLater(new Runnable(){
 
 	            @Override
