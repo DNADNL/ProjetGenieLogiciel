@@ -308,6 +308,26 @@ public class JDBConnection {
 	    } 
 		catch (SQLException e) {}
 	}
+
+	public void createGoal(String goal_title, String goal_description, String nick) {
+		// TODO Auto-generated method stub
+		
+		
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+			
+			System.out.println("Requete d'ajout de goal");
+			state.executeQuery("INSERT INTO public.\"goal\"(goal_title, goal_description) VALUES (\'"  + goal_title + "\', \'" + goal_description + "\'");   
+			
+			state.close();
+	         
+	    } 
+		catch (SQLException e) {}
+		
+	}
 	
 }
 

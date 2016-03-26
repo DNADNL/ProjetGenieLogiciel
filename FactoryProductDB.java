@@ -48,6 +48,13 @@ public class FactoryProductDB extends AbstractFactory{
 		ProductBD.deleteProduct(pdt_product, nickname);
 	}
 
+	@Override
+	public void addGoal(String goal_title, String goal_description, String nick) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 	
 	
 

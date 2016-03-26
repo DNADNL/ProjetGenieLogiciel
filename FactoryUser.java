@@ -58,4 +58,12 @@ public class FactoryUser extends AbstractFactory {
 	
 	}
 
+	@Override
+	public void addGoal(String goal_title, String goal_description, String nick) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
 }

@@ -68,4 +68,7 @@ public class FacadeUser {
 		GU.deleteUser(nick);
 	}
 
+
+	
+
 }

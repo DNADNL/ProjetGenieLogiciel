@@ -18,18 +18,21 @@ import javax.swing.JTextField;
 public class AddGoalView extends JFrame implements ActionListener
 {	
 	FacadeUser FU = FacadeUser.getFU();
+	FacadeGoal FG = FacadeGoal.getFG();
 	static User user;
 	
 	//Création du panel de navigation
 	JPanel panel = new JPanel();
 	
-	//Création des boutons de "Principal"
-	Button logoutButton = new Button("Déconnexion",540, 10, 150, 30);
-	Button productListButton = new Button("Mes produits", 250, 335, 200, 30);
-
-	Button adminButton = new Button("Administration", 250, 375, 200, 30);
-	Button simpleUserButton = new Button("Simple User", 250, 415, 200, 30);
 	
+	//création du bouton pour ajouter un utilisateur et des champs à rentrer
+		Button returnUsersButton = new Button("Retour", 540, 10, 150, 30);
+			Button validateAddUserButton = new Button("Ajouter", 250, 270, 200, 30);
+	
+	// Création des champs de textes pour completer les attributs d'un objectif
+			JTextField addGoalTitle = new JTextField("Goal Title");
+			JTextField addGoalDescription = new JTextField("Goal Description");
+			
 	//Constructeur
 	public AddGoalView(User loggedUser)
 	{
@@ -55,36 +58,46 @@ public class AddGoalView extends JFrame implements ActionListener
 	{
 		panel.removeAll();
 		panel.setLayout(null);
-		
-		// Font
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
 		Font font = new Font("Courier", Font.BOLD, 15);
+		Font fontAdvice = new Font("Courier", Font.ITALIC, 14);
 		
-		// Buttons
-		logoutButton.addActionListener(this);
-		panel.add(logoutButton);
+		//Ajout de l'étiquette "Page de xxx"
+		JLabel idLabel = new JLabel("<html>Page de <br>" + user.nicknameUser + "</html>");
+		idLabel.setBounds(10, 10, 150, 50);
+		idLabel.setFont(font);
+		idLabel.setForeground(Color.BLACK);
+		panel.add(idLabel);
 		
-		productListButton.addActionListener(this);
-		panel.add(productListButton);
+		//Ajout de l'étiquette "Ajout d'utilisateur"
+		JLabel addUserTitle = new JLabel();
+		addUserTitle.setBounds(250, 30, 300, 100);
+		addUserTitle.setFont(fontTitre);					
+		addUserTitle.setText("<html>Add a Goal</html>");
+		panel.add(addUserTitle);		
 		
-		adminButton.addActionListener(this);
-		panel.add(adminButton);
 		
-		simpleUserButton.addActionListener(this);
-		panel.add(simpleUserButton);
 		
-		// Textfields
-		
-		// Labels
-		JLabel userLabel = new JLabel("<html>Page de <br>" + user.nicknameUser + "</html>");
-		userLabel.setBounds(10, 10, 150, 50);
-		userLabel.setFont(font);
-		userLabel.setForeground(Color.BLACK);
-		panel.add(userLabel);
-		
-		// Titre
+		// Ajout du Bouton Retour
+		returnUsersButton.addActionListener(this);
+		panel.add(returnUsersButton);
 
-		// Background
+		// Ajout du Bouton Ajouter
+		validateAddUserButton.addActionListener(this);
+		panel.add(validateAddUserButton);	
+		
+		// Ajout des champs à rentrer
+		addGoalTitle.addActionListener(this);
+		addGoalTitle.setBounds(250, 140, 200, 25);
+		panel.add(addGoalTitle);
+		
+		addGoalDescription.addActionListener(this);
+		addGoalDescription.setBounds(250, 180, 200, 25);
+		panel.add(addGoalDescription);
+				
+		
+		
+		panel.setLayout(new BorderLayout());
 
 	}
 
@@ -93,54 +106,32 @@ public class AddGoalView extends JFrame implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		
 		Object source = e.getSource();
-		if (source == logoutButton)
+		if (source == validateAddUserButton)
 		{
-			FU.disconnectUser();
-			dispose();
-			new LoginView();
+			String goal_title = addGoalTitle.getText();
+			String goal_description = addGoalDescription.getText();
+			String nick = user.getUserNickname();
+			addUserButtonClicked(goal_title, goal_description, nick);
 		}
-		else if (source == productListButton)
+		else if (source == returnUsersButton)
 		{
-			new ProductsListView(FU.getUser());
-			dispose();
-			System.out.println("Panel ProductsList affiché");
-		}
-		else if (source == adminButton)
-		{
-			
-			new AdminView(FU.getUser());
+			new SimpleUserView(FU.getUser());	
 			dispose();
 			System.out.println("Panel Admin affiché");
-		}
-		else if (source == simpleUserButton)
-		{
-			
-			new SimpleUserView(FU.getUser());
-			dispose();
-			System.out.println("Panel Simple User affiché");
 		}
 	
 		
 	}
-		
 	
-//	private void displayAddResult(Object result)
-//	{
-//		if (result.equals("UserCreated"))
-//		{
-//			System.out.println("AddUser : Successful !");
-//			addUserResultLabel.setText("L'utilisateur a été ajouté à la BD !");
-//			addUserResultLabel.setForeground(Color.BLUE);
-//			
-//		}
-//		else
-//		{
-//			System.out.println("AddUser : Failed !");
-//			addUserResultLabel.setText("Cet utilisateur existe déjà !");
-//			addUserResultLabel.setForeground(Color.RED);
-//			//addUserResultLabel.setVisible(true);				
-//		}
-//	}
+	public void addUserButtonClicked(String goal_title, String goal_description, String nick)
+	{
+		//Object resultAddUser = null;
+		
+		FG.addGoal(goal_title, goal_description, nick);
+		System.out.println("Ajout d'un Goal");
+	}
+
 
 }
