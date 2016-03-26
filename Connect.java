@@ -15,7 +15,6 @@ public class Connect {
 	            {
 	                new LoginView().setVisible(true);
 	            }
-/* couocu dylan*/
 	        });
 	  }
 
