@@ -42,9 +42,13 @@ public class FacadeUser {
 	}
 	
 	//Méthodes Products
-	public Product[][] getProductList()
+	public String[][] getStringProductList()
 	{
-		return PH.getProductsList(GU.currentUser.nicknameUser);
+		return PH.getStringProductList(GU.currentUser.nicknameUser);
+	}
+	
+	public void deleteProduct(String pdt_product) throws UserNotInTheDatabaseException, UserDeletedException{
+		PH.deleteProduct(pdt_product, GU.getCurrentUser().nicknameUser);
 	}
 	
 	// Méthodes Admin

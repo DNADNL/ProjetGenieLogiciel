@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class FactoryUser extends AbstractFactory {
 	
@@ -17,6 +18,7 @@ public class FactoryUser extends AbstractFactory {
 	 * else a {@link null} user is returned.
 	 * @throws UserNotInTheDatabaseException 
 	 */
+	
 	public User getUser(String nickname) throws UserNotInTheDatabaseException
 	{
 		this.user = new UserBD(nickname);
@@ -37,6 +39,23 @@ public class FactoryUser extends AbstractFactory {
 	public void deleteUser(String nick)
 	{
 		UserBD.deleteUser(nick);
+	}
+
+	@Override
+	public ArrayList<Product> createProductList(String nickname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void getProduct(String pdt_product, String nickname) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteProduct(String pdt_product, String nickname) {
+	
 	}
 
 }

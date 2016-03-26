@@ -23,6 +23,8 @@ public class ProductsListView extends JFrame implements ActionListener{
 		Button deleteProductButton = new Button("Supprimer",170,140,150,30);
 		Button addProductButton = new Button("Ajouter",10,140,150,30);
 		
+		JTable tableau;
+		
 		public ProductsListView(User loggedUser)
 		{
 			super("Bienvenue !");
@@ -75,12 +77,12 @@ public class ProductsListView extends JFrame implements ActionListener{
 			
 			// List
 			
-			Object[][] donnees =  {{"","","",""}};
+			Object[][] donnees;
 			
-			//donnees = FU.getProductList();
+			donnees = FU.getStringProductList();
 			
-			String[] entetes = {"Nom Produit", "Brief Description", "Price", "Quantity"};
-			JTable tableau = new JTable(donnees, entetes);
+			String[] entetes = {"Nom Produit", "Brief Description"};
+			tableau = new JTable(donnees, entetes);
 			
 			JScrollPane test = new JScrollPane(tableau);
 			panTab.setLayout(new BorderLayout());
@@ -120,9 +122,14 @@ public class ProductsListView extends JFrame implements ActionListener{
 			}
 			else if (source == deleteProductButton)
 			{
-				new DeleteProductView(FU.getUser());
-				dispose();
-				System.out.println("Panel DeleteProduct affiché");
+				if (tableau.getSelectedRow() != -1)
+				{
+					String product_selected = (tableau.getValueAt(tableau.getSelectedRow(), 0).toString());
+					new DeleteProductView(FU.getUser(), product_selected);
+					dispose();
+					System.out.println("Panel DeleteProduct affiché");
+				}
+				
 			}
 			else if (source == productDetailsButton)
 			{

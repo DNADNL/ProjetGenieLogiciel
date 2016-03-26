@@ -1,9 +1,10 @@
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class FactoryProductDB extends AbstractFactory{
 	
 	Product createdProduct;
-	Product[][] createdProductList;
+	ArrayList<Product> createdProductList;
 	
 	public Product createProduct(String pdtName)
 	{
@@ -11,9 +12,9 @@ public class FactoryProductDB extends AbstractFactory{
 		return createdProduct;
 	}
 	
-	public Product[][] createProductList(String nickname)
+	public ArrayList<Product> createProductList(String nickname)
 	{
-		String[][] stringProductList = ProductBD.jdbc.getAllProducts(nickname);
+		createdProductList = ProductBD.createProductList(nickname);
 		return createdProductList;
 	}
 
@@ -25,19 +26,28 @@ public class FactoryProductDB extends AbstractFactory{
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
 	public void addUser(String nickname, String password, String email) {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
 	public void modifyUser(String nick, String pass, String email, String firstname, String lastname, String city,
 			String street, String postalcode, String streetnumber) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	public void getProduct(String pdt_product, String nickname) 
+	{
+
+	}
+
+
+	public void deleteProduct(String pdt_product, String nickname) 
+	{
+		ProductBD.deleteProduct(pdt_product, nickname);
+	}
+
 	
 	
 

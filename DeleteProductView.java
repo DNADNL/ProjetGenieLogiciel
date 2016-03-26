@@ -5,12 +5,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class DeleteProductView extends JFrame implements ActionListener{
 
 	FacadeUser FU = FacadeUser.getFU();
 	static User user;
+	static String pdt_name;
 	
 	//Création du panel de navigation
 	JPanel panel = new JPanel();
@@ -19,10 +21,11 @@ public class DeleteProductView extends JFrame implements ActionListener{
 	Button returnProductsListButton = new Button("Retour",540, 10, 150, 30);
 		Button validateDeleteProductButton = new Button("<html>Supprimer<br> Produit</html>",275,350,150,50);
 		
-		public DeleteProductView(User loggedUser)
+		public DeleteProductView(User loggedUser, String product_selected)
 		{
 			super("Bienvenue !");
 			user = loggedUser;
+			pdt_name = product_selected;
 			
 			// Options de la fenetre
 			this.setSize(700,700);
@@ -66,7 +69,7 @@ public class DeleteProductView extends JFrame implements ActionListener{
 		deleteProductLabel.setForeground(Color.BLACK);
 		panel.add(deleteProductLabel);
 		
-		JLabel productLabel = new JLabel("Un tel produit");
+		JLabel productLabel = new JLabel(pdt_name);
 		productLabel.setBounds(120, 170, 460, 60);
 		productLabel.setFont(font);
 		productLabel.setForeground(Color.BLACK);
@@ -99,6 +102,22 @@ public class DeleteProductView extends JFrame implements ActionListener{
 			dispose();
 			System.out.println("Panel ProductsList affiché");
 		}
+		else if (source==validateDeleteProductButton)
+		{
+			deleteProductButtonClicked(pdt_name);
+		}
 	}
+	
+	public void deleteProductButtonClicked(String pdt_product)
+	{
+		try {
+			FU.deleteProduct(pdt_product);
+		} catch (UserNotInTheDatabaseException e) {
+			JOptionPane.showMessageDialog(null, pdt_product+" n'existe pas dans la BD.", "Suppression de produit", JOptionPane.ERROR_MESSAGE);
 
+		} catch (UserDeletedException e) {
+			JOptionPane.showMessageDialog(null, pdt_product+" a bien été supprimé de la BD !", "Suppression de produit", JOptionPane.INFORMATION_MESSAGE);
+
+		}
+	}
 }

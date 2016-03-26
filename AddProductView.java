@@ -18,7 +18,7 @@ public class AddProductView extends JFrame implements ActionListener{
 	JPanel panel = new JPanel();
 	
 	//Création des boutons de "AddProduct"
-	Button returnProductsListButton = new Button("Retour",540, 10, 150, 30);
+		Button returnProductsListButton = new Button("Retour",540, 10, 150, 30);
 		Button validateAddProductButton = new Button("<html>Ajouter<br> Produit</html>",275,350,150,50);
 		
 		JTextField nameAddProduct = new JTextField("nom produit");
@@ -121,6 +121,10 @@ public class AddProductView extends JFrame implements ActionListener{
 			new ProductsListView(FU.getUser());	
 			dispose();
 			System.out.println("Panel ProductsList affiché");
+		}
+		else if (source == validateAddProductButton)
+		{
+			
 		}
 		
 		

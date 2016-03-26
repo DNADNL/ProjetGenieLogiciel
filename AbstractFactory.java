@@ -1,4 +1,6 @@
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 
 public abstract class AbstractFactory 
 {
@@ -8,5 +10,8 @@ public abstract class AbstractFactory
 	abstract public void deleteUser(String nick);
 	abstract public void modifyUser(String nick, String pass, String email, String firstname, String lastname, String city,
 			String street, String postalcode, String streetnumber);
-
+	abstract public ArrayList<Product> createProductList(String nickname);
+	abstract public void getProduct(String pdt_product, String nickname);
+	abstract public void deleteProduct(String pdt_product, String nickname);
+	
 }
