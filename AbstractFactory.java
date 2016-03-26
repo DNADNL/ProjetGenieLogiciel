@@ -2,6 +2,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
+//test clément
+
 public abstract class AbstractFactory 
 {
 
