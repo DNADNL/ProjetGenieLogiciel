@@ -117,7 +117,7 @@ public class AddGoalView extends JFrame implements ActionListener
 		}
 		else if (source == returnUsersButton)
 		{
-			new SimpleUserView(FU.getUser());	
+			new SimpleUserView(FU.getCurrentUser());	
 			dispose();
 			System.out.println("Panel Admin affiché");
 		}

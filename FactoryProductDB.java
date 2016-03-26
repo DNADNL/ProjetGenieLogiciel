@@ -54,6 +54,12 @@ public class FactoryProductDB extends AbstractFactory{
 		
 	}
 
+	@Override
+	public User getUserData(String nickname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 	

@@ -98,7 +98,7 @@ public class DeleteProductView extends JFrame implements ActionListener{
 		Object source = e.getSource();
 		if (source == returnProductsListButton)
 		{
-			new ProductsListView(FU.getUser());	
+			new ProductsListView(FU.getCurrentUser());	
 			dispose();
 			System.out.println("Panel ProductsList affiché");
 		}

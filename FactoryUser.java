@@ -25,6 +25,11 @@ public class FactoryUser extends AbstractFactory {
 		return user;
 	}
 	
+	public User getUserData(String nick)
+	{
+		return UserBD.getUserData(nick);
+	}
+	
 	public void addUser(String nick, String pass, String email)
 	{
 		UserBD.addUser(nick, pass, email);		

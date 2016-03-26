@@ -137,25 +137,25 @@ public class SimpleUserView extends JFrame implements ActionListener
 		}
 		else if (source == profileButton)
 		{
-			new SimpleUserProfileView(FU.getUser());
+			new SimpleUserProfileView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel SimpleUserProfile affiché");
 		}
 		else if (source == cartButton)
 		{
-			new CartView(FU.getUser());
+			new CartView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel CartView affiché");			
 		}
 		else if (source == shopButton)
 		{
-			new ShopView(FU.getUser());
+			new ShopView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel ShopView affiché");
 		}
 		else if (source == addGoalButton)
 		{
-			new AddGoalView(FU.getUser());
+			new AddGoalView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel addGoal affiché");
 			
@@ -165,14 +165,14 @@ public class SimpleUserView extends JFrame implements ActionListener
 			if (listeObjectifs.getSelectedRow() != -1)
 			{
 				String goal_selected = (listeObjectifs.getValueAt(listeObjectifs.getSelectedRow(), 0).toString());
-				new SeeGoalView(FU.getUser(), goal_selected);
+				new SeeGoalView(FU.getCurrentUser(), goal_selected);
 				dispose();
 				System.out.println("Panel seeGoal affiché");
 			}
 			
 		}
 		else if ( source == categorySuggestionButton){
-			new SuggestCategoryView(FU.getUser());
+			new SuggestCategoryView(FU.getCurrentUser());
 			dispose();
 			System.out.println("panel Categorysuggestion affiché");	
 		}
@@ -181,7 +181,7 @@ public class SimpleUserView extends JFrame implements ActionListener
 			if (listeObjectifs.getSelectedRow() != -1)
 			{
 				String goal_selected = (listeObjectifs.getValueAt(listeObjectifs.getSelectedRow(), 0).toString());
-				new DeleteGoalView(FU.getUser(), goal_selected);
+				new DeleteGoalView(FU.getCurrentUser(), goal_selected);
 				dispose();
 				System.out.println("Panel DeleteGoal affiché");
 			}

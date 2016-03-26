@@ -53,6 +53,11 @@ public class GestionnaireUser {
 			return bool;
 		}
 		
+		public User getUserData(String nick)
+		{
+			return Fact.getUserData(nick);
+		}
+		
 		public void loadUser(String nick)
 		{
 			currentUser = factUser;

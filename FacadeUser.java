@@ -32,7 +32,7 @@ public class FacadeUser {
 		return bool;
 	}
 	
-	public User getUser()
+	public User getCurrentUser()
 	{
 		return GU.getCurrentUser();
 	}
@@ -72,6 +72,11 @@ public class FacadeUser {
 	public void addGoal(String goal_title, String goal_description, String nick) {
 		// TODO Auto-generated method stub
 		GG.addGoal(goal_title, goal_description, nick);
+	}
+
+
+	public User getUserData(String nicknameUser) {
+		return GU.getUserData(nicknameUser);
 	}
 
 

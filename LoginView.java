@@ -165,7 +165,7 @@ public class LoginView  extends JFrame implements ActionListener{
 				bool = FU.login(nick,pass);
 				System.out.println("SUCCESS");
 				dispose();
-				new MainView(FU.getUser());				
+				new MainView(FU.getCurrentUser());	
 			} 
 			catch (UserNotInTheDatabaseException e) 
 			{

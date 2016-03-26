@@ -108,13 +108,13 @@ public class ProductsListView extends JFrame implements ActionListener{
 			Object source = e.getSource();
 			if (source == returnPrincipalButton)
 			{
-				new MainView(FU.getUser());	
+				new MainView(FU.getCurrentUser());	
 				dispose();
 				System.out.println("Panel Principal affiché");
 			}
 			else if (source == addProductButton)
 			{
-				new AddProductView(FU.getUser());
+				new AddProductView(FU.getCurrentUser());
 				dispose();
 				System.out.println("Panel AddProduct affiché");
 			}
@@ -123,7 +123,7 @@ public class ProductsListView extends JFrame implements ActionListener{
 				if (tableau.getSelectedRow() != -1)
 				{
 					String product_selected = (tableau.getValueAt(tableau.getSelectedRow(), 0).toString());
-					new DeleteProductView(FU.getUser(), product_selected);
+					new DeleteProductView(FU.getCurrentUser(), product_selected);
 					dispose();
 					System.out.println("Panel DeleteProduct affiché");
 				}
@@ -134,7 +134,7 @@ public class ProductsListView extends JFrame implements ActionListener{
 				if (tableau.getSelectedRow() != -1)
 				{
 					String product_selected = (tableau.getValueAt(tableau.getSelectedRow(), 0).toString());
-					new ProductDetailView(FU.getUser(), product_selected);
+					new ProductDetailView(FU.getCurrentUser(), product_selected);
 					dispose();
 					System.out.println("Panel Details Product affiché");
 				}

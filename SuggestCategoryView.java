@@ -125,7 +125,7 @@ public class SuggestCategoryView extends JFrame implements ActionListener {
 		Object source = e.getSource();
 		if (source == returnPrincipalButton)
 		{
-			new SimpleUserView(FU.getUser());	
+			new SimpleUserView(FU.getCurrentUser());	
 			dispose();
 			System.out.println("Panel Principal affiché");
 		}

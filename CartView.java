@@ -102,21 +102,21 @@ public class CartView extends JFrame implements ActionListener
 		}
 		else if (source == productListButton)
 		{
-			new ProductsListView(FU.getUser());
+			new ProductsListView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel ProductsList affiché");
 		}
 		else if (source == adminButton)
 		{
 			
-			new AdminView(FU.getUser());
+			new AdminView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel Admin affiché");
 		}
 		else if (source == simpleUserButton)
 		{
 			
-			new SimpleUserView(FU.getUser());
+			new SimpleUserView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel Simple User affiché");
 		}

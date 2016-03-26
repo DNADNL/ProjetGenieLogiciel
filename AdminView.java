@@ -82,13 +82,13 @@ public class AdminView extends JFrame implements ActionListener{
 			Object source = e.getSource();
 			if (source == returnPrincipalButton)
 			{
-				new MainView(FU.getUser());	
+				new MainView(FU.getCurrentUser());	
 				dispose();
 				System.out.println("Panel Principal affiché");
 			}
 			else if (source == usersHandlerButton)
 			{
-				new UsersHandlerView(FU.getUser());	
+				new UsersHandlerView(FU.getCurrentUser());	
 				dispose();
 				System.out.println("Panel Admin affiché");
 			}

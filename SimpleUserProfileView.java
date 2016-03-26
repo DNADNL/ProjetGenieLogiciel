@@ -33,8 +33,8 @@ public class SimpleUserProfileView extends JFrame implements ActionListener
 	//Constructeur
 	public SimpleUserProfileView(User loggedUser)
 	{
-		super("Bienvenue !");
-		user = loggedUser;
+		super("Profil Utilisateur");
+		user = FU.getUserData(loggedUser.nicknameUser);
 		
 		// Options de la fenetre
 		this.setSize(700,700);
@@ -55,6 +55,7 @@ public class SimpleUserProfileView extends JFrame implements ActionListener
 	{
 		panel.removeAll();
 		panel.setLayout(null);
+		
 		
 		// Font
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
@@ -102,21 +103,21 @@ public class SimpleUserProfileView extends JFrame implements ActionListener
 		}
 		else if (source == productListButton)
 		{
-			new ProductsListView(FU.getUser());
+			new ProductsListView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel ProductsList affiché");
 		}
 		else if (source == adminButton)
 		{
 			
-			new AdminView(FU.getUser());
+			new AdminView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel Admin affiché");
 		}
 		else if (source == simpleUserButton)
 		{
 			
-			new SimpleUserView(FU.getUser());
+			new SimpleUserView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel Simple User affiché");
 		}

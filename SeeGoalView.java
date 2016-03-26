@@ -117,7 +117,7 @@ public class SeeGoalView extends JFrame implements ActionListener
 		Object source = e.getSource();
 		if (source == returnMainUserButton)
 		{
-			new SimpleUserView(FU.getUser());
+			new SimpleUserView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel Simple User affiché");
 		}
@@ -142,7 +142,7 @@ public class SeeGoalView extends JFrame implements ActionListener
 			if (tableau.getSelectedRow() != -1)
 			{
 				String activity_selected = (tableau.getValueAt(tableau.getSelectedRow(), 0).toString());
-				new DeleteActivityView(FU.getUser(), activity_selected);
+				new DeleteActivityView(FU.getCurrentUser(), activity_selected);
 				dispose();
 				System.out.println("Panel Delete Activity affiché");
 			}

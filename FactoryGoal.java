@@ -50,6 +50,12 @@ public class FactoryGoal extends AbstractFactory {
 		// TODO Auto-generated method stub
 		GoalBD.addGoal(goal_title, goal_description, nick);
 	}
+
+	@Override
+	public User getUserData(String nickname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

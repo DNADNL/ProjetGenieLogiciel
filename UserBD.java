@@ -16,7 +16,7 @@ public class UserBD extends User
 	
 	UserBD(String nickname) throws UserNotInTheDatabaseException
 	{
-		jdbc.getUser(this,nickname);
+		jdbc.verifyLoginUser(this,nickname);
 	}
 	
 	public static void addUser(String nick, String pass, String email)
@@ -32,6 +32,11 @@ public class UserBD extends User
 				String lastname, String city,String street,String postalcode,String streetnumber){
 		
 		jdbc.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
+	}
+
+	public static User getUserData(String nick) {
+		// TODO Auto-generated method stub
+		return jdbc.getUserData(nick);
 	}
 
 //	

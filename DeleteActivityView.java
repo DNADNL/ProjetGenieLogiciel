@@ -96,7 +96,7 @@ public class DeleteActivityView extends JFrame implements ActionListener{
 		Object source = e.getSource();
 		if (source == returnMainUserButton)
 		{
-			new SimpleUserView(FU.getUser());
+			new SimpleUserView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel Simple User affiché");
 		}
