@@ -20,5 +20,14 @@ public abstract class User {
 		this.nicknameUser = nickname;
 		this.mdpUser = password;
 	}
-	
+
+	public String getUserNickname()
+	{
+		if (this.nicknameUser == null)
+			{
+				return null;
+			}
+		
+		return this.nicknameUser;
+	}	
 }
