@@ -8,6 +8,8 @@ public class Connect {
 		 //Lancement fenêtre
 		 	//LoginView mafenetre = new LoginView(); 
 		 
+		 //TEST
+		 
 		 SwingUtilities.invokeLater(new Runnable(){
 
 	            @Override
