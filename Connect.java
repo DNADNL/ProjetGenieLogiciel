@@ -8,7 +8,11 @@ public class Connect {
 		 //Lancement fenêtre
 		 	//LoginView mafenetre = new LoginView(); 
 		 
+<<<<<<< HEAD
 		 //Bonjour
+=======
+		 //TEST
+>>>>>>> origin/master
 		 
 		 SwingUtilities.invokeLater(new Runnable(){
 
