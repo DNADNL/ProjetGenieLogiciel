@@ -4,9 +4,11 @@ public class Connect {
 
 	 public static void main(String[] args)
 	  {
-		 		 
+		 
 		 //Lancement fenêtre
 		 	//LoginView mafenetre = new LoginView(); 
+		 
+		 //Bonjour
 		 
 		 SwingUtilities.invokeLater(new Runnable(){
 
