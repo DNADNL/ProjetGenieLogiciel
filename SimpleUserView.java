@@ -33,6 +33,9 @@ public class SimpleUserView extends JFrame implements ActionListener
 	Button deleteGoalButton = new Button("Supprimer", 330, 540, 150, 30);
 	Button categorySuggestionButton = new Button("<html>Suggérer <br>des catégories</html>",450,200,200,60);
 	
+	//Creation de la JTable
+	JTable listeObjectifs;
+	
 	
 	//Constructeur
 	public SimpleUserView(User loggedUser)
@@ -105,12 +108,13 @@ public class SimpleUserView extends JFrame implements ActionListener
 		panel.add(userLabel);
 		
 		// Création de la liste des objectifs
+		
 		Object[][] donneesListeObjectifs =  {{"",""}};
 		
 		//donnees = FU.getProductList();
 		
 		String[] enteteListeObjectifs = {"Objectif", "Description"};
-		JTable listeObjectifs = new JTable(donneesListeObjectifs, enteteListeObjectifs);
+		listeObjectifs = new JTable(donneesListeObjectifs, enteteListeObjectifs);
 		
 		JScrollPane defilementListeObjectifs = new JScrollPane(listeObjectifs);
 		panelListeObjectifs.setLayout(new BorderLayout());
@@ -158,9 +162,14 @@ public class SimpleUserView extends JFrame implements ActionListener
 		}
 		else if (source == seeGoalButton)
 		{
-			new SeeGoalView(FU.getUser());
-			dispose();
-			System.out.println("Panel seeGoal affiché");
+			if (listeObjectifs.getSelectedRow() != -1)
+			{
+				String goal_selected = (listeObjectifs.getValueAt(listeObjectifs.getSelectedRow(), 0).toString());
+				new SeeGoalView(FU.getUser(), goal_selected);
+				dispose();
+				System.out.println("Panel seeGoal affiché");
+			}
+			
 		}
 		else if ( source == categorySuggestionButton){
 			new SuggestCategoryView(FU.getUser());
@@ -169,7 +178,13 @@ public class SimpleUserView extends JFrame implements ActionListener
 		}
 		else if (source == deleteGoalButton)
 		{
-			//Supprimer Objectif
+			if (listeObjectifs.getSelectedRow() != -1)
+			{
+				String goal_selected = (listeObjectifs.getValueAt(listeObjectifs.getSelectedRow(), 0).toString());
+				new DeleteGoalView(FU.getUser(), goal_selected);
+				dispose();
+				System.out.println("Panel DeleteGoal affiché");
+			}
 		}
 		
 	}

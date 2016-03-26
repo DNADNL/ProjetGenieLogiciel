@@ -19,22 +19,25 @@ public class SeeGoalView extends JFrame implements ActionListener
 {	
 	FacadeUser FU = FacadeUser.getFU();
 	static User user;
+	// static Goal goal;
 	
 	//Création du panel de navigation
 	JPanel panel = new JPanel();
 	
 	//Création des boutons de "Principal"
-	Button logoutButton = new Button("Déconnexion",540, 10, 150, 30);
-	Button productListButton = new Button("Mes produits", 250, 335, 200, 30);
-
-	Button adminButton = new Button("Administration", 250, 375, 200, 30);
-	Button simpleUserButton = new Button("Simple User", 250, 415, 200, 30);
+	Button returnMainUserButton = new Button("Retour",540, 10, 150, 30);
+	Button activityDetailsButton = new Button("Détails", 540, 335, 150,30);
+	Button deleteActivityButton = new Button("Supprimer",170,140,150,30);
+	Button addActivityButton = new Button("Ajouter",10,140,150,30);
+	
+	JTable tableau;
 	
 	//Constructeur
-	public SeeGoalView(User loggedUser)
+	public SeeGoalView(User loggedUser, String goal_selected)
 	{
-		super("Bienvenue !");
+		super("Lazy'N Yourself");
 		user = loggedUser;
+		// goal = FU.getGoal(loggedUser.nicknameUser);
 		
 		// Options de la fenetre
 		this.setSize(700,700);
@@ -43,7 +46,7 @@ public class SeeGoalView extends JFrame implements ActionListener
 		this.setResizable(false);	
 		
 		// Construction du panel principal
-		placeComponentsPrincipal(panel);
+		placeComponentsGoal(panel);
 		
 		// Choix du panel
 		setContentPane(panel);
@@ -51,7 +54,7 @@ public class SeeGoalView extends JFrame implements ActionListener
 		setVisible(true);
 	}
 	
-	private void placeComponentsPrincipal(JPanel panel)
+	private void placeComponentsGoal(JPanel panel)
 	{
 		panel.removeAll();
 		panel.setLayout(null);
@@ -61,17 +64,35 @@ public class SeeGoalView extends JFrame implements ActionListener
 		Font font = new Font("Courier", Font.BOLD, 15);
 		
 		// Buttons
-		logoutButton.addActionListener(this);
-		panel.add(logoutButton);
+		returnMainUserButton.addActionListener(this);
+		panel.add(returnMainUserButton);
 		
-		productListButton.addActionListener(this);
-		panel.add(productListButton);
+		activityDetailsButton.addActionListener(this);
+		panel.add(activityDetailsButton);
 		
-		adminButton.addActionListener(this);
-		panel.add(adminButton);
+		addActivityButton.addActionListener(this);
+		panel.add(addActivityButton);
 		
-		simpleUserButton.addActionListener(this);
-		panel.add(simpleUserButton);
+		deleteActivityButton.addActionListener(this);
+		panel.add(deleteActivityButton);
+		
+		// List
+		JPanel panTab = new JPanel();
+		
+		Object[][] donnees = {{"",""}};
+		
+		// donnees = FU.getStringActivitiesList();
+		
+		
+		String[] entetes = {"Activity", "Brief Description"};
+		tableau = new JTable(donnees, entetes);
+		
+		JScrollPane test = new JScrollPane(tableau);
+		panTab.setLayout(new BorderLayout());
+		
+		panTab.add(test, BorderLayout.CENTER);
+		panTab.setBounds(10, 190, 400, 410);
+		panel.add(panTab);
 		
 		// Textfields
 		
@@ -94,53 +115,41 @@ public class SeeGoalView extends JFrame implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		Object source = e.getSource();
-		if (source == logoutButton)
+		if (source == returnMainUserButton)
 		{
-			FU.disconnectUser();
-			dispose();
-			new LoginView();
-		}
-		else if (source == productListButton)
-		{
-			new ProductsListView(FU.getUser());
-			dispose();
-			System.out.println("Panel ProductsList affiché");
-		}
-		else if (source == adminButton)
-		{
-			
-			new AdminView(FU.getUser());
-			dispose();
-			System.out.println("Panel Admin affiché");
-		}
-		else if (source == simpleUserButton)
-		{
-			
 			new SimpleUserView(FU.getUser());
 			dispose();
 			System.out.println("Panel Simple User affiché");
+		}
+		else if (source == activityDetailsButton)
+		{
+			if (tableau.getSelectedRow() != -1)
+			{
+				String activity_selected = (tableau.getValueAt(tableau.getSelectedRow(), 0).toString());
+				// new ActivityView(FU.getUser(), activity_selected);
+				dispose();
+				System.out.println("Panel Détail Activité affiché");
+			}
+			
+		}
+		else if (source == addActivityButton)
+		{
+			
+			System.out.println("Panel Ajout Activité affiché");
+		}
+		else if (source == deleteActivityButton)
+		{
+			if (tableau.getSelectedRow() != -1)
+			{
+				String activity_selected = (tableau.getValueAt(tableau.getSelectedRow(), 0).toString());
+				new DeleteActivityView(FU.getUser(), activity_selected);
+				dispose();
+				System.out.println("Panel Delete Activity affiché");
+			}
 		}
 	
 		
 	}
 		
-	
-//	private void displayAddResult(Object result)
-//	{
-//		if (result.equals("UserCreated"))
-//		{
-//			System.out.println("AddUser : Successful !");
-//			addUserResultLabel.setText("L'utilisateur a été ajouté à la BD !");
-//			addUserResultLabel.setForeground(Color.BLUE);
-//			
-//		}
-//		else
-//		{
-//			System.out.println("AddUser : Failed !");
-//			addUserResultLabel.setText("Cet utilisateur existe déjà !");
-//			addUserResultLabel.setForeground(Color.RED);
-//			//addUserResultLabel.setVisible(true);				
-//		}
-//	}
 
 }
