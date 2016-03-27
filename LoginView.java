@@ -3,6 +3,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,7 +17,7 @@ import javax.swing.JTextField;
 
 
 
-public class LoginView  extends JFrame implements ActionListener{
+public class LoginView  extends JFrame implements ActionListener, KeyListener{
 
 	FacadeUser FU = FacadeUser.getFU();
 	
@@ -48,7 +50,7 @@ public class LoginView  extends JFrame implements ActionListener{
 			
 			// Choix du panel
 			this.setContentPane(this.panel1);
-			
+			getRootPane().setDefaultButton(loginButton);
 			
 			this.setVisible(true);
 	  }
@@ -65,6 +67,7 @@ public class LoginView  extends JFrame implements ActionListener{
 
 			// Ajout du Bouton Login sur la fenetre 1
 			loginButton.addActionListener(this);
+			loginButton.addKeyListener(this);
 			panel1.add(loginButton);
 			
 			// Textfields
@@ -100,43 +103,14 @@ public class LoginView  extends JFrame implements ActionListener{
 			panel.add(image, BorderLayout.CENTER);
 		}
 
-	  private void placeComponentsFenetre2(JPanel panel) {
 
-		  	panel.removeAll();
-			panel.setLayout(null);
-			Font font = new Font("Courier", Font.BOLD, 18);
-			JLabel userLabel = new JLabel();
-			userLabel.setBounds(100, 30, 300, 100);
-			userLabel.setFont(font);
-						
-			// Ajout du Bouton Logout sur la fenetre 2
-			returnButton.addActionListener(this);
-			panel2.add(returnButton);
-				
-			userLabel.setText("<html> Mauvais nom d'utilisateur <br> ou <br> Mauvais mot de passe </html> ");
-					
-			JLabel image = new JLabel(new ImageIcon("fond.jpg"));
-			
-			panel.setLayout(new BorderLayout());
-			panel.add(userLabel);
-			panel.add(image, BorderLayout.CENTER);
-		}
-
-	// Methode pour aller à  la fenetre 2
-	  public void allerVersFenetre2()
-	  {
-		  this.setContentPane(this.panel2);
-		  System.out.println("fenetre 2 affichée");
-		  this.revalidate();
-	  }
-
-	// Methode pour revenir à  la fenetre 1
-	  public void allerVersFenetre1()
-	  {
-		  this.setContentPane(this.panel1);
-		  System.out.println("fenetre 1 affichée");
-		  this.revalidate();
-	  }
+//	// Methode pour revenir à  la fenetre 1
+//	  public void allerVersFenetre1()
+//	  {
+//		  this.setContentPane(this.panel1);
+//		  System.out.println("fenetre 1 affichée");
+//		  this.revalidate();
+//	  }
 
 		  
 	  
@@ -151,10 +125,10 @@ public class LoginView  extends JFrame implements ActionListener{
 				String nickname = userText.getText();
 				this.login(nickname, password);
 			}
-			else if (source == returnButton)
-			{
-				allerVersFenetre1();
-			}
+//			else if (source == returnButton)
+//			{
+//				allerVersFenetre1();
+//			}
 		}
 		
 		public void login(String nick, String pass)
@@ -181,6 +155,31 @@ public class LoginView  extends JFrame implements ActionListener{
 //				placeComponentsFenetre2(panel2);
 //				allerVersFenetre2();	
 			}
+		}
+
+
+		@Override
+		public void keyPressed(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+		}
+
+
+		@Override
+		public void keyReleased(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+		}
+
+
+		@Override
+		public void keyTyped(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+	        if((arg0.getKeyCode()==KeyEvent.VK_ENTER))
+	        {
+				System.out.println("appui ENTER");
+	        	String password = new String(passwordText.getPassword());
+				String nickname = userText.getText();
+				this.login(nickname, password);
+	        } 
 		}
 		
 	

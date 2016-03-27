@@ -61,9 +61,15 @@ public class FacadeUser {
 		GU.addUser(nick, pass, email);
 	}
 	
+	public void modifyUserData(String nick, String pass, String email, String firstname, String lastname,
+			String city,String street,String postalcode,String streetnumber) 
+	throws UserNotInTheDatabaseException, UserModifyException{
+		
+		GU.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
+	}
+	
 	public void modifyUser(String nick, String pass, String email, String firstname, String lastname,
 			String city,String street,String postalcode,String streetnumber) 
-					
 	throws UserNotInTheDatabaseException, UserModifyException{
 		
 		GU.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);

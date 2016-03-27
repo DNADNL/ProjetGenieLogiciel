@@ -21,9 +21,7 @@ public class AddUserView  extends JFrame implements ActionListener{
 	
 	//création du bouton pour ajouter un utilisateur et des champs à rentrer
 	Button returnUsersButton = new Button("Retour", 540, 10, 150, 30);
-		Button validateAddUserButton = new Button("Ajouter", 250, 270, 200, 30);
-		
-	//JLabel addUserResultLabel = new JLabel("Les résultats seront affichés ici");
+	Button validateAddUserButton = new Button("Ajouter", 250, 270, 200, 30);
 		
 		JTextField addUserNickname = new JTextField("pseudo");
 		JPasswordField addUserPassword = new JPasswordField("mot_de_passe");

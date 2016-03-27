@@ -43,11 +43,45 @@ public abstract class User {
 
 	public String getUserNickname()
 	{
-		if (this.nicknameUser == null)
-			{
-				return null;
-			}
-		
+//		if (this.nicknameUser == null)
+//			{
+//				return null;
+//			}	
 		return this.nicknameUser;
+	}
+	
+	public String getUserPassword()
+	{
+		return this.mdpUser;
+	}
+	
+	public String getUserFirstName()
+	{
+		return this.firstNameUser;
+	}
+	
+	public String getUserLastName()
+	{
+		return this.lastNameUser;
+	}
+	public String getUserCity()
+	{
+		return this.cityUser;
+	}
+	public String getUserStreet()
+	{
+		return this.streetUser;
+	}
+	public String getUserPostalCode()
+	{
+		return this.postalCodeUser;
+	}
+	public String getUserStreetNumber()
+	{
+		return this.streetNumberUser;
+	}
+	public String getUserEMail()
+	{
+		return this.emailUser;
 	}
 }
