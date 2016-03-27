@@ -5,19 +5,20 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class ProductDetailView extends JFrame implements ActionListener{
+public class ActivityDetailsView extends JFrame implements ActionListener{
+
 	
 	FacadeUser FU = FacadeUser.getFU();
 	static User user;
-	static Product product;
+	// static Activity activity;
 	
 	//Création du panel de navigation
 		JPanel panel = new JPanel();
 		
 	//Création des boutons de "ProductDetails"
-	Button returnProductsListButton = new Button("Retour",540, 10, 150, 30);
+	Button returnSeeGoalButton = new Button("Retour",540, 10, 150, 30);
 	
-	public ProductDetailView(User loggedUser, String product_name)
+	public ActivityDetailsView(User loggedUser, String activity_name)
 	{
 		super("Bienvenue !");
 		user = loggedUser;
@@ -30,7 +31,7 @@ public class ProductDetailView extends JFrame implements ActionListener{
 		this.setResizable(false);	
 		
 		// Construction du panel principal
-		placeComponentsProduct(panel);
+		placeComponentsActivity(panel);
 		
 		// Choix du panel
 		setContentPane(panel);
@@ -38,7 +39,7 @@ public class ProductDetailView extends JFrame implements ActionListener{
 		setVisible(true);
 	}
 	
-	private void placeComponentsProduct(JPanel panel)
+	private void placeComponentsActivity(JPanel panel)
 	{
 		panel.removeAll();
 		panel.setLayout(null);
@@ -48,8 +49,8 @@ public class ProductDetailView extends JFrame implements ActionListener{
 		Font font = new Font("Courier", Font.BOLD, 15);
 		
 		// Buttons
-		returnProductsListButton.addActionListener(this);
-		panel.add(returnProductsListButton);
+		returnSeeGoalButton.addActionListener(this);
+		panel.add(returnSeeGoalButton);
 		
 		
 		// Textfields
@@ -70,11 +71,11 @@ public class ProductDetailView extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		Object source = e.getSource();
-		if (source == returnProductsListButton)
+		if (source == returnSeeGoalButton)
 		{
-			new ProductsListView(FU.getCurrentUser());	
+			new SeeGoalView(FU.getCurrentUser(), "FU.getCurrentGoal().goal_name");	
 			dispose();
-			System.out.println("Panel ProductsList affiché");
+			System.out.println("Panel SeeGoal affiché");
 		}
 		
 	}

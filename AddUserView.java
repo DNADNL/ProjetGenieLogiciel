@@ -118,7 +118,7 @@ public class AddUserView  extends JFrame implements ActionListener{
 			}
 			else if (source == returnUsersButton)
 			{
-				new UsersHandlerView(FU.getUser());	
+				new UsersHandlerView(FU.getCurrentUser());	
 				dispose();
 				System.out.println("Panel Admin affiché");
 			}

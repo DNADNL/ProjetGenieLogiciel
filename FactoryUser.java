@@ -25,6 +25,11 @@ public class FactoryUser extends AbstractFactory {
 		return user;
 	}
 	
+	public User getUserData(String nick)
+	{
+		return UserBD.getUserData(nick);
+	}
+	
 	public void addUser(String nick, String pass, String email)
 	{
 		UserBD.addUser(nick, pass, email);		
@@ -59,9 +64,19 @@ public class FactoryUser extends AbstractFactory {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public ArrayList<CategoryActivity> createCategoryActivityList(String title) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+=======
+	public void addGoal(String goal_title, String goal_description, String nick) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+>>>>>>> origin/master
 }

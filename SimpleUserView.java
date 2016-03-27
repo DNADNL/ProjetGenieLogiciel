@@ -33,6 +33,9 @@ public class SimpleUserView extends JFrame implements ActionListener
 	Button deleteGoalButton = new Button("Supprimer", 330, 540, 150, 30);
 	Button categorySuggestionButton = new Button("<html>Suggérer <br>des catégories</html>",450,200,200,60);
 	
+	//Creation de la JTable
+	JTable listeObjectifs;
+	
 	
 	//Constructeur
 	public SimpleUserView(User loggedUser)
@@ -105,12 +108,13 @@ public class SimpleUserView extends JFrame implements ActionListener
 		panel.add(userLabel);
 		
 		// Création de la liste des objectifs
+		
 		Object[][] donneesListeObjectifs =  {{"",""}};
 		
 		//donnees = FU.getProductList();
 		
 		String[] enteteListeObjectifs = {"Objectif", "Description"};
-		JTable listeObjectifs = new JTable(donneesListeObjectifs, enteteListeObjectifs);
+		listeObjectifs = new JTable(donneesListeObjectifs, enteteListeObjectifs);
 		
 		JScrollPane defilementListeObjectifs = new JScrollPane(listeObjectifs);
 		panelListeObjectifs.setLayout(new BorderLayout());
@@ -133,43 +137,54 @@ public class SimpleUserView extends JFrame implements ActionListener
 		}
 		else if (source == profileButton)
 		{
-			new SimpleUserProfileView(FU.getUser());
+			new SimpleUserProfileView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel SimpleUserProfile affiché");
 		}
 		else if (source == cartButton)
 		{
-			new CartView(FU.getUser());
+			new CartView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel CartView affiché");			
 		}
 		else if (source == shopButton)
 		{
-			new ShopView(FU.getUser());
+			new ShopView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel ShopView affiché");
 		}
 		else if (source == addGoalButton)
 		{
-			new AddGoalView(FU.getUser());
+			new AddGoalView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel addGoal affiché");
 			
 		}
 		else if (source == seeGoalButton)
 		{
-			new SeeGoalView(FU.getUser());
-			dispose();
-			System.out.println("Panel seeGoal affiché");
+			if (listeObjectifs.getSelectedRow() != -1)
+			{
+				String goal_selected = (listeObjectifs.getValueAt(listeObjectifs.getSelectedRow(), 0).toString());
+				new SeeGoalView(FU.getCurrentUser(), goal_selected);
+				dispose();
+				System.out.println("Panel seeGoal affiché");
+			}
+			
 		}
 		else if ( source == categorySuggestionButton){
-			new SuggestCategoryView(FU.getUser());
+			new SuggestCategoryView(FU.getCurrentUser());
 			dispose();
 			System.out.println("panel Categorysuggestion affiché");	
 		}
 		else if (source == deleteGoalButton)
 		{
-			//Supprimer Objectif
+			if (listeObjectifs.getSelectedRow() != -1)
+			{
+				String goal_selected = (listeObjectifs.getValueAt(listeObjectifs.getSelectedRow(), 0).toString());
+				new DeleteGoalView(FU.getCurrentUser(), goal_selected);
+				dispose();
+				System.out.println("Panel DeleteGoal affiché");
+			}
 		}
 		
 	}

@@ -49,11 +49,25 @@ public class FactoryProductDB extends AbstractFactory{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public ArrayList<CategoryActivity> createCategoryActivityList(String title) {
+=======
+	public void addGoal(String goal_title, String goal_description, String nick) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public User getUserData(String nickname) {
+>>>>>>> origin/master
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+<<<<<<< HEAD
+=======
+	
+>>>>>>> origin/master
 	
 	
 

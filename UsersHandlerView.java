@@ -93,25 +93,25 @@ public class UsersHandlerView extends JFrame implements ActionListener{
 			if (source == returnAdminButton)
 			{
 				dispose();
-				new AdminView(FU.getUser());
+				new AdminView(FU.getCurrentUser());
 				System.out.println("Panel Admin affiché");
 			}
 			else if (source == deleteUserButton)
 			{
 				dispose();
-				new DeleteUserView(FU.getUser());
+				new DeleteUserView(FU.getCurrentUser());
 				System.out.println("Panel DeleteUser affiché");
 			}
 			else if (source == modifyUserButton)
 			{
 				dispose();
-				new ModifyUserView(FU.getUser());
+				new ModifyUserView(FU.getCurrentUser());
 				System.out.println("Panel ModifyUser affiché");
 			}
 			else if (source == addUserButton)
 			{
 				dispose();
-				new AddUserView(FU.getUser());
+				new AddUserView(FU.getCurrentUser());
 				System.out.println("Panel AddUser affiché");
 			}
 			

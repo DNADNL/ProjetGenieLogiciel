@@ -4,7 +4,11 @@ public class FacadeUser {
 	
 	GestionnaireUser GU = GestionnaireUser.getGU();
 	ProductsHandler PH = ProductsHandler.getPH();
+<<<<<<< HEAD
 	CategoryHandler CH = CategoryHandler.getCH();
+=======
+	GestionnaireGoal GG = GestionnaireGoal.getGG();
+>>>>>>> origin/master
 	
 	//Constructeur Singleton
 	private FacadeUser()
@@ -32,7 +36,7 @@ public class FacadeUser {
 		return bool;
 	}
 	
-	public User getUser()
+	public User getCurrentUser()
 	{
 		return GU.getCurrentUser();
 	}
@@ -70,9 +74,25 @@ public class FacadeUser {
 		GU.deleteUser(nick);
 	}
 	
+<<<<<<< HEAD
 	//methods activity category
 		public void suggestActivityCategory(String title, String description){
 			CH.suggestActivityCategory(title,description);
 			
 		}
+=======
+	public void addGoal(String goal_title, String goal_description, String nick) {
+		// TODO Auto-generated method stub
+		GG.addGoal(goal_title, goal_description, nick);
+	}
+
+
+	public User getUserData(String nicknameUser) {
+		return GU.getUserData(nicknameUser);
+	}
+
+
+	
+
+>>>>>>> origin/master
 }

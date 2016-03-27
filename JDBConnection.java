@@ -63,7 +63,7 @@ public class JDBConnection {
 	}
 
 	// Méthodes User
-	public void getUser(User user, String nickname) throws UserNotInTheDatabaseException
+	public void verifyLoginUser(User user, String nickname) throws UserNotInTheDatabaseException
 	{
 		
 		try 
@@ -109,6 +109,41 @@ public class JDBConnection {
 	    }
 	}
 	
+	public User getUserData(String nickname)
+	{
+		User user = new UserBD();
+		
+		try
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//L'objet ResultSet contient le résultat de la requête SQL
+			ResultSet result = state.executeQuery("SELECT * FROM public.\"global_user\" WHERE nickname = \'" + nickname + "\'" ); 
+	        
+			while(result.next())
+			{
+				user.nicknameUser = result.getObject(1).toString();
+				user.mdpUser = result.getObject(2).toString();
+				user.firstNameUser = result.getObject(3).toString();
+				user.lastNameUser = result.getObject(4).toString();
+				user.cityUser = result.getObject(5).toString();
+				user.streetUser = result.getObject(6).toString();
+				user.postalCodeUser = result.getObject(7).toString();
+				user.streetNumberUser = result.getObject(8).toString();
+				user.emailUser = result.getObject(9).toString();
+			}
+
+			result.close();
+			state.close();
+
+	    } 
+		catch (SQLException e) 
+		{
+			System.out.println("ERREUR - JDBConnection.getUser() / : Requête erronée ou absence de valeur de retour (SQLException)");
+	    }
+		
+		return user;
+	}
 	
 	// Methods USER
 	public void createUser(String nickname, String password, String email)
@@ -307,6 +342,26 @@ public class JDBConnection {
 	         
 	    } 
 		catch (SQLException e) {}
+	}
+
+	public void createGoal(String goal_title, String goal_description, String nick) {
+		// TODO Auto-generated method stub
+		
+		
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+			
+			System.out.println(goal_title);
+			state.executeQuery("INSERT INTO public.\"goal\"(goal_title, goal_description) VALUES (\'"  + goal_title + "\', \'" + goal_description + "\')");   
+			
+			state.close();
+	         
+	    } 
+		catch (SQLException e) {}
+		
 	}
 	
 }

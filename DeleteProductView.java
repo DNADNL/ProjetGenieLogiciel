@@ -98,7 +98,7 @@ public class DeleteProductView extends JFrame implements ActionListener{
 		Object source = e.getSource();
 		if (source == returnProductsListButton)
 		{
-			new ProductsListView(FU.getUser());	
+			new ProductsListView(FU.getCurrentUser());	
 			dispose();
 			System.out.println("Panel ProductsList affiché");
 		}
@@ -108,15 +108,15 @@ public class DeleteProductView extends JFrame implements ActionListener{
 		}
 	}
 	
-	public void deleteProductButtonClicked(String pdt_product)
+	public void deleteProductButtonClicked(String pdt_name)
 	{
 		try {
-			FU.deleteProduct(pdt_product);
+			FU.deleteProduct(pdt_name);
 		} catch (UserNotInTheDatabaseException e) {
-			JOptionPane.showMessageDialog(null, pdt_product+" n'existe pas dans la BD.", "Suppression de produit", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, pdt_name+" n'existe pas dans la BD.", "Suppression de produit", JOptionPane.ERROR_MESSAGE);
 
 		} catch (UserDeletedException e) {
-			JOptionPane.showMessageDialog(null, pdt_product+" a bien été supprimé de la BD !", "Suppression de produit", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, pdt_name+" a bien été supprimé de la BD !", "Suppression de produit", JOptionPane.INFORMATION_MESSAGE);
 
 		}
 	}

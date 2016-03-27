@@ -31,14 +31,6 @@ public class SellerView extends JFrame implements ActionListener
 
 	Button adminButton = new Button("Administration", 250, 375, 200, 30);
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	//Constructeur
 	public SellerView(User loggedUser)
 	{
@@ -108,14 +100,14 @@ public class SellerView extends JFrame implements ActionListener
 		}
 		else if (source == productListButton)
 		{
-			new ProductsListView(FU.getUser());
+			new ProductsListView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel ProductsList affiché");
 		}
 		else if (source == adminButton)
 		{
 			
-			new AdminView(FU.getUser());
+			new AdminView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel Admin affiché");
 		}
