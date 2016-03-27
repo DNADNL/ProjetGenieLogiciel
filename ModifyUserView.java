@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,7 +22,7 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 	
 	//Création des boutons et Textfield de "ModifiyUser"
 		Button returnUsersButton = new Button("Retour", 540, 10, 150, 30);
-		Button validateModifyUserButton = new Button("Modifier",250, 560, 200, 30);
+		Button validateModifyUserButton = new Button("Modifier",250, 600, 200, 30);
 		
 
 		JTextField modifyUserNickname = new JTextField("pseudo");
@@ -35,6 +36,9 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 		
 		JTextField modifyPostalCode = new JTextField("Postal Code");
 		JTextField modifyStreetNumber = new JTextField("Street Number");
+		
+		JComboBox<String> modifyUserRole = new JComboBox<String>();
+		
 		
 		public ModifyUserView(User loggedUser)
 		{
@@ -92,15 +96,6 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 			modifiyDetailProfil.setText("Indiquez les informations à modifier");
 			panel.add(modifiyDetailProfil);	
 			
-			//Ajout de l'étiquette "Résultat Modification d'utilisateur"
-
-//			modifyUserResultLabel.setText("Les résultats seront affichés ici");
-//			modifyUserResultLabel.setForeground(Color.BLACK);
-//			modifyUserResultLabel.setBounds(250, 10, 300, 100);
-//			modifyUserResultLabel.setFont(fontAdvice);					
-//			modifyUserResultLabel.setVisible(true);
-//			panel.add(modifyUserResultLabel);
-			
 			// Ajout du Bouton Retour
 			returnUsersButton.addActionListener(this);
 			panel.add(returnUsersButton);
@@ -146,6 +141,14 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 			modifyStreetNumber.setBounds(250, 520, 200, 25);
 			panel.add(modifyStreetNumber);
 			
+			// Ajout de la liste de rôles
+			modifyUserRole.addItem("Simple Utilisateur");
+			modifyUserRole.addItem("Vendeur");
+			modifyUserRole.addItem("Administrateur");
+			modifyUserRole.setSelectedIndex(0);
+			modifyUserRole.addActionListener(this);
+			modifyUserRole.setBounds(250, 560, 200, 25);
+			panel.add(modifyUserRole);	
 			
 			
 			panel.setLayout(new BorderLayout());
@@ -183,12 +186,24 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 				
 			try {
 				FU.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
-			} catch (UserNotInTheDatabaseException e) {
+			} catch (UserNotInTheDatabaseException e) {				
 				JOptionPane.showMessageDialog(null, nick+" n'existe pas dans la BD.", "Modification d'utilisateur", JOptionPane.ERROR_MESSAGE);
 //				System.out.println("DeleteUser : Failed !");
 //				deleteUserResultLabel.setText("Aucun utilisateur avec ce pseudo n'existe dans la BD, veuillez réessayer.");
 //				deleteUserResultLabel.setForeground(Color.RED);
 			} catch (UserModifyException e) {
+				if ((modifyUserRole.getSelectedItem()).equals("Administrateur"))
+				{
+					FU.chooseUserRoleAdmin(nick);
+				}
+				else if ((modifyUserRole.getSelectedItem()).equals("Simple Utilisateur"))
+				{
+					FU.chooseUserRoleSimpleUser(nick);
+				}
+				else if ((modifyUserRole.getSelectedItem()).equals("Vendeur"))
+				{
+					FU.chooseUserRoleSeller(nick);
+				}
 				JOptionPane.showMessageDialog(null, nick+" a bien été modifé dans la BD !", "Modification d'utilisateur", JOptionPane.INFORMATION_MESSAGE);
 //				System.out.println("DeleteUser : Successful !");
 //				deleteUserResultLabel.setText("L'utilisateur a bien été supprimé !");

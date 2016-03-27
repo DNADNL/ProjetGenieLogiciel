@@ -115,7 +115,23 @@ public class GestionnaireUser {
 			
 			try {
 				Fact.getUser(nick);	
+				if (this.isSimpleUser(nick))
+				{
+					Fact.deleteUserRoleSimpleUser(nick);
+					System.out.println("GU.deleteUser - deleteUserRoleSimpleUser");
+				}
+				if (this.isAdmin(nick))
+				{
+					Fact.deleteUserRoleAdmin(nick);
+					System.out.println("GU.deleteUser - deleteUserRoleAdmin");
+				}
+				if (this.isSeller(nick))
+				{
+					Fact.deleteUserRoleSeller(nick);
+					System.out.println("GU.deleteUser - deleteUserRoleSeller");
+				}			
 				Fact.deleteUser(nick);
+				System.out.println("GU.deleteUser - deleteUser");
 				throw new UserDeletedException(nick);
 			}
 			catch (UserNotInTheDatabaseException e) // L'exception sera levée si l'utilisateur ne se trouve pas dans la BD
@@ -125,8 +141,71 @@ public class GestionnaireUser {
 			}
 
 		}
-
 		
+		public boolean isAdmin(String nick) {
+			return Fact.isAdmin(nick);
+		}
 
+		public boolean isSimpleUser(String nick) {
+			return Fact.isSimpleUser(nick);
+		}
+		
+		public boolean isSeller(String nick) {
+			return Fact.isSeller(nick);
+		}
+		
+		public void chooseUserRoleSeller(String nick) {
+			if (this.isSimpleUser(nick))
+			{
+				Fact.deleteUserRoleSimpleUser(nick);
+				System.out.println("GU.chooseUserRoleSeller - deleteUserRoleSimpleUser");
+			}
+			if (this.isAdmin(nick))
+			{
+				Fact.deleteUserRoleAdmin(nick);
+				System.out.println("GU.chooseUserRoleSeller - deleteUserRoleAdmin");
+			}
+			if (!(this.isSeller(nick)))
+			{
+				Fact.addUserRoleSeller(nick);
+				System.out.println("GU.chooseUserRoleSeller - addUserRoleSeller");
 
+			}			
+		}
+		
+		public void chooseUserRoleSimpleUser(String nick) {
+			if (this.isAdmin(nick))
+			{
+				Fact.deleteUserRoleAdmin(nick);
+				System.out.println("GU.chooseUserRoleSimpleUser - deleteUserRoleAdmin");
+			}
+			if (this.isSeller(nick))
+			{
+				Fact.deleteUserRoleSeller(nick);
+				System.out.println("GU.chooseUserRoleSimpleUser - deleteUserRoleSeller");
+			}	
+			if (!(this.isSimpleUser(nick)))
+			{
+				Fact.addUserRoleSimpleUser(nick);
+				System.out.println("GU.chooseUserRoleSimpleUser - addUserRoleSimpleUser");
+			}
+		}
+		
+		public void chooseUserRoleAdmin(String nick) {
+			if (this.isSeller(nick))
+			{
+				Fact.deleteUserRoleSeller(nick);
+				System.out.println("GU.chooseUserRoleAdmin - deleteUserRoleSeller");
+			}	
+			if (this.isSimpleUser(nick))
+			{
+				Fact.deleteUserRoleSimpleUser(nick);
+				System.out.println("GU.chooseUserRoleAdmin - deleteUserRoleSimpleUser");
+			}
+			if (!(this.isAdmin(nick)))
+			{
+				Fact.addUserRoleAdmin(nick);
+				System.out.println("GU.chooseUserRoleAdmin - addUserRoleAdmin");
+			}
+		}
 }

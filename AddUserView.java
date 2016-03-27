@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -26,6 +27,7 @@ public class AddUserView  extends JFrame implements ActionListener{
 		JTextField addUserNickname = new JTextField("pseudo");
 		JPasswordField addUserPassword = new JPasswordField("mot_de_passe");
 		JTextField addUserEMail = new JTextField("e-mail");
+		JComboBox<String> addUserRole = new JComboBox<String>();
 		
 		public AddUserView(User loggedUser)
 		{
@@ -69,15 +71,6 @@ public class AddUserView  extends JFrame implements ActionListener{
 			addUserTitle.setText("<html>Ajout d'utilisateur</html>");
 			panel.add(addUserTitle);		
 			
-			//Ajout de l'étiquette "Résultat Ajout d'utilisateur"
-			
-//			addUserResultLabel.setText("Les résultats seront affichés ici");
-//			addUserResultLabel.setForeground(Color.BLACK);
-//			addUserResultLabel.setBounds(250, 10, 300, 100);
-//			addUserResultLabel.setFont(fontAdvice);					
-//			addUserResultLabel.setVisible(true);
-//			panel.add(addUserResultLabel);
-			
 			// Ajout du Bouton Retour
 			returnUsersButton.addActionListener(this);
 			panel.add(returnUsersButton);
@@ -99,6 +92,14 @@ public class AddUserView  extends JFrame implements ActionListener{
 			addUserEMail.setBounds(250, 180, 200, 25);
 			panel.add(addUserEMail);			
 			
+			// Ajout de la liste de rôles
+			addUserRole.addItem("Simple Utilisateur");
+			addUserRole.addItem("Vendeur");
+			addUserRole.addItem("Administrateur");
+			addUserRole.setSelectedIndex(0);
+			addUserRole.addActionListener(this);
+			addUserRole.setBounds(250, 220, 200, 25);
+			panel.add(addUserRole);	
 			
 			panel.setLayout(new BorderLayout());
 		}
@@ -124,12 +125,26 @@ public class AddUserView  extends JFrame implements ActionListener{
 		}
 		
 		public void addUserButtonClicked(String nick, String pass, String email)
-		{
-			Object resultAddUser = null;
-			
+		{			
 			try {
 				FU.addUser(nick, pass, email);
 			} catch (UserCreatedException e) {
+				System.out.println("Admin : " + (addUserRole.getSelectedItem()).equals("Administrateur"));
+				System.out.println("SU : " + (addUserRole.getSelectedItem()).equals("Simple Utilisateur"));
+				System.out.println("Seller : " + (addUserRole.getSelectedItem()).equals("Vendeur"));
+				
+				if ((addUserRole.getSelectedItem()).equals("Administrateur"))
+				{
+					FU.chooseUserRoleAdmin(nick);
+				}
+				else if ((addUserRole.getSelectedItem()).equals("Simple Utilisateur"))
+				{
+					FU.chooseUserRoleSimpleUser(nick);
+				}
+				else if ((addUserRole.getSelectedItem()).equals("Vendeur"))
+				{
+					FU.chooseUserRoleSeller(nick);
+				}
 				JOptionPane.showMessageDialog(null, nick+" a bien été ajouté à la BD !", "Ajout d'utilisateur", JOptionPane.INFORMATION_MESSAGE);
 //				System.out.println("AddUser : Successful !");
 //				addUserResultLabel.setText("L'utilisateur a été ajouté à la BD !");

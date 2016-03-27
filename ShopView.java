@@ -24,7 +24,7 @@ public class ShopView extends JFrame implements ActionListener
 	JPanel panel = new JPanel();
 	
 	//Création des boutons de "Principal"
-	Button logoutButton = new Button("Déconnexion",540, 10, 150, 30);
+	Button returnButton = new Button("Retour",540, 10, 150, 30);
 	Button productListButton = new Button("Mes produits", 250, 335, 200, 30);
 
 	Button adminButton = new Button("Administration", 250, 375, 200, 30);
@@ -61,8 +61,8 @@ public class ShopView extends JFrame implements ActionListener
 		Font font = new Font("Courier", Font.BOLD, 15);
 		
 		// Buttons
-		logoutButton.addActionListener(this);
-		panel.add(logoutButton);
+		returnButton.addActionListener(this);
+		panel.add(returnButton);
 		
 		productListButton.addActionListener(this);
 		panel.add(productListButton);
@@ -94,7 +94,7 @@ public class ShopView extends JFrame implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		Object source = e.getSource();
-		if (source == logoutButton)
+		if (source == returnButton)
 		{
 			FU.disconnectUser();
 			dispose();

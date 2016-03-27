@@ -95,6 +95,30 @@ public class FacadeUser {
 	public User getUserData(String nicknameUser) {
 		return GU.getUserData(nicknameUser);
 	}
+	
+	public boolean isAdmin(String nick) {
+		return GU.isAdmin(nick);
+	}
+
+	public boolean isSimpleUser(String nick) {
+		return GU.isSimpleUser(nick);
+	}
+	
+	public boolean isSeller(String nick) {
+		return GU.isSeller(nick);
+	}
+	
+	public void chooseUserRoleSeller(String nick) {
+		GU.chooseUserRoleSeller(nick);
+	}
+	
+	public void chooseUserRoleSimpleUser(String nick) {
+		GU.chooseUserRoleSimpleUser(nick);
+	}
+	
+	public void chooseUserRoleAdmin(String nick) {
+		GU.chooseUserRoleAdmin(nick);
+	}
 
 
 	

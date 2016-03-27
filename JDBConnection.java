@@ -167,7 +167,7 @@ public class JDBConnection {
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
 			//Exécution de la requête d'insertion de l'utilisateur
-			state.executeQuery("DELETE FROM public.\"global_user\" WHERE nickname=\'"  + nickname + "\';");   
+			state.executeQuery("DELETE FROM public.\"global_user\" WHERE nickname = \'"  + nickname + "\';");   
 			state.close();
 	         
 	    } 
@@ -176,16 +176,13 @@ public class JDBConnection {
 	
 	public void modifyUser(String nick, String pass, String email, String firstname,
 				String lastname, String city,String street,String postalcode,String streetnumber){
-		
 		try 
 		{
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
 			//Exécution de la requête d'insertion de l'utilisateur
 			state.executeQuery("UPDATE public.\"global_user\" SET password=\'"  + pass + "\', mail=\'"  + email + "\', firstname=\'"  + firstname + "\', lastname=\'"  + lastname + "\', city=\'"  + city + "\', street=\'"  + street + "\', postalcode=\'"  + postalcode + "\', streetnumber=\'"  + streetnumber + "\' WHERE nickname=\'"  + nick + "\';");   
-			state.close();
-	         
-			
+			state.close();   
 	    } 
 		catch (SQLException e) {}
 	}
@@ -362,6 +359,172 @@ public class JDBConnection {
 	    } 
 		catch (SQLException e) {}
 		
+	}
+	
+	public boolean isAdmin(String nickname)
+	{
+		
+		boolean isAnAdmin = false;
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//L'objet ResultSet contient le résultat de la requête SQL
+			ResultSet result = state.executeQuery("SELECT * FROM public.\"admin\" WHERE nickname = \'" + nickname + "\';"); 
+			
+			while(result.next())
+			{
+				if (nickname.equals(result.getObject(1).toString()))
+				{
+					isAnAdmin = true;
+				}
+			}
+
+			result.close();
+			state.close();
+	         
+	    } 
+		catch (SQLException e) 
+		{
+			System.out.println("ERREUR - JDBConnection.getUser() / : Requête erronée ou absence de valeur de retour (SQLException)");
+	    }
+		
+		return isAnAdmin;
+	}
+	
+	public boolean isSimpleUser(String nickname)
+	{
+		
+		boolean isASimpleUser = false;
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//L'objet ResultSet contient le résultat de la requête SQL
+			ResultSet result = state.executeQuery("SELECT * FROM public.\"simple_user\" WHERE nickname = \'" + nickname + "\';"); 
+			
+			while(result.next())
+			{
+				if (nickname.equals(result.getObject(1).toString()))
+				{
+					isASimpleUser = true;
+				}
+			}
+
+			result.close();
+			state.close();
+	         
+	    } 
+		catch (SQLException e) 
+		{
+			System.out.println("ERREUR - JDBConnection.getUser() / : Requête erronée ou absence de valeur de retour (SQLException)");
+	    }
+		
+		return isASimpleUser;
+	}
+	
+	public boolean isSeller(String nickname)
+	{
+		
+		boolean isASeller = false;
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//L'objet ResultSet contient le résultat de la requête SQL
+			ResultSet result = state.executeQuery("SELECT * FROM public.\"seller\" WHERE nickname = \'" + nickname + "\';"); 
+			
+			while(result.next())
+			{
+				if (nickname.equals(result.getObject(3).toString()))
+				{
+					isASeller = true;
+				}
+			}
+
+			result.close();
+			state.close();
+	         
+	    } 
+		catch (SQLException e) 
+		{
+			System.out.println("ERREUR - JDBConnection.getUser() / : Requête erronée ou absence de valeur de retour (SQLException)");
+	    }
+		
+		return isASeller;
+	}
+		
+	public void addUserRoleSeller(String nickname)
+	{
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+			state.executeQuery("INSERT INTO public.\"seller\" VALUES (null, null, \'"  + nickname + "\');"); 
+			state.close();         
+	    } 
+		catch (SQLException e) {}
+	}
+	public void addUserRoleSimpleUser(String nickname)
+	{
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+			state.executeQuery("INSERT INTO public.\"simple_user\" VALUES (\'"  + nickname + "\');");   
+			state.close();         
+	    } 
+		catch (SQLException e) {}
+	}
+	public void addUserRoleAdmin(String nickname)
+	{
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+			state.executeQuery("INSERT INTO public.\"admin\" VALUES (\'"  + nickname + "\');");   
+			state.close();         
+	    } 
+		catch (SQLException e) {}
+	}
+	public void deleteUserRoleSeller(String nickname)
+	{
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+			state.executeQuery("DELETE FROM public.\"seller\" WHERE nickname = \'"  + nickname + "\';");
+			state.close();         
+	    } 
+		catch (SQLException e) {}
+	}
+	public void deleteUserRoleSimpleUser(String nickname)
+	{
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+			state.executeQuery("DELETE FROM public.\"simple_user\" WHERE nickname = \'"  + nickname + "\';");
+			state.close();         
+	    } 
+		catch (SQLException e) {}
+	}
+	public void deleteUserRoleAdmin(String nickname)
+	{
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+			state.executeQuery("DELETE FROM public.\"admin\" WHERE nickname = \'"  + nickname + "\';");
+			state.close();         
+	    } 
+		catch (SQLException e) {}
 	}
 	
 }

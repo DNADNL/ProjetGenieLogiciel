@@ -17,7 +17,7 @@ public class AdminView extends JFrame implements ActionListener{
 		JPanel panel = new JPanel();
 	
 	//Création des boutons de "Admin"
-		Button returnPrincipalButton = new Button("Retour",540, 10, 150, 30);
+		Button logoutButton = new Button("Déconnexion",540, 10, 150, 30);
 		Button usersHandlerButton = new Button("<html>Gestion<br>utilisateurs</html>",275,335,150,60);
 		
 		public AdminView(User loggedUser)
@@ -69,8 +69,8 @@ public class AdminView extends JFrame implements ActionListener{
 			usersHandlerButton.addActionListener(this);
 			panel.add(usersHandlerButton);
 			
-			returnPrincipalButton.addActionListener(this);
-			panel.add(returnPrincipalButton);
+			logoutButton.addActionListener(this);
+			panel.add(logoutButton);
 			
 			panel.setLayout(new BorderLayout());
 		}
@@ -80,17 +80,17 @@ public class AdminView extends JFrame implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			Object source = e.getSource();
-			if (source == returnPrincipalButton)
+			if (source == logoutButton)
 			{
-				new MainView(FU.getCurrentUser());	
+				new LoginView();	
 				dispose();
-				System.out.println("Panel Principal affiché");
+				System.out.println("Panel Login affiché");
 			}
 			else if (source == usersHandlerButton)
 			{
 				new UsersHandlerView(FU.getCurrentUser());	
 				dispose();
-				System.out.println("Panel Admin affiché");
+				System.out.println("Panel Gestion Utilisateurs affiché");
 			}
 			
 		}

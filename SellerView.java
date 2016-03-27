@@ -28,8 +28,6 @@ public class SellerView extends JFrame implements ActionListener
 	//Création des boutons de "Principal"
 	Button logoutButton = new Button("Déconnexion",540, 10, 150, 30);
 	Button productListButton = new Button("Mes produits", 250, 335, 200, 30);
-
-	Button adminButton = new Button("Administration", 250, 375, 200, 30);
 	
 	//Constructeur
 	public SellerView(User loggedUser)
@@ -68,9 +66,6 @@ public class SellerView extends JFrame implements ActionListener
 		productListButton.addActionListener(this);
 		panel.add(productListButton);
 		
-		adminButton.addActionListener(this);
-		panel.add(adminButton);
-		
 		// Textfields
 		
 		// Labels
@@ -103,16 +98,7 @@ public class SellerView extends JFrame implements ActionListener
 			new ProductsListView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel ProductsList affiché");
-		}
-		else if (source == adminButton)
-		{
-			
-			new AdminView(FU.getCurrentUser());
-			dispose();
-			System.out.println("Panel Admin affiché");
-		}
-	
-		
+		}		
 	}
 		
 	

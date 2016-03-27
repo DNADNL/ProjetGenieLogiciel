@@ -95,4 +95,76 @@ public class FactoryActivityCategory extends AbstractFactory {
 		
 	}
 
+
+
+	@Override
+	public boolean isAdmin(String nick) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+	@Override
+	public boolean isSimpleUser(String nick) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+	@Override
+	public boolean isSeller(String nick) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+	@Override
+	public void addUserRoleSeller(String nickname) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void addUserRoleSimpleUser(String nickname) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void addUserRoleAdmin(String nickname) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void deleteUserRoleSeller(String nickname) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void deleteUserRoleSimpleUser(String nickname) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void deleteUserRoleAdmin(String nickname) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -62,7 +62,7 @@ public class UsersHandlerView extends JFrame implements ActionListener{
 			JLabel UsersHandlerTitle = new JLabel();
 			UsersHandlerTitle.setBounds(250, 30, 300, 100);
 			UsersHandlerTitle.setFont(fontTitre);					
-			UsersHandlerTitle.setText("<html>Gestion des Utilisateur</html>");
+			UsersHandlerTitle.setText("<html>Gestion Utilisateurs</html>");
 			panel.add(UsersHandlerTitle);		
 			
 

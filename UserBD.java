@@ -33,12 +33,41 @@ public class UserBD extends User
 		
 		jdbc.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
 	}
-
+	
 	public static User getUserData(String nick) {
-		// TODO Auto-generated method stub
 		return jdbc.getUserData(nick);
 	}
+	
+	public static boolean isAdmin(String nick) {
+		return jdbc.isAdmin(nick);
+	}
 
+	public static boolean isSimpleUser(String nick) {
+		return jdbc.isSimpleUser(nick);
+	}
+	
+	public static boolean isSeller(String nick) {
+		return jdbc.isSeller(nick);
+	}
+	
+	public static void addUserRoleSeller(String nickname) {
+		jdbc.addUserRoleSeller(nickname);
+	}
+	public static void addUserRoleSimpleUser(String nickname) {
+		jdbc.addUserRoleSimpleUser(nickname);
+	}
+	public static void addUserRoleAdmin(String nickname) {
+		jdbc.addUserRoleAdmin(nickname);
+	}
+	public static void deleteUserRoleSeller(String nickname) {
+		jdbc.deleteUserRoleSeller(nickname);
+	}
+	public static void deleteUserRoleSimpleUser(String nickname) {
+		jdbc.deleteUserRoleSimpleUser(nickname);
+	}
+	public static void deleteUserRoleAdmin(String nickname) {
+		jdbc.deleteUserRoleAdmin(nickname);
+	}
 //	
 	
 }

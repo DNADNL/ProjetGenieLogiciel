@@ -4,8 +4,6 @@ public class FactoryUser extends AbstractFactory {
 	
 	User user;
 	
-	
-	
 	/**
 	 * This method is used when an user wants to log in the app (via the Login View).
 	 * Creates a log instance of the user if the user is registered in the database. 
@@ -86,8 +84,35 @@ public class FactoryUser extends AbstractFactory {
 		// TODO Auto-generated method stub
 		
 	}
-
 	
+	public boolean isAdmin(String nick) {
+		return UserBD.isAdmin(nick);
+	}
 
+	public boolean isSimpleUser(String nick) {
+		return UserBD.isSimpleUser(nick);
+	}
+	
+	public boolean isSeller(String nick) {
+		return UserBD.isSeller(nick);
+	}
 
+	public void addUserRoleSeller(String nickname) {
+		UserBD.addUserRoleSeller(nickname);
+	}
+	public void addUserRoleSimpleUser(String nickname) {
+		UserBD.addUserRoleSimpleUser(nickname);
+	}
+	public void addUserRoleAdmin(String nickname) {
+		UserBD.addUserRoleAdmin(nickname);
+	}
+	public void deleteUserRoleSeller(String nickname) {
+		UserBD.deleteUserRoleSeller(nickname);
+	}
+	public void deleteUserRoleSimpleUser(String nickname) {
+		UserBD.deleteUserRoleSimpleUser(nickname);
+	}
+	public void deleteUserRoleAdmin(String nickname) {
+		UserBD.deleteUserRoleAdmin(nickname);
+	}
 }

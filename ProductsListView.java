@@ -17,7 +17,7 @@ public class ProductsListView extends JFrame implements ActionListener{
 		JPanel panel = new JPanel();
 	
 	//Création des boutons de "ProductsList"
-		Button returnPrincipalButton = new Button("Retour",540, 10, 150, 30);
+		Button returnButton = new Button("Retour",540, 10, 150, 30);
 		Button productDetailsButton = new Button("Détails", 540, 335, 150,30);
 		Button deleteProductButton = new Button("Supprimer",170,140,150,30);
 		Button addProductButton = new Button("Ajouter",10,140,150,30);
@@ -55,8 +55,8 @@ public class ProductsListView extends JFrame implements ActionListener{
 			Font font = new Font("Courier", Font.BOLD, 15);
 			
 			// Buttons
-			returnPrincipalButton.addActionListener(this);
-			panel.add(returnPrincipalButton);
+			returnButton.addActionListener(this);
+			panel.add(returnButton);
 			
 			productDetailsButton.addActionListener(this);
 			panel.add(productDetailsButton);
@@ -106,11 +106,11 @@ public class ProductsListView extends JFrame implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			Object source = e.getSource();
-			if (source == returnPrincipalButton)
+			if (source == returnButton)
 			{
-				new MainView(FU.getCurrentUser());	
+				new SellerView(FU.getCurrentUser());	
 				dispose();
-				System.out.println("Panel Principal affiché");
+				System.out.println("Panel Seller affiché");
 			}
 			else if (source == addProductButton)
 			{

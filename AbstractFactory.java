@@ -20,6 +20,15 @@ public abstract class AbstractFactory
 	abstract public void getCategoryActivity(String title);
 	
 	abstract public void addGoal(String goal_title, String goal_description, String nick);
-
 	
+	abstract public boolean isAdmin(String nick);
+	abstract public boolean isSimpleUser(String nick);
+	abstract public boolean isSeller(String nick);
+
+	abstract public void addUserRoleSeller(String nickname);
+	abstract public void addUserRoleSimpleUser(String nickname);
+	abstract public void addUserRoleAdmin(String nickname);
+	abstract public void deleteUserRoleSeller(String nickname);
+	abstract public void deleteUserRoleSimpleUser(String nickname);
+	abstract public void deleteUserRoleAdmin(String nickname);
 }

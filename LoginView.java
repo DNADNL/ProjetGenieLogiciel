@@ -133,13 +133,29 @@ public class LoginView  extends JFrame implements ActionListener, KeyListener{
 		
 		public void login(String nick, String pass)
 		{
-			int bool = 0;
 			try 
 			{
-				bool = FU.login(nick,pass);
+				FU.login(nick,pass);
 				System.out.println("SUCCESS");
-				dispose();
-				new MainView(FU.getCurrentUser());	
+				
+				if(FU.isAdmin(nick))
+				{
+					System.out.println("Admin Connected");
+					dispose();
+					new AdminView(FU.getCurrentUser());
+				}
+				else if (FU.isSeller(nick))
+				{
+					System.out.println("Seller Connected");
+					dispose();
+					new SellerView(FU.getCurrentUser());
+				}
+				else
+				{
+					System.out.println("Simple User Connected");
+					dispose();
+					new SimpleUserView(FU.getCurrentUser());
+				}
 			} 
 			catch (UserNotInTheDatabaseException e) 
 			{
