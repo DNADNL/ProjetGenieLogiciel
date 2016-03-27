@@ -56,6 +56,24 @@ public class FactoryGoal extends AbstractFactory {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayList<CategoryActivity> createCategoryActivityList(String title) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void suggestActivityCategory(String title, String description) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getCategoryActivity(String title) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

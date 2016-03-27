@@ -64,19 +64,30 @@ public class FactoryUser extends AbstractFactory {
 	}
 
 	@Override
-<<<<<<< HEAD
+
 	public ArrayList<CategoryActivity> createCategoryActivityList(String title) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-=======
 	public void addGoal(String goal_title, String goal_description, String nick) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void suggestActivityCategory(String title, String description) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getCategoryActivity(String title) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	
 
->>>>>>> origin/master
+
 }

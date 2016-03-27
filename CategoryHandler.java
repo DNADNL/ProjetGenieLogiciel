@@ -22,11 +22,11 @@ CategoryActivity categoryList[][];
 
 		
 	//Méthodes
-		public CategoryActivity[][] getcategorysList(String nickname)
+		public CategoryActivity[][] getCategoryList()
 		{
 			if (categoryList==null)
 			{
-				categoryList = Fact.createActivityList(nickname);
+// 				categoryList = Fact.createActivityList();
 			}
 			return categoryList;
 		}
@@ -36,7 +36,10 @@ CategoryActivity categoryList[][];
 			// TODO Auto-generated method stub
 			try
 			{
-				Fact.getCategoryActivity(String title);
+//				Fact.getCategoryActivity(String title);
+				
+			}
+			catch(Exception e){
 				
 			}
 			

@@ -6,5 +6,10 @@ public class CategoryActivityDB extends CategoryActivity {
 		this.name = null;
 		this.descritpion = null;
 	}
-	private void createCategoryActivity()
+	
+//	private void createCategoryActivity(){
+//		jdbc.getAllCategoryActivity();
+//	}
+	
 }
+
