@@ -4,6 +4,7 @@ public class FacadeUser {
 	
 	GestionnaireUser GU = GestionnaireUser.getGU();
 	ProductsHandler PH = ProductsHandler.getPH();
+	CategoryHandler CH = CategoryHandler.getCH();
 	
 	//Constructeur Singleton
 	private FacadeUser()
@@ -41,6 +42,7 @@ public class FacadeUser {
 		GU.deleteCurrentUser();
 	}
 	
+	
 	//Méthodes Products
 	public String[][] getStringProductList()
 	{
@@ -67,5 +69,10 @@ public class FacadeUser {
 	public void deleteUser(String nick) throws UserNotInTheDatabaseException, UserDeletedException{
 		GU.deleteUser(nick);
 	}
-
+	
+	//methods activity category
+		public void suggestActivityCategory(String title, String description){
+			CH.suggestActivityCategory(title,description);
+			
+		}
 }

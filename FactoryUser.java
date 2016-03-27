@@ -58,4 +58,10 @@ public class FactoryUser extends AbstractFactory {
 	
 	}
 
+	@Override
+	public ArrayList<CategoryActivity> createCategoryActivityList(String title) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

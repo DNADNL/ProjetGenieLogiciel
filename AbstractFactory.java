@@ -15,5 +15,8 @@ public abstract class AbstractFactory
 	abstract public ArrayList<Product> createProductList(String nickname);
 	abstract public void getProduct(String pdt_product, String nickname);
 	abstract public void deleteProduct(String pdt_product, String nickname);
+	abstract public ArrayList<CategoryActivity> createCategoryActivityList(String title);
+	abstract public void suggestActivityCategory(String title,String description);
+	abstract public void getCategoryActivity(String title);
 	
 }

@@ -48,6 +48,12 @@ public class FactoryProductDB extends AbstractFactory{
 		ProductBD.deleteProduct(pdt_product, nickname);
 	}
 
+	@Override
+	public ArrayList<CategoryActivity> createCategoryActivityList(String title) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 

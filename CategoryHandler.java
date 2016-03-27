@@ -1,6 +1,7 @@
-
+/* handler for category activity*/
 public class CategoryHandler {
 CategoryActivity categoryList[][];
+	AbstractFactory Fact = new FactoryActivityCategory();
 	
 	//Constructeur Singleton
 		private CategoryHandler()
@@ -10,7 +11,7 @@ CategoryActivity categoryList[][];
 		private static CategoryHandler singleton;
 			
 	//Accesseur Singleton
-		public static CategoryHandler getPH()
+		public static CategoryHandler getCH()
 		{
 			if (singleton==null)
 			{
@@ -25,12 +26,21 @@ CategoryActivity categoryList[][];
 		{
 			if (categoryList==null)
 			{
-				
+				categoryList = Fact.createActivityList(nickname);
 			}
 			return categoryList;
 		}
 		
 
-}
+		public void suggestActivityCategory(String title, String description) {
+			// TODO Auto-generated method stub
+			try
+			{
+				Fact.getCategoryActivity(String title);
+				
+			}
+			
+		}
+	}
 
 
