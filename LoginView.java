@@ -19,17 +19,20 @@ import javax.swing.JTextField;
 
 public class LoginView  extends JFrame implements ActionListener, KeyListener{
 
-	FacadeUser FU = FacadeUser.getFU();
-	
-	
-	//création de la fenêtre de connexion
+	//Get the Facade
+		FacadeUser FU = FacadeUser.getFU();
+
+	//Create the panel
 		JPanel panel1 = new JPanel();
+		
+	//Create the Textfields for LoginView
 		JTextField userText = new JTextField("admin");
 		JPasswordField passwordText = new JPasswordField("mot_de_passe");
+		
+	//Create the Buttons for LoginView
 		Button loginButton = new Button("LOGIN", 190, 170, 90, 30);
 
-	//création de la fenêtre d'erreurs de connexion
-		JPanel panelLogo = new JPanel();
+
 		
 		  
 	 
@@ -38,23 +41,22 @@ public class LoginView  extends JFrame implements ActionListener, KeyListener{
 	  {
 		  super("Lazy'N Yourself");
 
-			// Options de la fenetre
+			// Frame Config
 			this.setSize(500,300);
 			this.setLocationRelativeTo(null);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setResizable(false);
 
-			// Construction du panel
+			// Construct the panel
 			placeComponents(panel1);
 			
-			// Choix du panel
-			this.setContentPane(this.panel1);
-			getRootPane().setDefaultButton(loginButton);
 			
+
+			this.setContentPane(this.panel1);
 			this.setVisible(true);
 	  }
 
-		
+	//Method to construct the panel
 	  private void placeComponents(JPanel panel) 
 	  {
 
@@ -67,6 +69,7 @@ public class LoginView  extends JFrame implements ActionListener, KeyListener{
 			// Ajout du Bouton Login sur la fenetre 1
 			loginButton.addActionListener(this);
 			loginButton.addKeyListener(this);
+			getRootPane().setDefaultButton(loginButton);
 			panel1.add(loginButton);
 			
 			// Textfields
@@ -96,9 +99,10 @@ public class LoginView  extends JFrame implements ActionListener, KeyListener{
 			TitreCo.setForeground(Color.BLACK);
 			panel.add(TitreCo);
 
-			// Background
-			JLabel image = new JLabel(new ImageIcon("logo.png"));
+			// Logo
 			
+			JLabel image = new JLabel(new ImageIcon("logo.png"));
+			JPanel panelLogo = new JPanel();
 			panelLogo.setBounds(330, 45, 150, 150);
 			panelLogo.setLayout(new BorderLayout());
 			panelLogo.add(image, BorderLayout.CENTER);
@@ -119,6 +123,7 @@ public class LoginView  extends JFrame implements ActionListener, KeyListener{
 			}
 		}
 		
+		//This method handle the role of the user that logs in and load the main View
 		public void login(String nick, String pass)
 		{
 			try 

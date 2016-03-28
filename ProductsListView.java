@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+@SuppressWarnings("serial")
 public class ProductsListView extends JFrame implements ActionListener{
 
 	//Get the Facade
@@ -52,7 +53,6 @@ public class ProductsListView extends JFrame implements ActionListener{
 
 		// Font
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
-		Font font = new Font("Courier", Font.BOLD, 15);
 
 		// Buttons
 		returnButton.addActionListener(this);

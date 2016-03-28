@@ -17,40 +17,36 @@ import javax.swing.JTextField;
 
 public class SeeGoalView extends JFrame implements ActionListener
 {	
-	FacadeUser FU = FacadeUser.getFU();
-	static User user;
-	// static Goal goal;
+	//Get the Facade
+		FacadeUser FU = FacadeUser.getFU();
+
+	//Create the panel
+		JPanel panel = new JPanel();
 	
-	//Création du panel de navigation
-	JPanel panel = new JPanel();
-	
-	//Création des boutons de "Principal"
+	//Create the Buttons for "Principal"
 	Button returnMainUserButton = new Button("Retour",540, 10, 150, 30);
 	Button activityDetailsButton = new Button("Détails", 540, 335, 150,30);
 	Button deleteActivityButton = new Button("Supprimer",170,140,150,30);
 	Button addActivityButton = new Button("Ajouter",10,140,150,30);
 	
+	//Create the table
 	JTable tableau;
 	
 	//Constructeur
 	public SeeGoalView(User loggedUser, String goal_selected)
 	{
 		super("Lazy'N Yourself");
-		user = loggedUser;
-		// goal = FU.getGoal(loggedUser.nicknameUser);
 		
-		// Options de la fenetre
+		// Frame Config
 		this.setSize(700,700);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);	
 		
-		// Construction du panel principal
+		// Construct the panel
 		placeComponentsGoal(panel);
 		
-		// Choix du panel
 		setContentPane(panel);
-		
 		setVisible(true);
 	}
 	
@@ -80,10 +76,7 @@ public class SeeGoalView extends JFrame implements ActionListener
 		JPanel panTab = new JPanel();
 		
 		Object[][] donnees = {{"",""}};
-		
-		// donnees = FU.getStringActivitiesList();
-		
-		
+						
 		String[] entetes = {"Activity", "Brief Description"};
 		tableau = new JTable(donnees, entetes);
 		
@@ -97,7 +90,7 @@ public class SeeGoalView extends JFrame implements ActionListener
 		// Textfields
 		
 		// Labels
-		JLabel userLabel = new JLabel("<html>Page de <br>" + user.nicknameUser + "</html>");
+		JLabel userLabel = new JLabel("<html>Page de <br>" + FU.getCurrentUser().nicknameUser + "</html>");
 		userLabel.setBounds(10, 10, 150, 50);
 		userLabel.setFont(font);
 		userLabel.setForeground(Color.BLACK);
