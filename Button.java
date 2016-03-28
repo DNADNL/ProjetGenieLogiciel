@@ -1,27 +1,19 @@
-
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.IOException; 
-import javax.imageio.ImageIO;
 import javax.swing.JButton;
 
+/**
+ * The class Button extends JButton.
+ * <p>
+ *
+ * @param  		font (a {@link Font} giving the font type of the button),
+ */
+@SuppressWarnings("serial")
 public class Button extends JButton {
-	private String name;
-	private Image img;
 	private Font font = new Font("courier", Font.BOLD, 16);
 
 	public Button(String str, int positionX, int positionY, int tailleX, int tailleY){
 		super(str);
-		this.name = str;
-		
 		
 		this.setBounds(positionX, positionY, tailleX, tailleY);
 		
