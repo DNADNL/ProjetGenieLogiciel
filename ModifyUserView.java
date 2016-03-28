@@ -42,7 +42,7 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 		
 		public ModifyUserView(User loggedUser)
 		{
-			super("Bienvenue !");
+			super("Lazy'N Yourself");
 			user = loggedUser;
 			
 			// Options de la fenetre

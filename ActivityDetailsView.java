@@ -20,7 +20,7 @@ public class ActivityDetailsView extends JFrame implements ActionListener{
 	
 	public ActivityDetailsView(User loggedUser, String activity_name)
 	{
-		super("Bienvenue !");
+		super("Lazy'N Yourself");
 		user = loggedUser;
 		//product = FU.getProduct(product_name);
 		

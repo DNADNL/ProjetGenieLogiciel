@@ -36,7 +36,7 @@ public class LoginView  extends JFrame implements ActionListener, KeyListener{
 	//Constructeurs
 	  public LoginView() 
 	  {
-		  super("Login");
+		  super("Lazy'N Yourself");
 
 			// Options de la fenetre
 			this.setSize(500,300);

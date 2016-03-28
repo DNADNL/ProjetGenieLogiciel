@@ -30,7 +30,7 @@ public class SuggestCategoryView extends JFrame implements ActionListener {
 	
 	public SuggestCategoryView(User loggedUser)
 	{
-		super("Bienvenue !");
+		super("Lazy'N Yourself");
 		user = loggedUser;
 		
 		// Options de la fenetre

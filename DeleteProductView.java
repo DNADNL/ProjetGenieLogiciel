@@ -28,7 +28,7 @@ public class DeleteProductView extends JFrame implements ActionListener{
 
 	public DeleteProductView(String product_selected)
 	{
-		super("Bienvenue !");
+		super("Lazy'N Yourself");
 
 		pdt_name = product_selected;
 

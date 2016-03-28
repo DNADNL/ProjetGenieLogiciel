@@ -33,7 +33,7 @@ public class ShopView extends JFrame implements ActionListener
 	//Constructeur
 	public ShopView(User loggedUser)
 	{
-		super("Bienvenue !");
+		super("Lazy'N Yourself");
 		user = loggedUser;
 		
 		// Options de la fenetre

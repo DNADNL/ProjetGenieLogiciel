@@ -27,7 +27,7 @@ public class SuggestionCategoryActivityView extends JFrame implements ActionList
 	
 	public SuggestionCategoryActivityView(User loggedUser){
 
-		super("Bienvenue !");
+		super("Lazy'N Yourself");
 		user = loggedUser;
 		
 		// Options de la fenetre

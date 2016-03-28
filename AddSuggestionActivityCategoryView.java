@@ -32,7 +32,7 @@ public class AddSuggestionActivityCategoryView extends JFrame implements ActionL
 
 	public AddSuggestionActivityCategoryView(User loggedUser)
 	{
-		super("Bienvenue !");
+		super("Lazy'N Yourself");
 		user = loggedUser;
 		
 		// Options de la fenetre

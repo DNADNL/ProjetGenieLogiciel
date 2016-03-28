@@ -30,7 +30,7 @@ public class ShowActivityCategoryView extends JFrame implements  ActionListener 
 
 	public ShowActivityCategoryView(User loggedUser)
 	{
-		super("Bienvenue !");
+		super("Lazy'N Yourself");
 		user = loggedUser;
 
 		// Options de la fenetre

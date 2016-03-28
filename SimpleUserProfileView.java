@@ -41,7 +41,7 @@ public class SimpleUserProfileView extends JFrame implements ActionListener, Key
 	//Constructeur
 	public SimpleUserProfileView(User loggedUser)
 	{
-		super("Profil Utilisateur");
+		super("Lazy'N Yourself");
 		user = FU.getUserData(loggedUser.nicknameUser);
 		
 		simpleUserProfilePassword = new JPasswordField(user.getUserPassword());
