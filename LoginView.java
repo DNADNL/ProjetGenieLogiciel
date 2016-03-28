@@ -148,7 +148,7 @@ public class LoginView  extends JFrame implements ActionListener, KeyListener{
 				{
 					System.out.println("Seller Connected");
 					dispose();
-					new SellerView(FU.getCurrentUser());
+					new SellerView();
 				}
 				else
 				{

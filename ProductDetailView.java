@@ -100,7 +100,7 @@ public class ProductDetailView extends JFrame implements ActionListener{
 		if (source == returnProductsListButton)
 		{
 			//Return to the ProductListView
-			new ProductsListView(FU.getCurrentUser());	
+			new ProductsListView();	
 			dispose();
 			System.out.println("Panel ProductsList affiché");
 		}

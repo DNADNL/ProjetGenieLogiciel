@@ -102,7 +102,7 @@ public class ShopView extends JFrame implements ActionListener
 		}
 		else if (source == productListButton)
 		{
-			new ProductsListView(FU.getCurrentUser());
+			new ProductsListView();
 			dispose();
 			System.out.println("Panel ProductsList affiché");
 		}
@@ -123,24 +123,4 @@ public class ShopView extends JFrame implements ActionListener
 	
 		
 	}
-		
-	
-//	private void displayAddResult(Object result)
-//	{
-//		if (result.equals("UserCreated"))
-//		{
-//			System.out.println("AddUser : Successful !");
-//			addUserResultLabel.setText("L'utilisateur a été ajouté à la BD !");
-//			addUserResultLabel.setForeground(Color.BLUE);
-//			
-//		}
-//		else
-//		{
-//			System.out.println("AddUser : Failed !");
-//			addUserResultLabel.setText("Cet utilisateur existe déjà !");
-//			addUserResultLabel.setForeground(Color.RED);
-//			//addUserResultLabel.setVisible(true);				
-//		}
-//	}
-
 }

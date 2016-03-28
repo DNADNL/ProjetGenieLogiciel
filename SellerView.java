@@ -17,64 +17,63 @@ import javax.swing.JTextField;
 
 public class SellerView extends JFrame implements ActionListener
 {
-	
-	
+
+	//Get the Facade
 	FacadeUser FU = FacadeUser.getFU();
-	static User user;
-	
-	//Création du panel de navigation
+
+	//Create the panel
 	JPanel panel = new JPanel();
-	
-	//Création des boutons de "Principal"
+
+
+	//Create the Button for SellerView
 	Button logoutButton = new Button("Déconnexion",540, 10, 150, 30);
 	Button productListButton = new Button("Mes produits", 250, 335, 200, 30);
-	
+
 	//Constructeur
-	public SellerView(User loggedUser)
+	public SellerView()
 	{
-		super("Bienvenue !");
-		user = loggedUser;
-		
-		// Options de la fenetre
+		super("Lazy'N Yourself");
+
+
+		// Frame Config
 		this.setSize(700,700);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);	
-		
-		// Construction du panel principal
+
+		// Construct the panel
 		placeComponentsPrincipal(panel);
-		
-		// Choix du panel
+
 		setContentPane(panel);
-		
 		setVisible(true);
 	}
-	
+
+	//Method to construct the panel
 	private void placeComponentsPrincipal(JPanel panel)
 	{
 		panel.removeAll();
 		panel.setLayout(null);
-		
+
 		// Font
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
 		Font font = new Font("Courier", Font.BOLD, 15);
-		
+
 		// Buttons
 		logoutButton.addActionListener(this);
 		panel.add(logoutButton);
-		
+
 		productListButton.addActionListener(this);
 		panel.add(productListButton);
-		
+
 		// Textfields
-		
+
 		// Labels
-		JLabel userLabel = new JLabel("<html>Page de <br>" + user.nicknameUser + "</html>");
+		JLabel userLabel = new JLabel("<html>Page de <br>" + FU.getCurrentUser().nicknameUser + "</html>");
 		userLabel.setBounds(10, 10, 150, 50);
 		userLabel.setFont(font);
 		userLabel.setForeground(Color.BLACK);
 		panel.add(userLabel);
-		
+
 		// Titre
 
 		// Background
@@ -85,39 +84,23 @@ public class SellerView extends JFrame implements ActionListener
 	//ActionPerformMethod
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+
 		Object source = e.getSource();
+
 		if (source == logoutButton)
 		{
+			//Return to LoginView
 			FU.disconnectUser();
 			dispose();
 			new LoginView();
 		}
 		else if (source == productListButton)
 		{
-			new ProductsListView(FU.getCurrentUser());
+			//Go to ProductsListView
+			new ProductsListView();
 			dispose();
 			System.out.println("Panel ProductsList affiché");
 		}		
 	}
-		
-	
-//	private void displayAddResult(Object result)
-//	{
-//		if (result.equals("UserCreated"))
-//		{
-//			System.out.println("AddUser : Successful !");
-//			addUserResultLabel.setText("L'utilisateur a été ajouté à la BD !");
-//			addUserResultLabel.setForeground(Color.BLUE);
-//			
-//		}
-//		else
-//		{
-//			System.out.println("AddUser : Failed !");
-//			addUserResultLabel.setText("Cet utilisateur existe déjà !");
-//			addUserResultLabel.setForeground(Color.RED);
-//			//addUserResultLabel.setVisible(true);				
-//		}
-//	}
 
 }
