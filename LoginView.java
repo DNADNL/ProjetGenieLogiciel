@@ -26,11 +26,10 @@ public class LoginView  extends JFrame implements ActionListener, KeyListener{
 		JPanel panel1 = new JPanel();
 		JTextField userText = new JTextField("admin");
 		JPasswordField passwordText = new JPasswordField("mot_de_passe");
-		Button loginButton = new Button("LOGIN", 220, 170, 90, 30);
+		Button loginButton = new Button("LOGIN", 190, 170, 90, 30);
 
 	//création de la fenêtre d'erreurs de connexion
-		JPanel panel2 = new JPanel();
-		Button returnButton = new Button("RETOUR",155, 170, 190, 30);
+		JPanel panelLogo = new JPanel();
 		
 		  
 	 
@@ -71,20 +70,20 @@ public class LoginView  extends JFrame implements ActionListener, KeyListener{
 			panel1.add(loginButton);
 			
 			// Textfields
-			userText.setBounds(180, 100, 160, 25);
+			userText.setBounds(150, 100, 160, 25);
 			panel1.add(userText);
-			passwordText.setBounds(180, 130, 160, 25);
+			passwordText.setBounds(150, 130, 160, 25);
 			panel1.add(passwordText);
 			
 			// Labels
 			JLabel userLabel = new JLabel("Pseudo");
-			userLabel.setBounds(100, 100, 90, 25);
+			userLabel.setBounds(70, 100, 90, 25);
 			userLabel.setFont(font);
 			userLabel.setForeground(Color.BLACK);
 			panel.add(userLabel);
 
 			JLabel passwordLabel = new JLabel("Password");
-			passwordLabel.setBounds(100, 130, 90, 25);
+			passwordLabel.setBounds(70, 130, 90, 25);
 			passwordLabel.setFont(font);
 			passwordLabel.setForeground(Color.BLACK);
 			panel.add(passwordLabel);
@@ -92,26 +91,19 @@ public class LoginView  extends JFrame implements ActionListener, KeyListener{
 			
 			// Titre
 			JLabel TitreCo = new JLabel("Login");
-			TitreCo.setBounds(100, 10, 400, 80);
+			TitreCo.setBounds(70, 10, 400, 80);
 			TitreCo.setFont(fontTitre);
 			TitreCo.setForeground(Color.BLACK);
 			panel.add(TitreCo);
 
 			// Background
-			JLabel image = new JLabel(new ImageIcon("fond.jpg"));
-			panel.setLayout(new BorderLayout());
-			panel.add(image, BorderLayout.CENTER);
+			JLabel image = new JLabel(new ImageIcon("logo.png"));
+			
+			panelLogo.setBounds(330, 45, 150, 150);
+			panelLogo.setLayout(new BorderLayout());
+			panelLogo.add(image, BorderLayout.CENTER);
+			panel.add(panelLogo);
 		}
-
-
-//	// Methode pour revenir à  la fenetre 1
-//	  public void allerVersFenetre1()
-//	  {
-//		  this.setContentPane(this.panel1);
-//		  System.out.println("fenetre 1 affichée");
-//		  this.revalidate();
-//	  }
-
 		  
 	  
 		@Override
@@ -125,10 +117,6 @@ public class LoginView  extends JFrame implements ActionListener, KeyListener{
 				String nickname = userText.getText();
 				this.login(nickname, password);
 			}
-//			else if (source == returnButton)
-//			{
-//				allerVersFenetre1();
-//			}
 		}
 		
 		public void login(String nick, String pass)
@@ -159,17 +147,11 @@ public class LoginView  extends JFrame implements ActionListener, KeyListener{
 			} 
 			catch (ObjectNotInTheDatabaseException e) 
 			{
-				JOptionPane.showMessageDialog(null, "Identifiant incorrect. Veuillez réessayer.", "Connexion", JOptionPane.ERROR_MESSAGE);
-//				System.out.println("ERREUR - Identifiant incorrect");
-//				placeComponentsFenetre2(panel2);
-//				allerVersFenetre2();				
+				JOptionPane.showMessageDialog(null, "Identifiant incorrect. Veuillez réessayer.", "Connexion", JOptionPane.ERROR_MESSAGE);			
 			}
 			catch (WrongPasswordException e)
 			{
 				JOptionPane.showMessageDialog(null, "Mot de passe incorrect. Veuillez réessayer.", "Connexion", JOptionPane.ERROR_MESSAGE);
-//				System.out.println("ERREUR - Mot de passe incorrect");
-//				placeComponentsFenetre2(panel2);
-//				allerVersFenetre2();	
 			}
 		}
 

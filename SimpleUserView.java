@@ -40,7 +40,7 @@ public class SimpleUserView extends JFrame implements ActionListener
 	//Constructeur
 	public SimpleUserView(User loggedUser)
 	{
-		super("Bienvenue !");
+		super("Lazy'N Yourself");
 		user = loggedUser;
 		
 		// Options de la fenetre
