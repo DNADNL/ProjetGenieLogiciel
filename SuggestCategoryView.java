@@ -143,6 +143,9 @@ public class SuggestCategoryView extends JFrame implements ActionListener {
 		
 		//try {
 			FU.suggestActivityCategory(title, description );
+			new SimpleUserView(FU.getCurrentUser());	
+			dispose();
+			System.out.println("Panel Principal affiché");
 		
 		//}
 		//catch{

@@ -563,9 +563,7 @@ public class JDBConnection {
 			state.executeQuery("INSERT INTO public.\"activity_category_suggestion\" (title,description) VAlUES (\'" + title + "\', \'" + description + "\')");
 			state.close();
 		}
-		catch (SQLException e){
-			System.out.println("ERREUR - JDBConnection.addSuggestionActivityCategory(String title, String description) / : Requête erronée ou absence de valeur de retour (SQLException)");
-		}
+		catch (SQLException e){}
 	}
 	
 	//obtenir toutes les catégories d'activité
@@ -598,9 +596,7 @@ public class JDBConnection {
 			}
 			
 		}
-		catch (SQLException e){
-			System.out.println("ERREUR - JDBConnection.getAllCategoryActivity() / : Requête erronée ou absence de valeur de retour (SQLException)");
-			 
+		catch (SQLException e){		 
 		}
 		return categoryActivityList;
 	}
@@ -637,10 +633,7 @@ public class JDBConnection {
 			}
 			
 		}
-		catch (SQLException e){
-			System.out.println("ERREUR - JDBConnection.getAllSuggestionCategoryActivity() / : Requête erronée ou absence de valeur de retour (SQLException)");
-			 
-		}
+		catch (SQLException e){}
 		return suggestionCategoryActivityList;
 	}
 }
