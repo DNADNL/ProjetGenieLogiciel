@@ -126,14 +126,14 @@ public class SuggestCategoryView extends JFrame implements ActionListener {
 	}
 	public void  suggestButtonClicked(String title, String description){
 		
-		//try {
+		
 			FU.suggestActivityCategory(title, description );
-			new SimpleUserView(FU.getCurrentUser());	
+			new ShowActivityCategoryView(FU.getCurrentUser());	
 			dispose();
 			System.out.println("Panel Principal affiché");
+			JOptionPane.showMessageDialog(null, title +" has been suggested. thank you!", "Category Activity Suggestion", JOptionPane.INFORMATION_MESSAGE);
 		
-		//}
-		//catch{
+		
 			
 		}
 	}
