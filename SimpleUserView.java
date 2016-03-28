@@ -174,7 +174,7 @@ public class SimpleUserView extends JFrame implements ActionListener
 		else if ( source == categorySuggestionButton){
 			new SuggestCategoryView(FU.getCurrentUser());
 			dispose();
-			System.out.println("panel Categorysuggestion affiché");	
+			System.out.println("panel SuggestCategoryView affiché");	
 		}
 		else if (source == deleteGoalButton)
 		{
