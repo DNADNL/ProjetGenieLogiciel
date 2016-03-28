@@ -57,6 +57,7 @@ public class GestionnaireGoal {
 						stringGoalList[i][1]= goalList.get(i).goal_description;
 					}
 				}
+				
 				return stringGoalList;
 				
 			}

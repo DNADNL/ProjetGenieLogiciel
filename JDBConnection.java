@@ -624,7 +624,8 @@ public class JDBConnection {
 			
 			//Select g2.id_goal, goal_title, goal_description, g2.nickname from public."goal" g1, public."goal_list" g2 WHERE g2.id_goal=g1.id_goal AND g2.nickname='SU'
 			
-			ResultSet result = state.executeQuery("SELECT * FROM public.\"product\" WHERE nickname = \'" + nickname + "\'"); 
+			System.out.println("Requête de liste goal : ");
+			ResultSet result = state.executeQuery("SELECT g2.id_goal, goal_title, goal_description, g2.nickname FROM public.\"goal\" g1, public.\"goal_list\" g2 WHERE g2.id_goal=g1.id_goal AND g2.nickname = \'" + nickname + "\'"); 
 
 			//On récupère les MetaData
 			ResultSetMetaData resultMeta = result.getMetaData();
