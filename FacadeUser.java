@@ -9,14 +9,14 @@ public class FacadeUser {
 	GestionnaireGoal GG = GestionnaireGoal.getGG();
 
 	
-	//Constructeur Singleton
+	//Construct Singleton
 	private FacadeUser()
 	{}
 	
-	//Initialisation Singleton
+	//Init Singleton
 	private static FacadeUser singleton;
 	
-	//Accesseur Singleton
+	//Access Singleton
 	public static FacadeUser getFU()
 	{
 		if (singleton==null)

@@ -27,6 +27,8 @@ public class ProductsHandler {
 
 		
 	//Méthodes
+		
+		//Get the product list
 		private void getProductsList(String nickname)
 		{	
 			if (productList==null)
@@ -35,11 +37,13 @@ public class ProductsHandler {
 			}
 		}
 		
+		//Refreshing the product list
 		private void refreshProductsList(String nickname)
 		{	
 				productList = Fact.createProductList(nickname);
 		}
 		
+		//Create a StringProductList from the product list
 		public String[][] getStringProductList(String nickname)
 		{
 			getProductsList(nickname);
@@ -57,6 +61,7 @@ public class ProductsHandler {
 			
 		}
 		
+		//Get the product in the selected cell
 		public void getProduct(String pdt_name, String nickname)
 		{
 			product_selected = Fact.getProduct(pdt_name, nickname);

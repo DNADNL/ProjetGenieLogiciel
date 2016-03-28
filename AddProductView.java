@@ -11,16 +11,17 @@ import javax.swing.JTextField;
 
 public class AddProductView extends JFrame implements ActionListener{
 
-	FacadeUser FU = FacadeUser.getFU();
-	static User user;
+		//Get the Facade
+		FacadeUser FU = FacadeUser.getFU();
+
+		//Create the panel
+		JPanel panel = new JPanel();
 	
-	//Création du panel de navigation
-	JPanel panel = new JPanel();
-	
-	//Création des boutons de "AddProduct"
+		//Create the Buttons "AddProduct"
 		Button returnProductsListButton = new Button("Retour",540, 10, 150, 30);
 		Button validateAddProductButton = new Button("<html>Ajouter<br> Produit</html>",275,350,150,50);
 		
+		//Create the Textfields
 		JTextField nameAddProduct = new JTextField("nom produit");
 		JTextArea briefDescAddProduct = new JTextArea("Brief Description");
 		JTextArea longDescAddProduct = new JTextArea("Long Description");
@@ -29,24 +30,22 @@ public class AddProductView extends JFrame implements ActionListener{
 		
 		public AddProductView(User loggedUser)
 		{
-			super("Bienvenue !");
-			user = loggedUser;
+			super("Lazy'N Yourself");
 			
-			// Options de la fenetre
+			// Frame config
 			this.setSize(700,700);
 			this.setLocationRelativeTo(null);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setResizable(false);	
 			
-			// Construction du panel principal
+			// Panel construction
 			placeComponentsAddProduct(panel);
 			
-			// Choix du panel
 			setContentPane(panel);
-			
 			setVisible(true);
 		}
 		
+		//Method to construct the panel
 		private void placeComponentsAddProduct(JPanel panel)
 		{
 			panel.removeAll();
@@ -80,7 +79,6 @@ public class AddProductView extends JFrame implements ActionListener{
 			
 			longDescAddProduct.setBounds(270, 310, 160, 30);
 			panel.add(longDescAddProduct);
-				//
 			
 			// Labels
 			JLabel nameLabel = new JLabel("Nom");
@@ -133,21 +131,30 @@ public class AddProductView extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		Object source = e.getSource();
+		//The seller has chosen to return
 		if (source == returnProductsListButton)
 		{
+			//Return to the ProductListView
 			new ProductsListView(FU.getCurrentUser());	
 			dispose();
 			System.out.println("Panel ProductsList affiché");
 		}
+		//The seller has chosen to add a product
 		else if (source == validateAddProductButton)
 		{
+			//We get all the needed informations from the TextFields
 			String nickname = FU.getCurrentUser().nicknameUser;
 			String pdt_name = nameAddProduct.getText();
 			String pdt_briefDesc = briefDescAddProduct.getText();
 			String pdt_longDesc = longDescAddProduct.getText();
 			int pdt_quantity = Integer.parseInt(quantityAddProduct.getText());
 			int pdt_price = Integer.parseInt(priceAddProduct.getText());
+			
+			//Call the function to add a product
 			FU.addProduct(nickname, pdt_name, pdt_quantity, pdt_price, pdt_briefDesc, pdt_longDesc);
+			System.out.println("Produit ajouté");
+			
+			//Return to the ProductListView
 			new ProductsListView(FU.getCurrentUser());	
 			dispose();
 		}

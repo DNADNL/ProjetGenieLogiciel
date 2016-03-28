@@ -9,22 +9,27 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class DeleteProductView extends JFrame implements ActionListener{
-
-	FacadeUser FU = FacadeUser.getFU();
-	static User user;
+	
 	static String pdt_name;
 	
-	//Création du panel de navigation
-	JPanel panel = new JPanel();
+	//Get the Facade
+			FacadeUser FU = FacadeUser.getFU();
+			
+			
+
+	//Create the panel
+			JPanel panel = new JPanel();
 	
-	//Création des boutons de "DeleteProduct"
+
+	
+	//Create the Buttons for "DeleteProduct"
 	Button returnProductsListButton = new Button("Retour",540, 10, 150, 30);
 		Button validateDeleteProductButton = new Button("<html>Supprimer<br> Produit</html>",275,350,150,50);
 		
 		public DeleteProductView(User loggedUser, String product_selected)
 		{
 			super("Bienvenue !");
-			user = loggedUser;
+
 			pdt_name = product_selected;
 			
 			// Options de la fenetre
