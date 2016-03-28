@@ -10,40 +10,37 @@ import javax.swing.JPanel;
 
 public class UsersHandlerView extends JFrame implements ActionListener{
 	
-	FacadeUser FU = FacadeUser.getFU();
-	static User user;
+	//Get the Facade
+			FacadeUser FU = FacadeUser.getFU();
+
+	//Create the panel
+			JPanel panel = new JPanel();
 	
-	//Création du panel de navigation
-		JPanel panel = new JPanel();
-	
-	//Création des boutons de "UsersHandler"
+	//Create the Buttons for "UsersHandler"
 		Button returnAdminButton = new Button("Retour",540, 10, 150, 30);
 		Button addUserButton = new Button("Ajouter", 250, 270, 200, 30);
 		Button deleteUserButton = new Button("Supprimer",250, 310, 200, 30);
 		Button modifyUserButton = new Button("Modifier",250, 350, 200, 30);
 		
-		public UsersHandlerView(User loggedUser)
+		public UsersHandlerView()
 		{
-			super("Bienvenue !");
-			user = loggedUser;
+			super("Lazy'N Yourself");
 			
-			// Options de la fenetre
+			// Frame Config
 			this.setSize(700,700);
 			this.setLocationRelativeTo(null);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setResizable(false);	
 			
-			// Construction du panel principal
+			// Construct the panel
 			placeComponentsUsersHandler(panel);
 			
-			// Choix du panel
 			setContentPane(panel);
-			
 			setVisible(true);
 		}
 		
 		
-		
+		//Method to construct the panel
 		private void placeComponentsUsersHandler(JPanel panel) {
 
 		  	panel.removeAll();
@@ -52,7 +49,7 @@ public class UsersHandlerView extends JFrame implements ActionListener{
 			Font font = new Font("Courier", Font.BOLD, 15);
 			
 			//Ajout de l'étiquette "Page de xxx"
-			JLabel idLabel = new JLabel("<html>Page de <br>" + user.nicknameUser + "</html>");
+			JLabel idLabel = new JLabel("<html>Page de <br>" + FU.getCurrentUser().nicknameUser + "</html>");
 			idLabel.setBounds(10, 10, 150, 50);
 			idLabel.setFont(font);
 			idLabel.setForeground(Color.BLACK);
@@ -88,30 +85,34 @@ public class UsersHandlerView extends JFrame implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+
 			Object source = e.getSource();
 			if (source == returnAdminButton)
 			{
+				//Return to LoginView
+				new AdminView();
 				dispose();
-				new AdminView(FU.getCurrentUser());
 				System.out.println("Panel Admin affiché");
 			}
 			else if (source == deleteUserButton)
 			{
-				dispose();
+				//Go to DeleteUserView
 				new DeleteUserView(FU.getCurrentUser());
+				dispose();
 				System.out.println("Panel DeleteUser affiché");
 			}
 			else if (source == modifyUserButton)
 			{
-				dispose();
+				//Go to ModifyUserView
 				new ModifyUserView(FU.getCurrentUser());
+				dispose();				
 				System.out.println("Panel ModifyUser affiché");
 			}
 			else if (source == addUserButton)
 			{
-				dispose();
-				new AddUserView(FU.getCurrentUser());
+				//Go to AddUserView
+				new AddUserView();
+				dispose();			
 				System.out.println("Panel AddUser affiché");
 			}
 			

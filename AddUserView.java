@@ -14,38 +14,39 @@ import javax.swing.JTextField;
 
 public class AddUserView  extends JFrame implements ActionListener{
 	
+	//Get the Facade
 	FacadeUser FU = FacadeUser.getFU();
-	static User user;
+
+	//Create the panel
+	JPanel panel = new JPanel();
 	
-	//Création du panel de navigation
-			JPanel panel = new JPanel();
-	
-	//création du bouton pour ajouter un utilisateur et des champs à rentrer
+	//Create the button for AddUserView
 	Button returnUsersButton = new Button("Retour", 540, 10, 150, 30);
 	Button validateAddUserButton = new Button("Ajouter", 250, 270, 200, 30);
 		
+		//Create the Textfields for AddUserView
 		JTextField addUserNickname = new JTextField("pseudo");
 		JPasswordField addUserPassword = new JPasswordField("mot_de_passe");
 		JTextField addUserEMail = new JTextField("e-mail");
+		
+		//Create the combobox for AddUserView
 		JComboBox<String> addUserRole = new JComboBox<String>();
 		
-		public AddUserView(User loggedUser)
+		public AddUserView()
 		{
-			super("Bienvenue !");
-			user = loggedUser;
+			super("Lazy'N Yourself");
 			
-			// Options de la fenetre
+			// Frame Config
 			this.setSize(700,700);
 			this.setLocationRelativeTo(null);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setResizable(false);	
 			
-			// Construction du panel principal
+			// Construct the panel
 			placeComponentsAddUser(panel);
 			
-			// Choix du panel
+
 			setContentPane(panel);
-			
 			setVisible(true);
 		}
 
@@ -58,7 +59,7 @@ public class AddUserView  extends JFrame implements ActionListener{
 			Font fontAdvice = new Font("Courier", Font.ITALIC, 14);
 			
 			//Ajout de l'étiquette "Page de xxx"
-			JLabel idLabel = new JLabel("<html>Page de <br>" + user.nicknameUser + "</html>");
+			JLabel idLabel = new JLabel("<html>Page de <br>" + FU.getCurrentUser().nicknameUser + "</html>");
 			idLabel.setBounds(10, 10, 150, 50);
 			idLabel.setFont(font);
 			idLabel.setForeground(Color.BLACK);
@@ -117,7 +118,7 @@ public class AddUserView  extends JFrame implements ActionListener{
 			}
 			else if (source == returnUsersButton)
 			{
-				new UsersHandlerView(FU.getCurrentUser());	
+				new UsersHandlerView();	
 				dispose();
 				System.out.println("Panel Admin affiché");
 			}

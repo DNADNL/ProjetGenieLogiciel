@@ -109,7 +109,7 @@ public class CartView extends JFrame implements ActionListener
 		else if (source == adminButton)
 		{
 			
-			new AdminView(FU.getCurrentUser());
+			new AdminView();
 			dispose();
 			System.out.println("Panel Admin affiché");
 		}

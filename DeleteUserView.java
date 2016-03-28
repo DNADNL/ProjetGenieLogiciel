@@ -112,7 +112,7 @@ public class DeleteUserView  extends JFrame implements ActionListener{
 			}
 			else if (source == returnUsersButton)
 			{
-				new UsersHandlerView(FU.getCurrentUser());	
+				new UsersHandlerView();	
 				dispose();
 				System.out.println("Panel Admin affiché");
 			}

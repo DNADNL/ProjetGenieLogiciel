@@ -160,7 +160,7 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 			Object source = e.getSource();
 			if (source == returnUsersButton)
 			{
-				new UsersHandlerView(FU.getCurrentUser());	
+				new UsersHandlerView();	
 				dispose();
 				System.out.println("Panel Admin affiché");
 			}

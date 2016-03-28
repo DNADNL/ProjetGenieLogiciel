@@ -66,11 +66,11 @@ public class SuggestionCategoryActivityView extends JFrame implements ActionList
 		addSuggestionActivityCategoryPanelTitle.setText("<html>Suggestions de Catégories d'Activité</html>");
 		panel.add(addSuggestionActivityCategoryPanelTitle);		
 		
-		//buttons
+		//Buttons
 		returnAdminButton.addActionListener(this);
 		panel.add(returnAdminButton);
-		// List
 		
+		// List
 		Object[][] donnees =  {{"",""}};
 		
 		//donnees = FU.getProductList();
@@ -92,7 +92,7 @@ public class SuggestionCategoryActivityView extends JFrame implements ActionList
 		// TODO Auto-generated method stub
 		
 			dispose();
-			new AdminView(FU.getCurrentUser());
+			new AdminView();
 			System.out.println("Panel Admin affiché");
 		}
 }
