@@ -13,7 +13,7 @@ public class ProductBD extends Product{
 		this.user_nickname = null;
 	}
 	
-	ProductBD(String nickname, String pdtName, Integer pdtQuantity, Float pdtPrice, String briefDesc, String longDesc)
+	ProductBD(String nickname, String pdtName, Integer pdtQuantity, Integer pdtPrice, String briefDesc, String longDesc)
 	{
 		this.pdt_name = pdtName;
 		this.price = pdtPrice;
@@ -24,7 +24,7 @@ public class ProductBD extends Product{
 		this.longDesc = longDesc;
 	}
 	
-	public static void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Float pdt_price, String pdt_briefDesc, String pdt_longDesc)
+	public static void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Integer pdt_price, String pdt_briefDesc, String pdt_longDesc)
 	{
 		jdbc.createProduct(nickname,pdt_name,pdt_quantity,pdt_price,pdt_briefDesc,pdt_longDesc);
 	}

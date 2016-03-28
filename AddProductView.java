@@ -146,8 +146,10 @@ public class AddProductView extends JFrame implements ActionListener{
 			String pdt_briefDesc = briefDescAddProduct.getText();
 			String pdt_longDesc = longDescAddProduct.getText();
 			int pdt_quantity = Integer.parseInt(quantityAddProduct.getText());
-			Float pdt_price = Float.parseFloat(priceAddProduct.getText());
+			int pdt_price = Integer.parseInt(priceAddProduct.getText());
 			FU.addProduct(nickname, pdt_name, pdt_quantity, pdt_price, pdt_briefDesc, pdt_longDesc);
+			new ProductsListView(FU.getCurrentUser());	
+			dispose();
 		}
 		
 		

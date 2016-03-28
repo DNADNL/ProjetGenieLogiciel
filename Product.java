@@ -6,7 +6,7 @@ public class Product {
 	String briefDesc;
 	String longDesc;
 	Integer quantity;
-	Float price;
+	Integer price;
 	String user_nickname;
 	Integer id_category;
 

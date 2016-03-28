@@ -66,14 +66,14 @@ public class ProductDetailView extends JFrame implements ActionListener{
 					briefDescLabel.setForeground(Color.BLACK);
 					panel.add(briefDescLabel);
 					
-					JLabel priceLabel = new JLabel(FU.getCurrentProduct().price.toString());
+					JLabel priceLabel = new JLabel(FU.getCurrentProduct().price.toString() + "€");
 					priceLabel.setBounds(160, 210, 90, 30);
 					priceLabel.setFont(font);
 					priceLabel.setForeground(Color.BLACK);
 					panel.add(priceLabel);
 					
-					JLabel quantityLabel = new JLabel(FU.getCurrentProduct().quantity.toString());
-					quantityLabel.setBounds(160, 250, 90, 30);
+					JLabel quantityLabel = new JLabel("quantity : " + FU.getCurrentProduct().quantity.toString());
+					quantityLabel.setBounds(160, 250, 200, 30);
 					quantityLabel.setFont(font);
 					quantityLabel.setForeground(Color.BLACK);
 					panel.add(quantityLabel);

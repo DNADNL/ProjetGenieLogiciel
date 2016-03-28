@@ -218,7 +218,7 @@ public class JDBConnection {
 				
 				product.quantity=Integer.parseInt(result.getObject(3).toString());
 
-				product.price= Float.parseFloat(result.getObject(4).toString());
+				product.price= Integer.parseInt(result.getObject(4).toString());
 
 				product.user_nickname= result.getObject(5).toString();
 
@@ -244,6 +244,7 @@ public class JDBConnection {
 		return productList;
 	}
 	
+	//Obtenir le produit dont le nom est spécifié
 	public Product getProduct(String nickname, String pdtName) throws UserNotInTheDatabaseException
 	{
 		Product product = new ProductBD(pdtName);
@@ -259,18 +260,18 @@ public class JDBConnection {
 			//On récupère les MetaData
 			ResultSetMetaData resultMeta = result.getMetaData();
 	         
-	        System.out.println("test");
+	        
 			while(result.next())
 			{				
 				
 				product.pdt_name=result.getObject(2).toString();
-				System.out.println("test");
+				
 				product.briefDesc=result.getObject(7).toString();
 				
 				product.longDesc=result.getObject(8).toString();
 				product.quantity=Integer.parseInt(result.getObject(3).toString());
 				
-				product.price= Float.parseFloat(result.getObject(4).toString());
+				product.price= Integer.parseInt(result.getObject(4).toString());
 				
 				product.user_nickname= result.getObject(5).toString();
 				//product.id_category= Integer.parseInt(result.getObject(6).toString());
@@ -295,16 +296,10 @@ public class JDBConnection {
 		return product;
 	}
 
-	public void createProduct(String nickname, String pdt_name, Integer pdt_quantity, Float pdt_price, String pdt_briefDesc, String pdt_longDesc)
+	public void createProduct(String nickname, String pdt_name, Integer pdt_quantity, Integer pdt_price, String pdt_briefDesc, String pdt_longDesc)
 	{
 		try 
 		{
-			System.out.println(nickname);
-			System.out.println(pdt_name);
-			System.out.println(pdt_quantity);
-			System.out.println(pdt_price);
-			System.out.println(pdt_briefDesc);
-			System.out.println(pdt_longDesc);
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
 			//Exécution de la requête d'insertion de l'utilisateur
@@ -315,7 +310,6 @@ public class JDBConnection {
 			state.executeQuery("INSERT INTO public.\"product\" (product_name, quantity, price, nickname, brief_desc, long_desc) VALUES (\'"  + pdt_name + "\', \'" + pdt_quantity + "\', \'"  + pdt_price + "\', \'"  + nickname + "\', \'"  + pdt_briefDesc + "\', \'" + pdt_longDesc + "\')");   
 
 			state.close();
-			System.out.println("test2");
 	         
 	    } 
 		catch (SQLException e) {}
@@ -328,7 +322,9 @@ public class JDBConnection {
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
 			//Exécution de la requête d'insertion de l'utilisateur
-			state.executeQuery("DELETE FROM public.\"product\" WHERE product_name=\'"  + pdt_name + "\',nickname =\'"  + nickname + "\' ;");   
+			System.out.println("test3");
+			state.executeQuery("DELETE FROM public.\"product\" WHERE product_name=\'"  + pdt_name + "\' AND nickname =\'"  + nickname + "\'");   
+			System.out.println("test4");
 			state.close();
 	         
 	    } 

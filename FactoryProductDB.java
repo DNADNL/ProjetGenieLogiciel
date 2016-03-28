@@ -48,7 +48,7 @@ public class FactoryProductDB extends AbstractFactory{
 		ProductBD.deleteProduct(pdt_product, nickname);
 	}
 	
-	public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Float pdt_price,
+	public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Integer pdt_price,
 			String pdt_briefDesc, String pdt_longDesc) 
 	{
 		ProductBD.addProduct(nickname, pdt_name, pdt_quantity, pdt_price, pdt_briefDesc, pdt_longDesc);

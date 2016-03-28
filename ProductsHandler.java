@@ -65,19 +65,17 @@ public class ProductsHandler {
 
 		public void deleteProduct(String pdt_product, String nickname) throws UserNotInTheDatabaseException , UserDeletedException 
 		{
-
-				Fact.getProduct(pdt_product, nickname);	
 				Fact.deleteProduct(pdt_product, nickname);
 				refreshProductsList(nickname);
 				throw new UserDeletedException(pdt_product);		
 		}
 
 
-		public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Float pdt_price,
+		public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Integer pdt_price,
 				String pdt_briefDesc, String pdt_longDesc) {
 				
 			Fact.addProduct(nickname,pdt_name,pdt_quantity,pdt_price,pdt_briefDesc, pdt_longDesc);
-			//refreshProductsList(nickname);
+			refreshProductsList(nickname);
 		}
 		
 
