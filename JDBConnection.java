@@ -226,27 +226,10 @@ public class JDBConnection {
 				
 				product.briefDesc=result.getObject(7).toString();
 				product.longDesc=result.getObject(8).toString();
-				
-				
-				System.out.println(product.pdt_name);
-				System.out.println(product.user_nickname);
-				System.out.println(product.price);
-				System.out.println(product.quantity);
-				System.out.println(product.id_category);
-				
+						
 				productList.add(product);
 				
-				System.out.println(product.pdt_name);
-
-			
 				x++;
-				
-	    	
-//				for(int i = 1; i <= resultMeta.getColumnCount()-1; i++)
-//	        	{
-//	          		System.out.print("\t" + result.getObject(i).toString() + "\t |");
-//	        	}
-//	        	System.out.println("\n---------------------------------");
 
 			}
 
@@ -263,7 +246,7 @@ public class JDBConnection {
 	
 	public Product getProduct(String nickname, String pdtName) throws UserNotInTheDatabaseException
 	{
-		Product product = null;
+		Product product = new ProductBD(pdtName);
 		
 		try 
 		{
@@ -276,25 +259,22 @@ public class JDBConnection {
 			//On récupère les MetaData
 			ResultSetMetaData resultMeta = result.getMetaData();
 	         
-	         
+	        System.out.println("test");
 			while(result.next())
-			{
-				Integer x=0;
-				product.pdt_name=result.getObject(2).toString();
-				//product.briefDesc=result.getObject(2).toString();
-				//product.longDesc=result.getObject(3).toString();
-				product.quantity=Integer.parseInt(result.getObject(3).toString());
-				product.price= Float.parseFloat(result.getObject(4).toString());
-				product.user_nickname= result.getObject(5).toString();
-				product.id_category= Integer.parseInt(result.getObject(6).toString());
+			{				
 				
-				x++;
-	    	
-				for(int i = 1; i <= resultMeta.getColumnCount(); i++)
-	        	{
-	          		System.out.print("\t" + result.getObject(i).toString() + "\t |");
-	        	}
-	        	System.out.println("\n---------------------------------");
+				product.pdt_name=result.getObject(2).toString();
+				System.out.println("test");
+				product.briefDesc=result.getObject(7).toString();
+				
+				product.longDesc=result.getObject(8).toString();
+				product.quantity=Integer.parseInt(result.getObject(3).toString());
+				
+				product.price= Float.parseFloat(result.getObject(4).toString());
+				
+				product.user_nickname= result.getObject(5).toString();
+				//product.id_category= Integer.parseInt(result.getObject(6).toString());
+	
 
 			}
 

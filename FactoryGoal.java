@@ -34,7 +34,8 @@ public class FactoryGoal extends AbstractFactory {
 	}
 
 	@Override
-	public void getProduct(String pdt_product, String nickname) {
+	public Product getProduct(String pdt_product, String nickname) {
+		return null;
 		// TODO Auto-generated method stub
 
 	}

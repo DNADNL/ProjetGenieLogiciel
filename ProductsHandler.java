@@ -3,6 +3,7 @@ import java.sql.SQLException;
 
 public class ProductsHandler {
 	
+	Product product_selected;
 	ArrayList<Product> productList;
 	String [][] stringProductList;
 	AbstractFactory Fact = new FactoryProductDB();
@@ -54,6 +55,11 @@ public class ProductsHandler {
 			}
 			return stringProductList;
 			
+		}
+		
+		public void getProduct(String pdt_name, String nickname)
+		{
+			product_selected = Fact.getProduct(pdt_name, nickname);
 		}
 
 

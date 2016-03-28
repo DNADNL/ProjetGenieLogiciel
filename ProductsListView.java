@@ -134,7 +134,8 @@ public class ProductsListView extends JFrame implements ActionListener{
 				if (tableau.getSelectedRow() != -1)
 				{
 					String product_selected = (tableau.getValueAt(tableau.getSelectedRow(), 0).toString());
-					new ProductDetailView(FU.getCurrentUser(), product_selected);
+					FU.modifyCurrentProduct(product_selected, FU.getCurrentUser().nicknameUser);
+					new ProductDetailView();
 					dispose();
 					System.out.println("Panel Details Product affiché");
 				}

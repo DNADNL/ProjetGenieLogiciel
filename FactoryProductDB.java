@@ -37,15 +37,22 @@ public class FactoryProductDB extends AbstractFactory{
 	}
 
 
-	public void getProduct(String pdt_product, String nickname) 
+	public Product getProduct(String pdtName, String nickname) 
 	{
-
+		return ProductBD.getProduct(nickname, pdtName);
 	}
 
 
 	public void deleteProduct(String pdt_product, String nickname) 
 	{
 		ProductBD.deleteProduct(pdt_product, nickname);
+	}
+	
+	public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Float pdt_price,
+			String pdt_briefDesc, String pdt_longDesc) 
+	{
+		ProductBD.addProduct(nickname, pdt_name, pdt_quantity, pdt_price, pdt_briefDesc, pdt_longDesc);
+		
 	}
 
 	@Override
@@ -132,13 +139,7 @@ public class FactoryProductDB extends AbstractFactory{
 		
 	}
 
-	@Override
-	public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Float pdt_price,
-			String pdt_briefDesc, String pdt_longDesc) 
-	{
-		ProductBD.addProduct(nickname, pdt_name, pdt_quantity, pdt_price, pdt_briefDesc, pdt_longDesc);
-		
-	}
+	
 
 
 	

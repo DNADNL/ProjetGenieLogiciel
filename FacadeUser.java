@@ -56,6 +56,16 @@ public class FacadeUser {
 		PH.deleteProduct(pdt_product, GU.getCurrentUser().nicknameUser);
 	}
 	
+	public void modifyCurrentProduct(String nom_produit, String nickname)
+	{
+		PH.getProduct(nom_produit, nickname);
+	}
+	
+	public Product getCurrentProduct()
+	{
+		return PH.product_selected;
+	}
+	
 	// Méthodes Admin
 	public void addUser(String nick, String pass, String email) throws UserAlreadyExistsException, UserCreatedException {
 		GU.addUser(nick, pass, email);

@@ -13,19 +13,33 @@ public class ProductBD extends Product{
 		this.user_nickname = null;
 	}
 	
+	ProductBD(String nickname, String pdtName, Integer pdtQuantity, Float pdtPrice, String briefDesc, String longDesc)
+	{
+		this.pdt_name = pdtName;
+		this.price = pdtPrice;
+		this.id_category =null;
+		this.quantity = pdtQuantity;
+		this.user_nickname = nickname;
+		this.briefDesc = briefDesc;
+		this.longDesc = longDesc;
+	}
+	
 	public static void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Float pdt_price, String pdt_briefDesc, String pdt_longDesc)
 	{
 		jdbc.createProduct(nickname,pdt_name,pdt_quantity,pdt_price,pdt_briefDesc,pdt_longDesc);
 	}
 
-	private void createProduct(String nickname ,String pdtName)
+	public static Product getProduct(String nickname ,String pdtName)
 	{
+		Product product = null;
 		try {
-			jdbc.getProduct(nickname, pdtName);
+			product = jdbc.getProduct(nickname, pdtName);
 		} catch (UserNotInTheDatabaseException e) {
 			
 			e.printStackTrace();
 		}
+		
+		return product;
 	}
 	
 	static public ArrayList<Product> createProductList(String nickname)
