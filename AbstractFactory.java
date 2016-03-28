@@ -31,4 +31,6 @@ public abstract class AbstractFactory
 	abstract public void deleteUserRoleSeller(String nickname);
 	abstract public void deleteUserRoleSimpleUser(String nickname);
 	abstract public void deleteUserRoleAdmin(String nickname);
+	abstract public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Float pdt_price,
+			String pdt_briefDesc, String pdt_longDesc);
 }

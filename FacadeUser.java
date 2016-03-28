@@ -121,6 +121,13 @@ public class FacadeUser {
 	}
 
 
+	public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Float pdt_price,
+			String pdt_briefDesc, String pdt_longDesc) 
+	{
+		PH.addProduct(nickname, pdt_name, pdt_quantity, pdt_price, pdt_briefDesc, pdt_longDesc);
+	}
+
+
 	
 
 

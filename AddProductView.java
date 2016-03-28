@@ -23,6 +23,7 @@ public class AddProductView extends JFrame implements ActionListener{
 		
 		JTextField nameAddProduct = new JTextField("nom produit");
 		JTextArea briefDescAddProduct = new JTextArea("Brief Description");
+		JTextArea longDescAddProduct = new JTextArea("Long Description");
 		JTextField quantityAddProduct = new JTextField("0");
 		JTextField priceAddProduct = new JTextField("0");
 		
@@ -71,6 +72,14 @@ public class AddProductView extends JFrame implements ActionListener{
 			briefDescAddProduct.setBounds(270, 140, 160, 60);
 			panel.add(briefDescAddProduct);
 			
+			quantityAddProduct.setBounds(270, 210, 90, 30);
+			panel.add(quantityAddProduct);
+			
+			priceAddProduct.setBounds(270, 250, 90, 30);
+			panel.add(priceAddProduct);
+			
+			longDescAddProduct.setBounds(270, 310, 160, 30);
+			panel.add(longDescAddProduct);
 				//
 			
 			// Labels
@@ -97,6 +106,12 @@ public class AddProductView extends JFrame implements ActionListener{
 			quantityLabel.setFont(font);
 			quantityLabel.setForeground(Color.BLACK);
 			panel.add(quantityLabel);
+			
+			JLabel longDescLabel = new JLabel("<html>Long <br> description</html>");
+			longDescLabel.setBounds(160, 290, 100, 60);
+			longDescLabel.setFont(font);
+			longDescLabel.setForeground(Color.BLACK);
+			panel.add(longDescLabel);
 			
 			
 			
@@ -126,7 +141,13 @@ public class AddProductView extends JFrame implements ActionListener{
 		}
 		else if (source == validateAddProductButton)
 		{
-			
+			String nickname = FU.getCurrentUser().nicknameUser;
+			String pdt_name = nameAddProduct.getText();
+			String pdt_briefDesc = briefDescAddProduct.getText();
+			String pdt_longDesc = longDescAddProduct.getText();
+			int pdt_quantity = Integer.parseInt(quantityAddProduct.getText());
+			Float pdt_price = Float.parseFloat(priceAddProduct.getText());
+			FU.addProduct(nickname, pdt_name, pdt_quantity, pdt_price, pdt_briefDesc, pdt_longDesc);
 		}
 		
 		

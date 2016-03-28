@@ -315,15 +315,22 @@ public class JDBConnection {
 		return product;
 	}
 
-	public void createProduct(String pdt_name, Integer pdt_quantity, Float pdt_price, String nickname, String pdt_briefDesc, String pdt_longDesc)
+	public void createProduct(String nickname, String pdt_name, Integer pdt_quantity, Float pdt_price, String pdt_briefDesc, String pdt_longDesc)
 	{
 		try 
 		{
+			System.out.println(nickname);
+			System.out.println(pdt_name);
+			System.out.println(pdt_quantity);
+			System.out.println(pdt_price);
+			System.out.println(pdt_briefDesc);
+			System.out.println(pdt_longDesc);
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
 			//Exécution de la requête d'insertion de l'utilisateur
-			state.executeQuery("INSERT INTO public.\"product\" (product_name, quantity, price, nickname, brief_desc, long_desc) VALUES (\'"  + pdt_name + "\', \'" + pdt_price + "\', \'"  + pdt_quantity + "\', \'"  + nickname + "\', \'"  + pdt_briefDesc + "\', \'" + pdt_longDesc + "\')");   
+			state.executeQuery("INSERT INTO public.\"product\" (product_name, quantity, price, nickname, brief_desc, long_desc) VALUES (\'"  + pdt_name + "\', \'" + pdt_quantity + "\', \'"  + pdt_price + "\', \'"  + nickname + "\', \'"  + pdt_briefDesc + "\', \'" + pdt_longDesc + "\')");   
 			state.close();
+			System.out.println("test2");
 	         
 	    } 
 		catch (SQLException e) {}
