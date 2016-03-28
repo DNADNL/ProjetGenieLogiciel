@@ -172,7 +172,7 @@ public class SimpleUserView extends JFrame implements ActionListener
 			
 		}
 		else if ( source == showCategoryActivityButton){
-			new ShowActivityCategoryview(FU.getCurrentUser());
+			new ShowActivityCategoryView(FU.getCurrentUser());
 			dispose();
 			System.out.println("panel ShowcategoryActivityView affiché");	
 		}

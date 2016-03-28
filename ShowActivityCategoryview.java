@@ -14,7 +14,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class ShowActivityCategoryview extends JFrame implements  ActionListener {
+public class ShowActivityCategoryView extends JFrame implements  ActionListener {
 	FacadeUser FU = FacadeUser.getFU();
 	static User user;
 	
@@ -28,7 +28,7 @@ public class ShowActivityCategoryview extends JFrame implements  ActionListener 
 	
 	
 	
-	public ShowActivityCategoryview(User loggedUser)
+	public ShowActivityCategoryView(User loggedUser)
 	{
 		super("Bienvenue !");
 		user = loggedUser;
