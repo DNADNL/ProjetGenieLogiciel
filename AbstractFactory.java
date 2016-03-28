@@ -2,11 +2,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
+//Abstract Factory Class
 
 public abstract class AbstractFactory 
 {
 
-	abstract public User getUser(String nickname) throws UserNotInTheDatabaseException;
+	abstract public User getUser(String nickname) throws ObjectNotInTheDatabaseException;
 	abstract public User getUserData(String nickname);
 	abstract public void addUser(String nickname, String password, String email);
 	abstract public void deleteUser(String nick);
@@ -14,7 +15,7 @@ public abstract class AbstractFactory
 	abstract public ArrayList<Product> createProductList(String nickname);
 	abstract public Product getProduct(String pdt_product, String nickname);
 	abstract public void deleteProduct(String pdt_product, String nickname);
-	abstract public ArrayList<CategoryActivity> createCategoryActivityList(String title);
+	abstract public ArrayList<ActivityCategory> createCategoryActivityList(String title);
 	abstract public void suggestActivityCategory(String title,String description);
 	abstract public void getCategoryActivity(String title);
 	
