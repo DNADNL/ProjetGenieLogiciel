@@ -32,6 +32,7 @@ public class GoalDB extends Goal {
 	
 	static public ArrayList<Goal> createGoalList(String nickname)
 	{
+		
 		return jdbc.getGoalList(nickname);
 	}
 
