@@ -20,9 +20,10 @@ public class GestionnaireGoal {
 				return singleton;
 			}
 
-			public void addGoal(String goal_title, String goal_description, String nick) {
+			public void addGoal(String goal_title, String goal_description, String nick)throws GoalCreatedException {
 				// TODO Auto-generated method stub
 				Fact.addGoal(goal_title, goal_description, nick);
+				throw new GoalCreatedException(nick);
 			}
 
 			

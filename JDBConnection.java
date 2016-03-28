@@ -322,6 +322,7 @@ public class JDBConnection {
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
 			//Exécution de la requête d'insertion de l'utilisateur
+			
 			state.executeQuery("INSERT INTO public.\"product\" (product_name, quantity, price, nickname, brief_desc, long_desc) VALUES (\'"  + pdt_name + "\', \'" + pdt_price + "\', \'"  + pdt_quantity + "\', \'"  + nickname + "\', \'"  + pdt_briefDesc + "\', \'" + pdt_longDesc + "\')");   
 			state.close();
 	         
@@ -352,9 +353,21 @@ public class JDBConnection {
 			Statement state = conn.createStatement();
 			//Exécution de la requête d'insertion de l'utilisateur
 			
-			System.out.println(goal_title);
+		
 			state.executeQuery("INSERT INTO public.\"goal\"(goal_title, goal_description) VALUES (\'"  + goal_title + "\', \'" + goal_description + "\')");   
-			
+			state.close();
+	         
+	    } 
+		catch (SQLException e) {}
+	
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+			//Requête pour mettre à jour la table goal_list avec un nickname et l'id_goal de son goal
+
+			state.executeQuery("INSERT INTO public.\"goal_list\" VALUES((SELECT id_goal FROM public.\"goal\" where goal_title =\'" + goal_title + "\'), \'"  + nick + "\')");
 			state.close();
 	         
 	    } 

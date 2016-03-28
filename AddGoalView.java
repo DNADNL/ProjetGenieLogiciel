@@ -127,10 +127,11 @@ public class AddGoalView extends JFrame implements ActionListener
 	
 	public void addUserButtonClicked(String goal_title, String goal_description, String nick)
 	{
-		//Object resultAddUser = null;
-		
+		try{
 		FU.addGoal(goal_title, goal_description, nick);
-		
+		} catch (GoalCreatedException e) {
+			JOptionPane.showMessageDialog(null, goal_title+" a bien été ajouté à la BD !", "Ajout d'un goal", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 
 
