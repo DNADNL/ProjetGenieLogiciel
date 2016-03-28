@@ -32,21 +32,21 @@ public class DeleteProductView extends JFrame implements ActionListener{
 
 			pdt_name = product_selected;
 			
-			// Options de la fenetre
+			// Frame Config
 			this.setSize(700,700);
 			this.setLocationRelativeTo(null);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setResizable(false);	
 			
-			// Construction du panel principal
+			// Panel construction
 			placeComponentsDeleteProduct(panel);
 			
-			// Choix du panel
-			setContentPane(panel);
 			
+			setContentPane(panel);
 			setVisible(true);
 		}
 		
+		//Method to construct the panel
 		private void placeComponentsDeleteProduct(JPanel panel)
 	{
 		panel.removeAll();
@@ -99,20 +99,28 @@ public class DeleteProductView extends JFrame implements ActionListener{
 		
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+
 		Object source = e.getSource();
+		//The seller has chosen to return
 		if (source == returnProductsListButton)
 		{
+			//Return to the ProductListView
 			new ProductsListView(FU.getCurrentUser());	
 			dispose();
 			System.out.println("Panel ProductsList affiché");
 		}
+		//The seller has chosen to delete the product
 		else if (source==validateDeleteProductButton)
 		{
 			deleteProductButtonClicked(pdt_name);
+			
+			//Return to the ProductListView
+			new ProductsListView(FU.getCurrentUser());	
+			dispose();
 		}
 	}
 	
+	//Handle the removal of the product from the Database
 	public void deleteProductButtonClicked(String pdt_name)
 	{
 		try {
@@ -122,9 +130,6 @@ public class DeleteProductView extends JFrame implements ActionListener{
 
 		} catch (UserDeletedException e) {
 			JOptionPane.showMessageDialog(null, pdt_name+" a bien été supprimé de la BD !", "Suppression de produit", JOptionPane.INFORMATION_MESSAGE);
-			new ProductsListView(FU.getCurrentUser());	
-			dispose();
-
 		}
 	}
 }

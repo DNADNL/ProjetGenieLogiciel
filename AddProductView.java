@@ -129,7 +129,7 @@ public class AddProductView extends JFrame implements ActionListener{
 		
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+
 		Object source = e.getSource();
 		//The seller has chosen to return
 		if (source == returnProductsListButton)

@@ -6,6 +6,8 @@ public class ProductsHandler {
 	Product product_selected;
 	ArrayList<Product> productList;
 	String [][] stringProductList;
+	
+	//Get the Factory
 	AbstractFactory Fact = new FactoryProductDB();
 	
 	//Constructeur Singleton
@@ -28,7 +30,7 @@ public class ProductsHandler {
 		
 	//Méthodes
 		
-		//Get the product list
+		//Get the product list for the seller
 		private void getProductsList(String nickname)
 		{	
 			if (productList==null)
@@ -61,13 +63,13 @@ public class ProductsHandler {
 			
 		}
 		
-		//Get the product in the selected cell
+		//Get the product for the seller
 		public void getProduct(String pdt_name, String nickname)
 		{
 			product_selected = Fact.getProduct(pdt_name, nickname);
 		}
 
-
+		//Delete a product from the database
 		public void deleteProduct(String pdt_product, String nickname) throws UserNotInTheDatabaseException , UserDeletedException 
 		{
 				Fact.deleteProduct(pdt_product, nickname);
@@ -75,7 +77,7 @@ public class ProductsHandler {
 				throw new UserDeletedException(pdt_product);		
 		}
 
-
+		//Add a product to the Database
 		public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Integer pdt_price,
 				String pdt_briefDesc, String pdt_longDesc) {
 				

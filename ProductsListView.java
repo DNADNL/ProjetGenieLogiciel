@@ -11,9 +11,10 @@ import javax.swing.JTable;
 
 public class ProductsListView extends JFrame implements ActionListener{
 	
-	FacadeUser FU = FacadeUser.getFU();
-	
-	//Création du panel de navigation
+	//Get the Facade
+		FacadeUser FU = FacadeUser.getFU();
+
+	//Create the panel
 		JPanel panel = new JPanel();
 	
 	//Création des boutons de "ProductsList"
@@ -26,23 +27,22 @@ public class ProductsListView extends JFrame implements ActionListener{
 		
 		public ProductsListView(User loggedUser)
 		{
-			super("Bienvenue !");
+			super("Lazy'N Yourself");
 			
-			// Options de la fenetre
+			// Frame Config
 			this.setSize(700,700);
 			this.setLocationRelativeTo(null);
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setResizable(false);	
 			
-			// Construction du panel principal
+			// Construct the panel
 			placeComponentsProductsList(panel);
 			
-			// Choix du panel
 			setContentPane(panel);
-			
 			setVisible(true);
 		}
 		
+		//Method to construct the panel
 		private void placeComponentsProductsList(JPanel panel)
 		{
 			panel.removeAll();
@@ -104,37 +104,50 @@ public class ProductsListView extends JFrame implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+
 			Object source = e.getSource();
+			//The seller has chosen to return
 			if (source == returnButton)
 			{
+				//Return to the SellerView
 				new SellerView(FU.getCurrentUser());	
 				dispose();
 				System.out.println("Panel Seller affiché");
 			}
+			//The seller has chosen to add a product
 			else if (source == addProductButton)
 			{
+				//Go to the AddProductView
 				new AddProductView(FU.getCurrentUser());
 				dispose();
 				System.out.println("Panel AddProduct affiché");
 			}
+			//The seller has chosen to delete the selected product
 			else if (source == deleteProductButton)
 			{
 				if (tableau.getSelectedRow() != -1)
 				{
+					//Get the information for the product in the selected cell
 					String product_selected = (tableau.getValueAt(tableau.getSelectedRow(), 0).toString());
+					//Go to the AddProductView
 					new DeleteProductView(FU.getCurrentUser(), product_selected);
 					dispose();
 					System.out.println("Panel DeleteProduct affiché");
 				}
 				
 			}
+			//The seller has chosen to see the product
 			else if (source == productDetailsButton)
 			{
 				if (tableau.getSelectedRow() != -1)
 				{
+					//Get the information for the product in the selected cell
 					String product_selected = (tableau.getValueAt(tableau.getSelectedRow(), 0).toString());
+					
+					//Modify the product selected in ProductsHandler
 					FU.modifyCurrentProduct(product_selected, FU.getCurrentUser().nicknameUser);
+					
+					//Go to the ProductDetailView
 					new ProductDetailView();
 					dispose();
 					System.out.println("Panel Details Product affiché");
