@@ -12,6 +12,11 @@ public class ProductBD extends Product{
 		this.quantity = null;
 		this.user_nickname = null;
 	}
+	
+	public static void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Float pdt_price, String pdt_briefDesc, String pdt_longDesc)
+	{
+		jdbc.createProduct(nickname,pdt_name,pdt_quantity,pdt_price,pdt_briefDesc,pdt_longDesc);
+	}
 
 	private void createProduct(String nickname ,String pdtName)
 	{

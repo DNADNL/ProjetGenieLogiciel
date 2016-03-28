@@ -53,11 +53,18 @@ public class SuggestionCategoryActivityView extends JFrame implements ActionList
 		Font font = new Font("Courier", Font.BOLD, 15);
 				
 		//Ajout de l'étiquette "Page de xxx"
-		JLabel idLabel = new JLabel("<html>Page de <br>" + user.nicknameUser + "</html>");
+		JLabel idLabel = new JLabel("<html>Bonjour, <br>" + user.nicknameUser + " !</html>");
 		idLabel.setBounds(10, 10, 150, 50);
 		idLabel.setFont(font);
 		idLabel.setForeground(Color.BLACK);
 		panel.add(idLabel);
+		
+		//Ajout de l'étiquette ">Suggestion de Catégorie d'Activité"
+		JLabel addSuggestionActivityCategoryPanelTitle = new JLabel();
+		addSuggestionActivityCategoryPanelTitle.setBounds(150, 30, 500, 100);
+		addSuggestionActivityCategoryPanelTitle.setFont(fontTitre);					
+		addSuggestionActivityCategoryPanelTitle.setText("<html>Suggestions de Catégories d'Activité</html>");
+		panel.add(addSuggestionActivityCategoryPanelTitle);		
 		
 		//buttons
 		returnAdminButton.addActionListener(this);

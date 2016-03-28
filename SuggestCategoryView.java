@@ -108,9 +108,9 @@ public class SuggestCategoryView extends JFrame implements ActionListener {
 		// Titre
 		
 		JLabel productsListTitle = new JLabel();
-		productsListTitle.setBounds(250, 30, 300, 100);
+		productsListTitle.setBounds(150, 30, 500, 100);
 		productsListTitle.setFont(fontTitre);					
-		productsListTitle.setText("Liste des catégories d'activités");
+		productsListTitle.setText("Suggérer des Catégories d'Activité");
 		panel.add(productsListTitle);
 
 		// Background

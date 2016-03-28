@@ -65,6 +65,14 @@ public class ProductsHandler {
 				refreshProductsList(nickname);
 				throw new UserDeletedException(pdt_product);		
 		}
+
+
+		public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Float pdt_price,
+				String pdt_briefDesc, String pdt_longDesc) {
+				
+			Fact.addProduct(nickname,pdt_name,pdt_quantity,pdt_price,pdt_briefDesc, pdt_longDesc);
+			//refreshProductsList(nickname);
+		}
 		
 
 }

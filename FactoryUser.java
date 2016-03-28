@@ -115,4 +115,11 @@ public class FactoryUser extends AbstractFactory {
 	public void deleteUserRoleAdmin(String nickname) {
 		UserBD.deleteUserRoleAdmin(nickname);
 	}
+
+	@Override
+	public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Float pdt_price,
+			String pdt_briefDesc, String pdt_longDesc) {
+		// TODO Auto-generated method stub
+		
+	}
 }
