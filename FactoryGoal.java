@@ -136,6 +136,12 @@ public class FactoryGoal extends AbstractFactory {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public ArrayList<Goal> createGoalList(String nickname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

@@ -138,6 +138,12 @@ public class FacadeUser {
 	}
 
 
+	public String[][] getStringGoalList() {
+		// TODO Auto-generated method stub
+		return GG.getStringGoalList(GU.currentUser.nicknameUser);
+	}
+
+
 	
 
 

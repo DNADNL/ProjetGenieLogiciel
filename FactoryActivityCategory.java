@@ -178,4 +178,12 @@ public class FactoryActivityCategory extends AbstractFactory {
 		
 	}
 
+
+
+	@Override
+	public ArrayList<Goal> createGoalList(String nickname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

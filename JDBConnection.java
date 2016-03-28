@@ -608,5 +608,49 @@ public class JDBConnection {
 		catch (SQLException e){}
 		return suggestionCategoryActivityList;
 	}
+
+	public ArrayList<Goal> getGoalList(String nickname) {
+		// TODO Auto-generated method stub
+
+		ArrayList<Goal> goalList = new ArrayList<Goal>();
+		//Product productList[] = null;
+		
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+	      
+			//L'objet ResultSet contient le résultat de la requête SQL
+			
+			//Select g2.id_goal, goal_title, goal_description, g2.nickname from public."goal" g1, public."goal_list" g2 WHERE g2.id_goal=g1.id_goal AND g2.nickname='SU'
+			
+			ResultSet result = state.executeQuery("SELECT * FROM public.\"product\" WHERE nickname = \'" + nickname + "\'"); 
+
+			//On récupère les MetaData
+			ResultSetMetaData resultMeta = result.getMetaData();
+			Integer x=0;
+			while(result.next())
+			{
+				Goal goal = new GoalBD(nickname);
+
+				goal.goal_title=result.getObject(1).toString();
+				goal.goal_description=result.getObject(2).toString();
+				goalList.add(goal);			
+				x++;
+
+			}
+
+			result.close();
+			
+	    } 
+		catch (SQLException e) 
+		{
+			System.out.println("ERREUR - JDBConnection.getGoal() / : Requête erronée ou absence de valeur de retour (SQLException)");
+	    }
+		
+		return goalList;
+		
+		
+	}
 }
 

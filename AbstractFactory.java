@@ -2,7 +2,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
-//test clément
 
 public abstract class AbstractFactory 
 {
@@ -33,4 +32,6 @@ public abstract class AbstractFactory
 	abstract public void deleteUserRoleAdmin(String nickname);
 	abstract public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Integer pdt_price,
 			String pdt_briefDesc, String pdt_longDesc);
+	abstract public ArrayList<Goal> createGoalList(String nickname);
+	
 }

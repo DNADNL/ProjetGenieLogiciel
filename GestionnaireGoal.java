@@ -1,5 +1,10 @@
+import java.util.ArrayList;
 
 public class GestionnaireGoal {
+	
+	Goal goal_selected;
+	ArrayList<Goal> goalList;
+	String [][] stringGoalList;
 	
 	AbstractFactory Fact = new FactoryGoal();
 	
@@ -26,5 +31,34 @@ public class GestionnaireGoal {
 				throw new GoalCreatedException(nick);
 			}
 
+			private void getGoalList(String nickname)
+			{	
+				if (goalList==null)
+				{
+					goalList = Fact.createGoalList(nickname);
+				}
+			}
+			
+			private void refreshGoalList(String nickname)
+			{	
+				goalList = Fact.createGoalList(nickname);
+			}
+			
+			public String[][] getStringGoalList(String nickname)
+			{
+				getGoalList(nickname);
+				stringGoalList= new String [goalList.size()][2];
+				
+				if (goalList != null)
+				{
+					for (Integer i=0; i<goalList.size(); i++)
+					{
+						stringGoalList[i][0]= goalList.get(i).goal_title;
+						stringGoalList[i][1]= goalList.get(i).goal_description;
+					}
+				}
+				return stringGoalList;
+				
+			}
 			
 }
