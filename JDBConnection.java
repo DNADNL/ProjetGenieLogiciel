@@ -1,7 +1,6 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -9,21 +8,21 @@ import java.util.Random;
 
 
 public class JDBConnection {
-	
+
 	Random rand = new Random();
-	
+
 	static Connection conn;
-	
-//Singleton Constructor
+
+	//Singleton Constructor
 	private JDBConnection()
 	{
 		createConnection();
 	}
-	
-//Singleton Initialisator
+
+	//Singleton Initialisator
 	private static JDBConnection singleton;
-	
-//Singleton Accessor
+
+	//Singleton Accessor
 	public static JDBConnection getJDBC()
 	{
 		if (singleton == null)
@@ -33,7 +32,7 @@ public class JDBConnection {
 		return singleton;
 	}
 
-// Connection Methods
+	// Connection Methods
 	/**
 	 * This method creates the connection to the database.
 	 * <p>
@@ -48,14 +47,14 @@ public class JDBConnection {
 		{
 			// Connection information
 			Class.forName("org.postgresql.Driver");
-		    System.out.println("Driver O.K.");
-		    String url = "jdbc:postgresql://qdjjtnkv.db.elephantsql.com:5432/xchuldjm";
-		    String user = "xchuldjm";
-		    String passwd = "k_s5Zb_Br9lFxGz4SmfrlPKEmJbTOvY-";
+			System.out.println("Driver O.K.");
+			String url = "jdbc:postgresql://qdjjtnkv.db.elephantsql.com:5432/xchuldjm";
+			String user = "xchuldjm";
+			String passwd = "k_s5Zb_Br9lFxGz4SmfrlPKEmJbTOvY-";
 
-		    // Creation of the link between the program and the database 
-		    JDBConnection.conn = DriverManager.getConnection(url, user, passwd);
-		    System.out.println("Connected Successfully !");
+			// Creation of the link between the program and the database 
+			JDBConnection.conn = DriverManager.getConnection(url, user, passwd);
+			System.out.println("Connected Successfully !");
 		} 
 		catch (ClassNotFoundException e)
 		{
@@ -71,7 +70,7 @@ public class JDBConnection {
 		}
 	}
 
-// User Methods
+	// User Methods
 	/**
 	 * This method is used when a user wants to log in the app (via the Login View).
 	 * It checks the user is registered in the database (thanks to its nickname).
@@ -87,19 +86,19 @@ public class JDBConnection {
 	 */
 	public void verifyLoginUser(User user, String nickname) throws ObjectNotInTheDatabaseException
 	{
-		
+
 		try 
 		{
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
 			//L'objet ResultSet contient le résultat de la requête SQL
 			ResultSet result = state.executeQuery("SELECT nickname, password FROM public.\"global_user\" WHERE nickname = \'" + nickname + "\'" ); 
-			
+
 			while(result.next())
 			{
 				user.nicknameUser = result.getObject(1).toString();
 				user.mdpUser = result.getObject(2).toString();
-	    	
+
 				/*  for(int i = 1; i <= resultMeta.getColumnCount(); i++)
 	        	{
 	          		System.out.print("\t" + result.getObject(i).toString() + "\t |");
@@ -110,19 +109,19 @@ public class JDBConnection {
 
 			result.close();
 			state.close();
-			
+
 			if (user.nicknameUser == null)
 			{
 				throw new ObjectNotInTheDatabaseException(nickname);
 			}
-	         
-	    } 
+
+		} 
 		catch (SQLException e) 
 		{
 			System.out.println("ERROR - JDBConnection.getUser() / : SQL Query Error (SQLException)");
-	    }
+		}
 	}
-	
+
 	/**
 	 * This method is used when a user wants to get its data, for example if it wants to modify them.
 	 * It creates a user and fill all its data which are in the database (thanks to its nickname).
@@ -136,14 +135,14 @@ public class JDBConnection {
 	public User getUserData(String nickname)
 	{
 		User user = new UserDB();
-		
+
 		try
 		{
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
 			//L'objet ResultSet contient le résultat de la requête SQL
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"global_user\" WHERE nickname = \'" + nickname + "\'" ); 
-	        
+
 			while(result.next())
 			{
 				user.nicknameUser = result.getObject(1).toString();
@@ -160,15 +159,15 @@ public class JDBConnection {
 			result.close();
 			state.close();
 
-	    } 
+		} 
 		catch (SQLException e) 
 		{
 			System.out.println("ERROR - JDBConnection.getUser() / : SQL Query Error (SQLException)");
-	    }
-		
+		}
+
 		return user;
 	}
-	
+
 	/**
 	 * This method is used when an admin registers a user.
 	 * It creates the user into the database (thanks to its nickname).
@@ -190,8 +189,8 @@ public class JDBConnection {
 			//Exécution de la requête d'insertion de l'utilisateur
 			state.executeQuery("INSERT INTO public.\"global_user\" VALUES (\'"  + nickname + "\', \'" + password + "\',\'\',\'\',\'\',\'\',\'\',\'\', \'" + email + "\');");   
 			state.close();
-	         
-	    } 
+
+		} 
 		catch (SQLException e) {}
 	}
 
@@ -214,11 +213,11 @@ public class JDBConnection {
 			//Exécution de la requête d'insertion de l'utilisateur
 			state.executeQuery("DELETE FROM public.\"global_user\" WHERE nickname = \'"  + nickname + "\';");   
 			state.close();
-	         
-	    } 
+
+		} 
 		catch (SQLException e) {}
 	}
-	
+
 	/**
 	 * This method is used when an admin modifies a user or when a user wants to modify its data.
 	 * It modifies the user data into the database (thanks to its nickname).
@@ -238,7 +237,7 @@ public class JDBConnection {
 	 * @exception	SQLException
 	 */
 	public void modifyUser(String nick, String pass, String email, String firstname,
-				String lastname, String city,String street,String postalcode,String streetnumber){
+			String lastname, String city,String street,String postalcode,String streetnumber){
 		try 
 		{
 			//Création d'un objet Statement
@@ -246,10 +245,10 @@ public class JDBConnection {
 			//Exécution de la requête d'insertion de l'utilisateur
 			state.executeQuery("UPDATE public.\"global_user\" SET password=\'"  + pass + "\', mail=\'"  + email + "\', firstname=\'"  + firstname + "\', lastname=\'"  + lastname + "\', city=\'"  + city + "\', street=\'"  + street + "\', postalcode=\'"  + postalcode + "\', streetnumber=\'"  + streetnumber + "\' WHERE nickname=\'"  + nick + "\';");   
 			state.close();   
-	    } 
+		} 
 		catch (SQLException e) {}
 	}
-	
+
 	/**
 	 * This method is used to know if a user is an admin.
 	 * It seeks the user into the "admin" table in the database (thanks to its nickname).
@@ -262,7 +261,7 @@ public class JDBConnection {
 	 */
 	public boolean isAdmin(String nickname)
 	{
-		
+
 		boolean isAnAdmin = false;
 		try 
 		{
@@ -270,7 +269,7 @@ public class JDBConnection {
 			Statement state = conn.createStatement();
 			//L'objet ResultSet contient le résultat de la requête SQL
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"admin\" WHERE nickname = \'" + nickname + "\';"); 
-			
+
 			while(result.next())
 			{
 				if (nickname.equals(result.getObject(1).toString()))
@@ -281,16 +280,16 @@ public class JDBConnection {
 
 			result.close();
 			state.close();
-	         
-	    } 
+
+		} 
 		catch (SQLException e) 
 		{
 			System.out.println("ERROR - JDBConnection.getUser() / : SQL Query Error (SQLException)");
-	    }
-		
+		}
+
 		return isAnAdmin;
 	}
-	
+
 	/**
 	 * This method is used to know if a user is a simple user.
 	 * It seeks the user into the "simple_user" table in the database (thanks to its nickname).
@@ -303,7 +302,7 @@ public class JDBConnection {
 	 */
 	public boolean isSimpleUser(String nickname)
 	{
-		
+
 		boolean isASimpleUser = false;
 		try 
 		{
@@ -311,7 +310,7 @@ public class JDBConnection {
 			Statement state = conn.createStatement();
 			//L'objet ResultSet contient le résultat de la requête SQL
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"simple_user\" WHERE nickname = \'" + nickname + "\';"); 
-			
+
 			while(result.next())
 			{
 				if (nickname.equals(result.getObject(1).toString()))
@@ -322,16 +321,16 @@ public class JDBConnection {
 
 			result.close();
 			state.close();
-	         
-	    } 
+
+		} 
 		catch (SQLException e) 
 		{
 			System.out.println("ERREUR - JDBConnection.getUser() / : Requête erronée ou absence de valeur de retour (SQLException)");
-	    }
-		
+		}
+
 		return isASimpleUser;
 	}
-	
+
 	/**
 	 * This method is used to know if a user is a seller.
 	 * It seeks the user into the "seller" table in the database (thanks to its nickname).
@@ -344,7 +343,7 @@ public class JDBConnection {
 	 */
 	public boolean isSeller(String nickname)
 	{
-		
+
 		boolean isASeller = false;
 		try 
 		{
@@ -352,7 +351,7 @@ public class JDBConnection {
 			Statement state = conn.createStatement();
 			//L'objet ResultSet contient le résultat de la requête SQL
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"seller\" WHERE nickname = \'" + nickname + "\';"); 
-			
+
 			while(result.next())
 			{
 				if (nickname.equals(result.getObject(3).toString()))
@@ -363,16 +362,16 @@ public class JDBConnection {
 
 			result.close();
 			state.close();
-	         
-	    } 
+
+		} 
 		catch (SQLException e) 
 		{
 			System.out.println("ERREUR - JDBConnection.getUser() / : Requête erronée ou absence de valeur de retour (SQLException)");
-	    }
-		
+		}
+
 		return isASeller;
 	}
-	
+
 	/**
 	 * This method is used to add the seller role to a user.
 	 * It adds the user into the "seller" table in the database (thanks to its nickname).
@@ -392,10 +391,10 @@ public class JDBConnection {
 			//Exécution de la requête d'insertion de l'utilisateur
 			state.executeQuery("INSERT INTO public.\"seller\" VALUES (null, null, \'"  + nickname + "\');"); 
 			state.close();         
-	    } 
+		} 
 		catch (SQLException e) {}
 	}
-	
+
 	/**
 	 * This method is used to add the simple user role to a user.
 	 * It adds the user into the "simple_user" table in the database (thanks to its nickname).
@@ -415,10 +414,10 @@ public class JDBConnection {
 			//Exécution de la requête d'insertion de l'utilisateur
 			state.executeQuery("INSERT INTO public.\"simple_user\" VALUES (\'"  + nickname + "\');");   
 			state.close();         
-	    } 
+		} 
 		catch (SQLException e) {}
 	}
-	
+
 	/**
 	 * This method is used to add the admin role to a user.
 	 * It adds the user into the "admin" table in the database (thanks to its nickname).
@@ -438,10 +437,10 @@ public class JDBConnection {
 			//Exécution de la requête d'insertion de l'utilisateur
 			state.executeQuery("INSERT INTO public.\"admin\" VALUES (\'"  + nickname + "\');");   
 			state.close();         
-	    } 
+		} 
 		catch (SQLException e) {}
 	}
-	
+
 	/**
 	 * This method is used to delete the seller role from a user.
 	 * It deletes the user from the "seller" table in the database (thanks to its nickname).
@@ -461,10 +460,10 @@ public class JDBConnection {
 			//Exécution de la requête d'insertion de l'utilisateur
 			state.executeQuery("DELETE FROM public.\"seller\" WHERE nickname = \'"  + nickname + "\';");
 			state.close();         
-	    } 
+		} 
 		catch (SQLException e) {}
 	}
-	
+
 	/**
 	 * This method is used to delete the simple user role from a user.
 	 * It deletes the user from the "simple_user" table in the database (thanks to its nickname).
@@ -484,10 +483,10 @@ public class JDBConnection {
 			//Exécution de la requête d'insertion de l'utilisateur
 			state.executeQuery("DELETE FROM public.\"simple_user\" WHERE nickname = \'"  + nickname + "\';");
 			state.close();         
-	    } 
+		} 
 		catch (SQLException e) {}
 	}
-	
+
 	/**
 	 * This method is used to delete the admin role from a user.
 	 * It deletes the user from the "admin" table in the database (thanks to its nickname).
@@ -507,11 +506,11 @@ public class JDBConnection {
 			//Exécution de la requête d'insertion de l'utilisateur
 			state.executeQuery("DELETE FROM public.\"admin\" WHERE nickname = \'"  + nickname + "\';");
 			state.close();         
-	    } 
+		} 
 		catch (SQLException e) {}
 	}
-	
-// Product Methods
+
+	// Product Methods
 	/**
 	 * This method is used when a seller wants to see its products list.
 	 * It gets all the products from the seller into the database (thanks to its nickname).
@@ -526,15 +525,15 @@ public class JDBConnection {
 	{
 		ArrayList<Product> productList = new ArrayList<Product>();
 		//Product productList[] = null;
-		
+
 		try 
 		{
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
-	      
+
 			//L'objet ResultSet contient le résultat de la requête SQL
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"product\" WHERE nickname = \'" + nickname + "\'"); 
-	      
+
 
 			Integer x=0;
 			while(result.next())
@@ -543,8 +542,8 @@ public class JDBConnection {
 
 				product.pdt_name=result.getObject(2).toString();
 
-				
-				
+
+
 				product.quantity=Integer.parseInt(result.getObject(3).toString());
 
 				product.price= Integer.parseInt(result.getObject(4).toString());
@@ -552,27 +551,27 @@ public class JDBConnection {
 				product.user_nickname= result.getObject(5).toString();
 
 				//product.id_category= Integer.parseInt(result.getObject(6).toString());
-				
+
 				product.briefDesc=result.getObject(7).toString();
 				product.longDesc=result.getObject(8).toString();
-						
+
 				productList.add(product);
-				
+
 				x++;
 
 			}
 
 			result.close();
-			
-	    } 
+
+		} 
 		catch (SQLException e) 
 		{
 			System.out.println("ERROR - JDBConnection.getAllProducts() / : SQL Query Error (SQLException)");
-	    }
-		
+		}
+
 		return productList;
 	}
-	
+
 	/**
 	 * This method is used when a seller wants to get a product of its products list.
 	 * It gets the product wanted by the seller from the database (thanks to the seller's nickname and the product's name).
@@ -588,47 +587,47 @@ public class JDBConnection {
 	public Product getProduct(String nickname, String pdtName) throws ObjectNotInTheDatabaseException
 	{
 		Product product = new ProductDB(pdtName);
-		
+
 		try 
 		{
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
-	      
+
 			//L'objet ResultSet contient le résultat de la requête SQL
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"product\" WHERE nickname = \'" + nickname + "\' AND product_name =\'" + pdtName + "\'" ); 
-	        
+
 			while(result.next())
 			{				
-				
+
 				product.pdt_name=result.getObject(2).toString();
-				
+
 				product.briefDesc=result.getObject(7).toString();
-				
+
 				product.longDesc=result.getObject(8).toString();
 				product.quantity=Integer.parseInt(result.getObject(3).toString());
-				
+
 				product.price= Integer.parseInt(result.getObject(4).toString());
-				
+
 				product.user_nickname= result.getObject(5).toString();
 				//product.id_category= Integer.parseInt(result.getObject(6).toString());
-	
+
 
 			}
 
 			result.close();
 			state.close();
-			
+
 			if (product.pdt_name == null)
 			{
 				throw new ObjectNotInTheDatabaseException(pdtName);
 			}
-	         
-	    } 
+
+		} 
 		catch (SQLException e) 
 		{
 			System.out.println("ERROR - JDBConnection.getProduct() / : SQL Query Error (SQLException)");
-	    }
-		
+		}
+
 		return product;
 	}
 
@@ -659,11 +658,11 @@ public class JDBConnection {
 			state.executeQuery("INSERT INTO public.\"product\" (product_name, quantity, price, nickname, brief_desc, long_desc) VALUES (\'"  + pdt_name + "\', \'" + pdt_quantity + "\', \'"  + pdt_price + "\', \'"  + nickname + "\', \'"  + pdt_briefDesc + "\', \'" + pdt_longDesc + "\')");   
 
 			state.close();
-	         
-	    } 
+
+		} 
 		catch (SQLException e) {}
 	}
-	
+
 	/**
 	 * This method is used when a seller wants to delete a product from its products list.
 	 * It deletes the seller product from the database (thanks to the seller's nickname and the product's name).
@@ -684,12 +683,12 @@ public class JDBConnection {
 			//Exécution de la requête d'insertion de l'utilisateur
 			state.executeQuery("DELETE FROM public.\"product\" WHERE product_name=\'"  + pdt_name + "\' AND nickname =\'"  + nickname + "\'");   
 			state.close();
-	         
-	    } 
+
+		} 
 		catch (SQLException e) {}
 	}
 
-// Goal Methods
+	// Goal Methods
 	/**
 	 * This method is used when a simple user wants to create a goal and add it to its goals list.
 	 * It creates the goal into the database and then adds it into the user's goal list (thanks to the simple user's nickname and the goal's name).
@@ -703,20 +702,20 @@ public class JDBConnection {
 	 * @exception	SQLException
 	 */
 	public void createGoal(String goal_title, String goal_description, String nick) {	
-		
+
 		try 
 		{
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
 			//Exécution de la requête d'insertion de l'utilisateur
-			
-		
+
+
 			state.executeQuery("INSERT INTO public.\"goal\"(goal_title, goal_description) VALUES (\'"  + goal_title + "\', \'" + goal_description + "\')");   
 			state.close();
-	         
-	    } 
+
+		} 
 		catch (SQLException e) {}
-	
+
 		try 
 		{
 			//Création d'un objet Statement
@@ -726,12 +725,12 @@ public class JDBConnection {
 
 			state.executeQuery("INSERT INTO public.\"goal_list\" VALUES((SELECT id_goal FROM public.\"goal\" where goal_title =\'" + goal_title + "\'), \'"  + nick + "\')");
 			state.close();
-	         
-	    } 
+
+		} 
 		catch (SQLException e) {}
-		
+
 	}	
-	
+
 	/**
 	 * This method is used when a simple user wants to suggest an activity category.
 	 * It creates the suggestion into the database.
@@ -754,7 +753,7 @@ public class JDBConnection {
 		}
 		catch (SQLException e){}
 	}
-	
+
 	/**
 	 * This method is used when a simple user wants to get all activity categories.
 	 * It gets the activity categories from the database.
@@ -771,8 +770,6 @@ public class JDBConnection {
 			Statement state = conn.createStatement();
 			//L'objet ResultSet contient le résultat de la requête SQL
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"activity_category\"");
-			//On récupère les MetaData
-			ResultSetMetaData resultMeta = result.getMetaData();
 			Integer x=0;
 			while(result.next())
 			{
@@ -784,20 +781,20 @@ public class JDBConnection {
 				activityCategoryList.add(activityCategory );
 				System.out.println(activityCategory.title);
 				x++;
-				
-				
-				
-				}
-				result.close();
-			
-			
+
+
+
+			}
+			result.close();
+
+
 		}
 		catch (SQLException e){		 
 		}
 		return activityCategoryList;
 	}
-	
-	
+
+
 	/**
 	 * This method is used when an admin wants to get all the suggestions about activity categories.
 	 * It gets the suggestions from the database.
@@ -815,8 +812,6 @@ public class JDBConnection {
 			Statement state = conn.createStatement();
 			//L'objet ResultSet contient le résultat de la requête SQL
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"activity_category_suggestion\"");
-			//On récupère les MetaData
-			ResultSetMetaData resultMeta = result.getMetaData();
 			Integer x=0;
 			while(result.next())
 			{
@@ -825,37 +820,46 @@ public class JDBConnection {
 				activityCategorySuggestion.description = result.getObject(3).toString();
 				System.out.println(activityCategorySuggestion.title);
 				System.out.println(activityCategorySuggestion.description);
-				
+
 				suggestionActivityCategoryList.add(activityCategorySuggestion );
 				System.out.println(activityCategorySuggestion.title);
-				
+
 				x++;
-				
-			
-				}
-				result.close();
-			
-			
+
+
+			}
+			result.close();
+
+
 		}
 		catch (SQLException e){}
 		return suggestionActivityCategoryList;
 	}
 
+	/**
+	 * This method is used when a simple user wants to get its goals list.
+	 * It gets the goals list from the database (thanks to the user's nickname).
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user),
+	 * @return      {@link ArrayList} of Goals
+	 * @exception	SQLException
+	 */
 	public ArrayList<Goal> getGoalList(String nickname) {
 		// TODO Auto-generated method stub
 
 		ArrayList<Goal> goalList = new ArrayList<Goal>();
 		//Product productList[] = null;
-		
+
 		try 
 		{
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
-	      
+
 			//L'objet ResultSet contient le résultat de la requête SQL
-			
+
 			//Select g2.id_goal, goal_title, goal_description, g2.nickname from public."goal" g1, public."goal_list" g2 WHERE g2.id_goal=g1.id_goal AND g2.nickname='SU'
-			
+
 			System.out.println("Requête de liste goal : ");
 			ResultSet result = state.executeQuery("SELECT g2.id_goal, goal_title, goal_description, g2.nickname FROM public.\"goal\" g1, public.\"goal_list\" g2 WHERE g2.id_goal=g1.id_goal AND g2.nickname = \'" + nickname + "\'"); 
 
@@ -872,16 +876,16 @@ public class JDBConnection {
 			}
 
 			result.close();
-			
-	    } 
+
+		} 
 		catch (SQLException e) 
 		{
 			System.out.println("ERREUR - JDBConnection.getGoal() / : Requête erronée ou absence de valeur de retour (SQLException)");
-	    }
-		
+		}
+
 		return goalList;
-		
-		
+
+
 	}
 }
 
