@@ -36,6 +36,12 @@ public class GoalDB extends Goal {
 		return jdbc.getGoalList(nickname);
 	}
 
+	public static void deleteGoal(String goal_name, String nicknameUser) {
+		// TODO Auto-generated method stub
+		jdbc.deleteGoal(goal_name, nicknameUser);
+		
+	}
+
 	
 	
 

@@ -158,6 +158,12 @@ public class FactoryGoal extends AbstractFactory {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void deleteGoal(String goal_name, String nicknameUser) {
+		GoalDB.deleteGoal(goal_name, nicknameUser);
+		
+	}
 	
 	
 

@@ -705,6 +705,7 @@ public class JDBConnection {
 
 		try 
 		{
+			
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
 			//Exécution de la requête d'insertion de l'utilisateur
@@ -860,7 +861,6 @@ public class JDBConnection {
 
 			//Select g2.id_goal, goal_title, goal_description, g2.nickname from public."goal" g1, public."goal_list" g2 WHERE g2.id_goal=g1.id_goal AND g2.nickname='SU'
 
-			System.out.println("Requête de liste goal : ");
 			ResultSet result = state.executeQuery("SELECT g2.id_goal, goal_title, goal_description, g2.nickname FROM public.\"goal\" g1, public.\"goal_list\" g2 WHERE g2.id_goal=g1.id_goal AND g2.nickname = \'" + nickname + "\'"); 
 
 			Integer x=0;
@@ -886,6 +886,38 @@ public class JDBConnection {
 		return goalList;
 
 
+	}
+
+	public void deleteGoal(String goal_name, String nicknameUser) {
+		// TODO Auto-generated method stub
+		
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+			//DELETE FROM public."goal_list" WHERE id_goal=(SELECT id_goal FROM public."goal" where goal_title ='Maigrir');
+			
+			state.executeQuery("DELETE FROM public.\"goal_list\" WHERE id_goal=(SELECT id_goal FROM public.\"goal\" where goal_title =\'" + goal_name + "\')");   
+			state.close();
+
+		} 
+		catch (SQLException e) {}
+		
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+			//DELETE FROM public."goal" WHERE goal_title ='Maigrir';
+			System.out.println("suppression du goal ! ");
+			state.executeQuery("DELETE FROM public.\"goal\" WHERE goal_title=\'"  + goal_name + "\'");   
+			state.close();
+
+		} 
+		catch (SQLException e) {}
+		
+		
 	}
 }
 

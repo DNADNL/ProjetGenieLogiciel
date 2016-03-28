@@ -141,4 +141,10 @@ public class FactoryUser extends AbstractFactory {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void deleteGoal(String goal_name, String nicknameUser) {
+		// TODO Auto-generated method stub
+		
+	}
 }

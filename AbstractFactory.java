@@ -35,6 +35,7 @@ public abstract class AbstractFactory
 	abstract public ArrayList<Goal> createGoalList(String nickname);
 	abstract public ArrayList<ActivityCategory> createCategoryActivityList();
 	abstract public ArrayList<ActivityCategory> createCategoryActivitySuggestionList();
+	abstract public void deleteGoal(String goal_name, String nicknameUser);
 	}
 	
 

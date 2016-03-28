@@ -109,17 +109,15 @@ public class DeleteGoalView extends JFrame implements ActionListener{
 	
 	public void deleteGoalButtonClicked(String goal_name)
 	{
-//		try {
-//			FU.deleteGoal(pdt_product);
-//		} catch (UserNotInTheDatabaseException e) {
-//			JOptionPane.showMessageDialog(null, pdt_product+" n'existe pas dans la BD.", "Suppression de produit", JOptionPane.ERROR_MESSAGE);
-//
-//		} catch (UserDeletedException e) {
-//			JOptionPane.showMessageDialog(null, pdt_product+" a bien été supprimé de la BD !", "Suppression de produit", JOptionPane.INFORMATION_MESSAGE);
-//			new SimpleUserView(FU.getUser());
-//			dispose();
-//			System.out.println("Panel Simple User affiché");
-//
-//		}
+//		{
+		try {
+			FU.deleteGoal(goal_name);
+		} catch (ObjectNotInTheDatabaseException e) {
+			JOptionPane.showMessageDialog(null, goal_name+" n'existe pas dans la BD.", "Suppression de goal", JOptionPane.ERROR_MESSAGE);
+
+		} catch (UserDeletedException e) {
+			JOptionPane.showMessageDialog(null, goal_name+" a bien été supprimé de la BD !", "Suppression de goal", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
+	
 }

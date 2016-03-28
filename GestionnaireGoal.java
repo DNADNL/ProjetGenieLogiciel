@@ -52,8 +52,6 @@ public class GestionnaireGoal {
 		
 		
 		stringGoalList= new String [goalList.size()][2];
-		System.out.println("goalList : ");
-		System.out.println(goalList.get(1).goal_title);
 
 		if (goalList != null)
 		{
@@ -67,5 +65,15 @@ public class GestionnaireGoal {
 		return stringGoalList;
 
 	}
+
+
+	public void deleteGoal(String goal_name, String nicknameUser) throws ObjectNotInTheDatabaseException , UserDeletedException 
+	{
+		Fact.deleteGoal(goal_name, nicknameUser);
+		refreshGoalList(nicknameUser);
+		throw new UserDeletedException(goal_name);		
+	}
+
+	
 
 }

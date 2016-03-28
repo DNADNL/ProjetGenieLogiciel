@@ -157,6 +157,12 @@ public class FactoryProductDB extends AbstractFactory{
 		return null;
 	}
 
+	@Override
+	public void deleteGoal(String goal_name, String nicknameUser) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 

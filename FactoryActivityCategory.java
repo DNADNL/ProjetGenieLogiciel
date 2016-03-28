@@ -198,4 +198,12 @@ public class FactoryActivityCategory extends AbstractFactory {
 		return createdActivityCategoryList;
 	}
 
+
+
+	@Override
+	public void deleteGoal(String goal_name, String nicknameUser) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

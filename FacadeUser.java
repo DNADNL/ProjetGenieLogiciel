@@ -152,6 +152,13 @@ public class FacadeUser {
 	public String[][] getStringActivityCategorySuggestionList() {
 		return CH.getStringCategorySuggestionList();
 	}
+
+
+	public void deleteGoal(String goal_name) throws ObjectNotInTheDatabaseException, UserDeletedException {
+
+		GG.deleteGoal(goal_name, GU.getCurrentUser().nicknameUser);
+		
+	}
 	
 
 
