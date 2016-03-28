@@ -5,16 +5,16 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class UserBD extends User
+public class UserDB extends User
 {
 	static JDBConnection jdbc = JDBConnection.getJDBC();
 	
-	UserBD()
+	UserDB()
 	{
 		super();
 	}
 	
-	UserBD(String nickname) throws UserNotInTheDatabaseException
+	UserDB(String nickname) throws ObjectNotInTheDatabaseException
 	{
 		jdbc.verifyLoginUser(this,nickname);
 	}

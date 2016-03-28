@@ -157,7 +157,7 @@ public class LoginView  extends JFrame implements ActionListener, KeyListener{
 					new SimpleUserView(FU.getCurrentUser());
 				}
 			} 
-			catch (UserNotInTheDatabaseException e) 
+			catch (ObjectNotInTheDatabaseException e) 
 			{
 				JOptionPane.showMessageDialog(null, "Identifiant incorrect. Veuillez réessayer.", "Connexion", JOptionPane.ERROR_MESSAGE);
 //				System.out.println("ERREUR - Identifiant incorrect");

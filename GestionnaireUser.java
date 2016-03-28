@@ -35,7 +35,7 @@ public class GestionnaireUser {
 			this.currentUser=null;
 		}
 		
-		public Integer login(String nickname, String password) throws UserNotInTheDatabaseException, WrongPasswordException
+		public Integer login(String nickname, String password) throws ObjectNotInTheDatabaseException, WrongPasswordException
 		{
 			int bool = 0;
 			this.logMdp = password;
@@ -87,7 +87,7 @@ public class GestionnaireUser {
 				Fact.getUser(nick);	
 				throw new UserAlreadyExistsException(nick);
 			}
-			catch (UserNotInTheDatabaseException e) // L'exception sera levée si l'utilisateur ne se trouve pas dans la BD
+			catch (ObjectNotInTheDatabaseException e) // L'exception sera levée si l'utilisateur ne se trouve pas dans la BD
 			{
 				Fact.addUser(nick, pass, email);	// On peut donc créer l'utilisateur ici
 				throw new UserCreatedException(e.getNickname());
@@ -96,14 +96,14 @@ public class GestionnaireUser {
 		}
 		
 		public void modifyUser(String nick, String pass, String email, String firstname,
-				String lastname, String city,String street,String postalcode,String streetnumber) throws UserNotInTheDatabaseException, UserModifyException{
+				String lastname, String city,String street,String postalcode,String streetnumber) throws ObjectNotInTheDatabaseException, UserModifiedException{
 			
 			try {
 				Fact.getUser(nick);	
 				Fact.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
-				throw new UserModifyException(nick);
+				throw new UserModifiedException(nick);
 			}
-			catch (UserNotInTheDatabaseException e) // L'exception sera levée si l'utilisateur ne se trouve pas dans la BD
+			catch (ObjectNotInTheDatabaseException e) // L'exception sera levée si l'utilisateur ne se trouve pas dans la BD
 			{
 				System.out.println("ERREUR - GestionnaireUser.deleteUser() / Fact.getUser : L'utilisateur n'existe pas dans la base de données ");
 				throw e;
@@ -111,7 +111,7 @@ public class GestionnaireUser {
 			
 		}
 		
-		public void deleteUser(String nick) throws UserNotInTheDatabaseException, UserDeletedException {
+		public void deleteUser(String nick) throws ObjectNotInTheDatabaseException, UserDeletedException {
 			
 			try {
 				Fact.getUser(nick);	
@@ -134,7 +134,7 @@ public class GestionnaireUser {
 				System.out.println("GU.deleteUser - deleteUser");
 				throw new UserDeletedException(nick);
 			}
-			catch (UserNotInTheDatabaseException e) // L'exception sera levée si l'utilisateur ne se trouve pas dans la BD
+			catch (ObjectNotInTheDatabaseException e) // L'exception sera levée si l'utilisateur ne se trouve pas dans la BD
 			{
 				System.out.println("ERREUR - GestionnaireUser.deleteUser() / Fact.getUser : L'utilisateur n'existe pas dans la base de données ");
 				throw e;

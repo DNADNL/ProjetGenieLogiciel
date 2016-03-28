@@ -8,17 +8,17 @@ public class FactoryProductDB extends AbstractFactory{
 	
 	public Product createProduct(String pdtName)
 	{
-		this.createdProduct = new ProductBD(pdtName);
+		this.createdProduct = new ProductDB(pdtName);
 		return createdProduct;
 	}
 	
 	public ArrayList<Product> createProductList(String nickname)
 	{
-		createdProductList = ProductBD.createProductList(nickname);
+		createdProductList = ProductDB.createProductList(nickname);
 		return createdProductList;
 	}
 
-	public User getUser(String nickname) throws UserNotInTheDatabaseException {
+	public User getUser(String nickname) throws ObjectNotInTheDatabaseException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -39,25 +39,25 @@ public class FactoryProductDB extends AbstractFactory{
 
 	public Product getProduct(String pdtName, String nickname) 
 	{
-		return ProductBD.getProduct(nickname, pdtName);
+		return ProductDB.getProduct(nickname, pdtName);
 	}
 
 
 	public void deleteProduct(String pdt_product, String nickname) 
 	{
-		ProductBD.deleteProduct(pdt_product, nickname);
+		ProductDB.deleteProduct(pdt_product, nickname);
 	}
 	
 	public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Integer pdt_price,
 			String pdt_briefDesc, String pdt_longDesc) 
 	{
-		ProductBD.addProduct(nickname, pdt_name, pdt_quantity, pdt_price, pdt_briefDesc, pdt_longDesc);
+		ProductDB.addProduct(nickname, pdt_name, pdt_quantity, pdt_price, pdt_briefDesc, pdt_longDesc);
 		
 	}
 
 	@Override
 
-	public ArrayList<CategoryActivity> createCategoryActivityList(String title) {
+	public ArrayList<ActivityCategory> createCategoryActivityList(String title) {
 		return null;
 	}
 

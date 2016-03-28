@@ -14,34 +14,34 @@ public class FactoryUser extends AbstractFactory {
 	 * @return      a User. 
 	 * If the user is located in the database, then this method returns the user, 
 	 * else a {@link null} user is returned.
-	 * @throws UserNotInTheDatabaseException 
+	 * @throws ObjectNotInTheDatabaseException 
 	 */
 	
-	public User getUser(String nickname) throws UserNotInTheDatabaseException
+	public User getUser(String nickname) throws ObjectNotInTheDatabaseException
 	{
-		this.user = new UserBD(nickname);
+		this.user = new UserDB(nickname);
 		return user;
 	}
 	
 	public User getUserData(String nick)
 	{
-		return UserBD.getUserData(nick);
+		return UserDB.getUserData(nick);
 	}
 	
 	public void addUser(String nick, String pass, String email)
 	{
-		UserBD.addUser(nick, pass, email);		
+		UserDB.addUser(nick, pass, email);		
 	}
 	
 	public void modifyUser(String nick, String pass, String email, String firstname,
 				String lastname, String city,String street,String postalcode,String streetnumber){
 		
-		UserBD.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
+		UserDB.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
 	}
 	
 	public void deleteUser(String nick)
 	{
-		UserBD.deleteUser(nick);
+		UserDB.deleteUser(nick);
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class FactoryUser extends AbstractFactory {
 
 	@Override
 
-	public ArrayList<CategoryActivity> createCategoryActivityList(String title) {
+	public ArrayList<ActivityCategory> createCategoryActivityList(String title) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -87,34 +87,34 @@ public class FactoryUser extends AbstractFactory {
 	}
 	
 	public boolean isAdmin(String nick) {
-		return UserBD.isAdmin(nick);
+		return UserDB.isAdmin(nick);
 	}
 
 	public boolean isSimpleUser(String nick) {
-		return UserBD.isSimpleUser(nick);
+		return UserDB.isSimpleUser(nick);
 	}
 	
 	public boolean isSeller(String nick) {
-		return UserBD.isSeller(nick);
+		return UserDB.isSeller(nick);
 	}
 
 	public void addUserRoleSeller(String nickname) {
-		UserBD.addUserRoleSeller(nickname);
+		UserDB.addUserRoleSeller(nickname);
 	}
 	public void addUserRoleSimpleUser(String nickname) {
-		UserBD.addUserRoleSimpleUser(nickname);
+		UserDB.addUserRoleSimpleUser(nickname);
 	}
 	public void addUserRoleAdmin(String nickname) {
-		UserBD.addUserRoleAdmin(nickname);
+		UserDB.addUserRoleAdmin(nickname);
 	}
 	public void deleteUserRoleSeller(String nickname) {
-		UserBD.deleteUserRoleSeller(nickname);
+		UserDB.deleteUserRoleSeller(nickname);
 	}
 	public void deleteUserRoleSimpleUser(String nickname) {
-		UserBD.deleteUserRoleSimpleUser(nickname);
+		UserDB.deleteUserRoleSimpleUser(nickname);
 	}
 	public void deleteUserRoleAdmin(String nickname) {
-		UserBD.deleteUserRoleAdmin(nickname);
+		UserDB.deleteUserRoleAdmin(nickname);
 	}
 
 	@Override

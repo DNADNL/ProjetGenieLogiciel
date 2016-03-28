@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /* handler for category activity*/
 public class CategoryHandler {
 	
-	ArrayList<CategoryActivity> categoryList;
+	ArrayList<ActivityCategory> categoryList;
 	String [][] stringCategoryList;
 	AbstractFactory Fact = new FactoryActivityCategory();
 	

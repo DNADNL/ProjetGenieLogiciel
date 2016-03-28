@@ -111,7 +111,7 @@ public class DeleteUserView  extends JFrame implements ActionListener{
 	{
 		try {
 			FU.deleteUser(nick);
-		} catch (UserNotInTheDatabaseException e) {
+		} catch (ObjectNotInTheDatabaseException e) {
 			JOptionPane.showMessageDialog(null, nick+" n'existe pas dans la BD.", "Suppression d'utilisateur", JOptionPane.ERROR_MESSAGE);
 			//				System.out.println("DeleteUser : Failed !");
 			//				deleteUserResultLabel.setText("Aucun utilisateur avec ce pseudo n'existe dans la BD, veuillez réessayer.");

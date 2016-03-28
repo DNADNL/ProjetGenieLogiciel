@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class GoalBD extends Goal {
+public class GoalDB extends Goal {
 
 	static JDBConnection jdbc = JDBConnection.getJDBC();
 	

@@ -125,7 +125,7 @@ public class DeleteProductView extends JFrame implements ActionListener{
 	{
 		try {
 			FU.deleteProduct(pdt_name);
-		} catch (UserNotInTheDatabaseException e) {
+		} catch (ObjectNotInTheDatabaseException e) {
 			JOptionPane.showMessageDialog(null, pdt_name+" n'existe pas dans la BD.", "Suppression de produit", JOptionPane.ERROR_MESSAGE);
 
 		} catch (UserDeletedException e) {

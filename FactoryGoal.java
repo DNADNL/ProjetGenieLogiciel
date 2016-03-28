@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class FactoryGoal extends AbstractFactory {
 
 	@Override
-	public User getUser(String nickname) throws UserNotInTheDatabaseException {
+	public User getUser(String nickname) throws ObjectNotInTheDatabaseException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -49,7 +49,7 @@ public class FactoryGoal extends AbstractFactory {
 	@Override
 	public void addGoal(String goal_title, String goal_description, String nick) {
 		// TODO Auto-generated method stub
-		GoalBD.addGoal(goal_title, goal_description, nick);
+		GoalDB.addGoal(goal_title, goal_description, nick);
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class FactoryGoal extends AbstractFactory {
 	}
 
 	@Override
-	public ArrayList<CategoryActivity> createCategoryActivityList(String title) {
+	public ArrayList<ActivityCategory> createCategoryActivityList(String title) {
 		// TODO Auto-generated method stub
 		return null;
 	}

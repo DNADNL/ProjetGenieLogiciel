@@ -63,14 +63,23 @@ public class ProductsHandler {
 
 	}
 
+<<<<<<< HEAD
+		public void deleteProduct(String pdt_product, String nickname) throws ObjectNotInTheDatabaseException , UserDeletedException 
+		{
+				Fact.deleteProduct(pdt_product, nickname);
+				refreshProductsList(nickname);
+				throw new UserDeletedException(pdt_product);		
+		}
+=======
 	//Get the product for the seller and set the "product_selected"
 	public void getProduct(String pdt_name, String nickname)
 	{
 		product_selected = Fact.getProduct(pdt_name, nickname);
 	}
+>>>>>>> origin/master
 
 	//Delete a product from the database
-	public void deleteProduct(String pdt_product, String nickname) throws UserNotInTheDatabaseException , UserDeletedException 
+	public void deleteProduct(String pdt_product, String nickname) throws ObjectNotInTheDatabaseException , UserDeletedException 
 	{
 		Fact.deleteProduct(pdt_product, nickname);
 		refreshProductsList(nickname);

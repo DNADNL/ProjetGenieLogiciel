@@ -1,8 +1,8 @@
-public class UserModifyException extends Exception {
+public class UserModifiedException extends Exception {
 
 	private String nickname;
 	
-	public UserModifyException(String nickname) {
+	public UserModifiedException(String nickname) {
 		this.nickname = nickname;
 	}
 	

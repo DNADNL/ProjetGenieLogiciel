@@ -186,12 +186,12 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 				
 			try {
 				FU.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
-			} catch (UserNotInTheDatabaseException e) {				
+			} catch (ObjectNotInTheDatabaseException e) {				
 				JOptionPane.showMessageDialog(null, nick+" n'existe pas dans la BD.", "Modification d'utilisateur", JOptionPane.ERROR_MESSAGE);
 //				System.out.println("DeleteUser : Failed !");
 //				deleteUserResultLabel.setText("Aucun utilisateur avec ce pseudo n'existe dans la BD, veuillez réessayer.");
 //				deleteUserResultLabel.setForeground(Color.RED);
-			} catch (UserModifyException e) {
+			} catch (UserModifiedException e) {
 				if ((modifyUserRole.getSelectedItem()).equals("Administrateur"))
 				{
 					FU.chooseUserRoleAdmin(nick);

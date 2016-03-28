@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
-public class ProductBD extends Product{
+public class ProductDB extends Product{
 	
 	static JDBConnection jdbc = JDBConnection.getJDBC();
 	
-	ProductBD(String pdtName)
+	ProductDB(String pdtName)
 	{
 		this.pdt_name = null;
 		this.price = null;
@@ -13,7 +13,7 @@ public class ProductBD extends Product{
 		this.user_nickname = null;
 	}
 	
-	ProductBD(String nickname, String pdtName, Integer pdtQuantity, Integer pdtPrice, String briefDesc, String longDesc)
+	ProductDB(String nickname, String pdtName, Integer pdtQuantity, Integer pdtPrice, String briefDesc, String longDesc)
 	{
 		this.pdt_name = pdtName;
 		this.price = pdtPrice;
@@ -34,7 +34,7 @@ public class ProductBD extends Product{
 		Product product = null;
 		try {
 			product = jdbc.getProduct(nickname, pdtName);
-		} catch (UserNotInTheDatabaseException e) {
+		} catch (ObjectNotInTheDatabaseException e) {
 			
 			e.printStackTrace();
 		}

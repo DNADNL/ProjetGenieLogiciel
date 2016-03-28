@@ -207,9 +207,9 @@ public class SimpleUserProfileView extends JFrame implements ActionListener, Key
 						simpleUserProfileFirstName.getText(), simpleUserProfileLastName.getText(), 
 						simpleUserProfileCity.getText(), simpleUserProfileStreet.getText(), 
 						simpleUserProfilePostalCode.getText(), simpleUserProfileStreetNumber.getText() );
-			} catch (UserNotInTheDatabaseException e1) {
+			} catch (ObjectNotInTheDatabaseException e1) {
 				JOptionPane.showMessageDialog(null, "ERREUR ! Vous n'êtes pas présent dans la BD (ce message ne devrait jamais s'afficher).", "Modifier mes informations", JOptionPane.ERROR_MESSAGE);
-			} catch (UserModifyException e1) {
+			} catch (UserModifiedException e1) {
 				JOptionPane.showMessageDialog(null, "Vos informations ont bien été modifiées dans la BD !", "Modifier mes informations", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
@@ -238,9 +238,9 @@ public class SimpleUserProfileView extends JFrame implements ActionListener, Key
 						simpleUserProfileFirstName.getText(), simpleUserProfileLastName.getText(), 
 						simpleUserProfileCity.getText(), simpleUserProfileStreet.getText(), 
 						simpleUserProfilePostalCode.getText(), simpleUserProfileStreetNumber.getText() );
-			} catch (UserNotInTheDatabaseException e1) {
+			} catch (ObjectNotInTheDatabaseException e1) {
 				JOptionPane.showMessageDialog(null, "ERREUR ! Vous n'êtes pas présent dans la BD (ce message ne devrait jamais s'afficher).", "Modifier mes informations", JOptionPane.ERROR_MESSAGE);
-			} catch (UserModifyException e1) {
+			} catch (UserModifiedException e1) {
 				JOptionPane.showMessageDialog(null, "Vos informations ont bien été modifiées dans la BD !", "Modifier mes informations", JOptionPane.INFORMATION_MESSAGE);
 			}
         } 

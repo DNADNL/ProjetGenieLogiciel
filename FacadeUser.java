@@ -28,7 +28,7 @@ public class FacadeUser {
 	
 	
 	//Méthodes User
-	public Integer login(String nickname, String mdp) throws UserNotInTheDatabaseException, WrongPasswordException
+	public Integer login(String nickname, String mdp) throws ObjectNotInTheDatabaseException, WrongPasswordException
 	{
 		int bool = GU.login(nickname, mdp);
 		System.out.println(bool);
@@ -52,7 +52,7 @@ public class FacadeUser {
 		return PH.getStringProductList(GU.currentUser.nicknameUser);
 	}
 	
-	public void deleteProduct(String pdt_product) throws UserNotInTheDatabaseException, UserDeletedException{
+	public void deleteProduct(String pdt_product) throws ObjectNotInTheDatabaseException, UserDeletedException{
 		PH.deleteProduct(pdt_product, GU.getCurrentUser().nicknameUser);
 	}
 	
@@ -73,19 +73,19 @@ public class FacadeUser {
 	
 	public void modifyUserData(String nick, String pass, String email, String firstname, String lastname,
 			String city,String street,String postalcode,String streetnumber) 
-	throws UserNotInTheDatabaseException, UserModifyException{
+	throws ObjectNotInTheDatabaseException, UserModifiedException{
 		
 		GU.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
 	}
 	
 	public void modifyUser(String nick, String pass, String email, String firstname, String lastname,
 			String city,String street,String postalcode,String streetnumber) 
-	throws UserNotInTheDatabaseException, UserModifyException{
+	throws ObjectNotInTheDatabaseException, UserModifiedException{
 		
 		GU.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
 	}
 	
-	public void deleteUser(String nick) throws UserNotInTheDatabaseException, UserDeletedException{
+	public void deleteUser(String nick) throws ObjectNotInTheDatabaseException, UserDeletedException{
 		GU.deleteUser(nick);
 	}
 	

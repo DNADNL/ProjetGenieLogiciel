@@ -2,19 +2,19 @@ import java.util.ArrayList;
 
 public class FactoryActivityCategory extends AbstractFactory {
 
-	CategoryActivity createdActivityCategory;
-	ArrayList<CategoryActivity> createdActivityCategoryList;
+	ActivityCategory createdActivityCategory;
+	ArrayList<ActivityCategory> createdActivityCategoryList;
 	
-	public CategoryActivity createActivity(String title)
+	public ActivityCategory createActivity(String title)
 	{
-		this.createdActivityCategory = new CategoryActivityDB();
+		this.createdActivityCategory = new ActivityCategoryDB();
 		return createdActivityCategory;
 	}
 	
 	
 	
 	@Override
-	public User getUser(String nickname) throws UserNotInTheDatabaseException {
+	public User getUser(String nickname) throws ObjectNotInTheDatabaseException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -58,8 +58,8 @@ public class FactoryActivityCategory extends AbstractFactory {
 	}
 
 	@Override
-	public ArrayList<CategoryActivity> createCategoryActivityList() {
-		createdActivityCategoryList = CategoryActivityDB.createCategoryActivityList();
+	public ArrayList<ActivityCategory> createCategoryActivityList(String nickname) {
+		createdActivityCategoryList = ActivityCategoryDB.createCategoryActivityList(nickname);
 		return createdActivityCategoryList;
 	}
 //	
@@ -76,7 +76,7 @@ public class FactoryActivityCategory extends AbstractFactory {
 	@Override
 	public void suggestActivityCategory(String title, String description) {
 		// TODO Auto-generated method stub
-		CategoryActivityDB.SuggestCategoryActivity(title, description);
+		ActivityCategoryDB.SuggestCategoryActivity(title, description);
 		
 	}
 
@@ -188,7 +188,7 @@ public class FactoryActivityCategory extends AbstractFactory {
 
 
 	@Override
-	public ArrayList<CategoryActivity> createCategoryActivityList(String title) {
+	public ArrayList<ActivityCategory> createCategoryActivityList(String title) {
 		// TODO Auto-generated method stub
 		return null;
 	}

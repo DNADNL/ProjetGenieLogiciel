@@ -1,10 +1,8 @@
-import java.awt.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.SQLTimeoutException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Random;
@@ -16,16 +14,16 @@ public class JDBConnection {
 	
 	static Connection conn;
 	
-	//Constructeur Singleton
+//Singleton Constructor
 	private JDBConnection()
 	{
 		createConnection();
 	}
 	
-	//Initialisation Singleton
+//Singleton Initialisator
 	private static JDBConnection singleton;
 	
-	//Accesseur Singleton
+//Singleton Accessor
 	public static JDBConnection getJDBC()
 	{
 		if (singleton == null)
@@ -34,36 +32,60 @@ public class JDBConnection {
 		}
 		return singleton;
 	}
-	
+
+// Connection Methods
+	/**
+	 * This method creates the connection to the database.
+	 * <p>
+	 *
+	 * @param		none
+	 * @return		void
+	 * @exception	ClassNotFoundException, LinkageError, SQLException
+	 */
 	private void createConnection()
 	{
 		try 
 		{
+			// Connection information
 			Class.forName("org.postgresql.Driver");
 		    System.out.println("Driver O.K.");
 		    String url = "jdbc:postgresql://qdjjtnkv.db.elephantsql.com:5432/xchuldjm";
 		    String user = "xchuldjm";
 		    String passwd = "k_s5Zb_Br9lFxGz4SmfrlPKEmJbTOvY-";
 
+		    // Creation of the link between the program and the database 
 		    JDBConnection.conn = DriverManager.getConnection(url, user, passwd);
-		    System.out.println("Connexion effective !");
+		    System.out.println("Connected Successfully !");
 		} 
 		catch (ClassNotFoundException e)
 		{
-			System.out.println("ERREUR - JDBConnection.createConnection() / Class.forName : Classe/Driver Introuvable");
+			System.out.println("ERROR - JDBConnection.createConnection() / Class.forName : Classe/Driver Not Found (ClassNotFoundException)");
 		}
 		catch (LinkageError e)
 		{
-			System.out.println("ERREUR - JDBConnection.createConnection() / Class.forName : Liaison/Initialisation échouée");
+			System.out.println("ERROR - JDBConnection.createConnection() / Class.forName : Linkage/Initialization failed (LinkageError)");
 		}
 		catch (SQLException e)
 		{
-			System.out.println("ERREUR - JDBConnection.createConnection() / DriverManager.getconnection : Délai dépassé OU Trop de connexions");
+			System.out.println("ERROR - JDBConnection.createConnection() / DriverManager.getconnection : Connection Timeout OR Too Many Connections (SQLException)");
 		}
 	}
 
-	// Méthodes User
-	public void verifyLoginUser(User user, String nickname) throws UserNotInTheDatabaseException
+// User Methods
+	/**
+	 * This method is used when a user wants to log in the app (via the Login View).
+	 * It checks the user is registered in the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), {@link User}
+	 * @return      void
+	 * If the user is located in the database, then this method returns the user, 
+	 * else an {@link ObjectNotInTheDatabaseException} is returned.
+	 * @exception	SQLException
+	 * @throws 		ObjectNotInTheDatabaseException
+	 */
+	public void verifyLoginUser(User user, String nickname) throws ObjectNotInTheDatabaseException
 	{
 		
 		try 
@@ -73,16 +95,6 @@ public class JDBConnection {
 			//L'objet ResultSet contient le résultat de la requête SQL
 			ResultSet result = state.executeQuery("SELECT nickname, password FROM public.\"global_user\" WHERE nickname = \'" + nickname + "\'" ); 
 			
-			//On récupère les MetaData
-			ResultSetMetaData resultMeta = result.getMetaData();
-			/* System.out.println("\n**********************************");
-			 
-	      	//On affiche le nom des colonnes
-	      	for(int i = 1; i <= resultMeta.getColumnCount(); i++)
-	        	System.out.print("\t" + resultMeta.getColumnName(i).toUpperCase() + "\t *");
-	         
-	      	System.out.println("\n**********************************"); */
-	        
 			while(result.next())
 			{
 				user.nicknameUser = result.getObject(1).toString();
@@ -101,19 +113,29 @@ public class JDBConnection {
 			
 			if (user.nicknameUser == null)
 			{
-				throw new UserNotInTheDatabaseException(nickname);
+				throw new ObjectNotInTheDatabaseException(nickname);
 			}
 	         
 	    } 
 		catch (SQLException e) 
 		{
-			System.out.println("ERREUR - JDBConnection.getUser() / : Requête erronée ou absence de valeur de retour (SQLException)");
+			System.out.println("ERROR - JDBConnection.getUser() / : SQL Query Error (SQLException)");
 	    }
 	}
 	
+	/**
+	 * This method is used when a user wants to get its data, for example if it wants to modify them.
+	 * It creates a user and fill all its data which are in the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user)
+	 * @return      {@link User}
+	 * @exception	SQLException
+	 */
 	public User getUserData(String nickname)
 	{
-		User user = new UserBD();
+		User user = new UserDB();
 		
 		try
 		{
@@ -141,13 +163,24 @@ public class JDBConnection {
 	    } 
 		catch (SQLException e) 
 		{
-			System.out.println("ERREUR - JDBConnection.getUser() / : Requête erronée ou absence de valeur de retour (SQLException)");
+			System.out.println("ERROR - JDBConnection.getUser() / : SQL Query Error (SQLException)");
 	    }
 		
 		return user;
 	}
 	
-	// Methods USER
+	/**
+	 * This method is used when an admin registers a user.
+	 * It creates the user into the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), password (a {@link String} giving the password of the user), e-mail (a {@link String} giving the e-mail of the user)
+	 * @return      void
+	 * If the user is located in the database, then this method returns the user, 
+	 * else an {@link ObjectNotInTheDatabaseException} is returned.
+	 * @exception	SQLException
+	 */
 	public void createUser(String nickname, String password, String email)
 	{
 		try 
@@ -161,7 +194,17 @@ public class JDBConnection {
 	    } 
 		catch (SQLException e) {}
 	}
-	
+
+	/**
+	 * This method is used when an admin deletes a user.
+	 * It deletes the user from the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user)
+	 * @return      void
+	 * @exception	SQLException
+	 */
 	public void deleteUser(String nickname)
 	{
 		try 
@@ -176,6 +219,24 @@ public class JDBConnection {
 		catch (SQLException e) {}
 	}
 	
+	/**
+	 * This method is used when an admin modifies a user or when a user wants to modify its data.
+	 * It modifies the user data into the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), 
+	 * 				password (a {@link String} giving the password of the user), 
+	 * 				e-mail (a {@link String} giving the e-mail of the user), 
+	 * 				first name (a {@link String} giving the first name of the user), 
+	 * 				last name (a {@link String} giving the last name of the user), 
+	 * 				city (a {@link String} giving the city of the user), 
+	 * 				street (a {@link String} giving the street of the user), 
+	 * 				postal code (a {@link String} giving the postal code of the user), 
+	 * 				street number (a {@link String} giving the street number of the user)
+	 * @return      void
+	 * @exception	SQLException
+	 */
 	public void modifyUser(String nick, String pass, String email, String firstname,
 				String lastname, String city,String street,String postalcode,String streetnumber){
 		try 
@@ -189,175 +250,16 @@ public class JDBConnection {
 		catch (SQLException e) {}
 	}
 	
-	
-	// Méthodes Product
-	public ArrayList<Product> getAllProducts(String nickname)
-	{
-		ArrayList<Product> productList = new ArrayList<Product>();
-		//Product productList[] = null;
-		
-		try 
-		{
-			//Création d'un objet Statement
-			Statement state = conn.createStatement();
-	      
-			//L'objet ResultSet contient le résultat de la requête SQL
-			ResultSet result = state.executeQuery("SELECT * FROM public.\"product\" WHERE nickname = \'" + nickname + "\'"); 
-	      
-
-			//On récupère les MetaData
-			ResultSetMetaData resultMeta = result.getMetaData();
-			Integer x=0;
-			while(result.next())
-			{
-				Product product = new ProductBD(nickname);
-
-				product.pdt_name=result.getObject(2).toString();
-
-				
-				
-				product.quantity=Integer.parseInt(result.getObject(3).toString());
-
-				product.price= Integer.parseInt(result.getObject(4).toString());
-
-				product.user_nickname= result.getObject(5).toString();
-
-				//product.id_category= Integer.parseInt(result.getObject(6).toString());
-				
-				product.briefDesc=result.getObject(7).toString();
-				product.longDesc=result.getObject(8).toString();
-						
-				productList.add(product);
-				
-				x++;
-
-			}
-
-			result.close();
-			
-	    } 
-		catch (SQLException e) 
-		{
-			System.out.println("ERREUR - JDBConnection.getAllProducts() / : Requête erronée ou absence de valeur de retour (SQLException)");
-	    }
-		
-		return productList;
-	}
-	
-	//Obtenir le produit dont le nom est spécifié
-	public Product getProduct(String nickname, String pdtName) throws UserNotInTheDatabaseException
-	{
-		Product product = new ProductBD(pdtName);
-		
-		try 
-		{
-			//Création d'un objet Statement
-			Statement state = conn.createStatement();
-	      
-			//L'objet ResultSet contient le résultat de la requête SQL
-			ResultSet result = state.executeQuery("SELECT * FROM public.\"product\" WHERE nickname = \'" + nickname + "\' AND product_name =\'" + pdtName + "\'" ); 
-	      
-			//On récupère les MetaData
-			ResultSetMetaData resultMeta = result.getMetaData();
-	         
-	        
-			while(result.next())
-			{				
-				
-				product.pdt_name=result.getObject(2).toString();
-				
-				product.briefDesc=result.getObject(7).toString();
-				
-				product.longDesc=result.getObject(8).toString();
-				product.quantity=Integer.parseInt(result.getObject(3).toString());
-				
-				product.price= Integer.parseInt(result.getObject(4).toString());
-				
-				product.user_nickname= result.getObject(5).toString();
-				//product.id_category= Integer.parseInt(result.getObject(6).toString());
-	
-
-			}
-
-			result.close();
-			state.close();
-			
-			if (product.pdt_name == null)
-			{
-				throw new UserNotInTheDatabaseException(pdtName);
-			}
-	         
-	    } 
-		catch (SQLException e) 
-		{
-			System.out.println("ERREUR - JDBConnection.getProduct() / : Requête erronée ou absence de valeur de retour (SQLException)");
-	    }
-		
-		return product;
-	}
-
-	public void createProduct(String nickname, String pdt_name, Integer pdt_quantity, Integer pdt_price, String pdt_briefDesc, String pdt_longDesc)
-	{
-		try 
-		{
-			//Création d'un objet Statement
-			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
-
-
-			state.executeQuery("INSERT INTO public.\"product\" (product_name, quantity, price, nickname, brief_desc, long_desc) VALUES (\'"  + pdt_name + "\', \'" + pdt_quantity + "\', \'"  + pdt_price + "\', \'"  + nickname + "\', \'"  + pdt_briefDesc + "\', \'" + pdt_longDesc + "\')");   
-
-			state.close();
-	         
-	    } 
-		catch (SQLException e) {}
-	}
-	
-	public void deleteProduct(String pdt_name, String nickname)
-	{
-		try 
-		{
-			//Création d'un objet Statement
-			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
-			state.executeQuery("DELETE FROM public.\"product\" WHERE product_name=\'"  + pdt_name + "\' AND nickname =\'"  + nickname + "\'");   
-			state.close();
-	         
-	    } 
-		catch (SQLException e) {}
-	}
-
-	//Méthodes Goal
-	public void createGoal(String goal_title, String goal_description, String nick) {	
-		
-		try 
-		{
-			//Création d'un objet Statement
-			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
-			
-		
-			state.executeQuery("INSERT INTO public.\"goal\"(goal_title, goal_description) VALUES (\'"  + goal_title + "\', \'" + goal_description + "\')");   
-			state.close();
-	         
-	    } 
-		catch (SQLException e) {}
-	
-		try 
-		{
-			//Création d'un objet Statement
-			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
-			//Requête pour mettre à jour la table goal_list avec un nickname et l'id_goal de son goal
-
-			state.executeQuery("INSERT INTO public.\"goal_list\" VALUES((SELECT id_goal FROM public.\"goal\" where goal_title =\'" + goal_title + "\'), \'"  + nick + "\')");
-			state.close();
-	         
-	    } 
-		catch (SQLException e) {}
-		
-	}
-	
+	/**
+	 * This method is used to know if a user is an admin.
+	 * It seeks the user into the "admin" table in the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), 
+	 * @return      {@link boolean} (true if the user is an admin, else false)
+	 * @exception	SQLException
+	 */
 	public boolean isAdmin(String nickname)
 	{
 		
@@ -383,12 +285,22 @@ public class JDBConnection {
 	    } 
 		catch (SQLException e) 
 		{
-			System.out.println("ERREUR - JDBConnection.getUser() / : Requête erronée ou absence de valeur de retour (SQLException)");
+			System.out.println("ERROR - JDBConnection.getUser() / : SQL Query Error (SQLException)");
 	    }
 		
 		return isAnAdmin;
 	}
 	
+	/**
+	 * This method is used to know if a user is a simple user.
+	 * It seeks the user into the "simple_user" table in the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), 
+	 * @return      {@link boolean} (true if the user is a simple user, else false)
+	 * @exception	SQLException
+	 */
 	public boolean isSimpleUser(String nickname)
 	{
 		
@@ -420,6 +332,16 @@ public class JDBConnection {
 		return isASimpleUser;
 	}
 	
+	/**
+	 * This method is used to know if a user is a seller.
+	 * It seeks the user into the "seller" table in the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), 
+	 * @return      {@link boolean} (true if the user is a seller, else false)
+	 * @exception	SQLException
+	 */
 	public boolean isSeller(String nickname)
 	{
 		
@@ -450,7 +372,17 @@ public class JDBConnection {
 		
 		return isASeller;
 	}
-		
+	
+	/**
+	 * This method is used to add the seller role to a user.
+	 * It adds the user into the "seller" table in the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), 
+	 * @return      void
+	 * @exception	SQLException
+	 */
 	public void addUserRoleSeller(String nickname)
 	{
 		try 
@@ -463,6 +395,17 @@ public class JDBConnection {
 	    } 
 		catch (SQLException e) {}
 	}
+	
+	/**
+	 * This method is used to add the simple user role to a user.
+	 * It adds the user into the "simple_user" table in the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), 
+	 * @return      void
+	 * @exception	SQLException
+	 */
 	public void addUserRoleSimpleUser(String nickname)
 	{
 		try 
@@ -475,6 +418,17 @@ public class JDBConnection {
 	    } 
 		catch (SQLException e) {}
 	}
+	
+	/**
+	 * This method is used to add the admin role to a user.
+	 * It adds the user into the "admin" table in the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), 
+	 * @return      void
+	 * @exception	SQLException
+	 */
 	public void addUserRoleAdmin(String nickname)
 	{
 		try 
@@ -487,6 +441,17 @@ public class JDBConnection {
 	    } 
 		catch (SQLException e) {}
 	}
+	
+	/**
+	 * This method is used to delete the seller role from a user.
+	 * It deletes the user from the "seller" table in the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), 
+	 * @return      void
+	 * @exception	SQLException
+	 */
 	public void deleteUserRoleSeller(String nickname)
 	{
 		try 
@@ -499,6 +464,17 @@ public class JDBConnection {
 	    } 
 		catch (SQLException e) {}
 	}
+	
+	/**
+	 * This method is used to delete the simple user role from a user.
+	 * It deletes the user from the "simple_user" table in the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), 
+	 * @return      void
+	 * @exception	SQLException
+	 */
 	public void deleteUserRoleSimpleUser(String nickname)
 	{
 		try 
@@ -511,6 +487,17 @@ public class JDBConnection {
 	    } 
 		catch (SQLException e) {}
 	}
+	
+	/**
+	 * This method is used to delete the admin role from a user.
+	 * It deletes the user from the "admin" table in the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), 
+	 * @return      void
+	 * @exception	SQLException
+	 */
 	public void deleteUserRoleAdmin(String nickname)
 	{
 		try 
@@ -524,8 +511,238 @@ public class JDBConnection {
 		catch (SQLException e) {}
 	}
 	
+// Product Methods
+	/**
+	 * This method is used when a seller wants to see its products list.
+	 * It gets all the products from the seller into the database (thanks to its nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), 
+	 * @return      {@link ArrayList} of Products
+	 * @exception	SQLException
+	 */
+	public ArrayList<Product> getAllProducts(String nickname)
+	{
+		ArrayList<Product> productList = new ArrayList<Product>();
+		//Product productList[] = null;
+		
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+	      
+			//L'objet ResultSet contient le résultat de la requête SQL
+			ResultSet result = state.executeQuery("SELECT * FROM public.\"product\" WHERE nickname = \'" + nickname + "\'"); 
+	      
+
+			Integer x=0;
+			while(result.next())
+			{
+				Product product = new ProductDB(nickname);
+
+				product.pdt_name=result.getObject(2).toString();
+
+				
+				
+				product.quantity=Integer.parseInt(result.getObject(3).toString());
+
+				product.price= Integer.parseInt(result.getObject(4).toString());
+
+				product.user_nickname= result.getObject(5).toString();
+
+				//product.id_category= Integer.parseInt(result.getObject(6).toString());
+				
+				product.briefDesc=result.getObject(7).toString();
+				product.longDesc=result.getObject(8).toString();
+						
+				productList.add(product);
+				
+				x++;
+
+			}
+
+			result.close();
+			
+	    } 
+		catch (SQLException e) 
+		{
+			System.out.println("ERROR - JDBConnection.getAllProducts() / : SQL Query Error (SQLException)");
+	    }
+		
+		return productList;
+	}
 	
-	//création d'une catégorie d'activité suggérée
+	/**
+	 * This method is used when a seller wants to get a product of its products list.
+	 * It gets the product wanted by the seller from the database (thanks to the seller's nickname and the product's name).
+	 * The nickname/product name argument specifies the user/product and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), 
+	 * 				product name (a {@link String} giving the name of the product)
+	 * @return      {@link ArrayList} of Products
+	 * @throws		ObjectNotInTheDatabaseException
+	 * @exception	SQLException
+	 */
+	public Product getProduct(String nickname, String pdtName) throws ObjectNotInTheDatabaseException
+	{
+		Product product = new ProductDB(pdtName);
+		
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+	      
+			//L'objet ResultSet contient le résultat de la requête SQL
+			ResultSet result = state.executeQuery("SELECT * FROM public.\"product\" WHERE nickname = \'" + nickname + "\' AND product_name =\'" + pdtName + "\'" ); 
+	        
+			while(result.next())
+			{				
+				
+				product.pdt_name=result.getObject(2).toString();
+				
+				product.briefDesc=result.getObject(7).toString();
+				
+				product.longDesc=result.getObject(8).toString();
+				product.quantity=Integer.parseInt(result.getObject(3).toString());
+				
+				product.price= Integer.parseInt(result.getObject(4).toString());
+				
+				product.user_nickname= result.getObject(5).toString();
+				//product.id_category= Integer.parseInt(result.getObject(6).toString());
+	
+
+			}
+
+			result.close();
+			state.close();
+			
+			if (product.pdt_name == null)
+			{
+				throw new ObjectNotInTheDatabaseException(pdtName);
+			}
+	         
+	    } 
+		catch (SQLException e) 
+		{
+			System.out.println("ERROR - JDBConnection.getProduct() / : SQL Query Error (SQLException)");
+	    }
+		
+		return product;
+	}
+
+	/**
+	 * This method is used when a seller wants to create a product and add it to its products list.
+	 * It creates the seller product into the database (thanks to the seller's nickname and the product's name).
+	 * The nickname/product name argument specifies the user/product and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the seller), 
+	 * 				product name (a {@link String} giving the name of the product),
+	 * 				product quantity (an {@link Integer} giving the product quantity in stocks),
+	 * 				product price (an {@link Integer} giving the product price),
+	 * 				product brief description (a {@link String} giving the brief description of the product),
+	 * 				product long description (a {@link String} giving the long description of the product),
+	 * @return      void
+	 * @exception	SQLException
+	 */
+	public void createProduct(String nickname, String pdt_name, Integer pdt_quantity, Integer pdt_price, String pdt_briefDesc, String pdt_longDesc)
+	{
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+
+
+			state.executeQuery("INSERT INTO public.\"product\" (product_name, quantity, price, nickname, brief_desc, long_desc) VALUES (\'"  + pdt_name + "\', \'" + pdt_quantity + "\', \'"  + pdt_price + "\', \'"  + nickname + "\', \'"  + pdt_briefDesc + "\', \'" + pdt_longDesc + "\')");   
+
+			state.close();
+	         
+	    } 
+		catch (SQLException e) {}
+	}
+	
+	/**
+	 * This method is used when a seller wants to delete a product from its products list.
+	 * It deletes the seller product from the database (thanks to the seller's nickname and the product's name).
+	 * The nickname/product name argument specifies the user/product and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		product name (a {@link String} giving the name of the product),
+	 * 				nickname (a {@link String} giving the nickname of the seller), 
+	 * @return      void
+	 * @exception	SQLException
+	 */
+	public void deleteProduct(String pdt_name, String nickname)
+	{
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+			state.executeQuery("DELETE FROM public.\"product\" WHERE product_name=\'"  + pdt_name + "\' AND nickname =\'"  + nickname + "\'");   
+			state.close();
+	         
+	    } 
+		catch (SQLException e) {}
+	}
+
+// Goal Methods
+	/**
+	 * This method is used when a simple user wants to create a goal and add it to its goals list.
+	 * It creates the goal into the database and then adds it into the user's goal list (thanks to the simple user's nickname and the goal's name).
+	 * The nickname/goal title argument specifies the user/goal and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		goal title (a {@link String} giving the title of the goal),
+	 * 				goal description (a {@link String} giving the description of the goal),
+	 * 				nickname (a {@link String} giving the nickname of the simple user), 
+	 * @return      void
+	 * @exception	SQLException
+	 */
+	public void createGoal(String goal_title, String goal_description, String nick) {	
+		
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+			
+		
+			state.executeQuery("INSERT INTO public.\"goal\"(goal_title, goal_description) VALUES (\'"  + goal_title + "\', \'" + goal_description + "\')");   
+			state.close();
+	         
+	    } 
+		catch (SQLException e) {}
+	
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de l'utilisateur
+			//Requête pour mettre à jour la table goal_list avec un nickname et l'id_goal de son goal
+
+			state.executeQuery("INSERT INTO public.\"goal_list\" VALUES((SELECT id_goal FROM public.\"goal\" where goal_title =\'" + goal_title + "\'), \'"  + nick + "\')");
+			state.close();
+	         
+	    } 
+		catch (SQLException e) {}
+		
+	}	
+	
+	/**
+	 * This method is used when a simple user wants to suggest an activity category.
+	 * It creates the suggestion into the database.
+	 * The goal title argument specifies the goal and must be a {@link String}.
+	 * <p>
+	 *
+	 * @param  		goal title (a {@link String} giving the title of the goal),
+	 * 				goal description (a {@link String} giving the description of the goal),
+	 * @return      void
+	 * @exception	SQLException
+	 */
 	public void addSuggestionActivityCategory(String title, String description){
 		try 
 		{
@@ -538,9 +755,17 @@ public class JDBConnection {
 		catch (SQLException e){}
 	}
 	
-	//obtenir toutes les catégories d'activité
-	public ArrayList<CategoryActivity> getAllCategoryActivity(){
-		ArrayList<CategoryActivity> categoryActivityList = new ArrayList<CategoryActivity>() ;
+	/**
+	 * This method is used when a simple user wants to get all activity categories.
+	 * It gets the activity categories from the database.
+	 * <p>
+	 *
+	 * @param  		none
+	 * @return      {@link ArrayList} of Activity Categories
+	 * @exception	SQLException
+	 */
+	public ArrayList<ActivityCategory> getAllCategoryActivity(){
+		ArrayList<ActivityCategory> activityCategoryList = new ArrayList<ActivityCategory>() ;
 		try{
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
@@ -551,29 +776,41 @@ public class JDBConnection {
 			Integer x=0;
 			while(result.next())
 			{
-				CategoryActivity categoryActivity = new CategoryActivityDB();
-				categoryActivity.title = result.getObject(2).toString();
-				categoryActivity.descritpion = result.getObject(3).toString();
-				System.out.println(categoryActivity.title);
-				System.out.println(categoryActivity.descritpion);
-				categoryActivityList.add(categoryActivity );
-				System.out.println(categoryActivity.title);
+				ActivityCategory activityCategory = new ActivityCategoryDB();
+				activityCategory.title = result.getObject(1).toString();
+				activityCategory.description = result.getObject(2).toString();
+				System.out.println(activityCategory.title);
+				System.out.println(activityCategory.description);
+				activityCategoryList.add(activityCategory );
+				System.out.println(activityCategory.title);
 				x++;
 				
+				for(int i = 1; i <= resultMeta.getColumnCount()-1; i++){
+					System.out.print("\t" + result.getObject(i).toString() + "\t |");
 				
 				}
 				result.close();
-			
+			}
 			
 		}
 		catch (SQLException e){		 
 		}
-		return categoryActivityList;
+		return activityCategoryList;
 	}
 	
+	
+	/**
+	 * This method is used when an admin wants to get all the suggestions about activity categories.
+	 * It gets the suggestions from the database.
+	 * <p>
+	 *
+	 * @param  		none
+	 * @return      {@link ArrayList} of Activity Categories
+	 * @exception	SQLException
+	 */
 	//obtenir toutes les catégories d'activités suggérées
-	public ArrayList<CategoryActivity> getAllSuggestionCategoryActivity(){
-		ArrayList<CategoryActivity> suggestionCategoryActivityList = new ArrayList<CategoryActivity>() ;
+	public ArrayList<ActivityCategory> getAllSuggestionActivityCategory(){
+		ArrayList<ActivityCategory> suggestionActivityCategoryList = new ArrayList<ActivityCategory>() ;
 		try{
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
@@ -584,25 +821,27 @@ public class JDBConnection {
 			Integer x=0;
 			while(result.next())
 			{
-				CategoryActivity categoryActivitySuggestion = new CategoryActivityDB();
-				categoryActivitySuggestion.title = result.getObject(2).toString();
-				categoryActivitySuggestion.descritpion = result.getObject(3).toString();
-				System.out.println(categoryActivitySuggestion.title);
-				System.out.println(categoryActivitySuggestion.descritpion);
+				ActivityCategory activityCategorySuggestion = new ActivityCategoryDB();
+				activityCategorySuggestion.title = result.getObject(1).toString();
+				activityCategorySuggestion.description = result.getObject(2).toString();
+				System.out.println(activityCategorySuggestion.title);
+				System.out.println(activityCategorySuggestion.description);
 				
-				suggestionCategoryActivityList.add(categoryActivitySuggestion );
-				System.out.println(categoryActivitySuggestion.title);
+				suggestionActivityCategoryList.add(activityCategorySuggestion );
+				System.out.println(activityCategorySuggestion.title);
 				
 				x++;
 				
-							
+				for(int i = 1; i <= resultMeta.getColumnCount()-1; i++){
+					System.out.print("\t" + result.getObject(i).toString() + "\t |");
+				
 				}
 				result.close();
-			
+			}
 			
 		}
 		catch (SQLException e){}
-		return suggestionCategoryActivityList;
+		return suggestionActivityCategoryList;
 	}
 
 	public ArrayList<Goal> getGoalList(String nickname) {
