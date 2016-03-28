@@ -6,7 +6,7 @@ public class CategoryHandler {
 	ArrayList<ActivityCategory> categoryList;
 	String [][] stringCategoryList;
 	AbstractFactory Fact = new FactoryActivityCategory();
-	
+	ArrayList<ActivityCategory> categorySuggestionList;
 	//Constructeur Singleton
 		private CategoryHandler()
 			{}
@@ -61,20 +61,20 @@ public class CategoryHandler {
 
 		public void getCategoryActivitySuggestionList()
 		{
-			if (categoryList==null)
+			if (categorySuggestionList==null)
 			{
-			categoryList = Fact.createCategoryActivitySuggestionList();
+				categorySuggestionList = Fact.createCategoryActivitySuggestionList();
 			}
 		}
 		
 		public String[][] getStringCategorySuggestionList() {
 			getCategoryActivitySuggestionList();
-			stringCategoryList= new String [categoryList.size()][2];
-			if (categoryList != null){
-				for (Integer i=0; i<categoryList.size(); i++)
+			stringCategoryList= new String [categorySuggestionList.size()][2];
+			if (categorySuggestionList != null){
+				for (Integer i=0; i<categorySuggestionList.size(); i++)
 				{
-					stringCategoryList[i][0]= categoryList.get(i).title;
-					stringCategoryList[i][1]= categoryList.get(i).description;
+					stringCategoryList[i][0]= categorySuggestionList.get(i).title;
+					stringCategoryList[i][1]= categorySuggestionList.get(i).description;
 				}
 			}
 			return stringCategoryList;
