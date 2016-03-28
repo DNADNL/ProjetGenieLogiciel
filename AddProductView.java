@@ -71,6 +71,8 @@ public class AddProductView extends JFrame implements ActionListener{
 			briefDescAddProduct.setBounds(270, 140, 160, 60);
 			panel.add(briefDescAddProduct);
 			
+				//
+			
 			// Labels
 			JLabel nameLabel = new JLabel("Nom");
 			nameLabel.setBounds(160, 100, 90, 30);

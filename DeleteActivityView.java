@@ -17,7 +17,7 @@ public class DeleteActivityView extends JFrame implements ActionListener{
 	
 	//Création des boutons de "DeleteProduct"
 	Button returnMainUserButton = new Button("Retour",540, 10, 150, 30);
-	Button validateDeleteActivityButton = new Button("<html>Delete<br> Activity</html>",275,350,150,50);
+	Button validateDeleteActivityButton = new Button("<html>Delete<br> Activity</html>",275,400,150,50);
 		
 		public DeleteActivityView(User loggedUser, String activity_selected)
 		{

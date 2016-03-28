@@ -72,9 +72,11 @@ public class JDBConnection {
 			Statement state = conn.createStatement();
 			//L'objet ResultSet contient le résultat de la requête SQL
 			ResultSet result = state.executeQuery("SELECT nickname, password FROM public.\"global_user\" WHERE nickname = \'" + nickname + "\'" ); 
+			
 			//On récupère les MetaData
 			ResultSetMetaData resultMeta = result.getMetaData();
 			/* System.out.println("\n**********************************");
+			 
 	      	//On affiche le nom des colonnes
 	      	for(int i = 1; i <= resultMeta.getColumnCount(); i++)
 	        	System.out.print("\t" + resultMeta.getColumnName(i).toUpperCase() + "\t *");
@@ -341,9 +343,8 @@ public class JDBConnection {
 		catch (SQLException e) {}
 	}
 
-	public void createGoal(String goal_title, String goal_description, String nick) {
-		// TODO Auto-generated method stub
-		
+	//Méthodes Goal
+	public void createGoal(String goal_title, String goal_description, String nick) {	
 		
 		try 
 		{
