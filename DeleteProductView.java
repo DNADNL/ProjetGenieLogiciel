@@ -117,6 +117,8 @@ public class DeleteProductView extends JFrame implements ActionListener{
 
 		} catch (UserDeletedException e) {
 			JOptionPane.showMessageDialog(null, pdt_name+" a bien été supprimé de la BD !", "Suppression de produit", JOptionPane.INFORMATION_MESSAGE);
+			new ProductsListView(FU.getCurrentUser());	
+			dispose();
 
 		}
 	}

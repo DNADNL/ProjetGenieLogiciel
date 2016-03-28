@@ -320,9 +320,7 @@ public class JDBConnection {
 			//Création d'un objet Statement
 			Statement state = conn.createStatement();
 			//Exécution de la requête d'insertion de l'utilisateur
-			System.out.println("test3");
 			state.executeQuery("DELETE FROM public.\"product\" WHERE product_name=\'"  + pdt_name + "\' AND nickname =\'"  + nickname + "\'");   
-			System.out.println("test4");
 			state.close();
 	         
 	    } 
