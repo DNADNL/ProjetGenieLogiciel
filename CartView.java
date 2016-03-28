@@ -1,146 +1,89 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class CartView extends JFrame implements ActionListener
 {	
 	FacadeUser FU = FacadeUser.getFU();
 	static User user;
 	
-	//Création du panel de navigation
+	//Creates Navigation Panel
 	JPanel panel = new JPanel();
 	
-	//Création des boutons de "Principal"
-	Button logoutButton = new Button("Déconnexion",540, 10, 150, 30);
-	Button productListButton = new Button("Mes produits", 250, 335, 200, 30);
-
-	Button adminButton = new Button("Administration", 250, 375, 200, 30);
-	Button simpleUserButton = new Button("Simple User", 250, 415, 200, 30);
+	//Creates Buttons
+	Button returnButton = new Button("Return",540, 10, 150, 30);
 	
-	//Constructeur
+	//Constructor
 	public CartView(User loggedUser)
 	{
-		super("Bienvenue !");
+		super("Lazy 'n Yourself");
 		user = loggedUser;
 		
-		// Options de la fenetre
+		// Window Options
 		this.setSize(700,700);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);	
 		
-		// Construction du panel principal
-		placeComponentsPrincipal(panel);
+		// Panel Construction
+		placeComponents(panel);
 		
-		// Choix du panel
+		// Panel Chosen
 		setContentPane(panel);
 		
 		setVisible(true);
 	}
 	
-	private void placeComponentsPrincipal(JPanel panel)
+	/**
+	 * This method places the components on the panel.
+	 * <p>
+	 *
+	 * @param  		panel (a {@link JPanel} giving the panel where to place the components),
+	 * @return      void
+	 */
+	private void placeComponents(JPanel panel)
 	{
 		panel.removeAll();
 		panel.setLayout(null);
 		
-		// Font
-		Font fontTitre = new Font("Courier", Font.BOLD, 20);
+		// Fonts
+		Font fontTitle = new Font("Courier", Font.BOLD, 20);
 		Font font = new Font("Courier", Font.BOLD, 15);
 		
 		// Buttons
-		logoutButton.addActionListener(this);
-		panel.add(logoutButton);
-		
-		productListButton.addActionListener(this);
-		panel.add(productListButton);
-		
-		adminButton.addActionListener(this);
-		panel.add(adminButton);
-		
-		simpleUserButton.addActionListener(this);
-		panel.add(simpleUserButton);
-		
-		// Textfields
+		returnButton.addActionListener(this);
+		panel.add(returnButton);
 		
 		// Labels
-		JLabel userLabel = new JLabel("<html>Page de <br>" + user.nicknameUser + "</html>");
+		JLabel userLabel = new JLabel("<html>Hello, " + user.nicknameUser + " !</html>");
 		userLabel.setBounds(10, 10, 150, 50);
 		userLabel.setFont(font);
 		userLabel.setForeground(Color.BLACK);
 		panel.add(userLabel);
 		
-		// Titre
-
-		// Background
-
+		// Title
+		JLabel windowUnderConstructionLabel = new JLabel("<html>This window is under construction...</html>");
+		windowUnderConstructionLabel.setBounds(125, 300, 500, 50);
+		windowUnderConstructionLabel.setFont(fontTitle);
+		windowUnderConstructionLabel.setForeground(Color.BLACK);
+		panel.add(windowUnderConstructionLabel);
 	}
 
 
-	//ActionPerformMethod
-	@Override
+	//ActionPerform Method
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		Object source = e.getSource();
-		if (source == logoutButton)
+		if (source == returnButton)
 		{
-			FU.disconnectUser();
+			new SimpleUserView(FU.getCurrentUser());	
 			dispose();
-			new LoginView();
+			System.out.println("SimpleUserView Displayed");
 		}
-		else if (source == productListButton)
-		{
-			new ProductsListView();
-			dispose();
-			System.out.println("Panel ProductsList affiché");
-		}
-		else if (source == adminButton)
-		{
-			
-			new AdminView();
-			dispose();
-			System.out.println("Panel Admin affiché");
-		}
-		else if (source == simpleUserButton)
-		{
-			
-			new SimpleUserView(FU.getCurrentUser());
-			dispose();
-			System.out.println("Panel Simple User affiché");
-		}
-	
-		
 	}
-		
-	
-//	private void displayAddResult(Object result)
-//	{
-//		if (result.equals("UserCreated"))
-//		{
-//			System.out.println("AddUser : Successful !");
-//			addUserResultLabel.setText("L'utilisateur a été ajouté à la BD !");
-//			addUserResultLabel.setForeground(Color.BLUE);
-//			
-//		}
-//		else
-//		{
-//			System.out.println("AddUser : Failed !");
-//			addUserResultLabel.setText("Cet utilisateur existe déjà !");
-//			addUserResultLabel.setForeground(Color.RED);
-//			//addUserResultLabel.setVisible(true);				
-//		}
-//	}
-
 }
