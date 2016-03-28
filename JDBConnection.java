@@ -868,8 +868,8 @@ public class JDBConnection {
 			{
 				Goal goal = new GoalDB(nickname);
 
-				goal.goal_title=result.getObject(1).toString();
-				goal.goal_description=result.getObject(2).toString();
+				goal.goal_title=result.getObject(2).toString();
+				goal.goal_description=result.getObject(3).toString();
 				goalList.add(goal);			
 				x++;
 

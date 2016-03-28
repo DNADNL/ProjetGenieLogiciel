@@ -2,6 +2,9 @@ import java.util.ArrayList;
 
 public class FactoryGoal extends AbstractFactory {
 
+	Goal createdGoal;
+	ArrayList<Goal> createdGoalList;
+	
 	@Override
 	public User getUser(String nickname) throws ObjectNotInTheDatabaseException {
 		// TODO Auto-generated method stub
@@ -139,8 +142,9 @@ public class FactoryGoal extends AbstractFactory {
 
 	@Override
 	public ArrayList<Goal> createGoalList(String nickname) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		createdGoalList = GoalDB.createGoalList(nickname);
+		return createdGoalList;
 	}
 
 	@Override

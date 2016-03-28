@@ -111,7 +111,7 @@ public class SimpleUserView extends JFrame implements ActionListener
 
 		Object[][] donneesListeObjectifs =  {{"",""}};
 
-		//donneesListeObjectifs = FU.getStringGoalList();
+		donneesListeObjectifs = FU.getStringGoalList();
 
 		String[] enteteListeObjectifs = {"Objectif", "Description"};
 		listeObjectifs = new JTable(donneesListeObjectifs, enteteListeObjectifs);
