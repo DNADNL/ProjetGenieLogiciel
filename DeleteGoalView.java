@@ -104,6 +104,7 @@ public class DeleteGoalView extends JFrame implements ActionListener{
 		else if (source==validateDeleteGoalButton)
 		{
 			deleteGoalButtonClicked(goal_name);
+			
 		}
 	}
 	

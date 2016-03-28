@@ -31,6 +31,7 @@ public class GestionnaireGoal {
 		String goal_title_test;
 		
 		
+		
 		for (Integer i=0; i<goalList.size(); i++)
 		{	
 			
@@ -38,16 +39,18 @@ public class GestionnaireGoal {
 			goal_title_test = goalList.get(i).goal_title;
 			if(goal_title_test.equals(goal_title)){
 				System.out.println("GOAL déja dans la DB !");
+				throw new UserAlreadyExistsException(nick);	
 				
 			}
 		}
 		
-		
+
 		
 		
 		Fact.addGoal(goal_title, goal_description, nick);
 		refreshGoalList(nick);
 		throw new GoalCreatedException(nick);
+		
 	}
 
 	private void getGoalList(String nickname)
