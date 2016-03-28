@@ -38,7 +38,7 @@ public class CategoryHandler {
 		public void suggestActivityCategory(String title, String description) {
 			// TODO Auto-generated method stub
 			Fact.suggestActivityCategory(title, description);
-			
+			refreshCategoryActivitySuggestionList();
 			}
 		
 		public String[][] getStringCategoryList()
@@ -80,6 +80,11 @@ public class CategoryHandler {
 			return stringCategoryList;
 			
 			}
+		
+		public void refreshCategoryActivitySuggestionList(){
+			categorySuggestionList = Fact.createCategoryActivitySuggestionList();
+		}
+		
 }
 
 			
