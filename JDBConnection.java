@@ -552,20 +552,18 @@ public class JDBConnection {
 			while(result.next())
 			{
 				CategoryActivity categoryActivity = new CategoryActivityDB();
-				categoryActivity.title = result.getObject(1).toString();
-				categoryActivity.descritpion = result.getObject(2).toString();
+				categoryActivity.title = result.getObject(2).toString();
+				categoryActivity.descritpion = result.getObject(3).toString();
 				System.out.println(categoryActivity.title);
 				System.out.println(categoryActivity.descritpion);
 				categoryActivityList.add(categoryActivity );
 				System.out.println(categoryActivity.title);
 				x++;
 				
-				for(int i = 1; i <= resultMeta.getColumnCount()-1; i++){
-					System.out.print("\t" + result.getObject(i).toString() + "\t |");
 				
 				}
 				result.close();
-			}
+			
 			
 		}
 		catch (SQLException e){		 
@@ -587,8 +585,8 @@ public class JDBConnection {
 			while(result.next())
 			{
 				CategoryActivity categoryActivitySuggestion = new CategoryActivityDB();
-				categoryActivitySuggestion.title = result.getObject(1).toString();
-				categoryActivitySuggestion.descritpion = result.getObject(2).toString();
+				categoryActivitySuggestion.title = result.getObject(2).toString();
+				categoryActivitySuggestion.descritpion = result.getObject(3).toString();
 				System.out.println(categoryActivitySuggestion.title);
 				System.out.println(categoryActivitySuggestion.descritpion);
 				
@@ -597,12 +595,10 @@ public class JDBConnection {
 				
 				x++;
 				
-				for(int i = 1; i <= resultMeta.getColumnCount()-1; i++){
-					System.out.print("\t" + result.getObject(i).toString() + "\t |");
-				
+							
 				}
 				result.close();
-			}
+			
 			
 		}
 		catch (SQLException e){}

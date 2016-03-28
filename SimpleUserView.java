@@ -31,7 +31,7 @@ public class SimpleUserView extends JFrame implements ActionListener
 	Button addGoalButton = new Button("Ajouter", 10, 540, 150, 30);
 	Button seeGoalButton = new Button("Voir", 170, 540, 150, 30);
 	Button deleteGoalButton = new Button("Supprimer", 330, 540, 150, 30);
-	Button categorySuggestionButton = new Button("<html>Suggérer <br>des catégories</html>",450,200,200,60);
+	Button showCategoryActivityButton = new Button("<html>voir <br>les catégories</html>",450,200,200,60);
 	
 	//Creation de la JTable
 	JTable listeObjectifs;
@@ -68,8 +68,8 @@ public class SimpleUserView extends JFrame implements ActionListener
 		Font font = new Font("Courier", Font.BOLD, 15);
 		
 		//suggérer descatégories d'activités
-		categorySuggestionButton.addActionListener(this);
-		panel.add(categorySuggestionButton);
+		showCategoryActivityButton.addActionListener(this);
+		panel.add(showCategoryActivityButton);
 		
 		// Affectation des boutons à la fenêtre
 		// "Déconnexion"
@@ -171,10 +171,10 @@ public class SimpleUserView extends JFrame implements ActionListener
 			}
 			
 		}
-		else if ( source == categorySuggestionButton){
-			new SuggestCategoryView(FU.getCurrentUser());
+		else if ( source == showCategoryActivityButton){
+			new ShowActivityCategoryview(FU.getCurrentUser());
 			dispose();
-			System.out.println("panel SuggestCategoryView affiché");	
+			System.out.println("panel ShowcategoryActivityView affiché");	
 		}
 		else if (source == deleteGoalButton)
 		{

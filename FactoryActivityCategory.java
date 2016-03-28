@@ -58,10 +58,9 @@ public class FactoryActivityCategory extends AbstractFactory {
 	}
 
 	@Override
-	public ArrayList<CategoryActivity> createCategoryActivityList(String nickname) {
-//		createdActivityCategoryList = CategoryActivityDB.createCategoryActivityList(nickname);
-//		return createdActivityCategoryList;
-		return null;
+	public ArrayList<CategoryActivity> createCategoryActivityList() {
+		createdActivityCategoryList = CategoryActivityDB.createCategoryActivityList();
+		return createdActivityCategoryList;
 	}
 //	
 
@@ -182,6 +181,14 @@ public class FactoryActivityCategory extends AbstractFactory {
 
 	@Override
 	public ArrayList<Goal> createGoalList(String nickname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public ArrayList<CategoryActivity> createCategoryActivityList(String title) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,6 +1,10 @@
+import java.util.ArrayList;
+
 /* handler for category activity*/
 public class CategoryHandler {
-CategoryActivity categoryList[][];
+	
+	ArrayList<CategoryActivity> categoryList;
+	String [][] stringCategoryList;
 	AbstractFactory Fact = new FactoryActivityCategory();
 	
 	//Constructeur Singleton
@@ -22,23 +26,40 @@ CategoryActivity categoryList[][];
 
 		
 	//Méthodes
-		public CategoryActivity[][] getCategoryList()
+		public void getCategoryList()
 		{
 			if (categoryList==null)
 			{
-// 				categoryList = Fact.createActivityList();
+			categoryList = Fact.createCategoryActivityList();
 			}
-			return categoryList;
 		}
-		
+	
 
 		public void suggestActivityCategory(String title, String description) {
 			// TODO Auto-generated method stub
 			Fact.suggestActivityCategory(title, description);
 			
 			}
+		
+		public String[][] getStringCategoryList()
+		{
+			getCategoryList();
+			stringCategoryList= new String [categoryList.size()][2];
+			
+			if (categoryList != null)
+			{
+				for (Integer i=0; i<categoryList.size(); i++)
+				{
+					stringCategoryList[i][0]= categoryList.get(i).title;
+					stringCategoryList[i][1]= categoryList.get(i).descritpion;
+				}
+			}
+			return stringCategoryList;
 			
 		}
+
+			
+}
 	
 
 
