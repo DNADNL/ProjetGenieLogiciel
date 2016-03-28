@@ -34,5 +34,7 @@ public abstract class AbstractFactory
 			String pdt_briefDesc, String pdt_longDesc);
 	abstract public ArrayList<Goal> createGoalList(String nickname);
 	abstract public ArrayList<ActivityCategory> createCategoryActivityList();
+	abstract public ArrayList<ActivityCategory> createCategoryActivitySuggestionList();
+	}
 	
-}
+

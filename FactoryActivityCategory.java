@@ -193,8 +193,8 @@ public class FactoryActivityCategory extends AbstractFactory {
 		return null;
 	}
 
-	public ArrayList<CategoryActivity> createCategoryActivitySuggestionList() {
-		createdActivityCategoryList = CategoryActivityDB.createCategoryActivitySuggestionList();
+	public ArrayList<ActivityCategory> createCategoryActivitySuggestionList() {
+		createdActivityCategoryList = ActivityCategoryDB.createCategoryActivitySuggestionList();
 		return createdActivityCategoryList;
 	}
 

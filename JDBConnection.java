@@ -777,20 +777,19 @@ public class JDBConnection {
 			while(result.next())
 			{
 				ActivityCategory activityCategory = new ActivityCategoryDB();
-				activityCategory.title = result.getObject(1).toString();
-				activityCategory.description = result.getObject(2).toString();
+				activityCategory.title = result.getObject(2).toString();
+				activityCategory.description = result.getObject(3).toString();
 				System.out.println(activityCategory.title);
 				System.out.println(activityCategory.description);
 				activityCategoryList.add(activityCategory );
 				System.out.println(activityCategory.title);
 				x++;
 				
-				for(int i = 1; i <= resultMeta.getColumnCount()-1; i++){
-					System.out.print("\t" + result.getObject(i).toString() + "\t |");
+				
 				
 				}
 				result.close();
-			}
+			
 			
 		}
 		catch (SQLException e){		 
@@ -822,8 +821,8 @@ public class JDBConnection {
 			while(result.next())
 			{
 				ActivityCategory activityCategorySuggestion = new ActivityCategoryDB();
-				activityCategorySuggestion.title = result.getObject(1).toString();
-				activityCategorySuggestion.description = result.getObject(2).toString();
+				activityCategorySuggestion.title = result.getObject(2).toString();
+				activityCategorySuggestion.description = result.getObject(3).toString();
 				System.out.println(activityCategorySuggestion.title);
 				System.out.println(activityCategorySuggestion.description);
 				
@@ -832,12 +831,10 @@ public class JDBConnection {
 				
 				x++;
 				
-				for(int i = 1; i <= resultMeta.getColumnCount()-1; i++){
-					System.out.print("\t" + result.getObject(i).toString() + "\t |");
-				
+			
 				}
 				result.close();
-			}
+			
 			
 		}
 		catch (SQLException e){}
