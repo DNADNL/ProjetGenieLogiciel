@@ -18,11 +18,11 @@ public class SimpleUserView extends JFrame implements ActionListener
 {	
 	FacadeUser FU = FacadeUser.getFU();
 	static User user;
-	
+
 	//Création du panel de navigation
 	JPanel panel = new JPanel();
 	JPanel panelListeObjectifs = new JPanel();
-	
+
 	//Création des boutons principaux
 	Button logoutButton = new Button("Déconnexion", 540, 10, 150, 30);
 	Button profileButton = new Button("Mon Profil", 380, 10, 150, 30);
@@ -32,90 +32,90 @@ public class SimpleUserView extends JFrame implements ActionListener
 	Button seeGoalButton = new Button("Voir", 170, 540, 150, 30);
 	Button deleteGoalButton = new Button("Supprimer", 330, 540, 150, 30);
 	Button showCategoryActivityButton = new Button("<html>voir <br>les catégories</html>",450,200,200,60);
-	
+
 	//Creation de la JTable
 	JTable listeObjectifs;
-	
-	
+
+
 	//Constructeur
 	public SimpleUserView(User loggedUser)
 	{
 		super("Lazy'N Yourself");
 		user = loggedUser;
-		
+
 		// Options de la fenetre
 		this.setSize(700,700);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);	
-		
+
 		// Construction du panel principal
 		placeComponentsPrincipal(panel);
-		
+
 		// Choix du panel
 		setContentPane(panel);
-		
+
 		setVisible(true);
 	}
-	
+
 	private void placeComponentsPrincipal(JPanel panel)
 	{
 		panel.removeAll();
 		panel.setLayout(null);
-		
+
 		// Création des polices
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
 		Font font = new Font("Courier", Font.BOLD, 15);
-		
+
 		//suggérer descatégories d'activités
 		showCategoryActivityButton.addActionListener(this);
 		panel.add(showCategoryActivityButton);
-		
+
 		// Affectation des boutons à la fenêtre
 		// "Déconnexion"
 		logoutButton.addActionListener(this);
 		panel.add(logoutButton);
-		
+
 		// "Mon Profil"
 		profileButton.addActionListener(this);
 		panel.add(profileButton);
-		
+
 		// "Mon Panier"
 		cartButton.addActionListener(this);
 		panel.add(cartButton);
-		
+
 		// "Boutique"
 		shopButton.addActionListener(this);
 		panel.add(shopButton);
-		
+
 		// Objectif : "Ajouter"
 		addGoalButton.addActionListener(this);
 		panel.add(addGoalButton);
-		
+
 		// Objectif : "Voir"
 		seeGoalButton.addActionListener(this);
 		panel.add(seeGoalButton);
-		
+
 		// Objectif : "Supprimer"
 		deleteGoalButton.addActionListener(this);
 		panel.add(deleteGoalButton);
-		
+
 		// Création de l'étiquette "Bonjour xxx !"
 		JLabel userLabel = new JLabel("<html>Bonjour, " + user.nicknameUser + " !</html>");
 		userLabel.setBounds(10, 10, 150, 50);
 		userLabel.setFont(font);
 		userLabel.setForeground(Color.BLACK);
 		panel.add(userLabel);
-		
+
 		// Création de la liste des objectifs
-		
+
 		Object[][] donneesListeObjectifs =  {{"",""}};
-		
+
 		//donneesListeObjectifs = FU.getStringGoalList();
-		
+
 		String[] enteteListeObjectifs = {"Objectif", "Description"};
 		listeObjectifs = new JTable(donneesListeObjectifs, enteteListeObjectifs);
-		
+
 		JScrollPane defilementListeObjectifs = new JScrollPane(listeObjectifs);
 		panelListeObjectifs.setLayout(new BorderLayout());
 		panelListeObjectifs.add(defilementListeObjectifs, BorderLayout.CENTER);
@@ -158,7 +158,7 @@ public class SimpleUserView extends JFrame implements ActionListener
 			new AddGoalView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel addGoal affiché");
-			
+
 		}
 		else if (source == seeGoalButton)
 		{
@@ -169,7 +169,7 @@ public class SimpleUserView extends JFrame implements ActionListener
 				dispose();
 				System.out.println("Panel seeGoal affiché");
 			}
-			
+
 		}
 		else if ( source == showCategoryActivityButton){
 			new ShowActivityCategoryView(FU.getCurrentUser());
@@ -186,6 +186,6 @@ public class SimpleUserView extends JFrame implements ActionListener
 				System.out.println("Panel DeleteGoal affiché");
 			}
 		}
-		
+
 	}
 }
