@@ -7,7 +7,7 @@ public class FactoryActivityCategory extends AbstractFactory {
 	
 	public CategoryActivity createActivity(String title)
 	{
-		this.createdActivityCategory = new CategoryActivityDB(title);
+		this.createdActivityCategory = new CategoryActivityDB();
 		return createdActivityCategory;
 	}
 	
@@ -76,6 +76,7 @@ public class FactoryActivityCategory extends AbstractFactory {
 	@Override
 	public void suggestActivityCategory(String title, String description) {
 		// TODO Auto-generated method stub
+		CategoryActivityDB.SuggestCategoryActivity(title, description);
 		
 	}
 

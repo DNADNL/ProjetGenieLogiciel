@@ -69,7 +69,7 @@ public class AddSuggestionActivityCategoryView extends JFrame implements ActionL
 		JLabel addSuggestionActivityCategoryPanelTitle = new JLabel();
 		addSuggestionActivityCategoryPanelTitle.setBounds(250, 30, 300, 100);
 		addSuggestionActivityCategoryPanelTitle.setFont(fontTitre);					
-		addSuggestionActivityCategoryPanelTitle.setText("<html>Suggestion de Catégorie d'Activité</html>");
+		addSuggestionActivityCategoryPanelTitle.setText("<html>Suggestion de Catégorie  d'Activité</html>");
 		panel.add(addSuggestionActivityCategoryPanelTitle);		
 		
 		//Ajout de l'étiquette "Résultat Ajout d'utilisateur"

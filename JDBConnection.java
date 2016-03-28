@@ -527,5 +527,96 @@ public class JDBConnection {
 		catch (SQLException e) {}
 	}
 	
+	
+	//création d'une catégorie d'activité suggérée
+	public void addSuggestionActivityCategory(String title, String description){
+		try 
+		{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//Exécution de la requête d'insertion de category d'activité
+			state.executeQuery("INSERT INTO public.\"activity_category_suggestion\" (title,description) VAlUES (\'" + title + "\', \'" + description + "\')");
+			state.close();
+		}
+		catch (SQLException e){
+			System.out.println("ERREUR - JDBConnection.addSuggestionActivityCategory(String title, String description) / : Requête erronée ou absence de valeur de retour (SQLException)");
+		}
+	}
+	
+	//obtenir toutes les catégories d'activité
+	public ArrayList<CategoryActivity> getAllCategoryActivity(){
+		ArrayList<CategoryActivity> categoryActivityList = new ArrayList<CategoryActivity>() ;
+		try{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//L'objet ResultSet contient le résultat de la requête SQL
+			ResultSet result = state.executeQuery("SELECT * FROM public.\"activity_category\"");
+			//On récupère les MetaData
+			ResultSetMetaData resultMeta = result.getMetaData();
+			Integer x=0;
+			while(result.next())
+			{
+				CategoryActivity categoryActivity = new CategoryActivityDB();
+				categoryActivity.title = result.getObject(1).toString();
+				categoryActivity.descritpion = result.getObject(2).toString();
+				System.out.println(categoryActivity.title);
+				System.out.println(categoryActivity.descritpion);
+				categoryActivityList.add(categoryActivity );
+				System.out.println(categoryActivity.title);
+				x++;
+				
+				for(int i = 1; i <= resultMeta.getColumnCount()-1; i++){
+					System.out.print("\t" + result.getObject(i).toString() + "\t |");
+				
+				}
+				result.close();
+			}
+			
+		}
+		catch (SQLException e){
+			System.out.println("ERREUR - JDBConnection.getAllCategoryActivity() / : Requête erronée ou absence de valeur de retour (SQLException)");
+			 
+		}
+		return categoryActivityList;
+	}
+	
+	//obtenir toutes les catégories d'activités suggérées
+	public ArrayList<CategoryActivity> getAllSuggestionCategoryActivity(){
+		ArrayList<CategoryActivity> suggestionCategoryActivityList = new ArrayList<CategoryActivity>() ;
+		try{
+			//Création d'un objet Statement
+			Statement state = conn.createStatement();
+			//L'objet ResultSet contient le résultat de la requête SQL
+			ResultSet result = state.executeQuery("SELECT * FROM public.\"activity_category_suggestion\"");
+			//On récupère les MetaData
+			ResultSetMetaData resultMeta = result.getMetaData();
+			Integer x=0;
+			while(result.next())
+			{
+				CategoryActivity categoryActivitySuggestion = new CategoryActivityDB();
+				categoryActivitySuggestion.title = result.getObject(1).toString();
+				categoryActivitySuggestion.descritpion = result.getObject(2).toString();
+				System.out.println(categoryActivitySuggestion.title);
+				System.out.println(categoryActivitySuggestion.descritpion);
+				
+				suggestionCategoryActivityList.add(categoryActivitySuggestion );
+				System.out.println(categoryActivitySuggestion.title);
+				
+				x++;
+				
+				for(int i = 1; i <= resultMeta.getColumnCount()-1; i++){
+					System.out.print("\t" + result.getObject(i).toString() + "\t |");
+				
+				}
+				result.close();
+			}
+			
+		}
+		catch (SQLException e){
+			System.out.println("ERREUR - JDBConnection.getAllSuggestionCategoryActivity() / : Requête erronée ou absence de valeur de retour (SQLException)");
+			 
+		}
+		return suggestionCategoryActivityList;
+	}
 }
 

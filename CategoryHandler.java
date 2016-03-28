@@ -34,16 +34,11 @@ CategoryActivity categoryList[][];
 
 		public void suggestActivityCategory(String title, String description) {
 			// TODO Auto-generated method stub
-			try
-			{
-//				Fact.getCategoryActivity(String title);
-				
-			}
-			catch(Exception e){
-				
+			Fact.suggestActivityCategory(title, description);
+			
 			}
 			
 		}
-	}
+	
 
 

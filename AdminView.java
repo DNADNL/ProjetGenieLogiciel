@@ -19,6 +19,7 @@ public class AdminView extends JFrame implements ActionListener{
 	//Création des boutons de "Admin"
 		Button logoutButton = new Button("Déconnexion",540, 10, 150, 30);
 		Button usersHandlerButton = new Button("<html>Gestion<br>utilisateurs</html>",275,335,150,60);
+		Button showSuggestionButton = new Button ("<html>voir les <br>catégories<br> d'activités <br>suggérée</html>",275,405,150,120);
 		
 		public AdminView(User loggedUser)
 		{
@@ -72,6 +73,9 @@ public class AdminView extends JFrame implements ActionListener{
 			logoutButton.addActionListener(this);
 			panel.add(logoutButton);
 			
+			showSuggestionButton.addActionListener(this);
+			panel.add(showSuggestionButton);
+			
 			panel.setLayout(new BorderLayout());
 		}
 	 
@@ -91,6 +95,11 @@ public class AdminView extends JFrame implements ActionListener{
 				new UsersHandlerView(FU.getCurrentUser());	
 				dispose();
 				System.out.println("Panel Gestion Utilisateurs affiché");
+			}
+			else if ( source == showSuggestionButton){
+				new SuggestionCategoryActivityView(user);
+				dispose();
+				System.out.println("panel catégories d'activité suggérées");
 			}
 			
 		}

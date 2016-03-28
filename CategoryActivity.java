@@ -1,6 +1,6 @@
 
 public class CategoryActivity {
-	String name;
+	String title;
 	String descritpion;
 	
 

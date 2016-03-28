@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -131,9 +132,23 @@ public class SuggestCategoryView extends JFrame implements ActionListener {
 		}
 		else if (source == suggestButton)
 		{
+			String title = nameCategory.getText();
+			String description = briefDescCategory.getText();
+			suggestButtonClicked(title,description);
 			
 		}
 		
 	}
+	public void  suggestButtonClicked(String title, String description){
+		
+		//try {
+			FU.suggestActivityCategory(title, description );
+		
+		//}
+		//catch{
+			
+		}
+	}
 
-}
+
+
