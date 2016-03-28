@@ -25,8 +25,26 @@ public class GestionnaireGoal {
 		return singleton;
 	}
 
-	public void addGoal(String goal_title, String goal_description, String nick)throws GoalCreatedException {
+	public void addGoal(String goal_title, String goal_description, String nick)throws GoalCreatedException, UserAlreadyExistsException {
 		// TODO Auto-generated method stub
+		getGoalList(nick);
+		String goal_title_test;
+		
+		
+		for (Integer i=0; i<goalList.size(); i++)
+		{	
+			
+			
+			goal_title_test = goalList.get(i).goal_title;
+			if(goal_title_test.equals(goal_title)){
+				System.out.println("GOAL déja dans la DB !");
+				
+			}
+		}
+		
+		
+		
+		
 		Fact.addGoal(goal_title, goal_description, nick);
 		refreshGoalList(nick);
 		throw new GoalCreatedException(nick);

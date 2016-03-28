@@ -96,7 +96,7 @@ public class FacadeUser {
 			
 		}
 
-	public void addGoal(String goal_title, String goal_description, String nick)throws GoalCreatedException {
+	public void addGoal(String goal_title, String goal_description, String nick)throws GoalCreatedException, UserAlreadyExistsException {
 		// TODO Auto-generated method stub
 		GG.addGoal(goal_title, goal_description, nick);
 	}
