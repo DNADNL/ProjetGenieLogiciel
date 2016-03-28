@@ -862,12 +862,10 @@ public class JDBConnection {
 			System.out.println("Requête de liste goal : ");
 			ResultSet result = state.executeQuery("SELECT g2.id_goal, goal_title, goal_description, g2.nickname FROM public.\"goal\" g1, public.\"goal_list\" g2 WHERE g2.id_goal=g1.id_goal AND g2.nickname = \'" + nickname + "\'"); 
 
-			//On récupère les MetaData
-			ResultSetMetaData resultMeta = result.getMetaData();
 			Integer x=0;
 			while(result.next())
 			{
-				Goal goal = new GoalBD(nickname);
+				Goal goal = new GoalDB(nickname);
 
 				goal.goal_title=result.getObject(1).toString();
 				goal.goal_description=result.getObject(2).toString();

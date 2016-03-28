@@ -51,7 +51,7 @@ public class CategoryHandler {
 				for (Integer i=0; i<categoryList.size(); i++)
 				{
 					stringCategoryList[i][0]= categoryList.get(i).title;
-					stringCategoryList[i][1]= categoryList.get(i).descritpion;
+					stringCategoryList[i][1]= categoryList.get(i).description;
 				}
 			}
 			return stringCategoryList;

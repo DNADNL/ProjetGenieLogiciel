@@ -145,6 +145,12 @@ public class FactoryProductDB extends AbstractFactory{
 		return null;
 	}
 
+	@Override
+	public ArrayList<ActivityCategory> createCategoryActivityList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 

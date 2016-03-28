@@ -58,8 +58,8 @@ public class FactoryActivityCategory extends AbstractFactory {
 	}
 
 	@Override
-	public ArrayList<ActivityCategory> createCategoryActivityList(String nickname) {
-		createdActivityCategoryList = ActivityCategoryDB.createCategoryActivityList(nickname);
+	public ArrayList<ActivityCategory> createCategoryActivityList() {
+		createdActivityCategoryList = ActivityCategoryDB.createCategoryActivityList();
 		return createdActivityCategoryList;
 	}
 //	

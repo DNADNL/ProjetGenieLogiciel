@@ -1,4 +1,3 @@
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -34,5 +33,6 @@ public abstract class AbstractFactory
 	abstract public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Integer pdt_price,
 			String pdt_briefDesc, String pdt_longDesc);
 	abstract public ArrayList<Goal> createGoalList(String nickname);
+	abstract public ArrayList<ActivityCategory> createCategoryActivityList();
 	
 }

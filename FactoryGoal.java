@@ -142,6 +142,12 @@ public class FactoryGoal extends AbstractFactory {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayList<ActivityCategory> createCategoryActivityList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

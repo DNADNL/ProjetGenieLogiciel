@@ -5,7 +5,7 @@ public class GoalDB extends Goal {
 	static JDBConnection jdbc = JDBConnection.getJDBC();
 	
 	
-	GoalBD(String goal_title)
+	GoalDB(String goal_title)
 	{
 		this.goal_title = null;
 		this.goal_description = null;
@@ -14,7 +14,7 @@ public class GoalDB extends Goal {
 		
 	}
 	
-	GoalBD(String goal_t, String goal_desc, String nick, Integer id_cat)
+	GoalDB(String goal_t, String goal_desc, String nick, Integer id_cat)
 	{
 		this.goal_title = goal_t;
 		this.goal_description = goal_desc;
