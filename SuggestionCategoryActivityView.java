@@ -72,8 +72,7 @@ public class SuggestionCategoryActivityView extends JFrame implements ActionList
 		
 		// List
 		Object[][] donnees =  {{"",""}};
-		
-		//donnees = FU.getProductList();
+		donnees = FU.getStringActivityCategorySuggestionList();
 		
 		String[] entetes = {"Catégorie", "Brief Description"};
 		JTable tableau = new JTable(donnees, entetes);

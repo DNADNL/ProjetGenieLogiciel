@@ -24,7 +24,7 @@ public class SuggestCategoryView extends JFrame implements ActionListener {
 	
 	//Création des boutons de "ProductsList"
 	Button returnPrincipalButton = new Button("Retour",540, 10, 150, 30);
-	Button suggestButton = new Button("Suggest",500,320,150,30);
+	Button suggestButton = new Button("Suggest",300,320,150,30);
 	JTextField nameCategory = new JTextField("Category name");
 	JTextArea briefDescCategory = new JTextArea("Brief Category description");
 	
@@ -70,41 +70,26 @@ public class SuggestCategoryView extends JFrame implements ActionListener {
 		
 		// Textfields
 	
-		nameCategory.setBounds(500, 200, 160, 30);
+		nameCategory.setBounds(300, 200, 160, 30);
 		panel.add(nameCategory);
 		
-		briefDescCategory.setBounds(500, 250, 160, 60);
+		briefDescCategory.setBounds(300, 250, 160, 60);
 		panel.add(briefDescCategory);
 		
 		// Labels
 		
 		JLabel nameLabel = new JLabel("Nom");
-		nameLabel.setBounds(410, 200, 90, 30);
+		nameLabel.setBounds(210, 200, 90, 30);
 		nameLabel.setFont(font);
 		nameLabel.setForeground(Color.BLACK);
 		panel.add(nameLabel);
 		
 		JLabel briefDescLabel = new JLabel("<html>Brief <br> description</html>");
-		briefDescLabel.setBounds(410, 250, 100, 60);
+		briefDescLabel.setBounds(210, 250, 100, 60);
 		briefDescLabel.setFont(font);
 		briefDescLabel.setForeground(Color.BLACK);
 		panel.add(briefDescLabel);
-		// List
 		
-		Object[][] donnees =  {{"",""}};
-		
-		//donnees = FU.getProductList();
-		
-		String[] entetes = {"Catégorie", "Brief Description"};
-		JTable tableau = new JTable(donnees, entetes);
-		
-		JScrollPane test = new JScrollPane(tableau);
-		panTab.setLayout(new BorderLayout());
-		
-		panTab.add(test, BorderLayout.CENTER);
-		panTab.setBounds(10, 190, 400, 410);
-		panel.add(panTab);
-
 		// Titre
 		
 		JLabel productsListTitle = new JLabel();

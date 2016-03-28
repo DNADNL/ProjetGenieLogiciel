@@ -57,7 +57,7 @@ public class FactoryProductDB extends AbstractFactory{
 
 	@Override
 
-	public ArrayList<ActivityCategory> createCategoryActivityList(String title) {
+	public ArrayList<CategoryActivity> createCategoryActivityList() {
 		return null;
 	}
 
@@ -146,7 +146,7 @@ public class FactoryProductDB extends AbstractFactory{
 	}
 
 	@Override
-	public ArrayList<ActivityCategory> createCategoryActivityList() {
+	public ArrayList<CategoryActivity> createCategoryActivitySuggestionList() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -146,6 +146,11 @@ public class FacadeUser {
 	public String[][] getStringActivityCategoryList(){
 		return CH.getStringCategoryList() ;
 	}
+
+
+	public String[][] getStringActivityCategorySuggestionList() {
+		return CH.getStringCategorySuggestionList();
+	}
 	
 
 

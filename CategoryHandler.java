@@ -58,8 +58,32 @@ public class CategoryHandler {
 			
 		}
 
+
+		public void getCategoryActivitySuggestionList()
+		{
+			if (categoryList==null)
+			{
+			categoryList = Fact.createCategoryActivitySuggestionList();
+			}
+		}
+		
+		public String[][] getStringCategorySuggestionList() {
+			getCategoryActivitySuggestionList();
+			stringCategoryList= new String [categoryList.size()][2];
+			if (categoryList != null){
+				for (Integer i=0; i<categoryList.size(); i++)
+				{
+					stringCategoryList[i][0]= categoryList.get(i).title;
+					stringCategoryList[i][1]= categoryList.get(i).description;
+				}
+			}
+			return stringCategoryList;
 			
+			}
 }
+
+			
+
 	
 
 
