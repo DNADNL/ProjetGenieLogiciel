@@ -919,5 +919,28 @@ public class JDBConnection {
 		
 		
 	}
+	// this fonction is only for JUNIT TEST
+	 public ActivityCategory getLastActivityCategorySuggestion(){
+		 ActivityCategory AC = new ActivityCategory();
+			try 
+			{
+				//Création d'un objet Statement
+				Statement state = conn.createStatement();
+
+				//L'objet ResultSet contient le résultat de la requête SQL
+				ResultSet result = state.executeQuery("SELECT * FROM public.\"activity_category_suggestion\"");
+				while(result.next()){
+				AC.title = result.getObject(2).toString();
+				AC.description = result.getObject(3).toString();
+				}
+				result.close();
+				state.close();
+			}
+			catch (SQLException e) {}
+			return AC;
+		 
+		 
+	}
+
 }
 
