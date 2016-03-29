@@ -805,7 +805,6 @@ public class JDBConnection {
 	 * @return      {@link ArrayList} of Activity Categories
 	 * @exception	SQLException
 	 */
-	//obtenir toutes les catégories d'activités suggérées
 	public ArrayList<ActivityCategory> getAllSuggestionActivityCategory(){
 		ArrayList<ActivityCategory> suggestionActivityCategoryList = new ArrayList<ActivityCategory>() ;
 		try{
@@ -836,10 +835,41 @@ public class JDBConnection {
 		catch (SQLException e){}
 		return suggestionActivityCategoryList;
 	}
+	
+	/**
+	 * This method is only used for JUnit tests.
+	 * It gets the last Activity Category Suggestion from the database.
+	 * <p>
+	 *
+	 * @param  		none
+	 * @return      {@link ActivityCategory}
+	 * @exception	SQLException
+	 */// this fonction is only for JUNIT TEST
+	 public ActivityCategory getLastActivityCategorySuggestion(){
+		 ActivityCategory AC = new ActivityCategory();
+			try 
+			{
+				//Création d'un objet Statement
+				Statement state = conn.createStatement();
 
+				//L'objet ResultSet contient le résultat de la requête SQL
+				ResultSet result = state.executeQuery("SELECT * FROM public.\"activity_category_suggestion\"");
+				while(result.next()){
+				AC.title = result.getObject(2).toString();
+				AC.description = result.getObject(3).toString();
+				}
+				result.close();
+				state.close();
+			}
+			catch (SQLException e) {}
+			return AC; 
+	}
+	 
+// Goal Methods
 	/**
 	 * This method is used when a simple user wants to get its goals list.
 	 * It gets the goals list from the database (thanks to the user's nickname).
+	 * The nickname argument specifies the user and must be a {@link String}.
 	 * <p>
 	 *
 	 * @param  		nickname (a {@link String} giving the nickname of the user),
@@ -880,7 +910,7 @@ public class JDBConnection {
 		} 
 		catch (SQLException e) 
 		{
-			System.out.println("ERREUR - JDBConnection.getGoal() / : Requête erronée ou absence de valeur de retour (SQLException)");
+			System.out.println("ERROR - JDBConnection.getGoal() / : SQL Query Error (SQLException)");
 		}
 
 		return goalList;
@@ -888,6 +918,18 @@ public class JDBConnection {
 
 	}
 
+	/**
+	 * This method is used when a simple user wants to delete a goal from its goals list.
+	 * It deletes the goals list from the database (thanks to the user's nickname and the goal's name).
+	 * The nickname/goal name argument specifies the user/goal and must be a {@link String}.
+	 * 
+	 * <p>
+	 *
+	 * @param  		goal name 	(a {@link String} giving the name of the goal),
+	 * 				nickname	(a {@link String} giving the nickname of the user)
+	 * @return      void
+	 * @exception	SQLException
+	 */
 	public void deleteGoal(String goal_name, String nicknameUser) {
 		// TODO Auto-generated method stub
 		
@@ -910,7 +952,7 @@ public class JDBConnection {
 			Statement state = conn.createStatement();
 			//Exécution de la requête d'insertion de l'utilisateur
 			//DELETE FROM public."goal" WHERE goal_title ='Maigrir';
-			System.out.println("suppression du goal ! ");
+			System.out.println("Deleting Goal...");
 			state.executeQuery("DELETE FROM public.\"goal\" WHERE goal_title=\'"  + goal_name + "\'");   
 			state.close();
 
@@ -918,28 +960,6 @@ public class JDBConnection {
 		catch (SQLException e) {}
 		
 		
-	}
-	// this fonction is only for JUNIT TEST
-	 public ActivityCategory getLastActivityCategorySuggestion(){
-		 ActivityCategory AC = new ActivityCategory();
-			try 
-			{
-				//Création d'un objet Statement
-				Statement state = conn.createStatement();
-
-				//L'objet ResultSet contient le résultat de la requête SQL
-				ResultSet result = state.executeQuery("SELECT * FROM public.\"activity_category_suggestion\"");
-				while(result.next()){
-				AC.title = result.getObject(2).toString();
-				AC.description = result.getObject(3).toString();
-				}
-				result.close();
-				state.close();
-			}
-			catch (SQLException e) {}
-			return AC;
-		 
-		 
 	}
 
 }
