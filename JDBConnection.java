@@ -13,16 +13,16 @@ public class JDBConnection {
 
 	static Connection conn;
 
-	//Singleton Constructor
+	// Singleton Constructor
 	private JDBConnection()
 	{
 		createConnection();
 	}
 
-	//Singleton Initialisator
+	// Singleton Initialisator
 	private static JDBConnection singleton;
 
-	//Singleton Accessor
+	// Singleton Accessor
 	public static JDBConnection getJDBC()
 	{
 		if (singleton == null)
@@ -45,7 +45,7 @@ public class JDBConnection {
 	{
 		try 
 		{
-			// Connection information
+			// Connection Information
 			Class.forName("org.postgresql.Driver");
 			System.out.println("Driver O.K.");
 			String url = "jdbc:postgresql://qdjjtnkv.db.elephantsql.com:5432/xchuldjm";
@@ -89,28 +89,25 @@ public class JDBConnection {
 
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//L'objet ResultSet contient le résultat de la requête SQL
+			
+			// Query (we get the result in the ResultSet object)
 			ResultSet result = state.executeQuery("SELECT nickname, password FROM public.\"global_user\" WHERE nickname = \'" + nickname + "\'" ); 
 
 			while(result.next())
 			{
+				// We get the nickname
 				user.nicknameUser = result.getObject(1).toString();
+				// We get the password
 				user.mdpUser = result.getObject(2).toString();
-
-				/*  for(int i = 1; i <= resultMeta.getColumnCount(); i++)
-	        	{
-	          		System.out.print("\t" + result.getObject(i).toString() + "\t |");
-	        	}
-	        	System.out.println("\n---------------------------------");*/
-
 			}
 
+			// We close everything
 			result.close();
 			state.close();
 
-			if (user.nicknameUser == null)
+			if (user.nicknameUser == null) // If the nickname is null, so the user isn't in the DB
 			{
 				throw new ObjectNotInTheDatabaseException(nickname);
 			}
@@ -138,11 +135,13 @@ public class JDBConnection {
 
 		try
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//L'objet ResultSet contient le résultat de la requête SQL
+			
+			// Query (we get the result in the ResultSet object)
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"global_user\" WHERE nickname = \'" + nickname + "\'" ); 
 
+			// We get the user data
 			while(result.next())
 			{
 				user.nicknameUser = result.getObject(1).toString();
@@ -156,6 +155,7 @@ public class JDBConnection {
 				user.emailUser = result.getObject(9).toString();
 			}
 
+			// We close everything
 			result.close();
 			state.close();
 
@@ -184,10 +184,13 @@ public class JDBConnection {
 	{
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
+			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("INSERT INTO public.\"global_user\" VALUES (\'"  + nickname + "\', \'" + password + "\',\'\',\'\',\'\',\'\',\'\',\'\', \'" + email + "\');");   
+			
+			// We close everything
 			state.close();
 
 		} 
@@ -208,10 +211,13 @@ public class JDBConnection {
 	{
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
+			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("DELETE FROM public.\"global_user\" WHERE nickname = \'"  + nickname + "\';");   
+			
+			// We close everything
 			state.close();
 
 		} 
@@ -240,10 +246,13 @@ public class JDBConnection {
 			String lastname, String city,String street,String postalcode,String streetnumber){
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
+			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("UPDATE public.\"global_user\" SET password=\'"  + pass + "\', mail=\'"  + email + "\', firstname=\'"  + firstname + "\', lastname=\'"  + lastname + "\', city=\'"  + city + "\', street=\'"  + street + "\', postalcode=\'"  + postalcode + "\', streetnumber=\'"  + streetnumber + "\' WHERE nickname=\'"  + nick + "\';");   
+			
+			// We close everything
 			state.close();   
 		} 
 		catch (SQLException e) {}
@@ -265,19 +274,21 @@ public class JDBConnection {
 		boolean isAnAdmin = false;
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//L'objet ResultSet contient le résultat de la requête SQL
+			
+			// Query (we get the result in the ResultSet object)
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"admin\" WHERE nickname = \'" + nickname + "\';"); 
 
 			while(result.next())
 			{
-				if (nickname.equals(result.getObject(1).toString()))
+				if (nickname.equals(result.getObject(1).toString())) // If the nickname is in the "admin" table, then the user is an Admin
 				{
 					isAnAdmin = true;
 				}
 			}
 
+			// We close everything
 			result.close();
 			state.close();
 
@@ -306,26 +317,27 @@ public class JDBConnection {
 		boolean isASimpleUser = false;
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//L'objet ResultSet contient le résultat de la requête SQL
+			// Query (we get the result in the ResultSet object)
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"simple_user\" WHERE nickname = \'" + nickname + "\';"); 
 
 			while(result.next())
 			{
-				if (nickname.equals(result.getObject(1).toString()))
+				if (nickname.equals(result.getObject(1).toString())) // If the nickname is in the "simple_user" table, then the user is a Simple User
 				{
 					isASimpleUser = true;
 				}
 			}
 
+			// We close everything
 			result.close();
 			state.close();
 
 		} 
 		catch (SQLException e) 
 		{
-			System.out.println("ERREUR - JDBConnection.getUser() / : Requête erronée ou absence de valeur de retour (SQLException)");
+			System.out.println("ERROR - JDBConnection.getUser() / : SQL Query Error (SQLException)");
 		}
 
 		return isASimpleUser;
@@ -347,26 +359,27 @@ public class JDBConnection {
 		boolean isASeller = false;
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//L'objet ResultSet contient le résultat de la requête SQL
+			// Query (we get the result in the ResultSet object)
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"seller\" WHERE nickname = \'" + nickname + "\';"); 
 
 			while(result.next())
 			{
-				if (nickname.equals(result.getObject(3).toString()))
+				if (nickname.equals(result.getObject(3).toString())) // If the nickname is in the "seller" table, then the user is a Seller
 				{
 					isASeller = true;
 				}
 			}
-
+			
+			// We close everything
 			result.close();
 			state.close();
 
 		} 
 		catch (SQLException e) 
 		{
-			System.out.println("ERREUR - JDBConnection.getUser() / : Requête erronée ou absence de valeur de retour (SQLException)");
+			System.out.println("ERROR - JDBConnection.getUser() / : SQL Query Error (SQLException)");
 		}
 
 		return isASeller;
@@ -386,10 +399,13 @@ public class JDBConnection {
 	{
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
+			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("INSERT INTO public.\"seller\" VALUES (null, null, \'"  + nickname + "\');"); 
+			
+			// We close everything
 			state.close();         
 		} 
 		catch (SQLException e) {}
@@ -409,10 +425,13 @@ public class JDBConnection {
 	{
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
+			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("INSERT INTO public.\"simple_user\" VALUES (\'"  + nickname + "\');");   
+			
+			// We close everything
 			state.close();         
 		} 
 		catch (SQLException e) {}
@@ -432,10 +451,13 @@ public class JDBConnection {
 	{
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
+			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("INSERT INTO public.\"admin\" VALUES (\'"  + nickname + "\');");   
+			
+			// We close everything
 			state.close();         
 		} 
 		catch (SQLException e) {}
@@ -455,10 +477,13 @@ public class JDBConnection {
 	{
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
+			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("DELETE FROM public.\"seller\" WHERE nickname = \'"  + nickname + "\';");
+			
+			// We close everything
 			state.close();         
 		} 
 		catch (SQLException e) {}
@@ -478,10 +503,13 @@ public class JDBConnection {
 	{
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
+			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("DELETE FROM public.\"simple_user\" WHERE nickname = \'"  + nickname + "\';");
+			
+			// We close everything
 			state.close();         
 		} 
 		catch (SQLException e) {}
@@ -501,10 +529,13 @@ public class JDBConnection {
 	{
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
+			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("DELETE FROM public.\"admin\" WHERE nickname = \'"  + nickname + "\';");
+			
+			// We close everything
 			state.close();         
 		} 
 		catch (SQLException e) {}
@@ -528,13 +559,13 @@ public class JDBConnection {
 
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
 
-			//L'objet ResultSet contient le résultat de la requête SQL
+			// Query (we get the result in the ResultSet object)
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"product\" WHERE nickname = \'" + nickname + "\'"); 
 
-
+			// We get All Products data
 			Integer x=0;
 			while(result.next())
 			{
@@ -553,6 +584,7 @@ public class JDBConnection {
 				//product.id_category= Integer.parseInt(result.getObject(6).toString());
 
 				product.briefDesc=result.getObject(7).toString();
+				
 				product.longDesc=result.getObject(8).toString();
 
 				productList.add(product);
@@ -561,7 +593,9 @@ public class JDBConnection {
 
 			}
 
+			// We close everything
 			result.close();
+			state.close();
 
 		} 
 		catch (SQLException e) 
@@ -590,12 +624,13 @@ public class JDBConnection {
 
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
 
-			//L'objet ResultSet contient le résultat de la requête SQL
+			// Query (we get the result in the ResultSet object)
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"product\" WHERE nickname = \'" + nickname + "\' AND product_name =\'" + pdtName + "\'" ); 
 
+			// We get All Product data
 			while(result.next())
 			{				
 
@@ -604,6 +639,7 @@ public class JDBConnection {
 				product.briefDesc=result.getObject(7).toString();
 
 				product.longDesc=result.getObject(8).toString();
+				
 				product.quantity=Integer.parseInt(result.getObject(3).toString());
 
 				product.price= Integer.parseInt(result.getObject(4).toString());
@@ -614,6 +650,7 @@ public class JDBConnection {
 
 			}
 
+			// We close everything
 			result.close();
 			state.close();
 
@@ -650,13 +687,13 @@ public class JDBConnection {
 	{
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
-
-
+			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("INSERT INTO public.\"product\" (product_name, quantity, price, nickname, brief_desc, long_desc) VALUES (\'"  + pdt_name + "\', \'" + pdt_quantity + "\', \'"  + pdt_price + "\', \'"  + nickname + "\', \'"  + pdt_briefDesc + "\', \'" + pdt_longDesc + "\')");   
 
+			// We close everything
 			state.close();
 
 		} 
@@ -678,10 +715,13 @@ public class JDBConnection {
 	{
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
+			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("DELETE FROM public.\"product\" WHERE product_name=\'"  + pdt_name + "\' AND nickname =\'"  + nickname + "\'");   
+			
+			// We close everything
 			state.close();
 
 		} 
@@ -703,28 +743,32 @@ public class JDBConnection {
 	 */
 	public void createGoal(String goal_title, String goal_description, String nick) {	
 
+		// STEP 1 - Creation + Insertion of the goal into the database
 		try 
 		{
 			
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
-
-
+			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("INSERT INTO public.\"goal\"(goal_title, goal_description) VALUES (\'"  + goal_title + "\', \'" + goal_description + "\')");   
+			
+			// We close everything
 			state.close();
 
 		} 
 		catch (SQLException e) {}
 
+		// STEP 2 - Insertion of the goal into the user goal list in the database
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
-			//Requête pour mettre à jour la table goal_list avec un nickname et l'id_goal de son goal
-
+			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("INSERT INTO public.\"goal_list\" VALUES((SELECT id_goal FROM public.\"goal\" where goal_title =\'" + goal_title + "\'), \'"  + nick + "\')");
+			
+			// We close everything
 			state.close();
 
 		} 
@@ -746,10 +790,13 @@ public class JDBConnection {
 	public void addSuggestionActivityCategory(String title, String description){
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de category d'activité
+			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("INSERT INTO public.\"activity_category_suggestion\" (title,description) VAlUES (\'" + title + "\', \'" + description + "\')");
+			
+			// We close everything
 			state.close();
 		}
 		catch (SQLException e){}
@@ -767,26 +814,32 @@ public class JDBConnection {
 	public ArrayList<ActivityCategory> getAllCategoryActivity(){
 		ArrayList<ActivityCategory> activityCategoryList = new ArrayList<ActivityCategory>() ;
 		try{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//L'objet ResultSet contient le résultat de la requête SQL
+			
+			// Query (we get the result in the ResultSet object)
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"activity_category\"");
+			
+			// We get all Activity Categories Data
 			Integer x=0;
 			while(result.next())
 			{
 				ActivityCategory activityCategory = new ActivityCategoryDB();
+				
 				activityCategory.title = result.getObject(2).toString();
+				System.out.println(activityCategory.title);
+				
 				activityCategory.description = result.getObject(3).toString();
-				System.out.println(activityCategory.title);
 				System.out.println(activityCategory.description);
-				activityCategoryList.add(activityCategory );
-				System.out.println(activityCategory.title);
+				
+				activityCategoryList.add(activityCategory);
+				
 				x++;
-
-
-
 			}
+			
+			// We close everything
 			result.close();
+			state.close();
 
 
 		}
@@ -808,10 +861,13 @@ public class JDBConnection {
 	public ArrayList<ActivityCategory> getAllSuggestionActivityCategory(){
 		ArrayList<ActivityCategory> suggestionActivityCategoryList = new ArrayList<ActivityCategory>() ;
 		try{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//L'objet ResultSet contient le résultat de la requête SQL
+			
+			// Query (we get the result in the ResultSet object)
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"activity_category_suggestion\"");
+			
+			// We get all Suggestion Activity Categories Data
 			Integer x=0;
 			while(result.next())
 			{
@@ -828,7 +884,10 @@ public class JDBConnection {
 
 
 			}
+			
+			// We close everything
 			result.close();
+			state.close();
 
 
 		}
@@ -844,20 +903,24 @@ public class JDBConnection {
 	 * @param  		none
 	 * @return      {@link ActivityCategory}
 	 * @exception	SQLException
-	 */// this fonction is only for JUNIT TEST
+	 */
 	 public ActivityCategory getLastActivityCategorySuggestion(){
 		 ActivityCategory AC = new ActivityCategory();
 			try 
 			{
-				//Création d'un objet Statement
+				// Creation of a Statement object (for the Query)
 				Statement state = conn.createStatement();
 
-				//L'objet ResultSet contient le résultat de la requête SQL
+				// Query (we get the result in the ResultSet object)
 				ResultSet result = state.executeQuery("SELECT * FROM public.\"activity_category_suggestion\"");
+				
+				// We get Activity Category Suggestion data
 				while(result.next()){
 				AC.title = result.getObject(2).toString();
 				AC.description = result.getObject(3).toString();
 				}
+				
+				// We close everything
 				result.close();
 				state.close();
 			}
@@ -877,22 +940,17 @@ public class JDBConnection {
 	 * @exception	SQLException
 	 */
 	public ArrayList<Goal> getGoalList(String nickname) {
-		// TODO Auto-generated method stub
-
 		ArrayList<Goal> goalList = new ArrayList<Goal>();
-		//Product productList[] = null;
 
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
 
-			//L'objet ResultSet contient le résultat de la requête SQL
-
-			//Select g2.id_goal, goal_title, goal_description, g2.nickname from public."goal" g1, public."goal_list" g2 WHERE g2.id_goal=g1.id_goal AND g2.nickname='SU'
-
+			// Query (we get the result in the ResultSet object)
 			ResultSet result = state.executeQuery("SELECT g2.id_goal, goal_title, goal_description, g2.nickname FROM public.\"goal\" g1, public.\"goal_list\" g2 WHERE g2.id_goal=g1.id_goal AND g2.nickname = \'" + nickname + "\'"); 
 
+			// We get all Goals Data from the list
 			Integer x=0;
 			while(result.next())
 			{
@@ -905,7 +963,9 @@ public class JDBConnection {
 
 			}
 
+			// We close everything
 			result.close();
+			state.close();
 
 		} 
 		catch (SQLException e) 
@@ -931,29 +991,32 @@ public class JDBConnection {
 	 * @exception	SQLException
 	 */
 	public void deleteGoal(String goal_name, String nicknameUser) {
-		// TODO Auto-generated method stub
 		
+		// STEP 1 - Delete Goal from the user Goal List
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
-			//DELETE FROM public."goal_list" WHERE id_goal=(SELECT id_goal FROM public."goal" where goal_title ='Maigrir');
 			
+			// Query (we don't have a result to get, here)
 			state.executeQuery("DELETE FROM public.\"goal_list\" WHERE id_goal=(SELECT id_goal FROM public.\"goal\" where goal_title =\'" + goal_name + "\')");   
+			
+			// We close everything
 			state.close();
 
 		} 
 		catch (SQLException e) {}
 		
+		// STEP 2 - Delete Goal from the Database
 		try 
 		{
-			//Création d'un objet Statement
+			// Creation of a Statement object (for the Query)
 			Statement state = conn.createStatement();
-			//Exécution de la requête d'insertion de l'utilisateur
-			//DELETE FROM public."goal" WHERE goal_title ='Maigrir';
-			System.out.println("Deleting Goal...");
-			state.executeQuery("DELETE FROM public.\"goal\" WHERE goal_title=\'"  + goal_name + "\'");   
+			
+			// Query (we don't have a result to get, here)
+			state.executeQuery("DELETE FROM public.\"goal\" WHERE goal_title=\'"  + goal_name + "\'");
+			
+			// We close everything
 			state.close();
 
 		} 
