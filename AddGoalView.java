@@ -133,7 +133,7 @@ public class AddGoalView extends JFrame implements ActionListener
 			JOptionPane.showMessageDialog(null, goal_title+" a bien été ajouté à la BD !", "Ajout d'un goal", JOptionPane.INFORMATION_MESSAGE);
 		}
 		catch (UserAlreadyExistsException e) {
-			JOptionPane.showMessageDialog(null, nick+" existe déjà dans la BD.", "Ajout d'utilisateur", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Ce Goal existe déjà dans la BD.", "Ajout d'utilisateur", JOptionPane.ERROR_MESSAGE);
 			//				System.out.println("AddUser : Failed !");
 			//				addUserResultLabel.setText("Cet utilisateur existe déjà !");
 			//				addUserResultLabel.setForeground(Color.RED);
