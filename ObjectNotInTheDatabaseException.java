@@ -12,7 +12,7 @@ public class ObjectNotInTheDatabaseException extends Exception{
 		this.name = name;
 	}
 	
-	public String getNickname() {
+	public String getName() {
 		return name;
 	}
 }

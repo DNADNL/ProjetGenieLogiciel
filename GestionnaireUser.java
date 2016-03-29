@@ -90,7 +90,7 @@ public class GestionnaireUser {
 			catch (ObjectNotInTheDatabaseException e) // L'exception sera levée si l'utilisateur ne se trouve pas dans la BD
 			{
 				Fact.addUser(nick, pass, email);	// On peut donc créer l'utilisateur ici
-				throw new ObjectCreatedException(e.getNickname());
+				throw new ObjectCreatedException(e.getName());
 			}
 
 		}
