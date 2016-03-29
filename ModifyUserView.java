@@ -191,7 +191,7 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 //				System.out.println("DeleteUser : Failed !");
 //				deleteUserResultLabel.setText("Aucun utilisateur avec ce pseudo n'existe dans la BD, veuillez réessayer.");
 //				deleteUserResultLabel.setForeground(Color.RED);
-			} catch (UserModifiedException e) {
+			} catch (ObjectModifiedException e) {
 				if ((modifyUserRole.getSelectedItem()).equals("Administrateur"))
 				{
 					FU.chooseUserRoleAdmin(nick);

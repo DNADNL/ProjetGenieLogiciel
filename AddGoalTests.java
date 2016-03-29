@@ -22,15 +22,15 @@ public class AddGoalTests {
 	}
 
 	@Test
-	public void testGoalCreatedException() throws GoalCreatedException {
+	public void testGoalCreatedException() throws ObjectCreatedException {
 		try {
 			FU.addGoal("goal_title", "goal_description", "nickname_test");
 			fail("Expected an UserCreatedException to be thrown");
-		} catch (UserAlreadyExistsException e) {
+		} catch (ObjectAlreadyExistsException e) {
 			fail("Not Expected an UserAlreadyExistsException to be thrown");
 		}
-		catch (GoalCreatedException e) {
-			assert(e.getGoal_title().equals("NotInDBTest"));
+		catch (ObjectCreatedException e) {
+			assert(e.getName().equals("NotInDBTest"));
 		}
 	}
 	

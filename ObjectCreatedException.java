@@ -5,15 +5,15 @@
 	 * @param  		nickname (a {@link String} giving the nickname of the user),
 	 */
 @SuppressWarnings("serial")
-public class UserCreatedException extends Exception {
+public class ObjectCreatedException extends Exception {
 
-	private String nickname;
+	private String name;
 	
-	public UserCreatedException(String nickname) {
-		this.nickname = nickname;
+	public ObjectCreatedException(String name) {
+		this.name = name;
 	}
 	
-	public String getNickname() {
-		return nickname;
+	public String getName() {
+		return name;
 	}
 }

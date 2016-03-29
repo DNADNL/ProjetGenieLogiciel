@@ -135,7 +135,7 @@ public class AddUserView  extends JFrame implements ActionListener{
 	{			
 		try {
 			FU.addUser(nick, pass, email);
-		} catch (UserCreatedException e) {
+		} catch (ObjectCreatedException e) {
 			System.out.println("Admin : " + (addUserRole.getSelectedItem()).equals("Administrateur"));
 			System.out.println("SU : " + (addUserRole.getSelectedItem()).equals("Simple Utilisateur"));
 			System.out.println("Seller : " + (addUserRole.getSelectedItem()).equals("Vendeur"));
@@ -156,7 +156,7 @@ public class AddUserView  extends JFrame implements ActionListener{
 			//				System.out.println("AddUser : Successful !");
 			//				addUserResultLabel.setText("L'utilisateur a été ajouté à la BD !");
 			//				addUserResultLabel.setForeground(Color.BLUE);
-		} catch (UserAlreadyExistsException e) {
+		} catch (ObjectAlreadyExistsException e) {
 			JOptionPane.showMessageDialog(null, nick+" existe déjà dans la BD.", "Ajout d'utilisateur", JOptionPane.ERROR_MESSAGE);
 			//				System.out.println("AddUser : Failed !");
 			//				addUserResultLabel.setText("Cet utilisateur existe déjà !");

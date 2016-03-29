@@ -70,11 +70,11 @@ public class ProductsHandler {
 	}
 
 	//Delete a product from the database
-	public void deleteProduct(String pdt_product, String nickname) throws ObjectNotInTheDatabaseException , UserDeletedException 
+	public void deleteProduct(String pdt_product, String nickname) throws ObjectNotInTheDatabaseException , ObjectDeletedException 
 	{
 		Fact.deleteProduct(pdt_product, nickname);
 		refreshProductsList(nickname);
-		throw new UserDeletedException(pdt_product);		
+		throw new ObjectDeletedException(pdt_product);		
 	}
 
 	//Add a product to the Database

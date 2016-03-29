@@ -5,15 +5,15 @@
 	 * @param  		nickname (a {@link String} giving the nickname of the user),
 	 */
 @SuppressWarnings("serial")
-public class UserDeletedException extends Exception {
+public class ObjectDeletedException extends Exception {
 
-	private String nickname;
+	private String name;
 	
-	public UserDeletedException(String nickname) {
-		this.nickname = nickname;
+	public ObjectDeletedException(String name) {
+		this.name = name;
 	}
 	
-	public String getNickname() {
-		return nickname;
+	public String getName() {
+		return name;
 	}
 }

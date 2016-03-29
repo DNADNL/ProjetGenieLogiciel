@@ -5,15 +5,15 @@
 	 * @param  		nickname (a {@link String} giving the nickname of the user),
 	 */
 @SuppressWarnings("serial")
-public class UserAlreadyExistsException extends Exception {
+public class ObjectAlreadyExistsException extends Exception {
 
-	private String nickname;
+	private String name;
 	
-	public UserAlreadyExistsException(String nickname) {
-		this.nickname = nickname;
+	public ObjectAlreadyExistsException(String name) {
+		this.name = name;
 	}
 	
-	public String getNickname() {
-		return nickname;
+	public String getName() {
+		return name;
 	}
 }

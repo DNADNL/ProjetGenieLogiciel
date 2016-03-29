@@ -116,7 +116,7 @@ public class DeleteUserView  extends JFrame implements ActionListener{
 			//				System.out.println("DeleteUser : Failed !");
 			//				deleteUserResultLabel.setText("Aucun utilisateur avec ce pseudo n'existe dans la BD, veuillez réessayer.");
 			//				deleteUserResultLabel.setForeground(Color.RED);
-		} catch (UserDeletedException e) {
+		} catch (ObjectDeletedException e) {
 			JOptionPane.showMessageDialog(null, nick+" a bien été supprimé de la BD !", "Suppression d'utilisateur", JOptionPane.INFORMATION_MESSAGE);
 			//				System.out.println("DeleteUser : Successful !");
 			//				deleteUserResultLabel.setText("L'utilisateur a bien été supprimé !");

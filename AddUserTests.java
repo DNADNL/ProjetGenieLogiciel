@@ -88,10 +88,10 @@ public class AddUserTests {
 		try {
 			FU.addUser("AlreadyInDBTest", "pwdTest", "e-mail@test.fr");
 			fail("Expected an UserAlreadyExistsException to be thrown");
-		} catch (UserAlreadyExistsException e) {
-			assert(e.getNickname().equals("AlreadyInDBTest"));
+		} catch (ObjectAlreadyExistsException e) {
+			assert(e.getName().equals("AlreadyInDBTest"));
 		}
-		catch (UserCreatedException e) {
+		catch (ObjectCreatedException e) {
 			fail("Not Expected an UserCreatedException to be thrown");
 		}
 	}
@@ -118,11 +118,11 @@ public class AddUserTests {
 		try {
 			FU.addUser("NotInDBTest", "pwdTest", "e-mail@test.fr");
 			fail("Expected an UserCreatedException to be thrown");
-		} catch (UserAlreadyExistsException e) {
+		} catch (ObjectAlreadyExistsException e) {
 			fail("Not Expected an UserAlreadyExistsException to be thrown");
 		}
-		catch (UserCreatedException e) {
-			assert(e.getNickname().equals("NotInDBTest"));
+		catch (ObjectCreatedException e) {
+			assert(e.getName().equals("NotInDBTest"));
 		}
 	}
 	

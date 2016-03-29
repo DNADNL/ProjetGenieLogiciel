@@ -52,7 +52,7 @@ public class FacadeUser {
 		return PH.getStringProductList(GU.currentUser.nicknameUser);
 	}
 	
-	public void deleteProduct(String pdt_product) throws ObjectNotInTheDatabaseException, UserDeletedException{
+	public void deleteProduct(String pdt_product) throws ObjectNotInTheDatabaseException, ObjectDeletedException{
 		PH.deleteProduct(pdt_product, GU.getCurrentUser().nicknameUser);
 	}
 	
@@ -67,25 +67,25 @@ public class FacadeUser {
 	}
 	
 	// Méthodes Admin
-	public void addUser(String nick, String pass, String email) throws UserAlreadyExistsException, UserCreatedException {
+	public void addUser(String nick, String pass, String email) throws ObjectAlreadyExistsException, ObjectCreatedException {
 		GU.addUser(nick, pass, email);
 	}
 	
 	public void modifyUserData(String nick, String pass, String email, String firstname, String lastname,
 			String city,String street,String postalcode,String streetnumber) 
-	throws ObjectNotInTheDatabaseException, UserModifiedException{
+	throws ObjectNotInTheDatabaseException, ObjectModifiedException{
 		
 		GU.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
 	}
 	
 	public void modifyUser(String nick, String pass, String email, String firstname, String lastname,
 			String city,String street,String postalcode,String streetnumber) 
-	throws ObjectNotInTheDatabaseException, UserModifiedException{
+	throws ObjectNotInTheDatabaseException, ObjectModifiedException{
 		
 		GU.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
 	}
 	
-	public void deleteUser(String nick) throws ObjectNotInTheDatabaseException, UserDeletedException{
+	public void deleteUser(String nick) throws ObjectNotInTheDatabaseException, ObjectDeletedException{
 		GU.deleteUser(nick);
 	}
 	
@@ -96,7 +96,7 @@ public class FacadeUser {
 			
 		}
 
-	public void addGoal(String goal_title, String goal_description, String nick)throws GoalCreatedException, UserAlreadyExistsException {
+	public void addGoal(String goal_title, String goal_description, String nick)throws ObjectCreatedException, ObjectAlreadyExistsException {
 		// TODO Auto-generated method stub
 		GG.addGoal(goal_title, goal_description, nick);
 	}
@@ -154,7 +154,7 @@ public class FacadeUser {
 	}
 
 
-	public void deleteGoal(String goal_name) throws ObjectNotInTheDatabaseException, UserDeletedException {
+	public void deleteGoal(String goal_name) throws ObjectNotInTheDatabaseException, ObjectDeletedException {
 
 		GG.deleteGoal(goal_name, GU.getCurrentUser().nicknameUser);
 		

@@ -81,27 +81,27 @@ public class GestionnaireUser {
 			return bool;
 		}
 
-		public void addUser(String nick, String pass, String email) throws UserAlreadyExistsException, UserCreatedException {
+		public void addUser(String nick, String pass, String email) throws ObjectAlreadyExistsException, ObjectCreatedException {
 			
 			try {
 				Fact.getUser(nick);	
-				throw new UserAlreadyExistsException(nick);
+				throw new ObjectAlreadyExistsException(nick);
 			}
 			catch (ObjectNotInTheDatabaseException e) // L'exception sera levée si l'utilisateur ne se trouve pas dans la BD
 			{
 				Fact.addUser(nick, pass, email);	// On peut donc créer l'utilisateur ici
-				throw new UserCreatedException(e.getNickname());
+				throw new ObjectCreatedException(e.getNickname());
 			}
 
 		}
 		
 		public void modifyUser(String nick, String pass, String email, String firstname,
-				String lastname, String city,String street,String postalcode,String streetnumber) throws ObjectNotInTheDatabaseException, UserModifiedException{
+				String lastname, String city,String street,String postalcode,String streetnumber) throws ObjectNotInTheDatabaseException, ObjectModifiedException{
 			
 			try {
 				Fact.getUser(nick);	
 				Fact.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
-				throw new UserModifiedException(nick);
+				throw new ObjectModifiedException(nick);
 			}
 			catch (ObjectNotInTheDatabaseException e) // L'exception sera levée si l'utilisateur ne se trouve pas dans la BD
 			{
@@ -111,7 +111,7 @@ public class GestionnaireUser {
 			
 		}
 		
-		public void deleteUser(String nick) throws ObjectNotInTheDatabaseException, UserDeletedException {
+		public void deleteUser(String nick) throws ObjectNotInTheDatabaseException, ObjectDeletedException {
 			
 			try {
 				Fact.getUser(nick);	
@@ -132,7 +132,7 @@ public class GestionnaireUser {
 				}			
 				Fact.deleteUser(nick);
 				System.out.println("GU.deleteUser - deleteUser");
-				throw new UserDeletedException(nick);
+				throw new ObjectDeletedException(nick);
 			}
 			catch (ObjectNotInTheDatabaseException e) // L'exception sera levée si l'utilisateur ne se trouve pas dans la BD
 			{

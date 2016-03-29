@@ -25,7 +25,7 @@ public class GestionnaireGoal {
 		return singleton;
 	}
 
-	public void addGoal(String goal_title, String goal_description, String nick)throws GoalCreatedException, UserAlreadyExistsException {
+	public void addGoal(String goal_title, String goal_description, String nick)throws ObjectCreatedException, ObjectAlreadyExistsException {
 		// TODO Auto-generated method stub
 		getGoalList(nick);
 		String goal_title_test;
@@ -39,7 +39,7 @@ public class GestionnaireGoal {
 			goal_title_test = goalList.get(i).goal_title;
 			if(goal_title_test.equals(goal_title)){
 				System.out.println("GOAL déja dans la DB !");
-				throw new UserAlreadyExistsException(nick);	
+				throw new ObjectAlreadyExistsException(nick);	
 				
 			}
 		}
@@ -49,7 +49,7 @@ public class GestionnaireGoal {
 		
 		Fact.addGoal(goal_title, goal_description, nick);
 		refreshGoalList(nick);
-		throw new GoalCreatedException(nick);
+		throw new ObjectCreatedException(nick);
 		
 	}
 
@@ -88,11 +88,11 @@ public class GestionnaireGoal {
 	}
 
 
-	public void deleteGoal(String goal_name, String nicknameUser) throws ObjectNotInTheDatabaseException , UserDeletedException 
+	public void deleteGoal(String goal_name, String nicknameUser) throws ObjectNotInTheDatabaseException , ObjectDeletedException 
 	{
 		Fact.deleteGoal(goal_name, nicknameUser);
 		refreshGoalList(nicknameUser);
-		throw new UserDeletedException(goal_name);		
+		throw new ObjectDeletedException(goal_name);		
 	}
 
 	

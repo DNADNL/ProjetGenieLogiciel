@@ -209,7 +209,7 @@ public class SimpleUserProfileView extends JFrame implements ActionListener, Key
 						simpleUserProfilePostalCode.getText(), simpleUserProfileStreetNumber.getText() );
 			} catch (ObjectNotInTheDatabaseException e1) {
 				JOptionPane.showMessageDialog(null, "ERREUR ! Vous n'êtes pas présent dans la BD (ce message ne devrait jamais s'afficher).", "Modifier mes informations", JOptionPane.ERROR_MESSAGE);
-			} catch (UserModifiedException e1) {
+			} catch (ObjectModifiedException e1) {
 				JOptionPane.showMessageDialog(null, "Vos informations ont bien été modifiées dans la BD !", "Modifier mes informations", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
@@ -240,7 +240,7 @@ public class SimpleUserProfileView extends JFrame implements ActionListener, Key
 						simpleUserProfilePostalCode.getText(), simpleUserProfileStreetNumber.getText() );
 			} catch (ObjectNotInTheDatabaseException e1) {
 				JOptionPane.showMessageDialog(null, "ERREUR ! Vous n'êtes pas présent dans la BD (ce message ne devrait jamais s'afficher).", "Modifier mes informations", JOptionPane.ERROR_MESSAGE);
-			} catch (UserModifiedException e1) {
+			} catch (ObjectModifiedException e1) {
 				JOptionPane.showMessageDialog(null, "Vos informations ont bien été modifiées dans la BD !", "Modifier mes informations", JOptionPane.INFORMATION_MESSAGE);
 			}
         } 
