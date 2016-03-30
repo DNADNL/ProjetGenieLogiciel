@@ -8,37 +8,33 @@ public class AddGoalTests {
 
 	private FacadeUser FU = FacadeUser.getFU();
 	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
+
+	@Before
+	public void setUpTestGoalCreatedException() throws Exception {
+		try {
+			FU.deleteGoal("goal_title_test");
+		} catch (Exception e) {}
+
 	}
 
-//	@Before
-//	public void setUpTestGoalCreatedException() throws Exception {
-//		try {
-//			FU.deleteGoal("NotInDBTest");
-//		} catch (Exception e) {}
-//
-//	}
-//
-//	@Test
-//	public void testGoalCreatedException() throws ObjectCreatedException {
-//		try {
-//			FU.addGoal("goal_title", "goal_description", "nickname_test");
-//			fail("Expected an UserCreatedException to be thrown");
-//		} catch (ObjectAlreadyExistsException e) {
-//			fail("Not Expected an UserAlreadyExistsException to be thrown");
-//		}
-//		catch (ObjectCreatedException e) {
-//			assert(e.getName().equals("NotInDBTest"));
-//		}
-//	}
-//	
-//	@After
-//	public void tearDownTestGoalCreatedException() {
-//		try {
-//			FU.deleteUser("NotInDBTest");
-//		} catch (Exception e) {}
-//	}
+	@Test
+	public void testGoalCreatedException() throws ObjectCreatedException {
+		try {
+			FU.addGoal("goal_title_test", "goal_description", "nickname_test");
+			fail("Expected an GoalCreatedException to be thrown");
+		} catch (ObjectAlreadyExistsException e) {
+			fail("Not Expected an GoalAlreadyExistsException to be thrown");
+		}
+		catch (ObjectCreatedException e) {
+			assert(e.getName().equals("goal_title_test"));
+		}
+	}
+	
+	@After
+	public void tearDownTestGoalCreatedException() {
+		try {
+			FU.deleteGoal("goal_title_test");
+		} catch (Exception e) {}
+	}
 	
 }
