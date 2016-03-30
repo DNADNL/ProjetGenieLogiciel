@@ -115,7 +115,7 @@ public class ProductsHandler {
 
 	public void verifyAlreadyExists(String nickname, String pdt_name) throws ObjectNotInTheDatabaseException, ObjectAlreadyExistsException
 	{		
-		Product existingProduct = Fact.getProduct(pdt_name, nickname);
+		Fact.getProduct(pdt_name, nickname);
 		throw new ObjectAlreadyExistsException(pdt_name);
 	}
 

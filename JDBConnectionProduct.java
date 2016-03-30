@@ -103,7 +103,6 @@ public class JDBConnectionProduct {
 	 * 				product name (a {@link String} giving the name of the product)
 	 * @return      {@link ArrayList} of Products
 	 * @throws		ObjectNotInTheDatabaseException
-	 * @throws ObjectAlreadyExistsException 
 	 * @exception	SQLException
 	 */
 	public Product getProduct(String nickname, String pdtName) throws ObjectNotInTheDatabaseException

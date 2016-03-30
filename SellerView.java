@@ -50,7 +50,6 @@ public class SellerView extends JFrame implements ActionListener
 		panel.setLayout(null);
 
 		// Font
-		// Font fontTitre = new Font("Courier", Font.BOLD, 20);
 		Font font = new Font("Courier", Font.BOLD, 15);
 
 		// Buttons
