@@ -95,6 +95,13 @@ public class GestionnaireGoal {
 		throw new ObjectDeletedException(goal_name);		
 	}
 
+	public void deleteAllCurrentInfos() {
+		// TODO Auto-generated method stub
+		goal_selected = null;
+		goalList = null;
+		stringGoalList = null;
+	}
+
 	
 
 }

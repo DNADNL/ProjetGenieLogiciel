@@ -9,7 +9,12 @@ public class FacadeUser {
 	
 	//Construct Singleton
 	private FacadeUser()
-	{}
+	{
+		GU = GestionnaireUser.getGU();
+		PH = ProductsHandler.getPH();
+		CH = ActivityCategoryHandler.getCH();
+		GG = GestionnaireGoal.getGG();	
+	}
 	
 	//Init Singleton
 	private static FacadeUser singleton;
@@ -41,6 +46,9 @@ public class FacadeUser {
 	public void disconnectUser()
 	{
 		GU.deleteCurrentUser();
+		PH.deleteAllCurrentInfos();
+		GG.deleteAllCurrentInfos();
+		CH.deleteAllCurrentInfos();
 	}
 	
 	

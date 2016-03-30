@@ -1,6 +1,3 @@
-import static org.junit.Assert.*;
-
-import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -44,6 +41,10 @@ public class CRUDProductTests {
 	}	
 
 	//ADD TESTS
+	
+	//Test one by one the fields, to see if it raises the right Exception
+	//Product name
+	//ADD TESTS
 
 	//Test one by one the fields, to see if it raises the right Exception
 	//Product name
@@ -52,6 +53,7 @@ public class CRUDProductTests {
 	{
 		FU.verifyAddProductFields("", pdt_briefDesc, pdt_longDesc, stringPdt_quantity, stringPdt_price);
 	}
+	//Brief Description
 
 	//Brief Description
 	@Test (expected = EmptyFieldsException.class)
@@ -59,6 +61,7 @@ public class CRUDProductTests {
 	{
 		FU.verifyAddProductFields(pdt_nameExist, "", pdt_longDesc, stringPdt_quantity, stringPdt_price);
 	}
+	//Long Description
 
 	//Long Description
 	@Test (expected = EmptyFieldsException.class)
@@ -66,6 +69,7 @@ public class CRUDProductTests {
 	{
 		FU.verifyAddProductFields(pdt_nameExist, pdt_briefDesc, "", stringPdt_quantity, stringPdt_price);
 	}
+	//Quantity
 
 	//Quantity
 	@Test (expected = EmptyFieldsException.class)
@@ -73,6 +77,7 @@ public class CRUDProductTests {
 	{
 		FU.verifyAddProductFields(pdt_nameExist, pdt_briefDesc, pdt_longDesc, "", stringPdt_price);
 	}
+	//Price
 
 	//Price
 	@Test (expected = EmptyFieldsException.class)
@@ -84,12 +89,15 @@ public class CRUDProductTests {
 
 	//Test one by one the fields that are supposed to get an Integer, to see if it raises the right Exception
 	//Quantity
+	//Test one by one the fields that are supposed to get an Integer, to see if it raises the right Exception
+	//Quantity
 	@Test (expected = NotExpectedValueException.class)
 	public void testNotNumberFieldQuantity() throws EmptyFieldsException, NotExpectedValueException
 	{
 		FU.verifyAddProductFields(pdt_nameExist, pdt_briefDesc, pdt_longDesc, "NotAnInt", stringPdt_price);
 	}
 
+	//Price
 	//Price
 	@Test (expected = NotExpectedValueException.class)
 	public void testNotNumberFieldPrice() throws EmptyFieldsException, NotExpectedValueException
@@ -100,11 +108,14 @@ public class CRUDProductTests {
 
 	// Test the if the product are already or not in the database, to see if it raises the right Exception
 	//Already Exists
+	// Test the if the product are already or not in the database, to see if it raises the right Exception
+	//Already Exists
 	@Test (expected = ObjectAlreadyExistsException.class)
 	public void testProductAlreadyExists() throws ObjectAlreadyExistsException, ObjectNotInTheDatabaseException
 	{
 		FU.verifyAlreadyExists(nickname,pdt_nameExist);
 	}
+	//Does Not Exist
 
 	//Does Not Exist
 	@Test (expected = ObjectNotInTheDatabaseException.class)
@@ -114,6 +125,8 @@ public class CRUDProductTests {
 	}
 
 	
+	//Test if the product is correctly added to the database, to see if it raises the right Exception
+	//Add The Product
 	//Test if the product is correctly added to the database, to see if it raises the right Exception
 	//Add The Product
 	@Test
@@ -127,11 +140,13 @@ public class CRUDProductTests {
 	//DELETE TESTS
 
 	//Delete the Product
+	//DELETE TESTS
+
+	//Delete the Product
 	@Test
 	public void testDeleteProduct()
 	{
 		try {
-			FU.PH.getPH();
 			FU.PH.deleteProduct(pdt_nameNew, nickname);
 		} catch (ObjectNotInTheDatabaseException e) {
 			// TODO Auto-generated catch block

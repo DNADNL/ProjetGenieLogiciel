@@ -92,7 +92,7 @@ public class ProductsHandler {
 		{
 			throw new EmptyFieldsException();
 		}
-
+		// I do this to have only one catch that handles the two cases in AddProductView
 		try
 		{
 			Integer.parseInt(stringPdt_quantity);
@@ -117,6 +117,14 @@ public class ProductsHandler {
 	{		
 		Fact.getProduct(pdt_name, nickname);
 		throw new ObjectAlreadyExistsException(pdt_name);
+	}
+
+
+	public void deleteAllCurrentInfos() {
+		// TODO Auto-generated method stub
+		product_selected = null;
+		productList = null;
+		stringProductList = null;
 	}
 
 

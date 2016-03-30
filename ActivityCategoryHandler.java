@@ -3,10 +3,12 @@ import java.util.ArrayList;
 /* handler for category activity*/
 public class ActivityCategoryHandler {
 	
+	AbstractFactoryActivityCategory Fact = new FactoryActivityCategory();
+	
 	ArrayList<ActivityCategory> categoryList;
 	String [][] stringCategoryList;
-	AbstractFactoryActivityCategory Fact = new FactoryActivityCategory();
 	ArrayList<ActivityCategory> categorySuggestionList;
+	
 	//Constructeur Singleton
 		private ActivityCategoryHandler()
 			{}
@@ -83,6 +85,14 @@ public class ActivityCategoryHandler {
 		
 		public void refreshCategoryActivitySuggestionList(){
 			categorySuggestionList = Fact.createCategoryActivitySuggestionList();
+		}
+
+
+		public void deleteAllCurrentInfos() {
+			// TODO Auto-generated method stub
+			categoryList = null;
+			stringCategoryList = null;
+			categorySuggestionList = null;
 		}
 		
 }
