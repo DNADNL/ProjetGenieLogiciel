@@ -46,19 +46,15 @@ public class GestionnaireUser {
 		
 			if (bool == 1)
 			{
-				this.loadUser(nickname);
+				refreshCurrentUser(nickname);
 			}
 			
 			return bool;
 		}
 		
-		public User getUserData(String nick)
+		public void refreshCurrentUser(String nickname)
 		{
-			return Fact.getUserData(nick);
-		}
-		
-		public void loadUser(String nick)
-		{
+			factUser = Fact.getUserData(nickname);
 			currentUser = factUser;
 		}
 		
@@ -100,6 +96,7 @@ public class GestionnaireUser {
 			try {
 				Fact.getUser(nick);	
 				Fact.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
+				refreshCurrentUser(nick);
 				throw new ObjectModifiedException(nick);
 			}
 			catch (ObjectNotInTheDatabaseException e) // L'exception sera levée si l'utilisateur ne se trouve pas dans la BD

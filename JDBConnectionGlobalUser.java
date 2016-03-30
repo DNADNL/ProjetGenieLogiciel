@@ -101,6 +101,7 @@ public class JDBConnectionGlobalUser {
 			// We get the user data
 			while(result.next())
 			{
+				
 				user.nicknameUser = result.getObject(1).toString();
 				user.mdpUser = result.getObject(2).toString();
 				user.firstNameUser = result.getObject(3).toString();
@@ -110,6 +111,13 @@ public class JDBConnectionGlobalUser {
 				user.postalCodeUser = result.getObject(7).toString();
 				user.streetNumberUser = result.getObject(8).toString();
 				user.emailUser = result.getObject(9).toString();
+				
+				System.out.println(result.getObject(1).toString());
+				System.out.println(result.getObject(2).toString());
+				System.out.println(result.getObject(3).toString());
+				System.out.println(result.getObject(4).toString());
+				System.out.println(result.getObject(5).toString());
+				System.out.println(result.getObject(6).toString());
 			}
 
 			// We close everything

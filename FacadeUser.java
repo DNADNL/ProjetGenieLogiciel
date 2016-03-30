@@ -107,8 +107,8 @@ public class FacadeUser {
 	}
 
 
-	public User getUserData(String nicknameUser) {
-		return GU.getUserData(nicknameUser);
+	public void refreshCurrentUser(String nicknameUser) {
+		 GU.refreshCurrentUser(nicknameUser);
 	}
 	
 	public boolean isAdmin(String nick) {

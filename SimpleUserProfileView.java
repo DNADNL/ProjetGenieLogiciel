@@ -42,6 +42,8 @@ public class SimpleUserProfileView extends JFrame implements ActionListener, Key
 		super("Lazy'N Yourself");
 		user=FU.getCurrentUser();
 		System.out.println(user.nicknameUser);
+		System.out.println(user.firstNameUser);
+		System.out.println(user.getUserFirstName());
 
 		simpleUserProfilePassword = new JPasswordField(user.getUserPassword());
 		simpleUserProfileFirstName = new JTextField(user.getUserFirstName());
