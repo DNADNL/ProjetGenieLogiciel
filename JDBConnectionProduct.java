@@ -13,7 +13,7 @@ public class JDBConnectionProduct {
 	// Singleton Constructor
 	private JDBConnectionProduct()
 	{
-		createConnection();
+		conn = JDBConnectionOpen.conn;
 	}
 
 	// Singleton Initialisator
@@ -27,44 +27,6 @@ public class JDBConnectionProduct {
 			singleton = new JDBConnectionProduct();	
 		}
 		return singleton;
-	}
-
-	// Connection Methods
-	/**
-	 * This method creates the connection to the database.
-	 * <p>
-	 *
-	 * @param		none
-	 * @return		void
-	 * @exception	ClassNotFoundException, LinkageError, SQLException
-	 */
-	private void createConnection()
-	{
-		try 
-		{
-			// Connection Information
-			Class.forName("org.postgresql.Driver");
-			System.out.println("Driver O.K.");
-			String url = "jdbc:postgresql://qdjjtnkv.db.elephantsql.com:5432/xchuldjm";
-			String user = "xchuldjm";
-			String passwd = "k_s5Zb_Br9lFxGz4SmfrlPKEmJbTOvY-";
-
-			// Creation of the link between the program and the database 
-			JDBConnectionProduct.conn = DriverManager.getConnection(url, user, passwd);
-			System.out.println("Connected Successfully !");
-		} 
-		catch (ClassNotFoundException e)
-		{
-			System.out.println("ERROR - JDBConnectionProduct.createConnection() / Class.forName : Classe/Driver Not Found (ClassNotFoundException)");
-		}
-		catch (LinkageError e)
-		{
-			System.out.println("ERROR - JDBConnectionProduct.createConnection() / Class.forName : Linkage/Initialization failed (LinkageError)");
-		}
-		catch (SQLException e)
-		{
-			System.out.println("ERROR - JDBConnectionProduct.createConnection() / DriverManager.getconnection : Connection Timeout OR Too Many Connections (SQLException)");
-		}
 	}
 
 	// Product Methods
@@ -142,6 +104,7 @@ public class JDBConnectionProduct {
 	 * 				product name (a {@link String} giving the name of the product)
 	 * @return      {@link ArrayList} of Products
 	 * @throws		ObjectNotInTheDatabaseException
+	 * @throws ObjectAlreadyExistsException 
 	 * @exception	SQLException
 	 */
 	public Product getProduct(String nickname, String pdtName) throws ObjectNotInTheDatabaseException
@@ -156,42 +119,41 @@ public class JDBConnectionProduct {
 			// Query (we get the result in the ResultSet object)
 			ResultSet result = state.executeQuery("SELECT * FROM public.\"product\" WHERE nickname = \'" + nickname + "\' AND product_name =\'" + pdtName + "\'" ); 
 
+		
 			// We get All Product data
-			while(result.next())
-			{				
-
-				product.pdt_name=result.getObject(2).toString();
-
-				product.briefDesc=result.getObject(7).toString();
-
-				product.longDesc=result.getObject(8).toString();
-				
-				product.quantity=Integer.parseInt(result.getObject(3).toString());
-
-				product.price= Integer.parseInt(result.getObject(4).toString());
-
-				product.user_nickname= result.getObject(5).toString();
-				//product.id_category= Integer.parseInt(result.getObject(6).toString());
-
-
-			}
-
-			// We close everything
-			result.close();
-			state.close();
-
-			if (product.pdt_name == null)
+			if(!result.next())
 			{
 				throw new ObjectNotInTheDatabaseException(pdtName);
 			}
+			else
+			{
 
+					System.out.println(result.getObject(2).toString());
+					product.pdt_name=result.getObject(2).toString();
+
+					product.quantity=Integer.parseInt(result.getObject(3).toString());
+
+					product.price= Integer.parseInt(result.getObject(4).toString());
+
+					product.user_nickname= result.getObject(5).toString();
+					
+					//product.id_category= Integer.parseInt(result.getObject(6).toString());
+					
+					product.briefDesc=result.getObject(7).toString();
+
+					product.longDesc=result.getObject(8).toString();		
+			}
+			result.close();
+			state.close();
 		} 
 		catch (SQLException e) 
 		{
 			System.out.println("ERROR - JDBConnectionProduct.getProduct() / : SQL Query Error (SQLException)");
 		}
 
+		System.out.println(product.pdt_name);
 		return product;
+		
 	}
 
 	/**

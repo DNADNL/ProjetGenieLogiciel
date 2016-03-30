@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class DeleteProductView extends JFrame implements ActionListener{
 
-	static String pdt_name;
+
 
 	//Get the Facade
 	FacadeUser FU = FacadeUser.getFU();
@@ -27,11 +27,10 @@ public class DeleteProductView extends JFrame implements ActionListener{
 	Button returnProductsListButton = new Button("Retour",540, 10, 150, 30);
 	Button validateDeleteProductButton = new Button("<html>Supprimer<br> Produit</html>",275,350,150,50);
 
-	public DeleteProductView(String product_selected)
+	public DeleteProductView()
 	{
 		super("Lazy'N Yourself");
 
-		pdt_name = product_selected;
 
 		// Frame Config
 		this.setSize(700,700);
@@ -75,7 +74,7 @@ public class DeleteProductView extends JFrame implements ActionListener{
 		deleteProductLabel.setForeground(Color.BLACK);
 		panel.add(deleteProductLabel);
 
-		JLabel productLabel = new JLabel(pdt_name);
+		JLabel productLabel = new JLabel(FU.getCurrentProduct().pdt_name);
 		productLabel.setBounds(120, 170, 460, 60);
 		productLabel.setFont(font);
 		productLabel.setForeground(Color.BLACK);
@@ -113,7 +112,7 @@ public class DeleteProductView extends JFrame implements ActionListener{
 		//The seller has chosen to delete the product
 		else if (source==validateDeleteProductButton)
 		{
-			deleteProductButtonClicked(pdt_name);
+			deleteProductButtonClicked(FU.getCurrentProduct().pdt_name);
 
 			//Return to the ProductListView
 			new ProductsListView();	

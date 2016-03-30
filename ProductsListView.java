@@ -129,10 +129,18 @@ public class ProductsListView extends JFrame implements ActionListener{
 			{
 				//Get the information for the product in the selected cell
 				String product_selected = (tableau.getValueAt(tableau.getSelectedRow(), 0).toString());
-				//Go to the AddProductView
-				new DeleteProductView( product_selected);
-				dispose();
-				System.out.println("Panel DeleteProduct affiché");
+				try 
+				{
+					FU.modifyCurrentProduct(product_selected, FU.getCurrentUser().nicknameUser);
+					//Go to the AddProductView
+					new DeleteProductView();
+					dispose();
+					System.out.println("Panel DeleteProduct affiché");
+				} 
+				catch (ObjectNotInTheDatabaseException e1) 
+				{
+					System.out.println("The product does not exist");
+				} 
 			}
 
 		}
@@ -145,12 +153,25 @@ public class ProductsListView extends JFrame implements ActionListener{
 				String product_selected = (tableau.getValueAt(tableau.getSelectedRow(), 0).toString());
 
 				//Modify the product selected in ProductsHandler
-				FU.modifyCurrentProduct(product_selected, FU.getCurrentUser().nicknameUser);
+				try 
+				{
+					FU.modifyCurrentProduct(product_selected, FU.getCurrentUser().nicknameUser);
+					
+					//Go to the ProductDetailView
+					new ProductDetailView();
+					dispose();
+					System.out.println("Panel Details Product affiché");
+				} 
+				catch (ObjectNotInTheDatabaseException e1) 
+				{
+					System.out.println("The product does not exist");
+				} 
 
-				//Go to the ProductDetailView
-				new ProductDetailView();
-				dispose();
-				System.out.println("Panel Details Product affiché");
+					
+
+				
+				
+				
 			}
 		}
 

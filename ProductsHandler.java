@@ -63,7 +63,7 @@ public class ProductsHandler {
 	}
 
 	//Get the product for the seller and set the "product_selected"
-	public void getProduct(String pdt_name, String nickname)
+	public void getProduct(String pdt_name, String nickname) throws ObjectNotInTheDatabaseException
 	{
 		product_selected = Fact.getProduct(pdt_name, nickname);
 	}
@@ -82,6 +82,41 @@ public class ProductsHandler {
 
 		Fact.addProduct(nickname,pdt_name,pdt_quantity,pdt_price,pdt_briefDesc, pdt_longDesc);
 		refreshProductsList(nickname);
+	}
+
+
+	public void verifyAddProductFields(String pdt_name, String pdt_briefDesc, String pdt_longDesc,
+			String stringPdt_quantity, String stringPdt_price) throws EmptyFieldsException, NotExpectedValueException{
+		String s ="";
+		if ( s.equals(pdt_name) || s.equals(pdt_briefDesc) || s.equals(pdt_longDesc) || s.equals(stringPdt_quantity) || s.equals(stringPdt_price) )
+		{
+			throw new EmptyFieldsException();
+		}
+
+		try
+		{
+			Integer.parseInt(stringPdt_quantity);
+		}
+		catch(NumberFormatException e)
+		{
+			throw new NotExpectedValueException("Quantity");
+		}
+		try
+		{
+			Integer.parseInt(stringPdt_price);
+		}
+		catch(NumberFormatException e)
+		{
+			throw new NotExpectedValueException("Price");
+		}
+		
+	}
+
+
+	public void verifyAlreadyExists(String nickname, String pdt_name) throws ObjectNotInTheDatabaseException, ObjectAlreadyExistsException
+	{		
+		Product existingProduct = Fact.getProduct(pdt_name, nickname);
+		throw new ObjectAlreadyExistsException(pdt_name);
 	}
 
 

@@ -54,7 +54,7 @@ public class FacadeUser {
 		PH.deleteProduct(pdt_product, GU.getCurrentUser().nicknameUser);
 	}
 	
-	public void modifyCurrentProduct(String nom_produit, String nickname)
+	public void modifyCurrentProduct(String nom_produit, String nickname) throws ObjectNotInTheDatabaseException
 	{
 		PH.getProduct(nom_produit, nickname);
 	}
@@ -156,6 +156,24 @@ public class FacadeUser {
 
 		GG.deleteGoal(goal_name, GU.getCurrentUser().nicknameUser);
 		
+	}
+
+
+	public void verifyAddProductFields(String pdt_name, String pdt_briefDesc, String pdt_longDesc,
+			String stringPdt_quantity, String stringPdt_price) throws EmptyFieldsException, NotExpectedValueException {
+		
+		
+	
+			PH.verifyAddProductFields(pdt_name,pdt_briefDesc,pdt_longDesc,stringPdt_quantity,stringPdt_price);
+	
+	
+
+}
+
+
+	public void verifyAlreadyExists(String nickname, String pdt_name) throws ObjectAlreadyExistsException, ObjectNotInTheDatabaseException {
+		// TODO Auto-generated method stub
+		PH.verifyAlreadyExists(nickname,pdt_name);
 	}
 	
 

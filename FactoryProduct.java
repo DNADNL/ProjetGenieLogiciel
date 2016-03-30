@@ -36,7 +36,7 @@ public class FactoryProduct extends AbstractFactoryProduct{
 	}
 
 
-	public Product getProduct(String pdtName, String nickname) 
+	public Product getProduct(String pdtName, String nickname) throws ObjectNotInTheDatabaseException
 	{
 		return ProductDB.getProduct(nickname, pdtName);
 	}

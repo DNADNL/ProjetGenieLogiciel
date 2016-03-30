@@ -55,7 +55,7 @@ public class ProductDetailView extends JFrame implements ActionListener{
 		// Textfields
 
 		// Labels
-		System.out.println("test");
+
 		JLabel nameLabel = new JLabel(FU.getCurrentProduct().pdt_name);
 		nameLabel.setBounds(160, 100, 90, 30);
 		nameLabel.setFont(font);

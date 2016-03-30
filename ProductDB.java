@@ -29,15 +29,12 @@ public class ProductDB extends Product{
 		jdbc.createProduct(nickname,pdt_name,pdt_quantity,pdt_price,pdt_briefDesc,pdt_longDesc);
 	}
 
-	public static Product getProduct(String nickname ,String pdtName)
+	public static Product getProduct(String nickname ,String pdtName) throws ObjectNotInTheDatabaseException
 	{
 		Product product = null;
-		try {
+
 			product = jdbc.getProduct(nickname, pdtName);
-		} catch (ObjectNotInTheDatabaseException e) {
-			
-			e.printStackTrace();
-		}
+
 		
 		return product;
 	}

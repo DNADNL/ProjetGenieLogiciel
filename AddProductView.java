@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -95,13 +96,13 @@ public class AddProductView extends JFrame implements ActionListener{
 		panel.add(briefDescLabel);
 
 		JLabel priceLabel = new JLabel("Prix");
-		priceLabel.setBounds(160, 210, 90, 30);
+		priceLabel.setBounds(160, 250, 90, 30);
 		priceLabel.setFont(font);
 		priceLabel.setForeground(Color.BLACK);
 		panel.add(priceLabel);
 
 		JLabel quantityLabel = new JLabel("Quantité");
-		quantityLabel.setBounds(160, 250, 90, 30);
+		quantityLabel.setBounds(160, 210, 90, 30);
 		quantityLabel.setFont(font);
 		quantityLabel.setForeground(Color.BLACK);
 		panel.add(quantityLabel);
@@ -128,6 +129,7 @@ public class AddProductView extends JFrame implements ActionListener{
 
 
 
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -143,24 +145,61 @@ public class AddProductView extends JFrame implements ActionListener{
 		//The seller has chosen to add a product
 		else if (source == validateAddProductButton)
 		{
-			//We get all the needed informations from the TextFields
-			String nickname = FU.getCurrentUser().nicknameUser;
-			String pdt_name = nameAddProduct.getText();
-			String pdt_briefDesc = briefDescAddProduct.getText();
-			String pdt_longDesc = longDescAddProduct.getText();
-			int pdt_quantity = Integer.parseInt(quantityAddProduct.getText());
-			int pdt_price = Integer.parseInt(priceAddProduct.getText());
 
-			//Call the function to add a product
-			FU.addProduct(nickname, pdt_name, pdt_quantity, pdt_price, pdt_briefDesc, pdt_longDesc);
-			System.out.println("Produit ajouté");
+			addProductButtonClicked();
 
 			//Return to the ProductListView
-			new ProductsListView();	
-			dispose();
+
 		}
 
 
 	}
 
+	private void addProductButtonClicked()
+	{
+		//We get all the needed informations from the TextFields
+		String nickname = FU.getCurrentUser().nicknameUser;
+
+		String pdt_name = nameAddProduct.getText();
+		String pdt_briefDesc = briefDescAddProduct.getText();
+		String pdt_longDesc = longDescAddProduct.getText();
+		String stringPdt_quantity = quantityAddProduct.getText();
+		String stringPdt_price = priceAddProduct.getText();
+
+		try 
+		{
+			FU.verifyAddProductFields(pdt_name, pdt_briefDesc, pdt_longDesc, stringPdt_quantity, stringPdt_price);
+
+			
+
+			FU.verifyAlreadyExists(nickname,pdt_name);
+			
+			
+		} 
+		catch (EmptyFieldsException e) 
+		{
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "Please fill all the fields before you confirm", "Empty fields", JOptionPane.ERROR_MESSAGE);
+		} 
+		catch (NotExpectedValueException e) 
+		{
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, e.getName() + " must be an Integer", "Incorrect value", JOptionPane.ERROR_MESSAGE);
+		}
+		catch (ObjectAlreadyExistsException e1) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "Your product " + e1.getName() + " already exists", "Already exists", JOptionPane.ERROR_MESSAGE);
+		}
+		catch (ObjectNotInTheDatabaseException e1) {
+			// TODO Auto-generated catch block
+			
+			int pdt_quantity = Integer.parseInt(stringPdt_quantity);
+			int pdt_price = Integer.parseInt(stringPdt_price);
+			FU.addProduct(nickname, pdt_name, pdt_quantity, pdt_price, pdt_briefDesc, pdt_longDesc);
+			JOptionPane.showMessageDialog(null, "Your product " + e1.getName() + " has been added", "Product added", JOptionPane.INFORMATION_MESSAGE);
+			new ProductsListView();	
+			dispose();
+			
+		}
+	}
 }

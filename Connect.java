@@ -13,6 +13,7 @@ public class Connect {
 	            @Override
 	            public void run()
 	            {
+	            	JDBConnectionOpen.getJDBCO();
 	                new LoginView().setVisible(true);
 	            }
 	        });
