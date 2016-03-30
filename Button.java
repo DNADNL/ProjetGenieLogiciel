@@ -17,10 +17,10 @@ public class Button extends JButton {
 		
 		this.setBounds(positionX, positionY, tailleX, tailleY);
 		
-		this.setBackground(Color.LIGHT_GRAY);
-		this.setForeground(Color.BLACK);
+		//this.setBackground(Color.LIGHT_GRAY);
+		//this.setForeground(Color.BLACK);
 		
-		this.setFont(font);
+		//this.setFont(font);
 	}
 
 	
