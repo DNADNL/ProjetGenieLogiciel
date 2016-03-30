@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+// Abstract Class of Activity Category
+
 public abstract class AbstractFactoryActivityCategory {
 
 	abstract public ArrayList<ActivityCategory> createActivityCategoryList(String title);
