@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class DeleteProductView extends JFrame implements ActionListener{
 
 	static String pdt_name;

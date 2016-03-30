@@ -1,20 +1,13 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class SellerView extends JFrame implements ActionListener
 {
 
@@ -55,7 +48,7 @@ public class SellerView extends JFrame implements ActionListener
 		panel.setLayout(null);
 
 		// Font
-		Font fontTitre = new Font("Courier", Font.BOLD, 20);
+		// Font fontTitre = new Font("Courier", Font.BOLD, 20);
 		Font font = new Font("Courier", Font.BOLD, 15);
 
 		// Buttons

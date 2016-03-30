@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class AdminView extends JFrame implements ActionListener{
 
 	//Get the Facade
@@ -45,22 +46,22 @@ public class AdminView extends JFrame implements ActionListener{
 		panel.setLayout(null);
 
 		// Fonts
-		Font fontTitre = new Font("Courier", Font.BOLD, 30);
-		Font font = new Font("Courier", Font.BOLD, 18);
+		Font fontTitle = new Font("Courier", Font.BOLD, 20);
+		Font font = new Font("Courier", Font.BOLD, 15);
 
 		// Labels
 
 		//Ajout de l'étiquette "Page de xxx"
-		JLabel idLabel = new JLabel("<html>Page de <br>" + FU.getCurrentUser().nicknameUser + "</html>");
+		JLabel idLabel = new JLabel("<html>Hello, <br>" + FU.getCurrentUser().nicknameUser + "</html>");
 		idLabel.setBounds(10, 10, 150, 50);
 		idLabel.setFont(font);
 		idLabel.setForeground(Color.BLACK);
 		panel.add(idLabel);
 
-		//Ajout de l'étiquette "Outils Action Utilisateur"
+		//Ajout de l'étiquette "Outils Administrateur"
 		JLabel UserLabel = new JLabel();
 		UserLabel.setBounds(250, 30, 300, 100);
-		UserLabel.setFont(font);					
+		UserLabel.setFont(fontTitle);					
 		UserLabel.setText("Outils Administrateur");
 		panel.add(UserLabel);		
 

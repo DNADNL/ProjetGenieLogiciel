@@ -3,17 +3,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class SimpleUserView extends JFrame implements ActionListener
 {	
 	FacadeUser FU = FacadeUser.getFU();
@@ -64,7 +60,6 @@ public class SimpleUserView extends JFrame implements ActionListener
 		panel.setLayout(null);
 
 		// Création des polices
-		Font fontTitre = new Font("Courier", Font.BOLD, 20);
 		Font font = new Font("Courier", Font.BOLD, 15);
 
 		//suggérer descatégories d'activités

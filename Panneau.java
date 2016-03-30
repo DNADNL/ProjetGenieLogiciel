@@ -4,6 +4,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+@SuppressWarnings("serial")
 public class Panneau extends JPanel {
 	
 	public void paintComponent(Graphics g){

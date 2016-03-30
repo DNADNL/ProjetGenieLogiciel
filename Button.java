@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 
@@ -10,7 +9,7 @@ import javax.swing.JButton;
  */
 @SuppressWarnings("serial")
 public class Button extends JButton {
-	private Font font = new Font("courier", Font.BOLD, 16);
+	// private Font font = new Font("courier", Font.BOLD, 16);
 
 	public Button(String str, int positionX, int positionY, int tailleX, int tailleY){
 		super(str);

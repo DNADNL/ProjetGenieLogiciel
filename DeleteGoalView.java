@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class DeleteGoalView extends JFrame implements ActionListener{
 
 	FacadeUser FU = FacadeUser.getFU();

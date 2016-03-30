@@ -3,18 +3,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class SeeGoalView extends JFrame implements ActionListener
 {	
 	//Get the Facade
@@ -56,7 +52,7 @@ public class SeeGoalView extends JFrame implements ActionListener
 		panel.setLayout(null);
 		
 		// Font
-		Font fontTitre = new Font("Courier", Font.BOLD, 20);
+		Font fontTitle = new Font("Courier", Font.BOLD, 20);
 		Font font = new Font("Courier", Font.BOLD, 15);
 		
 		// Buttons
@@ -96,8 +92,12 @@ public class SeeGoalView extends JFrame implements ActionListener
 		userLabel.setForeground(Color.BLACK);
 		panel.add(userLabel);
 		
-		// Titre
-
+		// Title
+		JLabel SeeGoalLabel = new JLabel();
+		SeeGoalLabel.setBounds(250, 30, 300, 100);
+		SeeGoalLabel.setFont(fontTitle);					
+		SeeGoalLabel.setText("Outils Administrateur");
+		panel.add(SeeGoalLabel);	
 		// Background
 
 	}
@@ -119,7 +119,7 @@ public class SeeGoalView extends JFrame implements ActionListener
 			if (tableau.getSelectedRow() != -1)
 			{
 				String activity_selected = (tableau.getValueAt(tableau.getSelectedRow(), 0).toString());
-				// new ActivityView(FU.getUser(), activity_selected);
+				new ActivityDetailsView(FU.getCurrentUser(), activity_selected);
 				dispose();
 				System.out.println("Panel Détail Activité affiché");
 			}

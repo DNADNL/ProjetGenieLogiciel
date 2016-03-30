@@ -1,20 +1,12 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class ShopView extends JFrame implements ActionListener
 {	
 	FacadeUser FU = FacadeUser.getFU();
@@ -25,10 +17,6 @@ public class ShopView extends JFrame implements ActionListener
 	
 	//Création des boutons de "Principal"
 	Button returnButton = new Button("Retour",540, 10, 150, 30);
-	Button productListButton = new Button("Mes produits", 250, 335, 200, 30);
-
-	Button adminButton = new Button("Administration", 250, 375, 200, 30);
-	Button simpleUserButton = new Button("Simple User", 250, 415, 200, 30);
 	
 	//Constructeur
 	public ShopView(User loggedUser)
@@ -57,32 +45,18 @@ public class ShopView extends JFrame implements ActionListener
 		panel.setLayout(null);
 		
 		// Font
-		Font fontTitre = new Font("Courier", Font.BOLD, 20);
-		Font font = new Font("Courier", Font.BOLD, 15);
+		Font fontTitle = new Font("Courier", Font.BOLD, 20);
 		
 		// Buttons
 		returnButton.addActionListener(this);
 		panel.add(returnButton);
 		
-		productListButton.addActionListener(this);
-		panel.add(productListButton);
-		
-		adminButton.addActionListener(this);
-		panel.add(adminButton);
-		
-		simpleUserButton.addActionListener(this);
-		panel.add(simpleUserButton);
-		
-		// Textfields
-		
-		// Labels
-		JLabel userLabel = new JLabel("<html>Page de <br>" + user.nicknameUser + "</html>");
-		userLabel.setBounds(10, 10, 150, 50);
-		userLabel.setFont(font);
-		userLabel.setForeground(Color.BLACK);
-		panel.add(userLabel);
-		
-		// Titre
+		// Title
+		JLabel underConstructionTitle = new JLabel();
+		underConstructionTitle.setBounds(250, 30, 300, 100);
+		underConstructionTitle.setFont(fontTitle);					
+		underConstructionTitle.setText("<html>This window is under construction...</html>");
+		panel.add(underConstructionTitle);	
 
 		// Background
 
@@ -99,26 +73,6 @@ public class ShopView extends JFrame implements ActionListener
 			FU.disconnectUser();
 			dispose();
 			new LoginView();
-		}
-		else if (source == productListButton)
-		{
-			new ProductsListView();
-			dispose();
-			System.out.println("Panel ProductsList affiché");
-		}
-		else if (source == adminButton)
-		{
-			
-			new AdminView();
-			dispose();
-			System.out.println("Panel Admin affiché");
-		}
-		else if (source == simpleUserButton)
-		{
-			
-			new SimpleUserView(FU.getCurrentUser());
-			dispose();
-			System.out.println("Panel Simple User affiché");
 		}
 	
 		

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class ProductDetailView extends JFrame implements ActionListener{
 
 	//Get the Facade
@@ -43,7 +44,7 @@ public class ProductDetailView extends JFrame implements ActionListener{
 		panel.setLayout(null);
 
 		// Font
-		Font fontTitre = new Font("Courier", Font.BOLD, 20);
+		Font fontTitle = new Font("Courier", Font.BOLD, 20);
 		Font font = new Font("Courier", Font.BOLD, 15);
 
 		// Buttons
@@ -85,7 +86,12 @@ public class ProductDetailView extends JFrame implements ActionListener{
 		longDescLabel.setForeground(Color.BLACK);
 		panel.add(longDescLabel);
 
-		// Titre
+		// Title
+		JLabel productDetailTitle = new JLabel();
+		productDetailTitle.setBounds(250, 30, 300, 100);
+		productDetailTitle.setFont(fontTitle);					
+		productDetailTitle.setText("<html>Product Detail</html>");
+		panel.add(productDetailTitle);	
 
 		// Background
 

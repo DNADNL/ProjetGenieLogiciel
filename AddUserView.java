@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class AddUserView  extends JFrame implements ActionListener{
 
 	//Get the Facade
@@ -57,7 +58,6 @@ public class AddUserView  extends JFrame implements ActionListener{
 		panel.setLayout(null);
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
 		Font font = new Font("Courier", Font.BOLD, 15);
-		Font fontAdvice = new Font("Courier", Font.ITALIC, 14);
 
 		//Ajout de l'étiquette "Page de xxx"
 		JLabel idLabel = new JLabel("<html>Page de <br>" + FU.getCurrentUser().nicknameUser + "</html>");

@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class AddProductView extends JFrame implements ActionListener{
 
 	//Get the Facade

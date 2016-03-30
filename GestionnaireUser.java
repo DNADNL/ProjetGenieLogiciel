@@ -1,4 +1,3 @@
-import java.sql.SQLException;
 
 public class GestionnaireUser {
 		AbstractFactory Fact = new FactoryUser();

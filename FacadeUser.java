@@ -1,5 +1,3 @@
-import java.sql.SQLException;
-
 public class FacadeUser {
 	
 	GestionnaireUser GU = GestionnaireUser.getGU();

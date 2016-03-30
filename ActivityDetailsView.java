@@ -3,8 +3,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class ActivityDetailsView extends JFrame implements ActionListener{
 
 	
@@ -45,8 +47,7 @@ public class ActivityDetailsView extends JFrame implements ActionListener{
 		panel.setLayout(null);
 		
 		// Font
-		Font fontTitre = new Font("Courier", Font.BOLD, 20);
-		Font font = new Font("Courier", Font.BOLD, 15);
+		Font fontTitle = new Font("Courier", Font.BOLD, 20);
 		
 		// Buttons
 		returnSeeGoalButton.addActionListener(this);
@@ -56,12 +57,13 @@ public class ActivityDetailsView extends JFrame implements ActionListener{
 		// Textfields
 		
 		// Labels
-
 		
-		
-		
-		// Titre
-
+		// Title
+		JLabel activityDetailTitle = new JLabel();
+		activityDetailTitle.setBounds(250, 30, 300, 100);
+		activityDetailTitle.setFont(fontTitle);					
+		activityDetailTitle.setText("<html>Activity Detail</html>");
+		panel.add(activityDetailTitle);	
 		// Background
 
 	}

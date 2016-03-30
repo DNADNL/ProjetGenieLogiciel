@@ -6,11 +6,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class AddSuggestionActivityCategoryView extends JFrame implements ActionListener{
 
 	//A FAIRE
@@ -56,7 +55,6 @@ public class AddSuggestionActivityCategoryView extends JFrame implements ActionL
 		panel.setLayout(null);
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
 		Font font = new Font("Courier", Font.BOLD, 15);
-		Font fontAdvice = new Font("Courier", Font.ITALIC, 14);
 		
 		//Ajout de l'étiquette "Page de xxx"
 		JLabel idLabel = new JLabel("<html>Bonjour, <br>" + user.nicknameUser + " !</html>");

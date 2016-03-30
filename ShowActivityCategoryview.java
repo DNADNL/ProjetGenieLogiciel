@@ -1,19 +1,15 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class ShowActivityCategoryView extends JFrame implements  ActionListener {
 	FacadeUser FU = FacadeUser.getFU();
 	static User user;
@@ -58,7 +54,6 @@ public class ShowActivityCategoryView extends JFrame implements  ActionListener 
 
 		// Font
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
-		Font font = new Font("Courier", Font.BOLD, 12);
 
 		// Buttons
 		returnPrincipalButton.addActionListener(this);
