@@ -37,11 +37,16 @@ public class ActivityCategoryHandler {
 		}
 	
 
-		public void suggestActivityCategory(String title, String description) {
+		public void suggestActivityCategory(String title, String description) throws EmptyFieldsException {
 			// TODO Auto-generated method stub
+			if(title.isEmpty()){
+				throw new EmptyFieldsException();
+			}
+			else{
 			Fact.suggestActivityCategory(title, description);
 			refreshCategoryActivitySuggestionList();
 			}
+		}
 		
 		public String[][] getStringCategoryList()
 		{

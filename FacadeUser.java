@@ -2,7 +2,7 @@ public class FacadeUser {
 	
 	GestionnaireUser GU;
 	ProductsHandler PH;
-	ActivityCategoryHandler CH;
+	ActivityCategoryHandler ACH;
 	GestionnaireGoal GG;
 
 	
@@ -11,7 +11,7 @@ public class FacadeUser {
 	{
 		GU = GestionnaireUser.getGU();
 		PH = ProductsHandler.getPH();
-		CH = ActivityCategoryHandler.getCH();
+		ACH = ActivityCategoryHandler.getCH();
 		GG = GestionnaireGoal.getGG();	
 	}
 	
@@ -47,7 +47,7 @@ public class FacadeUser {
 		GU.deleteCurrentUser();
 		PH.deleteAllCurrentInfos();
 		GG.deleteAllCurrentInfos();
-		CH.deleteAllCurrentInfos();
+		ACH.deleteAllCurrentInfos();
 	}
 	
 	
@@ -96,8 +96,8 @@ public class FacadeUser {
 	
 
 	//methods activity category
-		public void suggestActivityCategory(String title, String description){
-			CH.suggestActivityCategory(title,description);
+		public void suggestActivityCategory(String title, String description)throws EmptyFieldsException{
+			ACH.suggestActivityCategory(title,description);
 			
 		}
 
@@ -150,12 +150,12 @@ public class FacadeUser {
 	}
 	
 	public String[][] getStringActivityCategoryList(){
-		return CH.getStringCategoryList() ;
+		return ACH.getStringCategoryList() ;
 	}
 
 
 	public String[][] getStringActivityCategorySuggestionList() {
-		return CH.getStringCategorySuggestionList();
+		return ACH.getStringCategorySuggestionList();
 	}
 
 

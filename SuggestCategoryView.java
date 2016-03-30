@@ -24,8 +24,8 @@ public class SuggestCategoryView extends JFrame implements ActionListener {
 	//Création des boutons de "ProductsList"
 	Button returnPrincipalButton = new Button("Retour",540, 10, 150, 30);
 	Button suggestButton = new Button("Suggest",300,320,150,30);
-	JTextField nameCategory = new JTextField("Category name");
-	JTextArea briefDescCategory = new JTextArea("Brief Category description");
+	JTextField nameCategory = new JTextField("");
+	JTextArea briefDescCategory = new JTextArea("");
 
 	public SuggestCategoryView(User loggedUser)
 	{
@@ -130,14 +130,16 @@ public class SuggestCategoryView extends JFrame implements ActionListener {
 
 	}
 	public void  suggestButtonClicked(String title, String description){
-
-
+		try{
 		FU.suggestActivityCategory(title, description );
 		new ShowActivityCategoryView();	
 		dispose();
 		System.out.println("panel ShowcategoryActivityView affiché");
 		JOptionPane.showMessageDialog(null, title +" has been suggested. thank you!", "Category Activity Suggestion", JOptionPane.INFORMATION_MESSAGE);
-
+		}
+		catch (EmptyFieldsException e){
+			JOptionPane.showMessageDialog(null, "Title field can't be empty", "Category Activity Suggestion", JOptionPane.ERROR_MESSAGE);
+		}
 
 
 	}
