@@ -17,25 +17,6 @@ public class FactoryProduct extends AbstractFactoryProduct{
 		return createdProductList;
 	}
 
-	public User getUser(String nickname) throws ObjectNotInTheDatabaseException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public void deleteUser(String nick) {
-		// TODO Auto-generated method stub
-		
-	}
-	public void addUser(String nickname, String password, String email) {
-		// TODO Auto-generated method stub
-		
-	}
-	public void modifyUser(String nick, String pass, String email, String firstname, String lastname, String city,
-			String street, String postalcode, String streetnumber) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 	public Product getProduct(String pdtName, String nickname) throws ObjectNotInTheDatabaseException
 	{
 		return ProductDB.getProduct(nickname, pdtName);

@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -58,7 +57,6 @@ public class AddUserView  extends JFrame implements ActionListener{
 		panel.removeAll();
 		panel.setLayout(null);
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
-		Font font = new Font("Courier", Font.BOLD, 15);
 
 		//Ajout de l'étiquette "Ajout d'utilisateur"
 		JLabel addUserTitle = new JLabel();

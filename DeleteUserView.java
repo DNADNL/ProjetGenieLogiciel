@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,7 +53,7 @@ public class DeleteUserView  extends JFrame implements ActionListener{
 
 		// Font
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
-		Font font = new Font("Courier", Font.BOLD, 15);
+		//Font font = new Font("Courier", Font.BOLD, 15);
 		//Font fontAdvice = new Font("Courier", Font.ITALIC, 14);
 
 		//Ajout de l'étiquette "Suppression d'utilisateur"

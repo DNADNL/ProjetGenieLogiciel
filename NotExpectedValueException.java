@@ -1,4 +1,5 @@
 
+@SuppressWarnings("serial")
 public class NotExpectedValueException extends Exception{
 
 private String name;
