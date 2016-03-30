@@ -1,6 +1,5 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+//import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -51,7 +50,7 @@ public class SellerView extends JFrame implements ActionListener
 
 		// Font
 		// Font fontTitre = new Font("Courier", Font.BOLD, 20);
-		Font font = new Font("Courier", Font.BOLD, 15);
+		// Font font = new Font("Courier", Font.BOLD, 15);
 
 		// Buttons
 		logoutButton.addActionListener(this);

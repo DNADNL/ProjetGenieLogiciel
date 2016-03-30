@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,7 +48,6 @@ public class SuggestionCategoryActivityView extends JFrame implements ActionList
 		JPanel panTab = new JPanel();
 		panel.setLayout(null);
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
-		Font font = new Font("Courier", Font.BOLD, 15);
 
 		//Ajout de l'étiquette ">Suggestion de Catégorie d'Activité"
 		JLabel addSuggestionActivityCategoryPanelTitle = new JLabel();
