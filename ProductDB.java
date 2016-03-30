@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class ProductDB extends Product{
 	
-	static JDBConnectionProduct jdbc = JDBConnectionProduct.getJDBCP();
+	static JDBQueriesProduct jdbc = JDBQueriesProduct.getJDBCP();
 	
 	ProductDB(String pdtName)
 	{
