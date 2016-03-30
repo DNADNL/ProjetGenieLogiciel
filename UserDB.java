@@ -1,7 +1,7 @@
 
 public class UserDB extends User
 {
-	static JDBConnection jdbc = JDBConnection.getJDBC();
+	static JDBConnectionGlobalUser jdbc = JDBConnectionGlobalUser.getJDBCGU();
 	
 	UserDB()
 	{
