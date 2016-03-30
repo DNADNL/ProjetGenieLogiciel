@@ -1,10 +1,9 @@
 public class FacadeUser {
 	
-	GestionnaireUser GU = GestionnaireUser.getGU();
-	ProductsHandler PH = ProductsHandler.getPH();
-	ActivityCategoryHandler CH = ActivityCategoryHandler.getCH();
-
-	GestionnaireGoal GG = GestionnaireGoal.getGG();
+	GestionnaireUser GU;
+	ProductsHandler PH;
+	ActivityCategoryHandler CH;
+	GestionnaireGoal GG;
 
 	
 	//Construct Singleton

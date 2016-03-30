@@ -90,7 +90,7 @@ public class ShowActivityCategoryView extends JFrame implements  ActionListener 
 		Object source = e.getSource();
 		if (source == returnPrincipalButton)
 		{
-			new SimpleUserView(FU.getCurrentUser());	
+			new SimpleUserView();	
 			dispose();
 			System.out.println("Panel Principal affiché");
 		}

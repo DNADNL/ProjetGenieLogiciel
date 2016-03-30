@@ -1,7 +1,9 @@
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -10,47 +12,45 @@ import javax.swing.JPanel;
 public class ShopView extends JFrame implements ActionListener
 {	
 	FacadeUser FU = FacadeUser.getFU();
-	static User user;
-	
+
 	//Création du panel de navigation
 	JPanel panel = new JPanel();
-	
+
 	//Création des boutons de "Principal"
-	Button returnButton = new Button("Retour",540, 10, 150, 30);
-	
+	Button returnSUViewButton = new Button("Retour",540, 10, 150, 30);
+
 	//Constructeur
-	public ShopView(User loggedUser)
+	public ShopView()
 	{
 		super("Lazy'N Yourself");
-		user = loggedUser;
-		
+
 		// Options de la fenetre
 		this.setSize(700,700);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);	
-		
+
 		// Construction du panel principal
 		placeComponentsPrincipal(panel);
-		
+
 		// Choix du panel
 		setContentPane(panel);
-		
+
 		setVisible(true);
 	}
-	
+
 	private void placeComponentsPrincipal(JPanel panel)
 	{
 		panel.removeAll();
 		panel.setLayout(null);
-		
+
 		// Font
 		Font fontTitle = new Font("Courier", Font.BOLD, 20);
-		
+
 		// Buttons
-		returnButton.addActionListener(this);
-		panel.add(returnButton);
-		
+		returnSUViewButton.addActionListener(this);
+		panel.add(returnSUViewButton);
+
 		// Title
 		JLabel underConstructionTitle = new JLabel();
 		underConstructionTitle.setBounds(250, 30, 300, 100);
@@ -58,7 +58,13 @@ public class ShopView extends JFrame implements ActionListener
 		underConstructionTitle.setText("<html>This window is under construction...</html>");
 		panel.add(underConstructionTitle);	
 
-		// Background
+		// Logo
+		JLabel image = new JLabel(new ImageIcon("logo.png"));
+		JPanel panelLogo = new JPanel();
+		panelLogo.setBounds(5, 5, 150, 150);
+		panelLogo.setLayout(new BorderLayout());
+		panelLogo.add(image, BorderLayout.CENTER);
+		panel.add(panelLogo);
 
 	}
 
@@ -68,13 +74,13 @@ public class ShopView extends JFrame implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		Object source = e.getSource();
-		if (source == returnButton)
+		if (source == returnSUViewButton)
 		{
-			FU.disconnectUser();
+			new SimpleUserView();	
 			dispose();
-			new LoginView();
+			System.out.println("Panel Admin affiché");
 		}
-	
-		
+
+
 	}
 }

@@ -3,6 +3,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,7 +15,6 @@ import javax.swing.JTable;
 public class SimpleUserView extends JFrame implements ActionListener
 {	
 	FacadeUser FU = FacadeUser.getFU();
-	static User user;
 
 	//Création du panel de navigation
 	JPanel panel = new JPanel();
@@ -22,22 +23,21 @@ public class SimpleUserView extends JFrame implements ActionListener
 	//Création des boutons principaux
 	Button logoutButton = new Button("Déconnexion", 540, 10, 150, 30);
 	Button profileButton = new Button("Mon Profil", 380, 10, 150, 30);
-	Button cartButton = new Button("Mon Panier", 380, 630, 150, 30);
-	Button shopButton = new Button("Boutique", 540, 630, 150, 30);
-	Button addGoalButton = new Button("Ajouter", 10, 540, 150, 30);
-	Button seeGoalButton = new Button("Voir", 170, 540, 150, 30);
-	Button deleteGoalButton = new Button("Supprimer", 330, 540, 150, 30);
-	Button showCategoryActivityButton = new Button("<html>voir <br>les catégories</html>",450,200,200,60);
+	Button cartButton = new Button("Mon Panier", 380, 620, 150, 30);
+	Button shopButton = new Button("Boutique", 540, 620, 150, 30);
+	Button addGoalButton = new Button("Ajouter", 10, 620, 150, 30);
+	Button seeGoalButton = new Button("Voir", 540,540, 150, 30);
+	Button deleteGoalButton = new Button("Supprimer", 170, 620, 150, 30);
+	Button showCategoryActivityButton = new Button("<html>Show <br>Activity Categories</html>",540,170,150,45);
 
 	//Creation de la JTable
 	JTable listeObjectifs;
 
 
 	//Constructeur
-	public SimpleUserView(User loggedUser)
+	public SimpleUserView()
 	{
 		super("Lazy'N Yourself");
-		user = loggedUser;
 
 		// Options de la fenetre
 		this.setSize(700,700);
@@ -95,15 +95,7 @@ public class SimpleUserView extends JFrame implements ActionListener
 		deleteGoalButton.addActionListener(this);
 		panel.add(deleteGoalButton);
 
-		// Création de l'étiquette "Bonjour xxx !"
-		JLabel userLabel = new JLabel("<html>Bonjour, " + user.nicknameUser + " !</html>");
-		userLabel.setBounds(10, 10, 150, 50);
-		userLabel.setFont(font);
-		userLabel.setForeground(Color.BLACK);
-		panel.add(userLabel);
-
-		// Création de la liste des objectifs
-
+		//List of Goals
 		Object[][] donneesListeObjectifs =  {{"",""}};
 
 		donneesListeObjectifs = FU.getStringGoalList();
@@ -114,8 +106,16 @@ public class SimpleUserView extends JFrame implements ActionListener
 		JScrollPane defilementListeObjectifs = new JScrollPane(listeObjectifs);
 		panelListeObjectifs.setLayout(new BorderLayout());
 		panelListeObjectifs.add(defilementListeObjectifs, BorderLayout.CENTER);
-		panelListeObjectifs.setBounds(10, 90, 400, 410);
+		panelListeObjectifs.setBounds(10, 170, 400, 410);
 		panel.add(panelListeObjectifs);
+
+		// Logo
+		JLabel image = new JLabel(new ImageIcon("logo.png"));
+		JPanel panelLogo = new JPanel();
+		panelLogo.setBounds(5, 5, 150, 150);
+		panelLogo.setLayout(new BorderLayout());
+		panelLogo.add(image, BorderLayout.CENTER);
+		panel.add(panelLogo);
 	}
 
 
@@ -132,25 +132,25 @@ public class SimpleUserView extends JFrame implements ActionListener
 		}
 		else if (source == profileButton)
 		{
-			new SimpleUserProfileView(FU.getCurrentUser());
+			new SimpleUserProfileView();
 			dispose();
 			System.out.println("Panel SimpleUserProfile affiché");
 		}
 		else if (source == cartButton)
 		{
-			new CartView(FU.getCurrentUser());
+			new CartView();
 			dispose();
 			System.out.println("Panel CartView affiché");			
 		}
 		else if (source == shopButton)
 		{
-			new ShopView(FU.getCurrentUser());
+			new ShopView();
 			dispose();
 			System.out.println("Panel ShopView affiché");
 		}
 		else if (source == addGoalButton)
 		{
-			new AddGoalView(FU.getCurrentUser());
+			new AddGoalView();
 			dispose();
 			System.out.println("Panel addGoal affiché");
 
@@ -160,7 +160,7 @@ public class SimpleUserView extends JFrame implements ActionListener
 			if (listeObjectifs.getSelectedRow() != -1)
 			{
 				String goal_selected = (listeObjectifs.getValueAt(listeObjectifs.getSelectedRow(), 0).toString());
-				new SeeGoalView(FU.getCurrentUser(), goal_selected);
+				new SeeGoalView();
 				dispose();
 				System.out.println("Panel seeGoal affiché");
 			}

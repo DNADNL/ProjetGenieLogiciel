@@ -75,7 +75,7 @@ public class ActivityDetailsView extends JFrame implements ActionListener{
 		Object source = e.getSource();
 		if (source == returnSeeGoalButton)
 		{
-			new SeeGoalView(FU.getCurrentUser(), "FU.getCurrentGoal().goal_name");	
+			new SeeGoalView();	
 			dispose();
 			System.out.println("Panel SeeGoal affiché");
 		}

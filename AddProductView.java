@@ -118,7 +118,6 @@ public class AddProductView extends JFrame implements ActionListener{
 
 
 		// Titre
-
 		JLabel addProductTitle = new JLabel();
 		addProductTitle.setBounds(250, 30, 300, 100);
 		addProductTitle.setFont(fontTitre);					
@@ -126,7 +125,6 @@ public class AddProductView extends JFrame implements ActionListener{
 		panel.add(addProductTitle);
 
 		// Logo
-
 		JLabel image = new JLabel(new ImageIcon("logo.png"));
 		JPanel panelLogo = new JPanel();
 		panelLogo.setBounds(5, 5, 150, 150);
