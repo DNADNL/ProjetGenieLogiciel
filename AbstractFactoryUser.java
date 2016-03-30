@@ -1,4 +1,4 @@
-//Abstract Factory Class
+//Abstract Class of User Factory
 
 public abstract class AbstractFactoryUser 
 {

@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
-
-//Abstract Factory Class
+//Abstract Class of Product Factory
 
 public abstract class AbstractFactoryProduct 
 {

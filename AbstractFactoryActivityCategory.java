@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-// Abstract Class of Activity Category
+// Abstract Class of Activity Category Factory
 
 public abstract class AbstractFactoryActivityCategory {
 
