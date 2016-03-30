@@ -1,25 +1,25 @@
 import java.util.ArrayList;
 
 /* handler for category activity*/
-public class CategoryHandler {
+public class ActivityCategoryHandler {
 	
 	ArrayList<ActivityCategory> categoryList;
 	String [][] stringCategoryList;
-	AbstractFactory Fact = new FactoryActivityCategory();
+	AbstractFactoryActivityCategory Fact = new FactoryActivityCategory();
 	ArrayList<ActivityCategory> categorySuggestionList;
 	//Constructeur Singleton
-		private CategoryHandler()
+		private ActivityCategoryHandler()
 			{}
 			
 	//Initialisation Singleton
-		private static CategoryHandler singleton;
+		private static ActivityCategoryHandler singleton;
 			
 	//Accesseur Singleton
-		public static CategoryHandler getCH()
+		public static ActivityCategoryHandler getCH()
 		{
 			if (singleton==null)
 			{
-				singleton = new CategoryHandler();
+				singleton = new ActivityCategoryHandler();
 			}
 			return singleton;
 		}

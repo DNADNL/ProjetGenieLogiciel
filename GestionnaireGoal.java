@@ -6,7 +6,7 @@ public class GestionnaireGoal {
 	ArrayList<Goal> goalList;
 	String [][] stringGoalList;
 
-	AbstractFactory Fact = new FactoryGoal();
+	AbstractFactoryGoal Fact = new FactoryGoal();
 
 	//Constructeur Singleton
 	private GestionnaireGoal()

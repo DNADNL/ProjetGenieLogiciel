@@ -2,7 +2,7 @@ public class FacadeUser {
 	
 	GestionnaireUser GU = GestionnaireUser.getGU();
 	ProductsHandler PH = ProductsHandler.getPH();
-	CategoryHandler CH = CategoryHandler.getCH();
+	ActivityCategoryHandler CH = ActivityCategoryHandler.getCH();
 
 	GestionnaireGoal GG = GestionnaireGoal.getGG();
 

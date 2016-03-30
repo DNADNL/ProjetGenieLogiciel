@@ -1,6 +1,5 @@
-import java.util.ArrayList;
 
-public class FactoryUser extends AbstractFactory {
+public class FactoryUser extends AbstractFactoryUser {
 	
 	User user;
 	
@@ -43,48 +42,6 @@ public class FactoryUser extends AbstractFactory {
 	{
 		UserDB.deleteUser(nick);
 	}
-
-	@Override
-	public ArrayList<Product> createProductList(String nickname) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Product getProduct(String pdt_product, String nickname) {
-		return null;
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteProduct(String pdt_product, String nickname) {
-	
-	}
-
-	@Override
-
-	public ArrayList<ActivityCategory> createCategoryActivityList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void addGoal(String goal_title, String goal_description, String nick) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void suggestActivityCategory(String title, String description) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void getCategoryActivity(String title) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	public boolean isAdmin(String nick) {
 		return UserDB.isAdmin(nick);
@@ -116,35 +73,5 @@ public class FactoryUser extends AbstractFactory {
 	public void deleteUserRoleAdmin(String nickname) {
 		UserDB.deleteUserRoleAdmin(nickname);
 	}
-
-	@Override
-	public void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Integer pdt_price,
-			String pdt_briefDesc, String pdt_longDesc) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public ArrayList<Goal> createGoalList(String nickname) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<ActivityCategory> createCategoryActivitySuggestionList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<ActivityCategory> createActivityCategoryList(String title) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteGoal(String goal_name, String nicknameUser) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

@@ -1,6 +1,6 @@
 
 public class GestionnaireUser {
-		AbstractFactory Fact = new FactoryUser();
+		AbstractFactoryUser Fact = new FactoryUser();
 		String logNick;
 		String logMdp;
 		User currentUser;

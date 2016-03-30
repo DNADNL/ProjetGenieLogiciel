@@ -7,7 +7,7 @@ public class ProductsHandler {
 	String [][] stringProductList;
 
 	//Get the Factory
-	AbstractFactory Fact = new FactoryProductDB();
+	AbstractFactoryProduct Fact = new FactoryProduct();
 
 	//Constructeur Singleton
 	private ProductsHandler()
