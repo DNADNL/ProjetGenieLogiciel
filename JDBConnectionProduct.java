@@ -6,25 +6,25 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 
-public class JDBQueriesProduct {
+public class JDBConnectionProduct {
 
 	static Connection conn;
 
 	// Singleton Constructor
-	private JDBQueriesProduct()
+	private JDBConnectionProduct()
 	{
 		createConnection();
 	}
 
 	// Singleton Initialisator
-	private static JDBQueriesProduct singleton;
+	private static JDBConnectionProduct singleton;
 
 	// Singleton Accessor
-	public static JDBQueriesProduct getJDBCP()
+	public static JDBConnectionProduct getJDBCP()
 	{
 		if (singleton == null)
 		{ 	
-			singleton = new JDBQueriesProduct();	
+			singleton = new JDBConnectionProduct();	
 		}
 		return singleton;
 	}
@@ -50,7 +50,7 @@ public class JDBQueriesProduct {
 			String passwd = "k_s5Zb_Br9lFxGz4SmfrlPKEmJbTOvY-";
 
 			// Creation of the link between the program and the database 
-			JDBQueriesProduct.conn = DriverManager.getConnection(url, user, passwd);
+			JDBConnectionProduct.conn = DriverManager.getConnection(url, user, passwd);
 			System.out.println("Connected Successfully !");
 		} 
 		catch (ClassNotFoundException e)

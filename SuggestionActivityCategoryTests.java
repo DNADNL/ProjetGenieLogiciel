@@ -2,7 +2,7 @@ import org.junit.*;
 
 public class SuggestionActivityCategoryTests {
 
-	static JDBQueriesActivityCategory jdbq;
+	static JDBConnectionActivityCategory jdbq;
 	 
 	@Test 
 	public void testSuggestionActivityCategory(){

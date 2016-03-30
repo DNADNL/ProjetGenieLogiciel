@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class ActivityCategoryDB extends ActivityCategory {
-	static JDBQueriesActivityCategory jdbc = JDBQueriesActivityCategory.getJDBCAC();
+	static JDBConnectionActivityCategory jdbc = JDBConnectionActivityCategory.getJDBCAC();
 	
 	public ActivityCategoryDB(){
 		this.title = null;

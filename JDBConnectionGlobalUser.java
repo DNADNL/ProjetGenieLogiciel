@@ -5,25 +5,25 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-public class JDBQueriesGlobalUser {
+public class JDBConnectionGlobalUser {
 
 	static Connection conn;
 
 	// Singleton Constructor
-	private JDBQueriesGlobalUser()
+	private JDBConnectionGlobalUser()
 	{
 		createConnection();
 	}
 
 	// Singleton Initialisator
-	private static JDBQueriesGlobalUser singleton;
+	private static JDBConnectionGlobalUser singleton;
 
 	// Singleton Accessor
-	public static JDBQueriesGlobalUser getJDBCGU()
+	public static JDBConnectionGlobalUser getJDBCGU()
 	{
 		if (singleton == null)
 		{ 	
-			singleton = new JDBQueriesGlobalUser();	
+			singleton = new JDBConnectionGlobalUser();	
 		}
 		return singleton;
 	}
@@ -49,7 +49,7 @@ public class JDBQueriesGlobalUser {
 			String passwd = "k_s5Zb_Br9lFxGz4SmfrlPKEmJbTOvY-";
 
 			// Creation of the link between the program and the database 
-			JDBQueriesGlobalUser.conn = DriverManager.getConnection(url, user, passwd);
+			JDBConnectionGlobalUser.conn = DriverManager.getConnection(url, user, passwd);
 			System.out.println("Connected Successfully !");
 		} 
 		catch (ClassNotFoundException e)

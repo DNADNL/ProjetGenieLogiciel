@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class GoalDB extends Goal {
 
-	static JDBQueriesGoal jdbc = JDBQueriesGoal.getJDBCG();
+	static JDBConnectionGoal jdbc = JDBConnectionGoal.getJDBCG();
 	
 	
 	GoalDB(String goal_title)

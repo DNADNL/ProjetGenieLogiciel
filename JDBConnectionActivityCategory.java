@@ -6,25 +6,25 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 
-public class JDBQueriesActivityCategory {
+public class JDBConnectionActivityCategory {
 
 	static Connection conn;
 
 	// Singleton Constructor
-	private JDBQueriesActivityCategory()
+	private JDBConnectionActivityCategory()
 	{
 		createConnection();
 	}
 
 	// Singleton Initialisator
-	private static JDBQueriesActivityCategory singleton;
+	private static JDBConnectionActivityCategory singleton;
 
 	// Singleton Accessor
-	public static JDBQueriesActivityCategory getJDBCAC()
+	public static JDBConnectionActivityCategory getJDBCAC()
 	{
 		if (singleton == null)
 		{ 	
-			singleton = new JDBQueriesActivityCategory();	
+			singleton = new JDBConnectionActivityCategory();	
 		}
 		return singleton;
 	}
@@ -50,7 +50,7 @@ public class JDBQueriesActivityCategory {
 			String passwd = "k_s5Zb_Br9lFxGz4SmfrlPKEmJbTOvY-";
 
 			// Creation of the link between the program and the database 
-			JDBQueriesActivityCategory.conn = DriverManager.getConnection(url, user, passwd);
+			JDBConnectionActivityCategory.conn = DriverManager.getConnection(url, user, passwd);
 			System.out.println("Connected Successfully !");
 		} 
 		catch (ClassNotFoundException e)
