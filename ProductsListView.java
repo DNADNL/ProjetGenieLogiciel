@@ -3,6 +3,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,8 +22,8 @@ public class ProductsListView extends JFrame implements ActionListener{
 	//Create the Buttons for "ProductsList"
 	Button returnButton = new Button("Retour",540, 10, 150, 30);
 	Button productDetailsButton = new Button("Détails", 540, 335, 150,30);
-	Button deleteProductButton = new Button("Supprimer",170,140,150,30);
-	Button addProductButton = new Button("Ajouter",10,140,150,30);
+	Button deleteProductButton = new Button("Supprimer",170,170,150,30);
+	Button addProductButton = new Button("Ajouter",10,170,150,30);
 
 	JTable tableau;
 
@@ -86,7 +87,7 @@ public class ProductsListView extends JFrame implements ActionListener{
 		panTab.setLayout(new BorderLayout());
 
 		panTab.add(test, BorderLayout.CENTER);
-		panTab.setBounds(10, 190, 400, 410);
+		panTab.setBounds(10, 220, 400, 410);
 		panel.add(panTab);
 
 		// Titre
@@ -97,7 +98,14 @@ public class ProductsListView extends JFrame implements ActionListener{
 		productsListTitle.setText("Liste des produits");
 		panel.add(productsListTitle);
 
-		// Background
+	// Logo
+		
+		JLabel image = new JLabel(new ImageIcon("logo.png"));
+		JPanel panelLogo = new JPanel();
+		panelLogo.setBounds(5, 5, 150, 150);
+		panelLogo.setLayout(new BorderLayout());
+		panelLogo.add(image, BorderLayout.CENTER);
+		panel.add(panelLogo);
 
 
 	}

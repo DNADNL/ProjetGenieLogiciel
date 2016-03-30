@@ -1,8 +1,10 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -90,8 +92,14 @@ public class DeleteProductView extends JFrame implements ActionListener{
 		deleteProductTitle.setText("Suppression Produit");
 		panel.add(deleteProductTitle);
 
-		// Background
+		// Logo
 
+		JLabel image = new JLabel(new ImageIcon("logo.png"));
+		JPanel panelLogo = new JPanel();
+		panelLogo.setBounds(5, 5, 150, 150);
+		panelLogo.setLayout(new BorderLayout());
+		panelLogo.add(image, BorderLayout.CENTER);
+		panel.add(panelLogo);
 	}
 
 

@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -68,43 +69,35 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 			Font fontTitre = new Font("Courier", Font.BOLD, 20);
 			Font font = new Font("Courier", Font.BOLD, 15);
 			
-			//Ajout de l'étiquette "Page de xxx"
-			JLabel idLabel = new JLabel("<html>Page de <br>" + user.nicknameUser + "</html>");
-			idLabel.setBounds(10, 10, 150, 50);
-			idLabel.setFont(font);
-			idLabel.setForeground(Color.BLACK);
-			panel.add(idLabel);
-			
-			//Ajout de l'étiquette "Modification d'utilisateur"
+			// Labels
 			JLabel modifyUserTitle = new JLabel();
 			modifyUserTitle.setBounds(250, 20, 300, 100);
 			modifyUserTitle.setFont(fontTitre);					
 			modifyUserTitle.setText("<html>Modification d'utilisateur</html>");
 			panel.add(modifyUserTitle);		
 			
-			//Ajout de l'étiquette "Choisissez un pseudo à modifier"
+
 			JLabel modifiyPseudoTitle = new JLabel();
 			modifiyPseudoTitle.setBounds(250, 70, 300, 100);
 			modifiyPseudoTitle.setFont(font);					
 			modifiyPseudoTitle.setText("Choisissez un pseudo à modifier");
 			panel.add(modifiyPseudoTitle);
 			
-			//Ajout de l'étiquette "Choisissez un pseudo à modifier"
+
 			JLabel modifiyDetailProfil = new JLabel();
 			modifiyDetailProfil.setBounds(250, 170, 360, 100);
 			modifiyDetailProfil.setFont(font);					
 			modifiyDetailProfil.setText("Indiquez les informations à modifier");
 			panel.add(modifiyDetailProfil);	
 			
-			// Ajout du Bouton Retour
+			// Buttons
 			returnUsersButton.addActionListener(this);
 			panel.add(returnUsersButton);
 
-			// Ajout du Bouton Modifier
 			validateModifyUserButton.addActionListener(this);
 			panel.add(validateModifyUserButton);	
 			
-			// Ajout des champs à rentrer
+			// Textfields
 			modifyUserNickname.addActionListener(this);
 			modifyUserNickname.setBounds(250, 140, 200, 25);
 			panel.add(modifyUserNickname);
@@ -141,7 +134,7 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 			modifyStreetNumber.setBounds(250, 520, 200, 25);
 			panel.add(modifyStreetNumber);
 			
-			// Ajout de la liste de rôles
+			// ComboBox
 			modifyUserRole.addItem("Simple Utilisateur");
 			modifyUserRole.addItem("Vendeur");
 			modifyUserRole.addItem("Administrateur");
@@ -151,7 +144,13 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 			panel.add(modifyUserRole);	
 			
 			
-			panel.setLayout(new BorderLayout());
+			// Logo
+			JLabel image = new JLabel(new ImageIcon("logo.png"));
+			JPanel panelLogo = new JPanel();
+			panelLogo.setBounds(5, 5, 150, 150);
+			panelLogo.setLayout(new BorderLayout());
+			panelLogo.add(image, BorderLayout.CENTER);
+			panel.add(panelLogo);
 		}
 
 		@Override

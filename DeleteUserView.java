@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -56,13 +57,6 @@ public class DeleteUserView  extends JFrame implements ActionListener{
 		Font font = new Font("Courier", Font.BOLD, 15);
 		//Font fontAdvice = new Font("Courier", Font.ITALIC, 14);
 
-		//Ajout de l'étiquette "Page de xxx"
-		JLabel idLabel = new JLabel("<html>Page de <br>" + FU.getCurrentUser().nicknameUser + "</html>");
-		idLabel.setBounds(10, 10, 150, 50);
-		idLabel.setFont(font);
-		idLabel.setForeground(Color.BLACK);
-		panel.add(idLabel);
-
 		//Ajout de l'étiquette "Suppression d'utilisateur"
 		JLabel deleteUserTitle = new JLabel();
 		deleteUserTitle.setBounds(250, 30, 300, 100);
@@ -88,7 +82,13 @@ public class DeleteUserView  extends JFrame implements ActionListener{
 		panel.add(deleteUserEMail);			
 
 
-		panel.setLayout(new BorderLayout());
+		// Logo
+				JLabel image = new JLabel(new ImageIcon("logo.png"));
+				JPanel panelLogo = new JPanel();
+				panelLogo.setBounds(5, 5, 150, 150);
+				panelLogo.setLayout(new BorderLayout());
+				panelLogo.add(image, BorderLayout.CENTER);
+				panel.add(panelLogo);
 	}
 
 	@Override

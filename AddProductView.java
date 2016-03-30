@@ -1,8 +1,10 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -123,7 +125,14 @@ public class AddProductView extends JFrame implements ActionListener{
 		addProductTitle.setText("Ajout Produit");
 		panel.add(addProductTitle);
 
-		// Background
+		// Logo
+
+		JLabel image = new JLabel(new ImageIcon("logo.png"));
+		JPanel panelLogo = new JPanel();
+		panelLogo.setBounds(5, 5, 150, 150);
+		panelLogo.setLayout(new BorderLayout());
+		panelLogo.add(image, BorderLayout.CENTER);
+		panel.add(panelLogo);
 
 	}
 
@@ -170,11 +179,11 @@ public class AddProductView extends JFrame implements ActionListener{
 		{
 			FU.verifyAddProductFields(pdt_name, pdt_briefDesc, pdt_longDesc, stringPdt_quantity, stringPdt_price);
 
-			
+
 
 			FU.verifyAlreadyExists(nickname,pdt_name);
-			
-			
+
+
 		} 
 		catch (EmptyFieldsException e) 
 		{
@@ -192,14 +201,14 @@ public class AddProductView extends JFrame implements ActionListener{
 		}
 		catch (ObjectNotInTheDatabaseException e1) {
 			// TODO Auto-generated catch block
-			
+
 			int pdt_quantity = Integer.parseInt(stringPdt_quantity);
 			int pdt_price = Integer.parseInt(stringPdt_price);
 			FU.addProduct(nickname, pdt_name, pdt_quantity, pdt_price, pdt_briefDesc, pdt_longDesc);
 			JOptionPane.showMessageDialog(null, "Your product " + e1.getName() + " has been added", "Product added", JOptionPane.INFORMATION_MESSAGE);
 			new ProductsListView();	
 			dispose();
-			
+
 		}
 	}
 }

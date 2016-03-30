@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -49,12 +50,12 @@ public class UsersHandlerView extends JFrame implements ActionListener{
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
 		Font font = new Font("Courier", Font.BOLD, 15);
 
-		//Ajout de l'étiquette "Page de xxx"
-		JLabel idLabel = new JLabel("<html>Page de <br>" + FU.getCurrentUser().nicknameUser + "</html>");
-		idLabel.setBounds(10, 10, 150, 50);
-		idLabel.setFont(font);
-		idLabel.setForeground(Color.BLACK);
-		panel.add(idLabel);
+//		//Ajout de l'étiquette "Page de xxx"
+//		JLabel idLabel = new JLabel("<html>Page de <br>" + FU.getCurrentUser().nicknameUser + "</html>");
+//		idLabel.setBounds(10, 10, 150, 50);
+//		idLabel.setFont(font);
+//		idLabel.setForeground(Color.BLACK);
+//		panel.add(idLabel);
 
 		//Ajout de l'étiquette "Outils Action Utilisateur"
 		JLabel UsersHandlerTitle = new JLabel();
@@ -63,23 +64,27 @@ public class UsersHandlerView extends JFrame implements ActionListener{
 		UsersHandlerTitle.setText("<html>Gestion Utilisateurs</html>");
 		panel.add(UsersHandlerTitle);		
 
-
-		// Ajout du Bouton Ajouter
+		// Buttons
 		addUserButton.addActionListener(this);
 		panel.add(addUserButton);	
 
-		// Ajout du Bouton Supprimer
 		deleteUserButton.addActionListener(this);
 		panel.add(deleteUserButton);
 
-		// Ajout du Bouton Modifier
 		modifyUserButton.addActionListener(this);
 		panel.add(modifyUserButton);
 
 		returnAdminButton.addActionListener(this);
 		panel.add(returnAdminButton);
 
-		panel.setLayout(new BorderLayout());
+		// Logo
+		JLabel image = new JLabel(new ImageIcon("logo.png"));
+		JPanel panelLogo = new JPanel();
+		panelLogo.setBounds(5, 5, 150, 150);
+		panelLogo.setLayout(new BorderLayout());
+		panelLogo.add(image, BorderLayout.CENTER);
+		panel.add(panelLogo);
+		
 	}
 
 

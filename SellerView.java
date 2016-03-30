@@ -1,8 +1,10 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -61,15 +63,17 @@ public class SellerView extends JFrame implements ActionListener
 		// Textfields
 
 		// Labels
-		JLabel userLabel = new JLabel("<html>Page de <br>" + FU.getCurrentUser().nicknameUser + "</html>");
-		userLabel.setBounds(10, 10, 150, 50);
-		userLabel.setFont(font);
-		userLabel.setForeground(Color.BLACK);
-		panel.add(userLabel);
 
 		// Titre
 
-		// Background
+		// Logo
+		
+		JLabel image = new JLabel(new ImageIcon("logo.png"));
+		JPanel panelLogo = new JPanel();
+		panelLogo.setBounds(10, 10, 150, 150);
+		panelLogo.setLayout(new BorderLayout());
+		panelLogo.add(image, BorderLayout.CENTER);
+		panel.add(panelLogo);
 
 	}
 
