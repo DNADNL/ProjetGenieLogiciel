@@ -154,36 +154,34 @@ public class AddProductView extends JFrame implements ActionListener{
 		//The seller has chosen to add a product
 		else if (source == validateAddProductButton)
 		{
+			//We get all the needed informations from the TextFields
+			String nickname = FU.getCurrentUser().nicknameUser;
 
-			addProductButtonClicked();
+			String pdt_name = nameAddProduct.getText();
+			String pdt_briefDesc = briefDescAddProduct.getText();
+			String pdt_longDesc = longDescAddProduct.getText();
+			String stringPdt_quantity = quantityAddProduct.getText();
+			String stringPdt_price = priceAddProduct.getText();
+			
+			//This method handles the tests and the adding of the product
+			addProductButtonClicked(nickname, pdt_name, pdt_briefDesc, pdt_longDesc, stringPdt_quantity, stringPdt_price);
 
-			//Return to the ProductListView
-
+			
 		}
 
 
 	}
 
-	private void addProductButtonClicked()
+	private void addProductButtonClicked(String nickname, String pdt_name, String pdt_briefDesc, String pdt_longDesc, String stringPdt_quantity, String stringPdt_price)
 	{
-		//We get all the needed informations from the TextFields
-		String nickname = FU.getCurrentUser().nicknameUser;
-
-		String pdt_name = nameAddProduct.getText();
-		String pdt_briefDesc = briefDescAddProduct.getText();
-		String pdt_longDesc = longDescAddProduct.getText();
-		String stringPdt_quantity = quantityAddProduct.getText();
-		String stringPdt_price = priceAddProduct.getText();
+		
 
 		try 
 		{
+			//Test if all the fields are correctly filled
 			FU.verifyAddProductFields(pdt_name, pdt_briefDesc, pdt_longDesc, stringPdt_quantity, stringPdt_price);
-
-
-
+			//Test if the product already exists
 			FU.verifyAlreadyExists(nickname,pdt_name);
-
-
 		} 
 		catch (EmptyFieldsException e) 
 		{
@@ -202,10 +200,16 @@ public class AddProductView extends JFrame implements ActionListener{
 		catch (ObjectNotInTheDatabaseException e1) {
 			// TODO Auto-generated catch block
 
+			//Set the right type
 			int pdt_quantity = Integer.parseInt(stringPdt_quantity);
 			int pdt_price = Integer.parseInt(stringPdt_price);
+			
+			//Add the product to the database
 			FU.addProduct(nickname, pdt_name, pdt_quantity, pdt_price, pdt_briefDesc, pdt_longDesc);
+			
 			JOptionPane.showMessageDialog(null, "Your product " + e1.getName() + " has been added", "Product added", JOptionPane.INFORMATION_MESSAGE);
+			
+			//Return to the ProductListView
 			new ProductsListView();	
 			dispose();
 
