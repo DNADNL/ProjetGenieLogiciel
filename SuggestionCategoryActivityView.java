@@ -15,18 +15,15 @@ public class SuggestionCategoryActivityView extends JFrame implements ActionList
 	//création de la façade
 	FacadeUser FU = FacadeUser.getFU();
 
-	static User user;
-
 	//Création du panel de navigation
 	JPanel panel = new JPanel();
 
 	//création du boutton retour
 	Button returnAdminButton = new Button("Retour",540, 10, 150, 30);
 
-	public SuggestionCategoryActivityView(User loggedUser){
+	public SuggestionCategoryActivityView(){
 
 		super("Lazy'N Yourself");
-		user = loggedUser;
 
 		// Options de la fenetre
 		this.setSize(700,700);
@@ -69,10 +66,10 @@ public class SuggestionCategoryActivityView extends JFrame implements ActionList
 
 		JScrollPane test = new JScrollPane(tableau);
 		panTab.setLayout(new BorderLayout());
-
 		panTab.add(test, BorderLayout.CENTER);
 		panTab.setBounds(10, 190, 400, 410);
 		panel.add(panTab);
+
 
 		// Logo
 		JLabel image = new JLabel(new ImageIcon("logo.png"));

@@ -105,7 +105,7 @@ public class AdminView extends JFrame implements ActionListener{
 		else if ( source == showSuggestionButton)
 		{
 			//Go to SuggestionCategoryActivityView
-			new SuggestionCategoryActivityView(FU.getCurrentUser());
+			new SuggestionCategoryActivityView();
 			dispose();
 			System.out.println("Panel Suggestion Catégories Activité affiché");
 		}

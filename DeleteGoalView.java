@@ -127,6 +127,9 @@ public class DeleteGoalView extends JFrame implements ActionListener{
 
 		} catch (ObjectDeletedException e) {
 			JOptionPane.showMessageDialog(null, goal_name+" a bien été supprimé de la BD !", "Suppression de goal", JOptionPane.INFORMATION_MESSAGE);
+			new SimpleUserView();
+			dispose();
+			System.out.println("Panel Simple User affiché");
 		}
 	}
 
