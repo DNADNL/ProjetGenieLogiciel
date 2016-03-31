@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import facade.*;
 import miscellaneous.*;
@@ -66,37 +67,75 @@ public class ProductDetailsView extends JFrame implements ActionListener{
 		// Textfields
 
 		// Labels
-
+		
+		JLabel nameTitleLabel = new JLabel("<html>Product Name : </html>");
+		nameTitleLabel.setBounds(140, 180, 150, 30);
+		nameTitleLabel.setFont(font);
+		nameTitleLabel.setForeground(Color.BLACK);
+		panel.add(nameTitleLabel);
+		
 		JLabel nameLabel = new JLabel(FU.getCurrentProduct().pdt_name);
-		nameLabel.setBounds(160, 100, 90, 30);
+		nameLabel.setBounds(280, 180, 90, 30);
 		nameLabel.setFont(font);
 		nameLabel.setForeground(Color.BLACK);
 		panel.add(nameLabel);
 
+		JLabel DescTitleLabel = new JLabel("Short desc : ");
+		DescTitleLabel.setBounds(140, 200, 150, 30);
+		DescTitleLabel.setFont(font);
+		DescTitleLabel.setForeground(Color.BLACK);
+		panel.add(DescTitleLabel);
+		
 		JLabel briefDescLabel = new JLabel(FU.getCurrentProduct().briefDesc);
-		briefDescLabel.setBounds(160, 140, 200, 200);
+		briefDescLabel.setBounds(280, 200, 150, 30);
 		briefDescLabel.setFont(font);
 		briefDescLabel.setForeground(Color.BLACK);
 		panel.add(briefDescLabel);
-
+		
+		JLabel priceTitleLabel = new JLabel("<html>Price : </html>");
+		priceTitleLabel.setBounds(140, 220, 150, 30);
+		priceTitleLabel.setFont(font);
+		priceTitleLabel.setForeground(Color.BLACK);
+		panel.add(priceTitleLabel);
+		
 		JLabel priceLabel = new JLabel(FU.getCurrentProduct().price.toString() + "€");
-		priceLabel.setBounds(160, 210, 90, 30);
+		priceLabel.setBounds(280, 220, 90, 30);
 		priceLabel.setFont(font);
 		priceLabel.setForeground(Color.BLACK);
 		panel.add(priceLabel);
 
-		JLabel quantityLabel = new JLabel("quantity : " + FU.getCurrentProduct().quantity.toString());
-		quantityLabel.setBounds(160, 250, 200, 30);
+		JLabel quantityTitleLabel = new JLabel("<html>Quantity : </html>");
+		quantityTitleLabel.setBounds(140, 240, 150, 30);
+		quantityTitleLabel.setFont(font);
+		quantityTitleLabel.setForeground(Color.BLACK);
+		panel.add(quantityTitleLabel);
+		
+		JLabel quantityLabel = new JLabel(FU.getCurrentProduct().quantity.toString());
+		quantityLabel.setBounds(280, 240, 200, 30);
 		quantityLabel.setFont(font);
 		quantityLabel.setForeground(Color.BLACK);
 		panel.add(quantityLabel);
 
-		JLabel longDescLabel = new JLabel(FU.getCurrentProduct().longDesc);
-		longDescLabel.setBounds(160, 290, 200, 300);
-		longDescLabel.setFont(font);
-		longDescLabel.setForeground(Color.BLACK);
-		panel.add(longDescLabel);
-
+		JLabel descTitleLabel = new JLabel("<html>Description : </html>");
+		descTitleLabel.setBounds(140, 280, 150, 30);
+		descTitleLabel.setFont(font);
+		descTitleLabel.setForeground(Color.BLACK);
+		panel.add(descTitleLabel);
+		
+		JTextArea LongDesc = new JTextArea(
+				FU.getCurrentProduct().longDesc, 
+                6, 
+                20);
+		LongDesc.setFont(new Font("Serif", Font.ITALIC, 16));
+		LongDesc.setLineWrap(true);
+		LongDesc.setWrapStyleWord(true);
+		LongDesc.setOpaque(false);
+		LongDesc.setEditable(false);
+		LongDesc.setBounds(280, 285, 300, 300);
+        
+        panel.add(LongDesc);
+        
+        
 		// Title
 		JLabel productDetailTitle = new JLabel();
 		productDetailTitle.setBounds(250, 30, 300, 100);
