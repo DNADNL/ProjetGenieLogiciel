@@ -2,7 +2,7 @@ import org.junit.*;
 
 public class SuggestionActivityCategoryTests {
 
-	static JDBConnectionActivityCategory jdbq;
+	static JDBConnectionActivityCategory jdbc;
 	 
 	@Test 
 	public void testSuggestionActivityCategory(){
@@ -10,8 +10,8 @@ public class SuggestionActivityCategoryTests {
 		actCat.title="test";
 		actCat.description="test2";
 		
-		jdbq.addSuggestionActivityCategory(actCat.title,actCat.description);
-		ActivityCategory ac = jdbq.getLastActivityCategorySuggestion();
+		jdbc.addSuggestionActivityCategory(actCat.title,actCat.description);
+		ActivityCategory ac = jdbc.getLastActivityCategorySuggestion();
 		boolean result = (ac.title.equals(actCat.title) && ac.description.equals(actCat.description));
 		Assert.assertTrue("ça devrait être vrai", result);
 	 }

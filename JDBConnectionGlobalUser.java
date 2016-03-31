@@ -31,7 +31,6 @@ public class JDBConnectionGlobalUser {
 	/**
 	 * This method is used when a user wants to log in the app (via the Login View).
 	 * It checks the user is registered in the database (thanks to its nickname).
-	 * The nickname argument specifies the user and must be a {@link String}.
 	 * <p>
 	 *
 	 * @param  		nickname (a {@link String} giving the nickname of the user), {@link User}

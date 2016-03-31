@@ -94,6 +94,9 @@ public class AddUserTests {
 		catch (ObjectCreatedException e) {
 			fail("Not Expected an UserCreatedException to be thrown");
 		}
+		catch (EmptyFieldsException e) {
+			fail("Not Expected an EmptyFieldsException to be thrown");
+		}
 	}
 	
 	@After
@@ -124,6 +127,10 @@ public class AddUserTests {
 		catch (ObjectCreatedException e) {
 			assert(e.getName().equals("NotInDBTest"));
 		}
+		catch (EmptyFieldsException e) {
+			fail("Not Expected an EmptyFieldsException to be thrown");
+		}
+		
 	}
 	
 	@After

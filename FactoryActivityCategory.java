@@ -12,7 +12,7 @@ public class FactoryActivityCategory extends AbstractFactoryActivityCategory {
 	}
 	
 	@Override
-	public ArrayList<ActivityCategory> createCategoryActivityList() {
+	public ArrayList<ActivityCategory> createActivityCategoryList() {
 		createdActivityCategoryList = ActivityCategoryDB.createActivityCategoriesList();
 		return createdActivityCategoryList;
 	}
@@ -39,7 +39,7 @@ public class FactoryActivityCategory extends AbstractFactoryActivityCategory {
 		return null;
 	}
 
-	public ArrayList<ActivityCategory> createCategoryActivitySuggestionList() {
+	public ArrayList<ActivityCategory> createActivityCategorySuggestionList() {
 		createdActivityCategoryList = ActivityCategoryDB.createCategoryActivitySuggestionList();
 		return createdActivityCategoryList;
 	}

@@ -1,22 +1,22 @@
 import java.util.ArrayList;
 
-/* handler for category activity*/
+// The Activity Category Handler
 public class ActivityCategoryHandler {
 	
 	AbstractFactoryActivityCategory Fact = new FactoryActivityCategory();
 	
-	ArrayList<ActivityCategory> categoryList;
-	String [][] stringCategoryList;
-	ArrayList<ActivityCategory> categorySuggestionList;
+	ArrayList<ActivityCategory> activityCategoryList;
+	String [][] stringActivityCategoryList;
+	ArrayList<ActivityCategory> activityCategorySuggestionList;
 	
-	//Constructeur Singleton
+	//Singleton Constructor
 		private ActivityCategoryHandler()
 			{}
 			
-	//Initialisation Singleton
+	//Singleton Initialisator
 		private static ActivityCategoryHandler singleton;
 			
-	//Accesseur Singleton
+	//Singleton Accessor
 		public static ActivityCategoryHandler getCH()
 		{
 			if (singleton==null)
@@ -27,16 +27,37 @@ public class ActivityCategoryHandler {
 		}
 
 		
-	//Méthodes
-		public void getCategoryList()
+	//Methods
+		
+		
+		
+		/**
+		 * This method gets an Activity Category List (or creates it if it doesn't exist).
+		 * It retrieves all the Activity Categories from the Database.
+		 * <p>
+		 *
+		 * @param  		none
+		 * @return      void
+		 */
+		public void getActivityCategoryList()
 		{
-			if (categoryList==null)
+			if (activityCategoryList==null)
 			{
-			categoryList = Fact.createCategoryActivityList();
+			activityCategoryList = Fact.createActivityCategoryList();
 			}
 		}
 	
-
+		/**
+		 * This method is used when a user wants to suggest an Activity Category.
+		 * It adds the Activity Category Suggestion to the database.
+		 * The title/description argument specifies the Activity Category and must be a {@link String}.
+		 * <p>
+		 *
+		 * @param  		title			(a {@link String} giving the Activity Category title)
+		 * 				description		(a {@link String} giving the Activity Category description)
+		 * @return      void
+		 * @exception	EmptyFieldsException
+		 */
 		public void suggestActivityCategory(String title, String description) throws EmptyFieldsException {
 			// TODO Auto-generated method stub
 			if(title.isEmpty()){
@@ -44,60 +65,97 @@ public class ActivityCategoryHandler {
 			}
 			else{
 			Fact.suggestActivityCategory(title, description);
-			refreshCategoryActivitySuggestionList();
+			refreshActivityCategorySuggestionList();
 			}
 		}
 		
-		public String[][] getStringCategoryList()
+		/**
+		 * This method gets an Activity Category List as a String 2D Table (useful to display Activity Categories).
+		 * It retrieves the Activity Category List from the database.
+		 * <p>
+		 *
+		 * @param  		none
+		 * @return      {@link String} 2D Table
+		 */
+		public String[][] getStringActivityCategoryList()
 		{
-			getCategoryList();
-			stringCategoryList= new String [categoryList.size()][2];
+			getActivityCategoryList();
+			stringActivityCategoryList= new String [activityCategoryList.size()][2];
 			
-			if (categoryList != null)
+			if (activityCategoryList != null)
 			{
-				for (Integer i=0; i<categoryList.size(); i++)
+				for (Integer i=0; i<activityCategoryList.size(); i++)
 				{
-					stringCategoryList[i][0]= categoryList.get(i).title;
-					stringCategoryList[i][1]= categoryList.get(i).description;
+					stringActivityCategoryList[i][0]= activityCategoryList.get(i).title;
+					stringActivityCategoryList[i][1]= activityCategoryList.get(i).description;
 				}
 			}
-			return stringCategoryList;
+			return stringActivityCategoryList;
 			
 		}
 
-
-		public void getCategoryActivitySuggestionList()
+		/**
+		 * This method gets an Activity Category Suggestion List.
+		 * It retrieves all the Activity Category Suggestions from the database to store them.
+		 * <p>
+		 *
+		 * @param  		none
+		 * @return      void
+		 */
+		public void getActivityCategorySuggestionList()
 		{
-			if (categorySuggestionList==null)
+			if (activityCategorySuggestionList==null)
 			{
-				categorySuggestionList = Fact.createCategoryActivitySuggestionList();
+				activityCategorySuggestionList = Fact.createActivityCategorySuggestionList();
 			}
 		}
 		
-		public String[][] getStringCategorySuggestionList() {
-			getCategoryActivitySuggestionList();
-			stringCategoryList= new String [categorySuggestionList.size()][2];
-			if (categorySuggestionList != null){
-				for (Integer i=0; i<categorySuggestionList.size(); i++)
+		/**
+		 * This method gets an Activity Category Suggestion List as a String 2D Table (useful to display Activity Category Suggestions).
+		 * It retrieves the Activity Category Suggestion List from the database.
+		 * <p>
+		 *
+		 * @param  		none
+		 * @return      {@link String} 2D Table
+		 */
+		public String[][] getStringActivityCategorySuggestionList() {
+			getActivityCategorySuggestionList();
+			stringActivityCategoryList= new String [activityCategorySuggestionList.size()][2];
+			if (activityCategorySuggestionList != null){
+				for (Integer i=0; i<activityCategorySuggestionList.size(); i++)
 				{
-					stringCategoryList[i][0]= categorySuggestionList.get(i).title;
-					stringCategoryList[i][1]= categorySuggestionList.get(i).description;
+					stringActivityCategoryList[i][0]= activityCategorySuggestionList.get(i).title;
+					stringActivityCategoryList[i][1]= activityCategorySuggestionList.get(i).description;
 				}
 			}
-			return stringCategoryList;
+			return stringActivityCategoryList;
 			
 			}
 		
-		public void refreshCategoryActivitySuggestionList(){
-			categorySuggestionList = Fact.createCategoryActivitySuggestionList();
+		/**
+		 * This method refreshes the Activity Category Suggestion List stored.
+		 * It recreates the Activity Category Suggestion List.
+		 * <p>
+		 *
+		 * @param  		none
+		 * @return      void
+		 */
+		public void refreshActivityCategorySuggestionList(){
+			activityCategorySuggestionList = Fact.createActivityCategorySuggestionList();
 		}
 
-
+		/**
+		 * This method deletes all current information stored in vars.
+		 * <p>
+		 *
+		 * @param  		none
+		 * @return      void
+		 */
 		public void deleteAllCurrentInfos() {
 			// TODO Auto-generated method stub
-			categoryList = null;
-			stringCategoryList = null;
-			categorySuggestionList = null;
+			activityCategoryList = null;
+			stringActivityCategoryList = null;
+			activityCategorySuggestionList = null;
 		}
 		
 }

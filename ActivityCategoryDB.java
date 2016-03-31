@@ -1,4 +1,3 @@
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ActivityCategoryDB extends ActivityCategory {
@@ -10,8 +9,8 @@ public class ActivityCategoryDB extends ActivityCategory {
 	}
 	
 	/**
-	 * This method is used to create an Activity Category List.
-	 * It retrieves all the Activity Categories from the Database.
+	 * This method creates an Activity Category List.
+	 * It retrieves all the Activity Categories from the Database (thanks to JDBC).
 	 * <p>
 	 *
 	 * @param  		none

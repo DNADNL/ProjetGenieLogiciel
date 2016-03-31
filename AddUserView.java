@@ -116,14 +116,7 @@ public class AddUserView  extends JFrame implements ActionListener{
 			String email = addUserEMail.getText();
 
 			//Add the user
-			if (nickname.equals("") || password.equals(""))
-			{
-				JOptionPane.showMessageDialog(null, "Merci de rentrer un pseudo et un mot de passe.", "Ajout d'utilisateur", JOptionPane.ERROR_MESSAGE);
-			}
-			else
-			{
-				addUserButtonClicked(nickname, password, email);
-			}
+			addUserButtonClicked(nickname, password, email);
 		}
 		else if (source == returnUsersButton)
 		{
@@ -140,10 +133,12 @@ public class AddUserView  extends JFrame implements ActionListener{
 	{			
 		try {
 			FU.addUser(nick, pass, email);
+		} catch (EmptyFieldsException e) {
+			JOptionPane.showMessageDialog(null, "Merci de rentrer un pseudo et un mot de passe.", "Ajout d'utilisateur", JOptionPane.ERROR_MESSAGE);
 		} catch (ObjectCreatedException e) {
-			System.out.println("Admin : " + (addUserRole.getSelectedItem()).equals("Administrateur"));
-			System.out.println("SU : " + (addUserRole.getSelectedItem()).equals("Simple Utilisateur"));
-			System.out.println("Seller : " + (addUserRole.getSelectedItem()).equals("Vendeur"));
+//			System.out.println("Admin : " + (addUserRole.getSelectedItem()).equals("Administrateur"));
+//			System.out.println("SU : " + (addUserRole.getSelectedItem()).equals("Simple Utilisateur"));
+//			System.out.println("Seller : " + (addUserRole.getSelectedItem()).equals("Vendeur"));
 
 			if ((addUserRole.getSelectedItem()).equals("Administrateur"))
 			{

@@ -72,7 +72,7 @@ public class FacadeUser {
 	}
 	
 	// Méthodes Admin
-	public void addUser(String nick, String pass, String email) throws ObjectAlreadyExistsException, ObjectCreatedException {
+	public void addUser(String nick, String pass, String email) throws ObjectAlreadyExistsException, ObjectCreatedException, EmptyFieldsException {
 		GU.addUser(nick, pass, email);
 	}
 	
@@ -150,12 +150,12 @@ public class FacadeUser {
 	}
 	
 	public String[][] getStringActivityCategoryList(){
-		return ACH.getStringCategoryList() ;
+		return ACH.getStringActivityCategoryList() ;
 	}
 
 
 	public String[][] getStringActivityCategorySuggestionList() {
-		return ACH.getStringCategorySuggestionList();
+		return ACH.getStringActivityCategorySuggestionList();
 	}
 
 
