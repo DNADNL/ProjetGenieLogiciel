@@ -74,7 +74,7 @@ public class ActivityCategorySuggestionsView extends JFrame implements ActionLis
 		Object[][] donnees =  {{"",""}};
 		donnees = FU.getStringActivityCategorySuggestionList();
 
-		String[] entetes = {"Catégorie", "Brief Description"};
+		String[] entetes = {"Category", "Brief Description"};
 		JTable tableau = new JTable(donnees, entetes);
 
 		JScrollPane test = new JScrollPane(tableau);
@@ -97,6 +97,6 @@ public class ActivityCategorySuggestionsView extends JFrame implements ActionLis
 		// The only Button Available is the Return Button 
 		dispose();
 		new AdminView();
-		System.out.println("AdminView Displayed !");
+		System.out.println("AdminView Displayed");
 	}
 }

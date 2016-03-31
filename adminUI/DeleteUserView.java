@@ -21,15 +21,15 @@ public class DeleteUserView  extends JFrame implements ActionListener{
 	FacadeUser FU = FacadeUser.getFU();
 
 
-	//Création du panel de navigation
+	//Creating Navigation Panel
 	JPanel panel = new JPanel();
 
-	//Create the Buttons for "DeleteUserView
-	Button returnUsersButton = new Button("Retour", 540, 10, 150, 30);
-	Button validateDeleteUserButton = new Button("Supprimer",250, 270, 200, 30);
+	//Creating Buttons
+	Button returnUsersButton = new Button("Return", 540, 10, 150, 30);
+	Button validateDeleteUserButton = new Button("Delete",250, 270, 200, 30);
 
 	//Create the textfields for DeleteUserView
-	JTextField deleteUserNickname = new JTextField("pseudo");
+	JTextField deleteUserNickname = new JTextField("nickname");
 	JTextField deleteUserEMail = new JTextField("e-mail");
 
 	public DeleteUserView()
@@ -46,10 +46,13 @@ public class DeleteUserView  extends JFrame implements ActionListener{
 		// Construct the panel
 		placeComponents(panel);
 
+		// Choose the Panel
 		setContentPane(panel);
+
+		// Set the Panel as visible
 		setVisible(true);
 	}
-	
+
 	/**
 	 * This method places all the components onto the panel.
 	 *
@@ -61,27 +64,24 @@ public class DeleteUserView  extends JFrame implements ActionListener{
 		panel.removeAll();
 		panel.setLayout(null);
 
-		// Font
+		// Adding Font
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
-		//Font font = new Font("Courier", Font.BOLD, 15);
-		//Font fontAdvice = new Font("Courier", Font.ITALIC, 14);
 
-		//Ajout de l'étiquette "Suppression d'utilisateur"
+		// Adding Labels
 		JLabel deleteUserTitle = new JLabel();
 		deleteUserTitle.setBounds(250, 30, 300, 100);
 		deleteUserTitle.setFont(fontTitre);					
-		deleteUserTitle.setText("<html>Suppression d'utilisateur</html>");
+		deleteUserTitle.setText("<html>Delete a User</html>");
 		panel.add(deleteUserTitle);	
 
-		// Ajout du Bouton Retour
+		// Adding Buttons
 		returnUsersButton.addActionListener(this);
 		panel.add(returnUsersButton);
 
-		// Ajout du Bouton Supprimer
 		validateDeleteUserButton.addActionListener(this);
 		panel.add(validateDeleteUserButton);	
 
-		// Ajout des champs à rentrer
+		// Adding Text Fields
 		deleteUserNickname.addActionListener(this);
 		deleteUserNickname.setBounds(250, 100, 200, 25);
 		panel.add(deleteUserNickname);
@@ -91,18 +91,16 @@ public class DeleteUserView  extends JFrame implements ActionListener{
 		panel.add(deleteUserEMail);			
 
 
-		// Logo
-				JLabel image = new JLabel(new ImageIcon("logo.png"));
-				JPanel panelLogo = new JPanel();
-				panelLogo.setBounds(5, 5, 150, 150);
-				panelLogo.setLayout(new BorderLayout());
-				panelLogo.add(image, BorderLayout.CENTER);
-				panel.add(panelLogo);
+		// Adding Logo
+		JLabel image = new JLabel(new ImageIcon("logo.png"));
+		JPanel panelLogo = new JPanel();
+		panelLogo.setBounds(5, 5, 150, 150);
+		panelLogo.setLayout(new BorderLayout());
+		panelLogo.add(image, BorderLayout.CENTER);
+		panel.add(panelLogo);
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		Object source = e.getSource();
 		if (source == validateDeleteUserButton)
 		{
@@ -113,7 +111,7 @@ public class DeleteUserView  extends JFrame implements ActionListener{
 		{
 			new UsersHandlerView();	
 			dispose();
-			System.out.println("Panel Admin affiché");
+			System.out.println("UsersHandlerView Displayed");
 		}
 	}
 
@@ -122,15 +120,9 @@ public class DeleteUserView  extends JFrame implements ActionListener{
 		try {
 			FU.deleteUser(nick);
 		} catch (ObjectNotInTheDatabaseException e) {
-			JOptionPane.showMessageDialog(null, nick+" n'existe pas dans la BD.", "Suppression d'utilisateur", JOptionPane.ERROR_MESSAGE);
-			//				System.out.println("DeleteUser : Failed !");
-			//				deleteUserResultLabel.setText("Aucun utilisateur avec ce pseudo n'existe dans la BD, veuillez réessayer.");
-			//				deleteUserResultLabel.setForeground(Color.RED);
+			JOptionPane.showMessageDialog(null, nick+" doesn't exist in the DB.", "Delete a User", JOptionPane.ERROR_MESSAGE);
 		} catch (ObjectDeletedException e) {
-			JOptionPane.showMessageDialog(null, nick+" a bien été supprimé de la BD !", "Suppression d'utilisateur", JOptionPane.INFORMATION_MESSAGE);
-			//				System.out.println("DeleteUser : Successful !");
-			//				deleteUserResultLabel.setText("L'utilisateur a bien été supprimé !");
-			//				deleteUserResultLabel.setForeground(Color.BLUE);
+			JOptionPane.showMessageDialog(null, nick+" has been successfully deleted from the DB !", "Delete a User", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 

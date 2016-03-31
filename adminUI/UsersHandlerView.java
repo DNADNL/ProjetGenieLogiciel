@@ -56,21 +56,14 @@ public class UsersHandlerView extends JFrame implements ActionListener{
 		panel.setLayout(null);
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
 
-//		//Ajout de l'étiquette "Page de xxx"
-//		JLabel idLabel = new JLabel("<html>Page de <br>" + FU.getCurrentUser().nicknameUser + "</html>");
-//		idLabel.setBounds(10, 10, 150, 50);
-//		idLabel.setFont(font);
-//		idLabel.setForeground(Color.BLACK);
-//		panel.add(idLabel);
-
-		//Ajout de l'étiquette "Outils Action Utilisateur"
+		//Adding Labels
 		JLabel UsersHandlerTitle = new JLabel();
 		UsersHandlerTitle.setBounds(250, 30, 300, 100);
 		UsersHandlerTitle.setFont(fontTitre);					
-		UsersHandlerTitle.setText("<html>Gestion Utilisateurs</html>");
+		UsersHandlerTitle.setText("<html>Manage Users</html>");
 		panel.add(UsersHandlerTitle);		
 
-		// Buttons
+		// Adding Buttons
 		addUserButton.addActionListener(this);
 		panel.add(addUserButton);	
 
@@ -93,9 +86,6 @@ public class UsersHandlerView extends JFrame implements ActionListener{
 		
 	}
 
-
-
-	@Override
 	public void actionPerformed(ActionEvent e) {
 
 		Object source = e.getSource();
@@ -104,31 +94,28 @@ public class UsersHandlerView extends JFrame implements ActionListener{
 			//Return to LoginView
 			new AdminView();
 			dispose();
-			System.out.println("Panel Admin affiché");
+			System.out.println("AdminView Displayed");
 		}
 		else if (source == deleteUserButton)
 		{
 			//Go to DeleteUserView
 			new DeleteUserView();
 			dispose();
-			System.out.println("Panel DeleteUser affiché");
+			System.out.println("DeleteUserView Displayed");
 		}
 		else if (source == modifyUserButton)
 		{
 			//Go to ModifyUserView
 			new ModifyUserView();
 			dispose();				
-			System.out.println("Panel ModifyUser affiché");
+			System.out.println("ModifyUserView Displayed");
 		}
 		else if (source == addUserButton)
 		{
 			//Go to AddUserView
 			new AddUserView();
 			dispose();			
-			System.out.println("Panel AddUser affiché");
+			System.out.println("AddUserView Displayed");
 		}
-
 	}
-
-
 }

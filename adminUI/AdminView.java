@@ -23,10 +23,10 @@ public class AdminView extends JFrame implements ActionListener{
 	//Create the panel
 	JPanel panel = new JPanel();
 
-	//Create the Buttons for "Admin"
-	Button logoutButton = new Button("Disconnection",540, 10, 150, 30);
+	//Create Buttons
+	Button logoutButton = new Button("Logout",540, 10, 150, 30);
 	Button usersHandlerButton = new Button("<html>Handle<br>Users</html>",275,335,150,60);
-	Button showSuggestionButton = new Button ("<html>Activity <br>Category <br>Suggestions</html>",275,405,150,120);
+	Button showSuggestionButton = new Button ("<html>Activity<br>Category<br>Suggestions</html>",275,405,150,120);
 
 	public AdminView()
 	{
@@ -41,7 +41,10 @@ public class AdminView extends JFrame implements ActionListener{
 		// Construct the panel
 		placeComponents(panel);
 
+		// Choose the panel
 		setContentPane(panel);
+		
+		// Set the panel as visible
 		setVisible(true);
 	}
 	
@@ -55,26 +58,17 @@ public class AdminView extends JFrame implements ActionListener{
 		panel.removeAll();
 		panel.setLayout(null);
 
-		// Fonts
+		// Adding Fonts
 		Font fontTitle = new Font("Courier", Font.BOLD, 20);
 
-		// Labels
-
-		//Ajout de l'étiquette "Page de xxx"
-//		JLabel idLabel = new JLabel("<html>Hello, <br>" + FU.getCurrentUser().nicknameUser + "</html>");
-//		idLabel.setBounds(10, 10, 150, 50);
-//		idLabel.setFont(font);
-//		idLabel.setForeground(Color.BLACK);
-//		panel.add(idLabel);
-
-		//Ajout de l'étiquette "Outils Administrateur"
+		// Adding Labels
 		JLabel UserLabel = new JLabel();
 		UserLabel.setBounds(250, 30, 300, 100);
 		UserLabel.setFont(fontTitle);					
 		UserLabel.setText("Admin Tools");
 		panel.add(UserLabel);		
 
-		// Buttons	
+		// Adding Buttons	
 		usersHandlerButton.addActionListener(this);
 		panel.add(usersHandlerButton);
 
@@ -84,7 +78,7 @@ public class AdminView extends JFrame implements ActionListener{
 		showSuggestionButton.addActionListener(this);
 		panel.add(showSuggestionButton);
 
-		// Logo
+		// Adding Logo
 
 		JLabel image = new JLabel(new ImageIcon("logo.png"));
 		JPanel panelLogo = new JPanel();
@@ -94,8 +88,6 @@ public class AdminView extends JFrame implements ActionListener{
 		panel.add(panelLogo);
 	}
 
-
-	@Override
 	public void actionPerformed(ActionEvent e) {
 
 		Object source = e.getSource();
@@ -104,21 +96,21 @@ public class AdminView extends JFrame implements ActionListener{
 			//Return to LoginView
 			new LoginView();	
 			dispose();
-			System.out.println("Panel Login affiché");
+			System.out.println("LoginView Displayed");
 		}
 		else if (source == usersHandlerButton)
 		{
 			//Go to UsersHandlerView
 			new UsersHandlerView();	
 			dispose();
-			System.out.println("Panel Gestion Utilisateurs affiché");
+			System.out.println("UsersHandlerView Displayed");
 		}
 		else if ( source == showSuggestionButton)
 		{
 			//Go to SuggestionCategoryActivityView
 			new ActivityCategorySuggestionsView();
 			dispose();
-			System.out.println("Panel Suggestion Catégories Activité affiché");
+			System.out.println("ActivityCategorySuggestionsView Displayed");
 		}
 
 	}
