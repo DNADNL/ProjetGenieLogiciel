@@ -35,16 +35,32 @@ public class GestionnaireUser {
 	}
 
 	//Méthodes
+	
 	public User getCurrentUser()
 	{
 		return this.currentUser;
 	}
 
+	/**
+	 * This method is used when the user disconnects.
+	 * It deletes the value of currentUser
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user)
+	 */
 	public void deleteCurrentUser()
 	{
 		this.currentUser=null;
 	}
 
+	/**
+	 * This method is used when the user log in the system.
+	 * It starts the login process.
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), password
+	 * @return Integer
+	 * @throw WrongPasswordException, ObjectNotInTheDatabaseException
+	 *
+	 */
 	public Integer login(String nickname, String password) throws ObjectNotInTheDatabaseException, WrongPasswordException
 	{
 		int bool = 0;
@@ -63,12 +79,27 @@ public class GestionnaireUser {
 		return bool;
 	}
 
+	/**
+	 * This method is used when a seller wants to delete or show one of his products.
+	 * It loads the user from the database and updates currentUser.
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user)
+	 */
 	public void refreshCurrentUser(String nickname)
 	{
 		factUser = Fact.getUserData(nickname);
 		currentUser = factUser;
 	}
 
+	/**
+	 * This method is used when the user log in the system.
+	 * It checks if the informations in the database and the informations provided by the user are similar.
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), password, FactUser
+	 * @return Integer
+	 * @throw WrongPasswordException
+	 *
+	 */
 	public Integer compareMdp(String nickname, String password, User FactUser) throws WrongPasswordException
 	{
 		int bool = 0;
@@ -87,6 +118,17 @@ public class GestionnaireUser {
 		return bool;
 	}
 
+	
+	/**
+	 * This method is used when an admin wants to add a user(via the AddUserView).
+	 * 
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user), pass, email
+	 * If the product is already in the database, then this method returns an {@link ObjectAlreadyExistsException}, 
+	 * else an {@link ObjectCreatedException} is returned and the user is added to the database.
+	 * @throws 		ObjectCreatedException, ObjectAlreadyExistsException, EmptyFieldsException
+	 * @exception ObjectNotInTheDatabaseException
+	 */
 	public void addUser(String nick, String pass, String email) throws ObjectAlreadyExistsException, ObjectCreatedException, EmptyFieldsException {
 
 		if (nick.equals("") || pass.equals(""))
@@ -108,6 +150,16 @@ public class GestionnaireUser {
 		}
 	}
 
+	/**
+	 * This method is used when an admin modifies the informations of a user (via ModifyUserView).
+	 * 
+	 *
+	 * @param  		nick (a {@link String} giving the nickname of the user), pass, email, firstname, lastname, city, street, postalcode, streetnumber
+	 * @return Integer
+	 * @throw ObjectModifiedException, ObjectNotInTheDatabaseException
+	 * @exception ObjectNotInTheDatabaseException
+	 *
+	 */
 	public void modifyUser(String nick, String pass, String email, String firstname,
 			String lastname, String city,String street,String postalcode,String streetnumber) throws ObjectNotInTheDatabaseException, ObjectModifiedException{
 
@@ -125,6 +177,17 @@ public class GestionnaireUser {
 
 	}
 
+	/**
+	 * This method is used when an admin wants to delete one user (via DeleteUserView).
+	 * It checks if the user is registered in the database (thanks to its nickname).
+	 *
+	 *
+	 * @param  		nick (a {@link String} giving the nickname of the user)
+	 * If the user does not exist in the database, then this method returns an {@link ObjectNotInTheDatabaseException}, 
+	 * else an {@link ObjectDeletedException} is returned and the used is deleted from the database.
+	 * @throws 		ObjectDeletedException
+	 * @exception ObjectNotInTheDatabaseException
+	 */
 	public void deleteUser(String nick) throws ObjectNotInTheDatabaseException, ObjectDeletedException {
 
 		try {
@@ -156,18 +219,45 @@ public class GestionnaireUser {
 
 	}
 
+	/**
+	 * This method is used when a user log in the system.
+	 * It check if the user is an admin.
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user)
+	 * @return boolean
+	 */
 	public boolean isAdmin(String nick) {
 		return Fact.isAdmin(nick);
 	}
 
+	/**
+	 * This method is used when a user log in the system.
+	 * It check if the user is a simple user.
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user)
+	 * @return boolean
+	 */
 	public boolean isSimpleUser(String nick) {
 		return Fact.isSimpleUser(nick);
 	}
 
+	/**
+	 * This method is used when a user log in the system.
+	 * It check if the user is a seller.
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user)
+	 * @return boolean
+	 */
 	public boolean isSeller(String nick) {
 		return Fact.isSeller(nick);
 	}
 
+	/**
+	 * This method is used when an admin wants to add a user(via the AddUserView).
+	 * It deletes the current role of the user and add the role seller
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user)
+	 */
 	public void chooseUserRoleSeller(String nick) {
 		if (this.isSimpleUser(nick))
 		{
@@ -187,6 +277,12 @@ public class GestionnaireUser {
 		}			
 	}
 
+	/**
+	 * This method is used when an admin wants to add a user(via the AddUserView).
+	 * It deletes the current role of the user and add the role user
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user)
+	 */
 	public void chooseUserRoleSimpleUser(String nick) {
 		if (this.isAdmin(nick))
 		{
@@ -205,6 +301,12 @@ public class GestionnaireUser {
 		}
 	}
 
+	/**
+	 * This method is used when an admin wants to add a user(via the AddUserView).
+	 * It deletes the current role of the user and add the role admin
+	 *
+	 * @param  		nickname (a {@link String} giving the nickname of the user)
+	 */
 	public void chooseUserRoleAdmin(String nick) {
 		if (this.isSeller(nick))
 		{
