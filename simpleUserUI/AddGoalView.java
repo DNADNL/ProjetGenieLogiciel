@@ -32,7 +32,7 @@ public class AddGoalView extends JFrame implements ActionListener
 	Button validateAddUserButton = new Button("Add", 250, 270, 200, 30);
 
 	// Creating Text Fields
-	JTextField addGoalTitle = new JTextField("Goal Title");
+	JTextField addGoalTitle = new JTextField("Goal Name");
 	JTextField addGoalDescription = new JTextField("Goal Description");
 
 	// Constructor

@@ -17,12 +17,25 @@ public class UserDB extends User
 		jdbc.verifyLoginUser(this,nickname);
 	}
 	
+	/**
+	 * This method is used when an admin wants to add a user to the database.
+	 * 
+	 * 
+	 * @param nick, pass, email
+	 */
 	public static void addUser(String nick, String pass, String email)
 	{
 		jdbc.createUser(nick, pass, email);
 	}
 
-	public static void deleteUser(String nick) {
+	/**
+	 * This method is used when an admin wants to delete a User from the database.
+	 * 
+	 * 
+	 * @param pdt_name, nicknameUser
+	 */
+	public static void deleteUser(String nick) 
+	{
 		jdbc.deleteUser(nick);
 	}
 	
@@ -32,6 +45,13 @@ public class UserDB extends User
 		jdbc.modifyUser(nick, pass, email, firstname, lastname, city, street, postalcode, streetnumber);
 	}
 	
+	/**
+	 * This method returns a user.
+	 * It retrieves all the informations of the user from the Database.
+	 * 
+	 * @param nick
+	 * @return User
+	 */
 	public static User getUserData(String nick) {
 		return jdbc.getUserData(nick);
 	}

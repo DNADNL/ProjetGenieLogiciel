@@ -27,6 +27,12 @@ public class GoalDB extends Goal {
 		
 	}
 	
+	/**
+	 * This method is used when a user wants to add a Goal to his list of Goals.
+	 * 
+	 * 
+	 * @param goal_title, goal_description, nick
+	 */
 	public static void addGoal(String goal_title, String goal_description, String nick) {
 		// TODO Auto-generated method stub
 		
@@ -34,12 +40,25 @@ public class GoalDB extends Goal {
 		
 	}
 	
+	/**
+	 * This method creates an Goal List.
+	 * It retrieves all the Goals of the user from the Database.
+	 * 
+	 * @param nickname
+	 * @return      {@link ArrayList} of Goal
+	 */
 	static public ArrayList<Goal> createGoalList(String nickname)
 	{
 		
 		return jdbc.getGoalList(nickname);
 	}
 
+	/**
+	 * This method is used when a user wants to delete a Goal from his list of Goals.
+	 * 
+	 * 
+	 * @param goal_name, nicknameUser
+	 */
 	public static void deleteGoal(String goal_name, String nicknameUser) {
 		// TODO Auto-generated method stub
 		jdbc.deleteGoal(goal_name, nicknameUser);

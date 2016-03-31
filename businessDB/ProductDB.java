@@ -33,11 +33,25 @@ public class ProductDB extends Product{
 		
 	}
 	
+	
+	/**
+	 * This method is used when a user wants to add a Goal to his list of Goals.
+	 * 
+	 * @param nickname, pdt_name, pdt_quantity, pdt_price, pdt_briefDesc, pdt_longDesc
+	 */
 	public static void addProduct(String nickname, String pdt_name, Integer pdt_quantity, Integer pdt_price, String pdt_briefDesc, String pdt_longDesc)
 	{
 		jdbc.createProduct(nickname,pdt_name,pdt_quantity,pdt_price,pdt_briefDesc,pdt_longDesc);
 	}
 
+	/**
+	 * This method returns a product.
+	 * It retrieves all the information of the Product of the seller from the Database.
+	 * 
+	 * @param nickname, pdtName
+	 * @return      Product
+	 * @throws ObjectNotInTheDatabaseException
+	 */
 	public static Product getProduct(String nickname ,String pdtName) throws ObjectNotInTheDatabaseException
 	{
 		Product product = null;
@@ -48,11 +62,24 @@ public class ProductDB extends Product{
 		return product;
 	}
 	
+	/**
+	 * This method creates a Product List.
+	 * It retrieves all the Products of the seller from the Database.
+	 * 
+	 * @param nickname
+	 * @return      {@link ArrayList} of Product
+	 */
 	static public ArrayList<Product> createProductList(String nickname)
 	{
 		return jdbc.getAllProducts(nickname);
 	}
 
+	/**
+	 * This method is used when a user wants to delete a Product from his list of Products.
+	 * 
+	 * 
+	 * @param pdt_name, nicknameUser
+	 */
 	public static void deleteProduct(String pdt_product, String nickname) 
 	{
 		
