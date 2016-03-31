@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+//The Add User View
+
 @SuppressWarnings("serial")
 public class AddUserView  extends JFrame implements ActionListener{
 
@@ -53,10 +55,8 @@ public class AddUserView  extends JFrame implements ActionListener{
 
 	/**
 	 * This method places all the components onto the panel.
-	 * <p>
 	 *
 	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
-	 * @return      void
 	 */
 	private void placeComponents(JPanel panel) {
 

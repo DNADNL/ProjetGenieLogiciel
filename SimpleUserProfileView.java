@@ -75,7 +75,6 @@ public class SimpleUserProfileView extends JFrame implements ActionListener, Key
 	 * <p>
 	 *
 	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
-	 * @return      void
 	 */
 	private void placeComponents(JPanel panel)
 	{

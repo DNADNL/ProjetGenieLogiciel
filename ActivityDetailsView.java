@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+// The Activity Details View
+
 @SuppressWarnings("serial")
 public class ActivityDetailsView extends JFrame implements ActionListener{
 
@@ -47,10 +49,8 @@ public class ActivityDetailsView extends JFrame implements ActionListener{
 	
 	/**
 	 * This method places all the components onto the panel.
-	 * <p>
 	 *
 	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
-	 * @return      void
 	 */
 	private void placeComponents(JPanel panel)
 	{

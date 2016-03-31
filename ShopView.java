@@ -44,7 +44,6 @@ public class ShopView extends JFrame implements ActionListener
 	 * <p>
 	 *
 	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
-	 * @return      void
 	 */
 	private void placeComponents(JPanel panel)
 	{

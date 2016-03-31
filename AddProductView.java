@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+// The Add Product View
+
 @SuppressWarnings("serial")
 public class AddProductView extends JFrame implements ActionListener{
 
@@ -51,10 +53,8 @@ public class AddProductView extends JFrame implements ActionListener{
 
 	/**
 	 * This method places all the components onto the panel.
-	 * <p>
 	 *
 	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
-	 * @return      void
 	 */
 	private void placeComponents(JPanel panel)
 	{

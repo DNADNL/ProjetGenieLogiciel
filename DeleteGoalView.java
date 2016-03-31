@@ -46,7 +46,6 @@ public class DeleteGoalView extends JFrame implements ActionListener{
 
 	/**
 	 * This method places all the components onto the panel.
-	 * <p>
 	 *
 	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
 	 * @return      void

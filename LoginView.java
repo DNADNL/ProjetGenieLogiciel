@@ -60,7 +60,6 @@ public class LoginView  extends JFrame implements ActionListener, KeyListener{
 	 * <p>
 	 *
 	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
-	 * @return      void
 	 */
 	private void placeComponents(JPanel panel) 
 	{

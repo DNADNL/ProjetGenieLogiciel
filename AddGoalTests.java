@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+// The Add Goal JUnit Tests
+
 public class AddGoalTests {
 
 	private FacadeUser FU = FacadeUser.getFU();
@@ -12,6 +14,7 @@ public class AddGoalTests {
 	@Before
 	public void setUpTestGoalCreatedException() throws Exception {
 		try {
+			JDBConnectionOpen.getJDBCO();
 			FU.deleteGoal("goal_title_test");
 		} catch (Exception e) {}
 

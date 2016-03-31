@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-//Abstract Class of Goal Factory
+// Abstract Class of Goal Factory
 
 public abstract class AbstractFactoryGoal {
 

@@ -30,8 +30,6 @@ public class JDBConnectionOpen {
 		 * This method creates the connection to the database.
 		 * <p>
 		 *
-		 * @param		none
-		 * @return		void
 		 * @exception	ClassNotFoundException, LinkageError, SQLException
 		 */
 		private void createConnection()

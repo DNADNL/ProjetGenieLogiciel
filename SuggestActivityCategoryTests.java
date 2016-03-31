@@ -2,8 +2,13 @@ import org.junit.*;
 
 public class SuggestActivityCategoryTests {
 
+
 	static JDBConnectionActivityCategory jdbc;
-	 
+	
+	@Before
+	public void setUpSuggestionActivityCategory(){
+		JDBConnectionOpen.getJDBCO();
+	}
 	@Test 
 	public void testSuggestionActivityCategory(){
 		ActivityCategory actCat = new ActivityCategory();

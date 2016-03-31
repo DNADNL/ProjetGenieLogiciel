@@ -1,9 +1,7 @@
-/**
-	 * This exception is used when a user tries to get an Object that doesn't exist in the database.
-	 * <p>
-	 *
-	 * @param  		name (a {@link String} giving the nickname of the Object),
-	 */
+
+// This exception is used when a user tries to get an Object that doesn't exist in the database.
+// The "name" parameter corresponds to a String giving the name of the Object.
+
 @SuppressWarnings("serial")
 public class ObjectNotInTheDatabaseException extends Exception{
 	private String name;

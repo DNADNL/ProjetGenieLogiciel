@@ -1,9 +1,7 @@
-/**
-	 * This exception is used when an admin creates a user into the database successfully.
-	 * <p>
-	 *
-	 * @param  		nickname (a {@link String} giving the nickname of the user),
-	 */
+
+// This exception is used when an admin creates a user into the database successfully.
+// The "name" parameter corresponds to a String giving the name of the Object.
+
 @SuppressWarnings("serial")
 public class ObjectCreatedException extends Exception {
 

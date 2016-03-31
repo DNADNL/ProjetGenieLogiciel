@@ -1,9 +1,7 @@
-/**
-	 * This exception is used when an admin modifies the data of a user successfully or when a user modifies its data successfully.
-	 * <p>
-	 *
-	 * @param  		nickname (a {@link String} giving the nickname of the user),
-	 */
+
+// This exception is used when an admin modifies the data of a user successfully or when a user modifies its data successfully.
+// The "name" parameter corresponds to a String giving the name of the Object.
+
 @SuppressWarnings("serial")
 public class ObjectModifiedException extends Exception {
 

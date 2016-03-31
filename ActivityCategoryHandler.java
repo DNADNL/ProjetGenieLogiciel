@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 // The Activity Category Handler
+
 public class ActivityCategoryHandler {
 	
 	AbstractFactoryActivityCategory Fact = new FactoryActivityCategory();
@@ -29,15 +30,9 @@ public class ActivityCategoryHandler {
 		
 	//Methods
 		
-		
-		
 		/**
 		 * This method gets an Activity Category List (or creates it if it doesn't exist).
 		 * It retrieves all the Activity Categories from the Database.
-		 * <p>
-		 *
-		 * @param  		none
-		 * @return      void
 		 */
 		public void getActivityCategoryList()
 		{
@@ -51,7 +46,6 @@ public class ActivityCategoryHandler {
 		 * This method is used when a user wants to suggest an Activity Category.
 		 * It adds the Activity Category Suggestion to the database.
 		 * The title/description argument specifies the Activity Category and must be a {@link String}.
-		 * <p>
 		 *
 		 * @param  		title			(a {@link String} giving the Activity Category title)
 		 * 				description		(a {@link String} giving the Activity Category description)
@@ -72,9 +66,7 @@ public class ActivityCategoryHandler {
 		/**
 		 * This method gets an Activity Category List as a String 2D Table (useful to display Activity Categories).
 		 * It retrieves the Activity Category List from the database.
-		 * <p>
 		 *
-		 * @param  		none
 		 * @return      {@link String} 2D Table
 		 */
 		public String[][] getStringActivityCategoryList()
@@ -97,10 +89,6 @@ public class ActivityCategoryHandler {
 		/**
 		 * This method gets an Activity Category Suggestion List.
 		 * It retrieves all the Activity Category Suggestions from the database to store them.
-		 * <p>
-		 *
-		 * @param  		none
-		 * @return      void
 		 */
 		public void getActivityCategorySuggestionList()
 		{
@@ -113,9 +101,7 @@ public class ActivityCategoryHandler {
 		/**
 		 * This method gets an Activity Category Suggestion List as a String 2D Table (useful to display Activity Category Suggestions).
 		 * It retrieves the Activity Category Suggestion List from the database.
-		 * <p>
 		 *
-		 * @param  		none
 		 * @return      {@link String} 2D Table
 		 */
 		public String[][] getStringActivityCategorySuggestionList() {
@@ -135,10 +121,6 @@ public class ActivityCategoryHandler {
 		/**
 		 * This method refreshes the Activity Category Suggestion List stored.
 		 * It recreates the Activity Category Suggestion List.
-		 * <p>
-		 *
-		 * @param  		none
-		 * @return      void
 		 */
 		public void refreshActivityCategorySuggestionList(){
 			activityCategorySuggestionList = Fact.createActivityCategorySuggestionList();
@@ -146,10 +128,6 @@ public class ActivityCategoryHandler {
 
 		/**
 		 * This method deletes all current information stored in vars.
-		 * <p>
-		 *
-		 * @param  		none
-		 * @return      void
 		 */
 		public void deleteAllCurrentInfos() {
 			// TODO Auto-generated method stub

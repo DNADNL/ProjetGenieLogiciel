@@ -48,8 +48,7 @@ public class SuggestActivityCategoryView extends JFrame implements ActionListene
 	}
 
 	/**
-	 * This method places all the components onto the panel.
-	 * <p>
+	 * This method places all the components onto the panel.s
 	 *
 	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
 	 * @return      void

@@ -2,6 +2,8 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
+//The Add User Tests
+
 public class AddUserTests {
 
 	private FacadeUser FU = FacadeUser.getFU();
@@ -9,6 +11,7 @@ public class AddUserTests {
 	@Before
 	public void setUpTestIsAdmin() {
 		try {
+			JDBConnectionOpen.getJDBCO();
 			FU.addUser("AdminTest", "pwdTest", "e-mail@test.fr");
 			FU.chooseUserRoleAdmin("AdminTest");
 		}
@@ -32,6 +35,7 @@ public class AddUserTests {
 	@Before
 	public void setUpTestIsSeller() {
 		try {
+			JDBConnectionOpen.getJDBCO();
 			FU.addUser("SellerTest", "pwdTest", "e-mail@test.fr");
 			FU.chooseUserRoleSeller("SellerTest");
 		}
@@ -55,6 +59,7 @@ public class AddUserTests {
 	@Before
 	public void setUpTestIsSimpleUser() {
 		try {
+			JDBConnectionOpen.getJDBCO();
 			FU.addUser("SUTest", "pwdTest", "e-mail@test.fr");
 		}
 		catch (Exception e){};
@@ -77,6 +82,7 @@ public class AddUserTests {
 	@Before
 	public void setUpTestUserAlreadyExistsException() {
 		try {
+			JDBConnectionOpen.getJDBCO();
 			FU.addUser("AlreadyInDBTest", "pwdTest", "e-mail@test.fr");
 			FU.chooseUserRoleSimpleUser("AlreadyInDBTest");
 		}
@@ -92,7 +98,7 @@ public class AddUserTests {
 			assert(e.getName().equals("AlreadyInDBTest"));
 		}
 		catch (ObjectCreatedException e) {
-			fail("Not Expected an UserCreatedException to be thrown");
+			fail("Not Expected an ObjectCreatedException to be thrown");
 		}
 		catch (EmptyFieldsException e) {
 			fail("Not Expected an EmptyFieldsException to be thrown");
@@ -111,6 +117,7 @@ public class AddUserTests {
 	@Before
 	public void setUpTestUserCreatedException() throws Exception {
 		try {
+			JDBConnectionOpen.getJDBCO();
 			FU.deleteUser("NotInDBTest");
 		} catch (Exception e) {}
 
@@ -122,7 +129,7 @@ public class AddUserTests {
 			FU.addUser("NotInDBTest", "pwdTest", "e-mail@test.fr");
 			fail("Expected an UserCreatedException to be thrown");
 		} catch (ObjectAlreadyExistsException e) {
-			fail("Not Expected an UserAlreadyExistsException to be thrown");
+			fail("Not Expected an ObjectAlreadyExistsException to be thrown");
 		}
 		catch (ObjectCreatedException e) {
 			assert(e.getName().equals("NotInDBTest"));

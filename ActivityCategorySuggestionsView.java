@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+// The Activity Category Suggestions View, where the Admin can see all the suggestions
+
 @SuppressWarnings("serial")
 public class ActivityCategorySuggestionsView extends JFrame implements ActionListener {
 	//création de la façade
@@ -42,10 +44,8 @@ public class ActivityCategorySuggestionsView extends JFrame implements ActionLis
 
 	/**
 	 * This method places all the components onto the panel.
-	 * <p>
 	 *
 	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
-	 * @return      void
 	 */
 	private void placeComponents(JPanel panel){
 		panel.removeAll();

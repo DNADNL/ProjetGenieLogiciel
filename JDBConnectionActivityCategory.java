@@ -59,7 +59,6 @@ public class JDBConnectionActivityCategory {
 	 * It gets the activity categories from the database.
 	 * <p>
 	 *
-	 * @param  		none
 	 * @return      {@link ArrayList} of Activity Categories
 	 * @exception	SQLException
 	 */
@@ -106,7 +105,6 @@ public class JDBConnectionActivityCategory {
 	 * It gets the suggestions from the database.
 	 * <p>
 	 *
-	 * @param  		none
 	 * @return      {@link ArrayList} of Activity Categories
 	 * @exception	SQLException
 	 */
@@ -152,7 +150,6 @@ public class JDBConnectionActivityCategory {
 	 * It gets the last Activity Category Suggestion from the database.
 	 * <p>
 	 *
-	 * @param  		none
 	 * @return      {@link ActivityCategory}
 	 * @exception	SQLException
 	 */

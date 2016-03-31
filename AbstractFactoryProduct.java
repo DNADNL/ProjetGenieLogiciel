@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-//Abstract Class of Product Factory
+// Abstract Class of Product Factory
 
 public abstract class AbstractFactoryProduct 
 {
