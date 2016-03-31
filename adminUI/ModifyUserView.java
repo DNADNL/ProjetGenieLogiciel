@@ -86,14 +86,14 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 			
 
 			JLabel modifiyNicknameTitle = new JLabel();
-			modifiyNicknameTitle.setBounds(250, 70, 300, 100);
+			modifiyNicknameTitle.setBounds(150, 70, 450, 100);
 			modifiyNicknameTitle.setFont(font);					
 			modifiyNicknameTitle.setText("Please write the nickname of the user to modify");
 			panel.add(modifiyNicknameTitle);
 			
 
 			JLabel modifiyDetailProfile = new JLabel();
-			modifiyDetailProfile.setBounds(250, 170, 360, 100);
+			modifiyDetailProfile.setBounds(150, 170, 360, 100);
 			modifiyDetailProfile.setFont(font);					
 			modifiyDetailProfile.setText("Fill the Information you want to modify");
 			panel.add(modifiyDetailProfile);	
