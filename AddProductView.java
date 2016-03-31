@@ -43,14 +43,20 @@ public class AddProductView extends JFrame implements ActionListener{
 		this.setResizable(false);	
 
 		// Panel construction
-		placeComponentsAddProduct(panel);
+		placeComponents(panel);
 
 		setContentPane(panel);
 		setVisible(true);
 	}
 
-	//Method to construct the panel
-	private void placeComponentsAddProduct(JPanel panel)
+	/**
+	 * This method places all the components onto the panel.
+	 * <p>
+	 *
+	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
+	 * @return      void
+	 */
+	private void placeComponents(JPanel panel)
 	{
 		panel.removeAll();
 		panel.setLayout(null);

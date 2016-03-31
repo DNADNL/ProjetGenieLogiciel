@@ -43,10 +43,10 @@ public class CartView extends JFrame implements ActionListener
 	}
 
 	/**
-	 * This method places the components on the panel.
+	 * This method places all the components onto the panel.
 	 * <p>
 	 *
-	 * @param  		panel (a {@link JPanel} giving the panel where to place the components),
+	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
 	 * @return      void
 	 */
 	private void placeComponents(JPanel panel)
@@ -56,7 +56,7 @@ public class CartView extends JFrame implements ActionListener
 
 		// Fonts
 		Font fontTitle = new Font("Courier", Font.BOLD, 20);
-		Font font = new Font("Courier", Font.BOLD, 15);
+		//Font font = new Font("Courier", Font.BOLD, 15);
 
 		// Buttons
 		returnButton.addActionListener(this);

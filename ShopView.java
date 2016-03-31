@@ -31,7 +31,7 @@ public class ShopView extends JFrame implements ActionListener
 		this.setResizable(false);	
 
 		// Construction du panel principal
-		placeComponentsPrincipal(panel);
+		placeComponents(panel);
 
 		// Choix du panel
 		setContentPane(panel);
@@ -39,7 +39,14 @@ public class ShopView extends JFrame implements ActionListener
 		setVisible(true);
 	}
 
-	private void placeComponentsPrincipal(JPanel panel)
+	/**
+	 * This method places all the components onto the panel.
+	 * <p>
+	 *
+	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
+	 * @return      void
+	 */
+	private void placeComponents(JPanel panel)
 	{
 		panel.removeAll();
 		panel.setLayout(null);

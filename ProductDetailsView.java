@@ -25,22 +25,28 @@ public class ProductDetailsView extends JFrame implements ActionListener{
 	{
 		super("Lazy'N Yourself");
 
-		// Frame Config
+		// Window Options
 		this.setSize(700,700);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);	
 
 		// Construct the panel
-		placeComponentsProduct(panel);
+		placeComponents(panel);
 
 
 		setContentPane(panel);
 		setVisible(true);
 	}
 
-	//Method to construct the panel
-	private void placeComponentsProduct(JPanel panel)
+	/**
+	 * This method places all the components onto the panel.
+	 * <p>
+	 *
+	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
+	 * @return      void
+	 */
+	private void placeComponents(JPanel panel)
 	{
 		panel.removeAll();
 		panel.setLayout(null);

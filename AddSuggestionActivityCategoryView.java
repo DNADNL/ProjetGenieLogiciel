@@ -41,7 +41,7 @@ public class AddSuggestionActivityCategoryView extends JFrame implements ActionL
 		this.setResizable(false);	
 		
 		// Construction du panel principal
-		placeComponentsAddSuggestionActivityCategory(panel);
+		placeComponents(panel);
 		
 		// Choix du panel
 		setContentPane(panel);
@@ -49,7 +49,14 @@ public class AddSuggestionActivityCategoryView extends JFrame implements ActionL
 		setVisible(true);
 	}
 	
-	private void placeComponentsAddSuggestionActivityCategory(JPanel panel) {
+	/**
+	 * This method places all the components onto the panel.
+	 * <p>
+	 *
+	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
+	 * @return      void
+	 */
+	private void placeComponents(JPanel panel) {
 
 	  	panel.removeAll();
 		panel.setLayout(null);

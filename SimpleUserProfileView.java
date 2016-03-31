@@ -54,7 +54,7 @@ public class SimpleUserProfileView extends JFrame implements ActionListener, Key
 		simpleUserProfileStreetNumber = new JTextField(user.getUserStreetNumber());
 		simpleUserProfileEMail = new JTextField(user.getUserEMail());
 
-		// Options de la fenetre
+		// Window Options
 		this.setSize(700,700);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,6 +70,13 @@ public class SimpleUserProfileView extends JFrame implements ActionListener, Key
 		setVisible(true);
 	}
 
+	/**
+	 * This method places all the components onto the panel.
+	 * <p>
+	 *
+	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
+	 * @return      void
+	 */
 	private void placeComponents(JPanel panel)
 	{
 		panel.removeAll();

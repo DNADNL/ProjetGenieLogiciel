@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
-public class SuggestCategoryView extends JFrame implements ActionListener {
+public class SuggestActivityCategoryView extends JFrame implements ActionListener {
 
 	FacadeUser FU = FacadeUser.getFU();
 	static User user;
@@ -27,7 +27,7 @@ public class SuggestCategoryView extends JFrame implements ActionListener {
 	JTextField nameCategory = new JTextField("");
 	JTextArea briefDescCategory = new JTextArea("");
 
-	public SuggestCategoryView(User loggedUser)
+	public SuggestActivityCategoryView(User loggedUser)
 	{
 		super("Lazy'N Yourself");
 		user = loggedUser;
@@ -39,7 +39,7 @@ public class SuggestCategoryView extends JFrame implements ActionListener {
 		this.setResizable(false);	
 
 		// Construction du panel principal
-		placeComponentsCategoryView(panel);
+		placeComponents(panel);
 
 		// Choix du panel
 		setContentPane(panel);
@@ -47,8 +47,14 @@ public class SuggestCategoryView extends JFrame implements ActionListener {
 		setVisible(true);
 	}
 
-
-	private void placeComponentsCategoryView(JPanel panel)
+	/**
+	 * This method places all the components onto the panel.
+	 * <p>
+	 *
+	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
+	 * @return      void
+	 */
+	private void placeComponents(JPanel panel)
 	{
 		panel.removeAll();
 		//JPanel panTab = new JPanel();

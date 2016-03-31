@@ -21,21 +21,18 @@ public class ShowActivityCategoryView extends JFrame implements  ActionListener 
 	Button returnPrincipalButton = new Button("Retour",540, 10, 150, 30);
 	Button suggestButton = new Button("Suggest",500,320,150,30);
 
-
-
-
 	public ShowActivityCategoryView()
 	{
 		super("Lazy'N Yourself");
 
-		// Options de la fenetre
+		// Window Options
 		this.setSize(700,700);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);	
 
 		// Construction du panel principal
-		placeComponentsShowCategoryView(panel);
+		placeComponents(panel);
 
 		// Choix du panel
 		setContentPane(panel);
@@ -43,8 +40,14 @@ public class ShowActivityCategoryView extends JFrame implements  ActionListener 
 		setVisible(true);
 	}
 
-
-	private void placeComponentsShowCategoryView(JPanel panel)
+	/**
+	 * This method places all the components onto the panel.
+	 * <p>
+	 *
+	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
+	 * @return      void
+	 */
+	private void placeComponents(JPanel panel)
 	{
 		panel.removeAll();
 		JPanel panTab = new JPanel();
@@ -102,7 +105,7 @@ public class ShowActivityCategoryView extends JFrame implements  ActionListener 
 			System.out.println("Panel Principal affiché");
 		}
 		else if(source == suggestButton){
-			new SuggestCategoryView(FU.getCurrentUser());
+			new SuggestActivityCategoryView(FU.getCurrentUser());
 			dispose();
 			System.out.println("Panel de suggestion de catégorie d'activité affiché");
 

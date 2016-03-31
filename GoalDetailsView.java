@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,20 +40,27 @@ public class GoalDetailsView extends JFrame implements ActionListener
 		this.setResizable(false);	
 
 		// Construct the panel
-		placeComponentsGoal(panel);
+		placeComponents(panel);
 
 		setContentPane(panel);
 		setVisible(true);
 	}
 
-	private void placeComponentsGoal(JPanel panel)
+	/**
+	 * This method places all the components onto the panel.
+	 * <p>
+	 *
+	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
+	 * @return      void
+	 */
+	private void placeComponents(JPanel panel)
 	{
 		panel.removeAll();
 		panel.setLayout(null);
 
 		// Font
 		Font fontTitle = new Font("Courier", Font.BOLD, 20);
-		Font font = new Font("Courier", Font.BOLD, 15);
+//		Font font = new Font("Courier", Font.BOLD, 15);
 
 		// Buttons
 		returnMainUserButton.addActionListener(this);

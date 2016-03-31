@@ -1,6 +1,6 @@
 import org.junit.*;
 
-public class SuggestionActivityCategoryTests {
+public class SuggestActivityCategoryTests {
 
 	static JDBConnectionActivityCategory jdbc;
 	 

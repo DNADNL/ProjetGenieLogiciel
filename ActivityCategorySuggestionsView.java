@@ -11,7 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 @SuppressWarnings("serial")
-public class SuggestionCategoryActivityView extends JFrame implements ActionListener {
+public class ActivityCategorySuggestionsView extends JFrame implements ActionListener {
 	//création de la façade
 	FacadeUser FU = FacadeUser.getFU();
 
@@ -21,7 +21,7 @@ public class SuggestionCategoryActivityView extends JFrame implements ActionList
 	//création du boutton retour
 	Button returnAdminButton = new Button("Retour",540, 10, 150, 30);
 
-	public SuggestionCategoryActivityView(){
+	public ActivityCategorySuggestionsView(){
 
 		super("Lazy'N Yourself");
 
@@ -32,7 +32,7 @@ public class SuggestionCategoryActivityView extends JFrame implements ActionList
 		this.setResizable(false);	
 
 		// Construction du panel principal
-		placeComponentsSuggestionCategoryActivityView(panel);
+		placeComponents(panel);
 
 		// Choix du panel
 		setContentPane(panel);
@@ -40,7 +40,14 @@ public class SuggestionCategoryActivityView extends JFrame implements ActionList
 		setVisible(true);
 	}
 
-	private void placeComponentsSuggestionCategoryActivityView(JPanel panel){
+	/**
+	 * This method places all the components onto the panel.
+	 * <p>
+	 *
+	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
+	 * @return      void
+	 */
+	private void placeComponents(JPanel panel){
 		panel.removeAll();
 		JPanel panTab = new JPanel();
 		panel.setLayout(null);
@@ -50,7 +57,7 @@ public class SuggestionCategoryActivityView extends JFrame implements ActionList
 		JLabel addSuggestionActivityCategoryPanelTitle = new JLabel();
 		addSuggestionActivityCategoryPanelTitle.setBounds(150, 30, 500, 100);
 		addSuggestionActivityCategoryPanelTitle.setFont(fontTitre);					
-		addSuggestionActivityCategoryPanelTitle.setText("<html>Suggestions de Catégories d'Activité</html>");
+		addSuggestionActivityCategoryPanelTitle.setText("<html>Catégories d'Activité Suggérées</html>");
 		panel.add(addSuggestionActivityCategoryPanelTitle);		
 
 		//Buttons

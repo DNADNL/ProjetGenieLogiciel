@@ -1,4 +1,3 @@
-import javax.swing.JOptionPane;
 
 public class GestionnaireUser {
 	AbstractFactoryUser Fact = new FactoryUser();

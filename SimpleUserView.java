@@ -1,6 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -46,7 +44,7 @@ public class SimpleUserView extends JFrame implements ActionListener
 		this.setResizable(false);	
 
 		// Construction du panel principal
-		placeComponentsPrincipal(panel);
+		placeComponents(panel);
 
 		// Choix du panel
 		setContentPane(panel);
@@ -54,13 +52,19 @@ public class SimpleUserView extends JFrame implements ActionListener
 		setVisible(true);
 	}
 
-	private void placeComponentsPrincipal(JPanel panel)
+	/**
+	 * This method places all the components onto the panel.
+	 * <p>
+	 *
+	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
+	 * @return      void
+	 */
+	private void placeComponents(JPanel panel)
 	{
 		panel.removeAll();
 		panel.setLayout(null);
 
 		// Création des polices
-		Font font = new Font("Courier", Font.BOLD, 15);
 
 		//suggérer descatégories d'activités
 		showCategoryActivityButton.addActionListener(this);
@@ -159,7 +163,7 @@ public class SimpleUserView extends JFrame implements ActionListener
 		{
 			if (listeObjectifs.getSelectedRow() != -1)
 			{
-				String goal_selected = (listeObjectifs.getValueAt(listeObjectifs.getSelectedRow(), 0).toString());
+				//String goal_selected = (listeObjectifs.getValueAt(listeObjectifs.getSelectedRow(), 0).toString());
 				new GoalDetailsView();
 				dispose();
 				System.out.println("Panel seeGoal affiché");

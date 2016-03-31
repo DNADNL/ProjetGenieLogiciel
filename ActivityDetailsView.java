@@ -16,10 +16,10 @@ public class ActivityDetailsView extends JFrame implements ActionListener{
 	static User user;
 	// static Activity activity;
 
-	//Création du panel de navigation
+	// Navigation Panel Creation
 	JPanel panel = new JPanel();
 
-	//Création des boutons de "ProductDetails"
+	// "ProductDetails" Buttons Creation
 	Button returnSeeGoalButton = new Button("Retour",540, 10, 150, 30);
 
 	public ActivityDetailsView(User loggedUser, String activity_name)
@@ -28,22 +28,31 @@ public class ActivityDetailsView extends JFrame implements ActionListener{
 		user = loggedUser;
 		//product = FU.getProduct(product_name);
 
-		// Options de la fenetre
+		// Window Options
 		this.setSize(700,700);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);	
 
-		// Construction du panel principal
-		placeComponentsActivity(panel);
+		// Builds the Panel
+		placeComponents(panel);
 
-		// Choix du panel
+		// Chooses the panel
 		setContentPane(panel);
 
+		// Sets it visible
 		setVisible(true);
 	}
 
-	private void placeComponentsActivity(JPanel panel)
+	
+	/**
+	 * This method places all the components onto the panel.
+	 * <p>
+	 *
+	 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
+	 * @return      void
+	 */
+	private void placeComponents(JPanel panel)
 	{
 		panel.removeAll();
 		panel.setLayout(null);

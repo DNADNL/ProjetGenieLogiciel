@@ -53,7 +53,7 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 			this.setResizable(false);	
 			
 			// Construction du panel principal
-			placeComponentsModifyUser(panel);
+			placeComponents(panel);
 			
 			// Choix du panel
 			setContentPane(panel);
@@ -61,7 +61,14 @@ public class ModifyUserView  extends JFrame implements ActionListener{
 			setVisible(true);
 		}
 		
-		private void placeComponentsModifyUser(JPanel panel) {
+		/**
+		 * This method places all the components onto the panel.
+		 * <p>
+		 *
+		 * @param  		panel	(a {@link JPanel} giving the the panel where to place components)
+		 * @return      void
+		 */
+		private void placeComponents(JPanel panel) {
 
 		  	panel.removeAll();
 			panel.setLayout(null);
