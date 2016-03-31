@@ -13,16 +13,16 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class ActivityDetailsView extends JFrame implements ActionListener{
 
-
-	FacadeUser FU = FacadeUser.getFU();
 	static User user;
-	// static Activity activity;
-
-	// Navigation Panel Creation
+	
+	// Creating Facade Link
+	FacadeUser FU = FacadeUser.getFU();
+	
+	// Creating Navigation Panel
 	JPanel panel = new JPanel();
 
-	// "ProductDetails" Buttons Creation
-	Button returnSeeGoalButton = new Button("Retour",540, 10, 150, 30);
+	// Creating Buttons
+	Button returnButton = new Button("Return",540, 10, 150, 30);
 
 	public ActivityDetailsView(User loggedUser, String activity_name)
 	{
@@ -36,13 +36,13 @@ public class ActivityDetailsView extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);	
 
-		// Builds the Panel
+		// Building the Panel
 		placeComponents(panel);
 
-		// Chooses the panel
+		// Choosing the panel
 		setContentPane(panel);
 
-		// Sets it visible
+		// Setting it visible
 		setVisible(true);
 	}
 
@@ -57,26 +57,21 @@ public class ActivityDetailsView extends JFrame implements ActionListener{
 		panel.removeAll();
 		panel.setLayout(null);
 
-		// Font
+		//Adding Font
 		Font fontTitle = new Font("Courier", Font.BOLD, 20);
 
 		// Buttons
-		returnSeeGoalButton.addActionListener(this);
-		panel.add(returnSeeGoalButton);
+		returnButton.addActionListener(this);
+		panel.add(returnButton);
 
-
-		// Textfields
-
-		// Labels
-
-		// Title
+		//Adding Title
 		JLabel activityDetailTitle = new JLabel();
 		activityDetailTitle.setBounds(250, 30, 300, 100);
 		activityDetailTitle.setFont(fontTitle);					
 		activityDetailTitle.setText("<html>Activity Detail</html>");
 		panel.add(activityDetailTitle);	
 
-		// Logo
+		//Adding Logo
 		JLabel image = new JLabel(new ImageIcon("logo.png"));
 		JPanel panelLogo = new JPanel();
 		panelLogo.setBounds(5, 5, 150, 150);
@@ -89,9 +84,8 @@ public class ActivityDetailsView extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		Object source = e.getSource();
-		if (source == returnSeeGoalButton)
+		if (source == returnButton)
 		{
 			new GoalDetailsView();	
 			dispose();

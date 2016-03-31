@@ -49,11 +49,9 @@ public class ActivityCategoryHandler {
 		 *
 		 * @param  		title			(a {@link String} giving the Activity Category title)
 		 * 				description		(a {@link String} giving the Activity Category description)
-		 * @return      void
 		 * @exception	EmptyFieldsException
 		 */
 		public void suggestActivityCategory(String title, String description) throws EmptyFieldsException {
-			// TODO Auto-generated method stub
 			if(title.isEmpty()){
 				throw new EmptyFieldsException();
 			}
@@ -130,7 +128,6 @@ public class ActivityCategoryHandler {
 		 * This method deletes all current information stored in vars.
 		 */
 		public void deleteAllCurrentInfos() {
-			// TODO Auto-generated method stub
 			activityCategoryList = null;
 			stringActivityCategoryList = null;
 			activityCategorySuggestionList = null;

@@ -15,37 +15,39 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class AddGoalView extends JFrame implements ActionListener
 {	
+	// Creating Facade Link
 	FacadeUser FU = FacadeUser.getFU();
 
-	//Création du panel de navigation
+	// Creating Navigation Panel
 	JPanel panel = new JPanel();
 
 
-	//création du bouton pour ajouter un utilisateur et des champs à rentrer
-	Button returnUsersButton = new Button("Retour", 540, 10, 150, 30);
-	Button validateAddUserButton = new Button("Ajouter", 250, 270, 200, 30);
+	// Creating Buttons
+	Button returnButton = new Button("Return", 540, 10, 150, 30);
+	Button validateAddUserButton = new Button("Add", 250, 270, 200, 30);
 
-	// Création des champs de textes pour completer les attributs d'un objectif
+	// Creating Text Fields
 	JTextField addGoalTitle = new JTextField("Goal Title");
 	JTextField addGoalDescription = new JTextField("Goal Description");
 
-	//Constructeur
+	// Constructor
 	public AddGoalView()
 	{
 		super("Lazy'N Yourself");
 
-		// Options de la fenetre
+		// Window Options
 		this.setSize(700,700);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);	
 
-		// Construction du panel principal
+		// Building the Panel
 		placeComponents(panel);
 
-		// Choix du panel
+		// Choosing the panel
 		setContentPane(panel);
 
+		// Setting it visible
 		setVisible(true);
 	}
 
@@ -60,15 +62,14 @@ public class AddGoalView extends JFrame implements ActionListener
 		panel.setLayout(null);
 		Font fontTitle = new Font("Courier", Font.BOLD, 20);
 
-		// Ajout du Bouton Retour
-		returnUsersButton.addActionListener(this);
-		panel.add(returnUsersButton);
+		// Adding Buttons
+		returnButton.addActionListener(this);
+		panel.add(returnButton);
 
-		// Ajout du Bouton Ajouter
 		validateAddUserButton.addActionListener(this);
 		panel.add(validateAddUserButton);	
 
-		// Ajout des champs à rentrer
+		// Adding Text Fields
 		addGoalTitle.addActionListener(this);
 		addGoalTitle.setBounds(250, 140, 200, 25);
 		panel.add(addGoalTitle);
@@ -77,17 +78,14 @@ public class AddGoalView extends JFrame implements ActionListener
 		addGoalDescription.setBounds(250, 180, 200, 25);
 		panel.add(addGoalDescription);
 		
-		//Ajout de l'étiquette "Ajouter un Goal"
+		// Adding Label : "Add a Goal"
 		JLabel addGoalLabel = new JLabel();
 		addGoalLabel.setBounds(250, 30, 300, 100);
 		addGoalLabel.setFont(fontTitle);					
-		addGoalLabel.setText("Ajouter un Goal");
+		addGoalLabel.setText("Add a Goal");
 		panel.add(addGoalLabel);		
 
-
-
-
-		// Logo
+		// Adding Logo
 		JLabel image = new JLabel(new ImageIcon("logo.png"));
 		JPanel panelLogo = new JPanel();
 		panelLogo.setBounds(5, 5, 150, 150);
@@ -98,9 +96,7 @@ public class AddGoalView extends JFrame implements ActionListener
 
 
 	//ActionPerformMethod
-	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 
 		Object source = e.getSource();
 		if (source == validateAddUserButton)
@@ -110,7 +106,7 @@ public class AddGoalView extends JFrame implements ActionListener
 			String nick = FU.getCurrentUser().nicknameUser;
 			addUserButtonClicked(goal_title, goal_description, nick);
 		}
-		else if (source == returnUsersButton)
+		else if (source == returnButton)
 		{
 			new SimpleUserView();	
 			dispose();
@@ -125,13 +121,13 @@ public class AddGoalView extends JFrame implements ActionListener
 		try{
 			FU.addGoal(goal_title, goal_description, nick);
 		} catch (ObjectCreatedException e) {
-			JOptionPane.showMessageDialog(null, goal_title+" a bien été ajouté à la BD !", "Ajout d'un goal", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, goal_title+" added to the DB !", "Add a Goal", JOptionPane.INFORMATION_MESSAGE);
 			new SimpleUserView();
 			dispose();
-			System.out.println("Panel Simple User affiché");
+			System.out.println("SimpleUserView Displayed");
 		}
 		catch (ObjectAlreadyExistsException e) {
-			JOptionPane.showMessageDialog(null, "Ce Goal existe déjà dans la BD.", "Ajout d'utilisateur", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "This Goal already exists in the DB.", "Add a Goal", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

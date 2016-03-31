@@ -17,10 +17,10 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class AddUserView  extends JFrame implements ActionListener{
 
-	//Get the Facade
+	//Creating Facade Link
 	FacadeUser FU = FacadeUser.getFU();
 
-	//Create the panel
+	//Creating Panel
 	JPanel panel = new JPanel();
 
 	//Create the button for AddUserView

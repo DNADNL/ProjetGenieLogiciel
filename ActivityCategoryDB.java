@@ -36,7 +36,6 @@ public class ActivityCategoryDB extends ActivityCategory {
 	 *
 	 * @param  		title			(a {@link String} giving the title of the Activity Category),
 	 * 				description 	(a {@link String} giving the description of the Activity Category).
-	 * @return      void
 	 */
 	public static void suggestActivityCategory(String title, String description){
 		jdbc.addSuggestionActivityCategory(title, description);

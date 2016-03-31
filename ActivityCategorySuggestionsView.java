@@ -14,31 +14,33 @@ import javax.swing.JTable;
 
 @SuppressWarnings("serial")
 public class ActivityCategorySuggestionsView extends JFrame implements ActionListener {
-	//création de la façade
+	
+	// Creating Facade Link
 	FacadeUser FU = FacadeUser.getFU();
 
-	//Création du panel de navigation
+	// Creating Navigation Panel
 	JPanel panel = new JPanel();
 
-	//création du boutton retour
-	Button returnAdminButton = new Button("Retour",540, 10, 150, 30);
+	// Creating Buttons
+	Button returnButton = new Button("Return",540, 10, 150, 30);
 
 	public ActivityCategorySuggestionsView(){
 
 		super("Lazy'N Yourself");
 
-		// Options de la fenetre
+		// Window Options
 		this.setSize(700,700);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);	
 
-		// Construction du panel principal
+		// Building the Panel
 		placeComponents(panel);
 
-		// Choix du panel
+		// Choosing the Panel
 		setContentPane(panel);
 
+		// Setting it visible
 		setVisible(true);
 	}
 
@@ -53,18 +55,18 @@ public class ActivityCategorySuggestionsView extends JFrame implements ActionLis
 		panel.setLayout(null);
 		Font fontTitre = new Font("Courier", Font.BOLD, 20);
 
-		//Ajout de l'étiquette ">Suggestion de Catégorie d'Activité"
+		//Adding Label : "Activity Category Suggestions"
 		JLabel addSuggestionActivityCategoryPanelTitle = new JLabel();
 		addSuggestionActivityCategoryPanelTitle.setBounds(150, 30, 500, 100);
 		addSuggestionActivityCategoryPanelTitle.setFont(fontTitre);					
-		addSuggestionActivityCategoryPanelTitle.setText("<html>Catégories d'Activité Suggérées</html>");
+		addSuggestionActivityCategoryPanelTitle.setText("<html>Activity Category Suggestions</html>");
 		panel.add(addSuggestionActivityCategoryPanelTitle);		
 
-		//Buttons
-		returnAdminButton.addActionListener(this);
-		panel.add(returnAdminButton);
+		//Adding Buttons
+		returnButton.addActionListener(this);
+		panel.add(returnButton);
 
-		// List
+		// Adding Activity Category Suggestions List
 		Object[][] donnees =  {{"",""}};
 		donnees = FU.getStringActivityCategorySuggestionList();
 
@@ -78,7 +80,7 @@ public class ActivityCategorySuggestionsView extends JFrame implements ActionLis
 		panel.add(panTab);
 
 
-		// Logo
+		// Adding Logo
 		JLabel image = new JLabel(new ImageIcon("logo.png"));
 		JPanel panelLogo = new JPanel();
 		panelLogo.setBounds(5, 5, 150, 150);
@@ -88,10 +90,9 @@ public class ActivityCategorySuggestionsView extends JFrame implements ActionLis
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
+		// The only Button Available is the Return Button 
 		dispose();
 		new AdminView();
-		System.out.println("Panel Admin affiché");
+		System.out.println("AdminView Displayed !");
 	}
 }

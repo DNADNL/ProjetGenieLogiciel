@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+// The Cart View (Under Construction)
+
 @SuppressWarnings("serial")
 public class CartView extends JFrame implements ActionListener
 {	
