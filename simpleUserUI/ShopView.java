@@ -63,7 +63,7 @@ public class ShopView extends JFrame implements ActionListener
 
 		// Title
 		JLabel underConstructionTitle = new JLabel();
-		underConstructionTitle.setBounds(250, 30, 300, 100);
+		underConstructionTitle.setBounds(125, 300, 500, 50);
 		underConstructionTitle.setFont(fontTitle);					
 		underConstructionTitle.setText("<html>This window is under construction...</html>");
 		panel.add(underConstructionTitle);	
