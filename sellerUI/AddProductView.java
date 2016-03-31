@@ -30,10 +30,10 @@ public class AddProductView extends JFrame implements ActionListener{
 
 	//Create the Buttons "AddProduct"
 	Button returnProductsListButton = new Button("Retour",540, 10, 150, 30);
-	Button validateAddProductButton = new Button("<html>Ajouter<br> Produit</html>",275,350,150,50);
+	Button validateAddProductButton = new Button("<html>Add<br> a Product</html>",275,350,150,50);
 
 	//Create the Textfields
-	JTextField nameAddProduct = new JTextField("nom produit");
+	JTextField nameAddProduct = new JTextField("product name");
 	JTextArea briefDescAddProduct = new JTextArea("Brief Description");
 	JTextArea longDescAddProduct = new JTextArea("Long Description");
 	JTextField quantityAddProduct = new JTextField("0");
@@ -96,7 +96,7 @@ public class AddProductView extends JFrame implements ActionListener{
 		panel.add(longDescAddProduct);
 
 		// Labels
-		JLabel nameLabel = new JLabel("Nom");
+		JLabel nameLabel = new JLabel("Name");
 		nameLabel.setBounds(160, 100, 90, 30);
 		nameLabel.setFont(font);
 		nameLabel.setForeground(Color.BLACK);
@@ -108,13 +108,13 @@ public class AddProductView extends JFrame implements ActionListener{
 		briefDescLabel.setForeground(Color.BLACK);
 		panel.add(briefDescLabel);
 
-		JLabel priceLabel = new JLabel("Prix");
+		JLabel priceLabel = new JLabel("Price");
 		priceLabel.setBounds(160, 250, 90, 30);
 		priceLabel.setFont(font);
 		priceLabel.setForeground(Color.BLACK);
 		panel.add(priceLabel);
 
-		JLabel quantityLabel = new JLabel("Quantité");
+		JLabel quantityLabel = new JLabel("Quantity");
 		quantityLabel.setBounds(160, 210, 90, 30);
 		quantityLabel.setFont(font);
 		quantityLabel.setForeground(Color.BLACK);
@@ -132,7 +132,7 @@ public class AddProductView extends JFrame implements ActionListener{
 		JLabel addProductTitle = new JLabel();
 		addProductTitle.setBounds(250, 30, 300, 100);
 		addProductTitle.setFont(fontTitre);					
-		addProductTitle.setText("Ajout Produit");
+		addProductTitle.setText("Add a Product");
 		panel.add(addProductTitle);
 
 		// Logo

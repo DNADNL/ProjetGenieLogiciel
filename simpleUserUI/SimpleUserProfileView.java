@@ -30,8 +30,8 @@ public class SimpleUserProfileView extends JFrame implements ActionListener, Key
 	JPanel panel = new JPanel();
 
 	//Création des boutons de la fenêtre
-	Button returnButton = new Button("Retour",540, 10, 150, 30);
-	Button modifyUserDataButton = new Button("Modifier",280, 350, 150, 30);
+	Button returnButton = new Button("Return",540, 10, 150, 30);
+	Button modifyUserDataButton = new Button("Modify",280, 350, 150, 30);
 	JPasswordField simpleUserProfilePassword;
 	JTextField simpleUserProfileFirstName;
 	JTextField simpleUserProfileLastName;
@@ -143,7 +143,7 @@ public class SimpleUserProfileView extends JFrame implements ActionListener, Key
 		titleLabel.setForeground(Color.BLACK);
 		panel.add(titleLabel);
 
-		JLabel passwordLabel = new JLabel("<html>Mot de passe</html>");
+		JLabel passwordLabel = new JLabel("<html>Password</html>");
 		passwordLabel.setBounds(150, 100, 150, 30);
 		passwordLabel.setFont(font);
 		passwordLabel.setForeground(Color.BLACK);
@@ -155,37 +155,37 @@ public class SimpleUserProfileView extends JFrame implements ActionListener, Key
 		eMailLabel.setForeground(Color.BLACK);
 		panel.add(eMailLabel);
 
-		JLabel firstNameLabel = new JLabel("<html>Prénom</html>");
+		JLabel firstNameLabel = new JLabel("<html>First Name</html>");
 		firstNameLabel.setBounds(150, 160, 150, 30);
 		firstNameLabel.setFont(font);
 		firstNameLabel.setForeground(Color.BLACK);
 		panel.add(firstNameLabel);
 
-		JLabel lastNameLabel = new JLabel("<html>Nom</html>");
+		JLabel lastNameLabel = new JLabel("<html>Last Name</html>");
 		lastNameLabel.setBounds(150, 190, 150, 30);
 		lastNameLabel.setFont(font);
 		lastNameLabel.setForeground(Color.BLACK);
 		panel.add(lastNameLabel);
 
-		JLabel streetNumberLabel = new JLabel("<html>N° Rue</html>");
+		JLabel streetNumberLabel = new JLabel("<html>Street number</html>");
 		streetNumberLabel.setBounds(150, 220, 150, 30);
 		streetNumberLabel.setFont(font);
 		streetNumberLabel.setForeground(Color.BLACK);
 		panel.add(streetNumberLabel);
 
-		JLabel streetLabel = new JLabel("<html>Rue</html>");
+		JLabel streetLabel = new JLabel("<html>Street</html>");
 		streetLabel.setBounds(150, 250, 150, 30);
 		streetLabel.setFont(font);
 		streetLabel.setForeground(Color.BLACK);
 		panel.add(streetLabel);
 
-		JLabel postalCodeLabel = new JLabel("<html>Code Postal</html>");
+		JLabel postalCodeLabel = new JLabel("<html>Postal code</html>");
 		postalCodeLabel.setBounds(150, 280, 150, 30);
 		postalCodeLabel.setFont(font);
 		postalCodeLabel.setForeground(Color.BLACK);
 		panel.add(postalCodeLabel);
 
-		JLabel cityLabel = new JLabel("<html>Ville</html>");
+		JLabel cityLabel = new JLabel("<html>City</html>");
 		cityLabel.setBounds(150, 310, 150, 30);
 		cityLabel.setFont(font);
 		cityLabel.setForeground(Color.BLACK);

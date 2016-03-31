@@ -24,9 +24,9 @@ public class AdminView extends JFrame implements ActionListener{
 	JPanel panel = new JPanel();
 
 	//Create the Buttons for "Admin"
-	Button logoutButton = new Button("Déconnexion",540, 10, 150, 30);
-	Button usersHandlerButton = new Button("<html>Gestion<br>utilisateurs</html>",275,335,150,60);
-	Button showSuggestionButton = new Button ("<html>Suggestions <br>Catégories <br>d'Activité</html>",275,405,150,120);
+	Button logoutButton = new Button("Disconnection",540, 10, 150, 30);
+	Button usersHandlerButton = new Button("<html>Handle<br>Users</html>",275,335,150,60);
+	Button showSuggestionButton = new Button ("<html>Activity <br>Category <br>Suggestions</html>",275,405,150,120);
 
 	public AdminView()
 	{
@@ -71,7 +71,7 @@ public class AdminView extends JFrame implements ActionListener{
 		JLabel UserLabel = new JLabel();
 		UserLabel.setBounds(250, 30, 300, 100);
 		UserLabel.setFont(fontTitle);					
-		UserLabel.setText("Outils Administrateur");
+		UserLabel.setText("Admin Tools");
 		panel.add(UserLabel);		
 
 		// Buttons	

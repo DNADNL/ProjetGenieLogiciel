@@ -22,10 +22,10 @@ public class UsersHandlerView extends JFrame implements ActionListener{
 	JPanel panel = new JPanel();
 
 	//Create the Buttons for "UsersHandler"
-	Button returnAdminButton = new Button("Retour",540, 10, 150, 30);
-	Button addUserButton = new Button("Ajouter", 250, 270, 200, 30);
-	Button deleteUserButton = new Button("Supprimer",250, 310, 200, 30);
-	Button modifyUserButton = new Button("Modifier",250, 350, 200, 30);
+	Button returnAdminButton = new Button("Return",540, 10, 150, 30);
+	Button addUserButton = new Button("Add User", 250, 270, 200, 30);
+	Button deleteUserButton = new Button("Delete User",250, 310, 200, 30);
+	Button modifyUserButton = new Button("Modify User",250, 350, 200, 30);
 
 	public UsersHandlerView()
 	{

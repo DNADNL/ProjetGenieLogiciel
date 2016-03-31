@@ -23,8 +23,8 @@ public class SellerView extends JFrame implements ActionListener
 
 
 	//Create the Button for SellerView
-	Button logoutButton = new Button("Déconnexion",540, 10, 150, 30);
-	Button productListButton = new Button("Mes produits", 250, 335, 200, 30);
+	Button logoutButton = new Button("Disconnection",540, 10, 150, 30);
+	Button productListButton = new Button("My Products", 250, 335, 200, 30);
 
 	//Constructeur
 	public SellerView()

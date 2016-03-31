@@ -29,12 +29,12 @@ public class AddUserView  extends JFrame implements ActionListener{
 	JPanel panel = new JPanel();
 
 	//Create the button for AddUserView
-	Button returnUsersButton = new Button("Retour", 540, 10, 150, 30);
-	Button validateAddUserButton = new Button("Ajouter", 250, 270, 200, 30);
+	Button returnUsersButton = new Button("Return", 540, 10, 150, 30);
+	Button validateAddUserButton = new Button("Add User", 250, 270, 200, 30);
 
 	//Create the Textfields for AddUserView
 	JTextField addUserNickname = new JTextField("pseudo");
-	JPasswordField addUserPassword = new JPasswordField("mot_de_passe");
+	JPasswordField addUserPassword = new JPasswordField("password");
 	JTextField addUserEMail = new JTextField("e-mail");
 
 	//Create the combobox for AddUserView
@@ -98,9 +98,9 @@ public class AddUserView  extends JFrame implements ActionListener{
 		panel.add(addUserEMail);			
 
 		// Ajout de la liste de rôles
-		addUserRole.addItem("Simple Utilisateur");
-		addUserRole.addItem("Vendeur");
-		addUserRole.addItem("Administrateur");
+		addUserRole.addItem("Simple User");
+		addUserRole.addItem("Seller");
+		addUserRole.addItem("Admin");
 		addUserRole.setSelectedIndex(0);
 		addUserRole.addActionListener(this);
 		addUserRole.setBounds(250, 220, 200, 25);
@@ -145,7 +145,7 @@ public class AddUserView  extends JFrame implements ActionListener{
 		try {
 			FU.addUser(nick, pass, email);
 		} catch (EmptyFieldsException e) {
-			JOptionPane.showMessageDialog(null, "Merci de rentrer un pseudo et un mot de passe.", "Ajout d'utilisateur", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Enter a pseudo and a password.", "Ajout d'utilisateur", JOptionPane.ERROR_MESSAGE);
 		} catch (ObjectCreatedException e) {
 //			System.out.println("Admin : " + (addUserRole.getSelectedItem()).equals("Administrateur"));
 //			System.out.println("SU : " + (addUserRole.getSelectedItem()).equals("Simple Utilisateur"));

@@ -25,10 +25,10 @@ public class ProductsListView extends JFrame implements ActionListener{
 	JPanel panel = new JPanel();
 
 	//Create the Buttons for "ProductsList"
-	Button returnButton = new Button("Retour",540, 10, 150, 30);
-	Button productDetailsButton = new Button("Détails", 540, 335, 150,30);
-	Button deleteProductButton = new Button("Supprimer",170,170,150,30);
-	Button addProductButton = new Button("Ajouter",10,170,150,30);
+	Button returnButton = new Button("Return",540, 10, 150, 30);
+	Button productDetailsButton = new Button("Details", 540, 335, 150,30);
+	Button deleteProductButton = new Button("Delete Product",170,170,150,30);
+	Button addProductButton = new Button("Add a Product",10,170,150,30);
 
 	JTable tableau;
 
@@ -90,7 +90,7 @@ public class ProductsListView extends JFrame implements ActionListener{
 
 		donnees = FU.getStringProductList();
 
-		String[] entetes = {"Nom Produit", "Brief Description"};
+		String[] entetes = {"Product Name", "Brief Description"};
 		tableau = new JTable(donnees, entetes);
 
 		JScrollPane test = new JScrollPane(tableau);

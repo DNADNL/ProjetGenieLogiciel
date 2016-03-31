@@ -22,7 +22,7 @@ public class ShowActivityCategoryView extends JFrame implements  ActionListener 
 	JPanel panel = new JPanel();
 
 	//Création des boutons de "ProductsList"
-	Button returnPrincipalButton = new Button("Retour",540, 10, 150, 30);
+	Button returnPrincipalButton = new Button("Return",540, 10, 150, 30);
 	Button suggestButton = new Button("Suggest",500,320,150,30);
 
 	public ShowActivityCategoryView()

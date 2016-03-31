@@ -23,13 +23,13 @@ public class SimpleUserView extends JFrame implements ActionListener
 	JPanel panelListeObjectifs = new JPanel();
 
 	//Création des boutons principaux
-	Button logoutButton = new Button("Déconnexion", 540, 10, 150, 30);
-	Button profileButton = new Button("Mon Profil", 380, 10, 150, 30);
-	Button cartButton = new Button("Mon Panier", 380, 620, 150, 30);
-	Button shopButton = new Button("Boutique", 540, 620, 150, 30);
-	Button addGoalButton = new Button("Ajouter", 10, 620, 150, 30);
-	Button seeGoalButton = new Button("Voir", 540,540, 150, 30);
-	Button deleteGoalButton = new Button("Supprimer", 170, 620, 150, 30);
+	Button logoutButton = new Button("Disconnection", 540, 10, 150, 30);
+	Button profileButton = new Button("My Profile", 380, 10, 150, 30);
+	Button cartButton = new Button("My Cart", 380, 620, 150, 30);
+	Button shopButton = new Button("Shop", 540, 620, 150, 30);
+	Button addGoalButton = new Button("Add a Goal", 10, 620, 150, 30);
+	Button seeGoalButton = new Button("See", 540,540, 150, 30);
+	Button deleteGoalButton = new Button("Delete Goal", 170, 620, 150, 30);
 	Button showCategoryActivityButton = new Button("<html>Show <br>Activity Categories</html>",540,170,150,45);
 
 	//Creation de la JTable
@@ -106,7 +106,7 @@ public class SimpleUserView extends JFrame implements ActionListener
 
 		donneesListeObjectifs = FU.getStringGoalList();
 
-		String[] enteteListeObjectifs = {"Objectif", "Description"};
+		String[] enteteListeObjectifs = {"Goal", "Description"};
 		listeObjectifs = new JTable(donneesListeObjectifs, enteteListeObjectifs);
 
 		JScrollPane defilementListeObjectifs = new JScrollPane(listeObjectifs);
