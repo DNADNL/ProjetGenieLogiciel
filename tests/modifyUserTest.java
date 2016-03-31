@@ -45,7 +45,10 @@ public class modifyUserTest {
 	}
 	
 	//@After
-//	public void tearDownModifyUserTest() throws ObjectNotInTheDatabaseException, ObjectDeletedException{
-//		FU.deleteUser("modifyTest");
-//	}
+	public void tearDownModifyUserTest() throws ObjectNotInTheDatabaseException, ObjectDeletedException{
+	try{
+	FU.deleteUser("modifyTest");
+	}
+	catch (Exception e) {}
+}
 }
