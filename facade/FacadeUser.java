@@ -11,6 +11,7 @@ public class FacadeUser {
 	public ActivityCategoryHandler ACH;
 	public GestionnaireGoal GG;
 
+
 	
 	//Construct Singleton
 	private FacadeUser()
