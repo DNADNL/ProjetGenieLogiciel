@@ -47,5 +47,8 @@ public class FactoryActivityCategory extends AbstractFactoryActivityCategory {
 		createdActivityCategoryList = ActivityCategoryDB.createCategoryActivitySuggestionList();
 		return createdActivityCategoryList;
 	}
-
+	public ActivityCategory getLastActivityCategorySuggestion(){
+		ActivityCategory LastActivityCategorySuggestion = ActivityCategoryDB.getLastActivityCategorySuggestion() ;
+		return LastActivityCategorySuggestion;
+	}
 }

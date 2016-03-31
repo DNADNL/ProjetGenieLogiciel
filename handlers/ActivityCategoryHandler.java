@@ -139,6 +139,12 @@ public class ActivityCategoryHandler {
 			activityCategorySuggestionList = null;
 		}
 		
+		/**
+		 * This method return the last activity category suggested.
+		 */
+		public ActivityCategory getLastActivityCategorySuggestion(){
+			return Fact.getLastActivityCategorySuggestion();
+		}
 }
 
 			

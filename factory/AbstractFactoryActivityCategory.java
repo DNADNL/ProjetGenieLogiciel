@@ -12,4 +12,5 @@ public abstract class AbstractFactoryActivityCategory {
 	abstract public void getActivityCategory(String title);
 	abstract public ArrayList<ActivityCategory> createActivityCategoryList();
 	abstract public ArrayList<ActivityCategory> createActivityCategorySuggestionList();
+	abstract public ActivityCategory getLastActivityCategorySuggestion();
 }

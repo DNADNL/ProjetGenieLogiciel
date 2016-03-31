@@ -5,4 +5,6 @@ package business;
 public class ActivityCategory {
 	public String title;
 	public String description;
+	
+	
 }

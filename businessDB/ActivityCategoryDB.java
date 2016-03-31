@@ -45,6 +45,10 @@ public class ActivityCategoryDB extends ActivityCategory {
 	public static void suggestActivityCategory(String title, String description){
 		jdbc.addSuggestionActivityCategory(title, description);
 	}
+
+	public static ActivityCategory getLastActivityCategorySuggestion() {
+		return jdbc.getLastActivityCategorySuggestion();
+	}
 	
 }
 

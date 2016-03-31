@@ -190,6 +190,9 @@ public class FacadeUser {
 		PH.verifyAlreadyExists(nickname,pdt_name);
 	}
 	
+	public ActivityCategory getLastActivityCategorySuggestion(){
+		return ACH.getLastActivityCategorySuggestion();
+	}
 
 
 	
