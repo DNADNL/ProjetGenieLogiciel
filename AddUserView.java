@@ -116,7 +116,14 @@ public class AddUserView  extends JFrame implements ActionListener{
 			String email = addUserEMail.getText();
 
 			//Add the user
-			addUserButtonClicked(nickname, password, email);
+			if (nickname.equals("") || password.equals(""))
+			{
+				JOptionPane.showMessageDialog(null, "Merci de rentrer un pseudo et un mot de passe.", "Ajout d'utilisateur", JOptionPane.ERROR_MESSAGE);
+			}
+			else
+			{
+				addUserButtonClicked(nickname, password, email);
+			}
 		}
 		else if (source == returnUsersButton)
 		{

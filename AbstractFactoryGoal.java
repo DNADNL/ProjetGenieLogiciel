@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+//Abstract Class of Goal Factory
+
 public abstract class AbstractFactoryGoal {
 
 	abstract public void addGoal(String goal_title, String goal_description, String nick);
