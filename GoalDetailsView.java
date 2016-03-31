@@ -12,7 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 @SuppressWarnings("serial")
-public class SeeGoalView extends JFrame implements ActionListener
+public class GoalDetailsView extends JFrame implements ActionListener
 {	
 	//Get the Facade
 	FacadeUser FU = FacadeUser.getFU();
@@ -30,7 +30,7 @@ public class SeeGoalView extends JFrame implements ActionListener
 	JTable tableau;
 
 	//Constructeur
-	public SeeGoalView()
+	public GoalDetailsView()
 	{
 		super("Lazy'N Yourself");
 

@@ -166,7 +166,7 @@ public class ProductsListView extends JFrame implements ActionListener{
 					FU.modifyCurrentProduct(product_selected, FU.getCurrentUser().nicknameUser);
 					
 					//Go to the ProductDetailView
-					new ProductDetailView();
+					new ProductDetailsView();
 					dispose();
 					System.out.println("Panel Details Product affiché");
 				} 

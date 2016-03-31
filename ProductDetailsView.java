@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class ProductDetailView extends JFrame implements ActionListener{
+public class ProductDetailsView extends JFrame implements ActionListener{
 
 	//Get the Facade
 	FacadeUser FU = FacadeUser.getFU();
@@ -21,7 +21,7 @@ public class ProductDetailView extends JFrame implements ActionListener{
 	//Create the Buttons for "ProductDetails"
 	Button returnProductsListButton = new Button("Retour",540, 10, 150, 30);
 
-	public ProductDetailView()
+	public ProductDetailsView()
 	{
 		super("Lazy'N Yourself");
 

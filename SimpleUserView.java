@@ -160,7 +160,7 @@ public class SimpleUserView extends JFrame implements ActionListener
 			if (listeObjectifs.getSelectedRow() != -1)
 			{
 				String goal_selected = (listeObjectifs.getValueAt(listeObjectifs.getSelectedRow(), 0).toString());
-				new SeeGoalView();
+				new GoalDetailsView();
 				dispose();
 				System.out.println("Panel seeGoal affiché");
 			}
