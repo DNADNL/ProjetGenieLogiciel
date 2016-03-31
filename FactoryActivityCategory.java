@@ -13,7 +13,7 @@ public class FactoryActivityCategory extends AbstractFactoryActivityCategory {
 	
 	@Override
 	public ArrayList<ActivityCategory> createCategoryActivityList() {
-		createdActivityCategoryList = ActivityCategoryDB.createCategoryActivityList();
+		createdActivityCategoryList = ActivityCategoryDB.createActivityCategoriesList();
 		return createdActivityCategoryList;
 	}
 //	
@@ -21,7 +21,7 @@ public class FactoryActivityCategory extends AbstractFactoryActivityCategory {
 	@Override
 	public void suggestActivityCategory(String title, String description) {
 		// TODO Auto-generated method stub
-		ActivityCategoryDB.SuggestCategoryActivity(title, description);
+		ActivityCategoryDB.suggestActivityCategory(title, description);
 		
 	}
 
